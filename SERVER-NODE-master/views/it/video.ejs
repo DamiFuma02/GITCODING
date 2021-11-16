@@ -1,0 +1,158 @@
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANALISI VIDEO</title>
+    <link rel="stylesheet" href="/css/banner.css">
+    <style>
+        #uppermenu {
+            background-color: rgb(90, 158, 236);
+        }
+        
+        table {
+            align-items: center;
+            width: 100%;
+            font-size: 30px;
+        }
+        
+        td {
+            align-items: center;
+            text-align: center;
+        }
+        
+        #userLoggato {
+            width: 200px;
+            height: 50px;
+            border: 3px solid black;
+            border-radius: 30px;
+            color: black;
+        }
+        
+        #title {
+            width: 600px;
+            color: rgb(238, 31, 41);
+            font-size: 40px;
+        }
+        
+        html {
+            background-color: rgb(195, 232, 236);
+            background-size: 100%;
+        }
+        
+        #titolo {
+            margin-top: 500px;
+            color: rgb(245, 101, 4);
+        }
+        
+        #start {
+            margin: 100px;
+            font-size: 50px;
+            text-align: center;
+            color: green;
+        }
+        
+        #infobutton {
+            height: 50px;
+            width: 50px;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            padding: 12px 16px;
+            z-index: 1;
+            width: 230px;
+            align-self: center;
+            align-items: center;
+        }
+        
+        #userLoggato:hover .dropdown-content {
+            display: block;
+        }
+        
+        #internet {
+            text-align: center;
+        }
+        
+        #intro {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <table id="uppermenu" align="center">
+        <tr>
+            <td id="userLoggato">
+                <span><%= user.name %></span>
+                <!-- quando si passa con il mouse sopra il nome scende il menu-->
+                <div class="dropdown-content">
+                    <form action="/logout" method="POST">
+                        <button id="logout" type="submit">LOGOUT</button>
+                    </form>
+                    <form action="https://cloud.mongodb.com/v2/608feb19b0b61158d97c817c#metrics/replicaSet/608fec5362386a47acfc84c8/explorer/myFirstDatabase/session/find">
+                        <button type="submit">ACCEDI AL DATABASE</button>
+                    </form>
+
+                    <!-- per visualizzare la pagina di info dell'user loggato -->
+                    <form action="/account" method="GET">
+                        <button id="infouser" type="submit">INFOUSER</button>
+                    </form>
+                    <div id="testoDaInserire">
+
+                    </div>
+                </div>
+
+            </td>
+            <td id="title" style="border: 3px solid black; border-radius: 30px; border-style: dotted;"><b> <a href="/account/index"><img src="/immagini/homepage.png" style="width: 40px; height: 40px;"></a>  ELABORATO ESAME DI STATO 2021</b></td>
+            <td id="userLoggato">
+
+                INFO
+                <a href="/account/INFO"><img id="infobutton" src="/immagini/info.png"></a>PERSONALI
+
+
+            </td>
+        </tr>
+
+    </table>
+    <div style="color: orange; font-size: 30px;">
+        <h1 align="center">
+            <a href="/account/servizi"><img src="/immagini/backarrow.png" style="height: 50px; width: 70px;"></a><b>RUOLO DELLA TECNOLOGIA<br>NELLA SOCIETÀ MODERNA</b>
+            <a href="/account/opportunita"><img src="/immagini/arrow.png" style="height: 50px; width: 70px;"></a>
+        </h1>
+    </div>
+
+
+
+
+    <div id="intro"><b style="font-size: 20px;">
+        Contenuto tratto da YOUTUBE dal canale <a href="https://www.youtube.com/user/TEDxTalks">TEDx Talks</b></a><br><a href="https://www.youtube.com/watch?v=O2yvnv6KzeA&t=176s"><b style="font-size: 20px;">Video integrale</b></a><br>
+
+    </div>
+
+    <p id="video" style="text-align: center;">
+        Cliccando sull'immagine si avvia la riproduzione del video..<br> <br>
+        <hr>
+        <button id="btn" style="background-image: url('/immagini/immaginevideo.jpg'); width: 980px; height: 500px"></button>
+        <br>
+        <!-- <video width="100%" height="100%" controls>
+            <source src="/immagini/video.mp4" type="video/mp4">
+        </video> -->
+    </p>
+
+
+    <script type="text/javascript">
+        const video = `<video width="100%" height="100%" controls>
+        <source src="/img/PROVAAA.mp4" type="video/mp4">
+    </video>`
+        let btn = document.getElementById("btn")
+        console.log(btn)
+        btn.addEventListener("click", () => {
+            document.getElementById("video").innerHTML = video
+        }, false)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CODIFICA DIGITALE</title>
+    <style>
+        /* Visalizza l'elenco in disposizione orizzontale*/
+        #banner {
+            background-color: lightblue;
+            height:70px;
+            width: 100%;
+            position: sticky;
+            top: 0px;
+            align-items: center;
+            display: flex;
+        }
+        table {
+            width: 100%;
+            font-size: 30px;
+            text-align: center;
+        }
+        div h2{
+            color: blue; font-size: 40px; text-align: center;
+        }
+        nav {
+            background-color: red;
+            height: 100%;
+            position: sticky;
+            top: 0px;
+        }
+        nav ul{
+            padding: 30px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 35px;
+        }
+        nav ul a{
+            color: black;
+            text-decoration: none;
+            background-color: white;
+            border-radius: 30px;
+            padding: 10px 10px;
+        }
+        #SND ul{
+            font-size: 35px;
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="color: red; font-size: 70px; text-align: center;">Rappresentazione Numeri <a href="../Architettura.html"><img src="../public/homebutton.png" style="height: 55px; width: 55px; padding-left: 30px;"></a></h2>
+    <br>
+    <nav>
+        <ul id="index" style="list-style: none;">
+            <li><a href="#SegnaliInfo">Segnali Informativi</a> </li>
+            <li><a href="#ADC">Digitalizzazione</a></li>
+            <li><a href="#SND">Sistema Numerico Binario</a></li>
+            <li><a href="#Bool">Algebra Booleana</a></li>
+            <li><a href="#Codifica">Codifica dei DATI</a></li>
+        </ul>
+    </nav>
+    <div id="SegnaliInfo">
+        <h2   style="color: blue; font-size: 40px; text-align: center;">Segnali Informativi</h2>
+        <table >
+            <tr>
+                <td style="width: 50%; border: 3px solid black; border-radius: 30px;">
+                    <ul>
+                        <li><b>Analogici</b>: variano in analogia con la grandezza fisica (Tensione o Corrente) <br>
+                            <img src="../public/ARCH/analogico.png" style="padding: 30px;">
+                            <ul>
+                                <li>Possiedono un numero infinito di valori all'interno dell'intervallo di ampiezza</li>
+                                <li>Solitamente vengono rappresentati da un segnale sinusoidale</li>
+                                <li>Maggiormente soggetti all'influenza del rumore</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </td>
+                <td style="width: 50%; border: 3px solid black; border-radius: 30px;">
+                    <ul>
+                        <li><b>Digitali:</b>  vengono rappresentati da cifre binarie (digit) <br>
+                            <img src="../public/ARCH/digitale.png" style="height: 250px; padding: 30px;">
+                            
+                            <ul>
+                                <li>Numero finito di valori all'interno dell'intervallo di ampiezza</li>
+                                <li>rappresentati da un segnale onda quadra</li>
+                                <li>Quantizzazione: definisce il numero di valori ammissibili</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <hr>
+    <div id="ADC">
+        <h2 >Conversione Analogico Digitale</h2>
+        
+    </div>
+    <hr>
+    <div id="SND">
+        <h2 style="color: blue; font-size: 40px; text-align: center;">Sistema Numerico Binario</h2>
+        <figure style="text-align: center; font-size: 35px;">
+            <img src="../public/ARCH/binario.png" style="height: 300px; width: 550px"> 
+            <figcaption>
+                Viene usata la notazione posizionale, perciò ogni cifra ha un'ordine di grandezza
+            </figcaption>
+        </figure>
+        <h2  style="color: blue; font-size: 35px; text-align: center;">Conversione di base numerica</h2>
+        <ul>
+            <li>Base 10 --> Base N</li>
+            <li>Base N --> Base 10</li>
+            <li>Base 2 --> Base 2^n</li>
+            <li>Base 2^n --> Base 2</li>
+        </ul>
+    </div>
+    
+</body>
+</html>

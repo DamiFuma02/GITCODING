@@ -1,0 +1,90 @@
+#uppermenu {
+    background-color: rgb(90, 158, 236);
+}
+
+table {
+    align-items: center;
+    width: 100%;
+    font-size: 30px;
+}
+
+td {
+    align-items: center;
+    text-align: center;
+    border: 3px solid black;
+    border-radius: 30px;
+}
+
+#userLoggato {
+    width: 20%;
+    height: 50px;
+    border: 3px solid black;
+    border-radius: 30px;
+    color: black;
+}
+
+#title {
+    width: 60%;
+    color: rgb(238, 31, 41);
+    font-size: 40px;
+}
+
+html {
+    background-color: rgb(195, 232, 236);
+    background-size: 100%;
+}
+
+#titolo {
+    margin-top: 500px;
+    color: rgb(245, 101, 4);
+}
+
+#start {
+    margin: 100px;
+    font-size: 50px;
+    text-align: center;
+    color: green;
+}
+
+.start {
+    border: 2px solid black;
+    border-radius: 10px;
+    text-align: center;
+    background-color: green;
+}
+
+.comefunziona {
+    border: 2px solid black;
+    border-radius: 10px;
+    text-align: center;
+    background-color: red;
+}
+
+.sitografia {
+    border: 2px solid black;
+    border-radius: 10px;
+    text-align: center;
+    background-color: blue;
+}
+
+#infobutton {
+    height: 50px;
+    width: 50px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    width: 20%;
+    align-self: center;
+    align-items: center;
+}
+
+#userLoggato:hover .dropdown-content {
+    display: block;
+}
+
+#internet {
+    text-align: center;
+}

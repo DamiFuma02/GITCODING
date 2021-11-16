@@ -1,0 +1,182 @@
+<!-- PAGINA HOME DELL'ESAME, VIENE VISUALIZZATA UNA VOLTA EFFETTUATO IL LOGIN-->
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        table {
+            align-items: center;
+            width: 100%;
+            font-size: 30px;
+        }
+        
+        td {
+            align-items: center;
+            text-align: center;
+        }
+        
+        #userLoggato {
+            width: 200px;
+            height: 50px;
+            border: 3px solid black;
+            border-radius: 30px;
+            color: white;
+        }
+        
+        #title {
+            width: 600px;
+            color: rgb(238, 31, 238);
+            font-size: 40px;
+        }
+        
+        html {
+            background-image: url("../public/immagini/backgroundhome.jpg");
+            background-size: 1500px;
+        }
+        
+        #titolo {
+            margin-top: 500px;
+            color: red;
+        }
+        
+        #start {
+            margin: 100px;
+            font-size: 50px;
+            text-align: center;
+            color: green;
+        }
+        
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            font-weight: bold;
+            width: 100%;
+        }
+        
+        li {
+            display: inline;
+            float: left;
+            margin: 5%;
+            border: 3px solid black;
+            border-radius: 10px;
+            width: 23%;
+            height: 50px;
+        }
+        
+        .start {
+            border: 2px solid black;
+            border-radius: 10px;
+            text-align: center;
+            background-color: green;
+        }
+        
+        .comefunziona {
+            border: 2px solid black;
+            border-radius: 10px;
+            text-align: center;
+            background-color: red;
+        }
+        
+        .sitografia {
+            border: 2px solid black;
+            border-radius: 10px;
+            text-align: center;
+            background-color: blue;
+        }
+        
+        #infobutton {
+            height: 50px;
+            width: 50px;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            padding: 12px 16px;
+            z-index: 1;
+            width: 230px;
+            align-self: center;
+            align-items: center;
+        }
+        
+        #userLoggato:hover .dropdown-content {
+            display: block;
+        }
+    </style>
+    <title>Homepage</title>
+</head>
+
+<body link="white" vlink="white">
+    <!-- PER CAMBIARE IL COLORE DEI LINK-->
+    <table align="center">
+        <tr>
+            <td id="userLoggato">
+                <span>nome user</span>
+                <!-- quando si passa con il mouse sopra il nome scende il menu-->
+                <div class="dropdown-content">
+                    <form action="/logout" method="POST">
+                        <button id="logout" type="submit">LOGOUT</button>
+                    </form>
+                    <form action="https://cloud.mongodb.com/v2/608feb19b0b61158d97c817c#metrics/replicaSet/608fec5362386a47acfc84c8/explorer/myFirstDatabase/session/find">
+                        <button type="submit">ACCEDI AL DATABASE</button>
+                    </form>
+
+                    <!-- per visualizzare la pagina di info dell'user loggato -->
+                    <form action="./3-INFOUSER.html" method="GET">
+                        <button id="infouser" type="submit">INFOUSER</button>
+                    </form>
+                    <div id="testoDaInserire">
+
+                    </div>
+                </div>
+
+            </td>
+            <td id="title" style="border: 3px solid black; border-radius: 30px; border-style: dotted;"><b>ELABORATO ESAME DI STATO 2021</b></td>
+            <td id="userLoggato">
+
+                INFO
+                <a href="./7-INFO.html"><img id="infobutton" src="../public/immagini/info.png"></a>PERSONALI
+
+
+            </td>
+        </tr>
+        <tr>
+            <td id="titolo" colspan="3">
+                <h1>OPPORTUNITÀ E CRITICITÀ DEI<br>SERVIZI OFFERTI IN RETE</h1>
+            </td>
+        </tr>
+    </table>
+
+
+    <ul>
+        <div class="navigationbar">
+            <li class="start">
+                <a href="./5-Index.html">
+                    <p>PRESENTAZIONE</p>
+                </a>
+            </li>
+            <li class="sitografia">
+                <a href="./8-sitografia.html">
+                    <p>SITOGRAFIA</p>
+                </a>
+            </li>
+            <li class="comefunziona">
+                <a href="./6-TUTORIAL.html">
+                    <p>TUTORIAL COMUNICAZIONE</p>
+                    <!-- CoLLEGARE CON TUTORIAL SERVER-->
+                </a>
+            </li>
+        </div>
+    </ul>
+
+
+
+</body>
+
+</html>

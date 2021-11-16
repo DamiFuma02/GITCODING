@@ -1,0 +1,16 @@
+TITLE Programma			; titolo del programma=Programma
+.MODEL SMALL			
+.STACK 				; inizia il segmento destinato allo stack
+
+.DATA				; spazio destinato alle dichiarazioni di varibiali
+
+.CODE 				; inizio del programma (istruzioni)
+
+.STARTUP			; istruzione del segmento CS
+
+
+; servizio DOS di chiusura
+MOV  AH, 4Ch			; Mette nel registro AH (8bit) il numero 4C in esadecimale (h=hesa)
+INT 21h				; INT = INTERRUPT 		21 è il numero esadecimale dell'interrupt
+
+END

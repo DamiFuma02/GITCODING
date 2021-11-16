@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INTERNET</title>
+    <style>
+        #uppermenu {
+            background-color: rgb(90, 158, 236);
+        }
+        
+        table {
+            align-items: center;
+            width: 100%;
+            font-size: 30px;
+        }
+        
+        td {
+            align-items: center;
+            text-align: center;
+            width: 50%;
+            height: 100%;
+        }
+        
+        #userLoggato {
+            width: 200px;
+            height: 50px;
+            border: 3px solid black;
+            border-radius: 30px;
+            color: black;
+        }
+        
+        #title {
+            width: 600px;
+            color: rgb(238, 31, 41);
+            font-size: 40px;
+        }
+        
+        html {
+            background-color: rgb(195, 232, 236);
+            background-size: 100%;
+        }
+        
+        #titolo {
+            margin-top: 500px;
+            color: rgb(245, 101, 4);
+        }
+        
+        #start {
+            margin: 100px;
+            font-size: 50px;
+            text-align: center;
+            color: green;
+        }
+        
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            font-weight: bold;
+            width: 100%;
+        }
+        
+        li {
+            display: inline;
+            float: left;
+            margin: 60px;
+            border: 3px solid black;
+            border-radius: 10px;
+            width: 300px;
+            height: 50px;
+        }
+        
+        .start {
+            border: 2px solid black;
+            border-radius: 10px;
+            text-align: center;
+            background-color: green;
+        }
+        
+        .comefunziona {
+            border: 2px solid black;
+            border-radius: 10px;
+            text-align: center;
+            background-color: red;
+        }
+        
+        .sitografia {
+            border: 2px solid black;
+            border-radius: 10px;
+            text-align: center;
+            background-color: blue;
+        }
+        
+        #infobutton {
+            height: 50px;
+            width: 50px;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            padding: 12px 16px;
+            z-index: 1;
+            width: 230px;
+            align-self: center;
+            align-items: center;
+        }
+        
+        #userLoggato:hover .dropdown-content {
+            display: block;
+        }
+        
+        #internet {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <table id="uppermenu" align="center">
+        <tr>
+            <td id="userLoggato">
+                <span>NOME USER</span>
+                <!-- quando si passa con il mouse sopra il nome scende il menu-->
+                <div class="dropdown-content">
+                    <form action="/logout" method="POST">
+                        <button id="logout" type="submit">LOGOUT</button>
+                    </form>
+                    <form action="https://cloud.mongodb.com/v2/608feb19b0b61158d97c817c#metrics/replicaSet/608fec5362386a47acfc84c8/explorer/myFirstDatabase/session/find">
+                        <button type="submit">ACCEDI AL DATABASE</button>
+                    </form>
+
+                    <!-- per visualizzare la pagina di info dell'user loggato -->
+                    <form action="./3-INFOUSER.html" method="GET">
+                        <button id="infouser" type="submit">INFOUSER</button>
+                    </form>
+                    <div id="testoDaInserire">
+
+                    </div>
+                </div>
+
+            </td>
+            <td id="title" style="border: 3px solid black; border-radius: 30px; border-style: dotted;"><b> <a href="./5-Index.html"><img src="../public/immagini/homepage.png" style="width: 40px; height: 40px;"></a>  ELABORATO ESAME DI STATO 2021</b></td>
+            <td id="userLoggato">
+
+                INFO
+                <a href="./7-INFO.html"><img id="infobutton" src="../public/immagini/info.png"></a>PERSONALI
+
+
+            </td>
+        </tr>
+        <tr>
+            <td id="titolo" colspan="3">
+                <h2>
+                    <a href="./5-Index.html"><img src="../public/immagini/backarrow.png" style="height: 50px; width: 70px;"></a><b>DEFINIZIONE E INTRODUZIONE<br>A WEB E INTERNET</b>
+                    <a href="./10-tipo-rete.html"><img src="../public/immagini/arrow.png" style="height: 50px; width: 70px;"></a>
+                </h2>
+            </td>
+        </tr>
+    </table>
+    <hr>
+    <h1 align="center">UN PO' DI STORIA...</h1>
+    <table>
+        <tr>
+            <td style="width: 50%; font-size: 20px; border-style:dashed; border-radius: 50px; border: 3px solid black;">
+                <h2><b>INTRODUZIONE</b></h2>
+                <p>Negli ultimi <b>60 anni</b> la <b>tecnologia</b> ha subito una fortissima innovazione e crescita,
+                    <br>divenendo parte <b>integrante</b> e <b>fondamentale</b> delle nostre <b>vite</b><br><br>
+
+                    <img src="../public/immagini/evoluzione-tecnologica-computer.gif" style="width: 80%; height: 50%;"><br><br>Con l'evoluzione dei dispositivi si sono <b>evoluti</b> anche i <b>servizi</b><br><br>
+                    <img src="../public/immagini/historyoftheinternet-timeline.png" style="width: 80%; height: 50%;">
+                </p>
+            </td>
+            <td style="width: 50%; font-size: 20px; border-radius: 50px; border: 3px solid black;">
+                <p>
+                    <h2><b>PERCORSO dell'evoluzione di INTERNET</b></h2><br>
+                    <img src="../public/immagini/storia-internet.jpg" style="width: 80%; height: 800px;"><br> Ad oggi il WWW (WEB) si è evoluto e possiede diverse versioni:<br>1.0 - 2.0 - 3.0 - 4.0(in futuro)
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 50%;  font-size: 20px; border-style:dashed; border-radius: 50px; border: 3px solid black;">
+                <p>
+                    <h2><b>EVOLUZIONE</b> in ambito <b>INDUSTRIALE</b></h2><br>
+                    <img src="../public/immagini/le-quattro-rivoluzioni-industriali-01.png" style="width: 80%;">
+                </p>
+            </td>
+            <td style="width: 50%; font-size: 20px; border-style:dashed; border-radius: 50px; border: 3px solid black;">
+                <p>
+                    <h2>3 - 4 RIVOULZIONE INDUSTRIALE</h2>
+                    <img src="../public/immagini/3-4-industria.png" style="width: 80%;"><br> <b>Società dell'informazione</b>: prevale un <b>bene immateriale</b> (informazione/dato) rispetto a materiale (industrie)<br>
+                    <img src="../public/immagini/evo-software.png" style="width: 80%;">
+                </p>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

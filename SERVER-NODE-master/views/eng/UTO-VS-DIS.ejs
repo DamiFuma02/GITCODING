@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTOPIA VS DISTOPIA</title>
+    <link rel="stylesheet" href="/css/banner.css">
+</head>
+
+<body>
+    <table id="uppermenu" align="center">
+        <tr>
+            <td id="userLoggato">
+                <span><%= user.name %></span>
+                <!-- quando si passa con il mouse sopra il nome scende il menu-->
+                <div class="dropdown-content">
+                    <form action="/logout" method="POST">
+                        <button id="logout" type="submit">LOGOUT</button>
+                    </form>
+                    <form action="https://cloud.mongodb.com/v2/608feb19b0b61158d97c817c#metrics/replicaSet/608fec5362386a47acfc84c8/explorer/myFirstDatabase/session/find">
+                        <button type="submit">ACCEDI AL DATABASE</button>
+                    </form>
+
+                    <!-- per visualizzare la pagina di info dell'user loggato -->
+                    <form action="/account" method="GET">
+                        <button id="infouser" type="submit">INFOUSER</button>
+                    </form>
+                    <div id="testoDaInserire">
+
+                    </div>
+                </div>
+
+            </td>
+            <td id="title" style="border: 3px solid black; border-radius: 30px; border-style: dotted;"><b> <a href="/account/index"><img src="/immagini/homepage.png" style="width: 40px; height: 40px;"></a>  ELABORATO ESAME DI STATO 2021</b></td>
+            <td id="userLoggato">
+
+                INFO
+                <a href="/account/INFO"><img id="infobutton" src="/immagini/info.png"></a>PERSONALI
+
+
+            </td>
+        </tr>
+
+    </table>
+    <div style="text-align: center; color: red;">
+        <h1><b>INTERNET, UTOPIA or DISTOPIA?</b></h1>
+    </div>
+    <br>
+    <table>
+        <tr>
+            <td>
+                <b>UTOPIA: </b> οὐ «not» e τόπος «place», it literally means "A place that doesn't exist"<br> It represents an ideal place where everything is perfect.
+            </td>
+            <td>
+                <b>DISTOPIA: </b> δυσ "bad" e τόπος «place», it literally means "The worst place". <br> Dystopias are characterized by fear or distress, tyrannical governments, <br> environmental disaster, or other cataclysmas that decline in society.
+            </td>
+        </tr>
+    </table>
+    <br>
+    <hr>
+    <div style="font-size: 30px;">
+        <br> "Whether it is to be <b>utopia or dystopia</b> will be a <b>touch-and-go race </b>right up no the <b>final moment</b>.... Buckminster Fuller"
+    </div><br>
+    <hr>
+    <div style="font-size: 30px;">
+        <b>Tim Berners-Lee</b>, who founds the <b>World Wide Web (WWW)</b>, is creating a campaigne to <b>delete the Fake News form Internet</b>. <br> "The humanity connected to the technology works in a distopian way" by Tim Berners-Lee himself. <br>
+    </div>
+    <br>
+    <hr>
+    <br>
+    <div style="font-size: 30px;">
+        <div style="color: red; text-align: center;">
+            <b>The PARADOX of the INTERNET</b>
+        </div>
+        <br> It should create a sort of <b>Cyberdemocracy</b>, thanks to the big amount of <b>devices or civic and government technologies</b>. <br> It is a form of <b>government</b> in which <b>all adult citizens</b> are presumed to be <b>eligible to participate</b>        equally in the <b>proposal, development and creation of laws.</b> <br>
+        <br> Big Companies struggle to control and regulate information traffic (Amazon, Google, Apple)
+    </div>
+    <br>
+    <hr>
+    <br>
+    <div style="font-size: 30px;">
+        As mentioned before in the AI's section, individuals are progressively isolating themselves. <br>
+        <b>AI is able to select</b> the <b>topics and information</b> that most interest and characterise us, so each person increasingly reinforces their own ideologies and beliefs.
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-intermediate-lambda-reader.ss" "lang")((modname Bin-Dec) (read-case-sensitive #t) (teachpacks ((lib "drawings.ss" "installed-teachpacks"))) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ((lib "drawings.ss" "installed-teachpacks")) #f)))
+(define valore
+  (lambda str
+      (if (string=? str "0")
+          0
+          1
+      )
+  )
+)
+
+
+(define bin-dec
+  (lambda stringa        ;stringa di bit
+    (let (k (-(string-length stringa)1) )
+      (if (= (k 0))
+          (valore stringa)
+          ;somma il valore della stringa alla posizione più a DX con 
+          (+
+            (* 2 (bin-dec (substring stringa 0 k)) )
+            (valore (string-ref stringa k))
+           )
+              ;chiama se stessa eliminando la cifra più a destra
+      )
+    )
+  )
+  
+
+)

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circuiti</title>
+</head>
+<body style="font-size: 25px;">
+    <h2 style="color: red; font-size: 40px; text-align: center;">CIRCUITI LOGICI<a href="../Architettura.html"><img src="../public/homebutton.png" style="height: 50px; width: 50px; padding-left: 30px;"></a></h2> 
+    <nav>
+
+        <ul>
+            <li><a href="#sequenziali"><b>Sequenziali</b></a>: l'output dipende SOLO dagli input</li>
+            <li><a href="#combinatori"><b>Combinatori</b></a>: l'output dipende anche dallo stato precedente</li>
+        </ul>
+    </nav>
+    <p>Lo scopo è produrre un'output in relazione agli input dati</p>
+    I circuiti si ottengono tramite porte logiche interconnesse tra loro, dando origine a delle <b>reti logiche</b>
+    <div style="text-align: center;">
+        <h2  style="color: blue; font-size: 35px; text-align: center;">Porte Logiche</h2>
+        <img src="../public/ARCH/portelogiche.png">     
+    </div>
+    <hr>
+    <div>
+        <h2  style="color: blue; font-size: 30px; text-align: center;" id="sequenziali">CIRCUITI DI BASE</h2>
+        <ul>
+            <li><b>MULTIPLEXER</b>: N segnali di controllo (S), 2^N input, 1 output. <br> <br>
+                <table>
+                    <tr>
+                        <td style="width: 50%;">
+                            <figure>
+                                <img src="../public/ARCH/logicamultiplexer.jpg" style="width: 250px; height: 100px;">
+                                <figcaption>Quando S = 1, l'uscita della AND prende il valore del segnale di ingresso</figcaption>
+                            </figure>
+                        </td>
+                        <td style="width: 50%;">
+                            <figure>
+                                <img src="../public/ARCH/multiplexer.jpg">
+                                
+                                <figcaption>Lo scopo è selezionare tramite gli S quale input mandare in output</figcaption>
+                            </figure>
+                        </td>
+                    </tr>
+                </table>
+                <hr>
+            </li>
+            <li>
+                <b>DEMULTIPLEXER</b>: N segnali di controllo (S), 1 input, 2^N output <br>
+                <table>
+                    <tr>
+                        <td style="width: 50%;">
+                            <figure>
+                                <img src="../public/ARCH/logicademultiplexer.jpg" >
+                                <figcaption>La AND produce 1 quando entrambi gli S = 1 e perciò l'output della AND dipende dall'input F</figcaption>
+                            </figure>
+                        </td>
+                        <td style="width: 50%;">
+                            <figure>
+                                <img src="../public/ARCH/demultiplexer.jpg">
+                                
+                                <figcaption>Lo scopo è selezionare tramite gli S in quale output mandare il segnale input</figcaption>
+                            </figure>
+                        </td>
+                    </tr>
+                </table><hr>
+            </li>
+            <li>
+                <b>DECODER</b>: N input, 2^N output <br>
+                <table>
+                    <tr>
+                        <td style="width: 50%;">
+                            <figure>
+                                <img src="../public/ARCH/logicadecoder.jpg" >
+                                <figcaption>L'output si attiva quando entrambi gli ingressi sono attivi</figcaption>
+                            </figure>
+                        </td>
+                        <td style="width: 50%;">
+                            <figure>
+                                <img src="../public/ARCH/decoder.jpg">
+                                
+                                <figcaption>Lo scopo è attivare l'uscita corrispondente alla codifica in binario degli ingressi</figcaption>
+                            </figure>
+                        </td>
+                    </tr>
+                </table><hr>
+            </li>
+            <li>
+                <b>ENCODER</b>: 2^N input, N output <br>
+                <table>
+                    <tr>
+                        <td style="width: 50%;">
+                            <figure>
+                                <img src="../public/ARCH/logicaencoder.png" >
+                                <figcaption>Si nota che D0 non è collegato. Ciè è un problema perchè non è possibile distinguere asenza di segnale da D0=1</figcaption>
+                            </figure>
+                        </td>
+                        <td style="width: 50%;">
+                            <figure>
+                                <img src="../public/ARCH/encoder.png" style="height: 250px;"> <img src="../public/ARCH/encoderpriorita.png" style="width: 350px;">
+                                
+                                <figcaption>Quando viene attivato un input, viene prodotta la codifica in binario del suo indice <br>Viene stabilita anche una <b>priorità</b>, cioè viene <b>codificato l'ingresso</b> con <b>indice maggiore</b> </figcaption>
+                            </figure>
+                        </td>
+                    </tr>
+                </table><hr>
+            </li>
+        </ul>
+
+    </div>
+
+    <div>
+        <h2  style="color: blue; font-size: 35px; text-align: center;">CIRCUITI MATEMATICI</h2>
+        <ul>
+            <li>
+                <b>COMPARATORE</b> a N bit <br>
+                <figure>
+                    <img src="../public/ARCH/comparatore.png" style="height: 250px; width: 300px;">
+                    <figcaption>Produce 1 solo se le due parole da n bit (A e B) sono uguali</figcaption>
+                </figure><hr>
+            </li>
+            <li>
+                <b style="color: blue; font-size: 35px ;">SOMMATORI</b> <br>
+                <table>
+                    <tr>
+                        <td style="width: 50%;">
+                            <b>MEZZO SOMMATORE</b>
+                            <figure>
+                                <img src="../public/ARCH/mezzosommatore.png" style="height: 300px;">
+                                <figcaption>Effettua la somma tra 2 bit, senza tenere conto dell'eventuale riporto precedente</figcaption>
+                            </figure>
+                        </td>
+                        
+                        <td style="width: 50%;">
+                            <b>SOMMATORE COMPLETO</b>
+                            <figure>
+                                <img src="../public/ARCH/sommatore.png" style="height: 300px;">
+                                <figcaption>Effettua la somma tra 2 bit, tenendo conto dell'eventuale riporto precedente</figcaption>
+                            </figure>
+                        </td>
+                    </tr>
+                </table>
+                
+            </li>
+            <li>
+                <b>SHIFTER</b>
+                <figure>
+                    <img src="../public/ARCH/shifter.png">
+                    <figcaption>Shifta di 1 posizione la sequenza di bit, DX se C=1, altrimenti SX</figcaption>
+                </figure>
+            </li>
+        </ul>
+
+    </div>
+
+
+    <div style="text-align: center;">
+        <h2  style="color: blue; font-size: 35px; text-align: center;">RITARDI DEI CIRCUITI</h2>
+        <p>I circuiti logici possiedono un ritardo nella produzione del risultato, attorno a 0.1ns</p>
+        <p>Questo ritardo è influente, basti pensare che il periodo di CLK si aggira attorno a 1ns se F=1Ghz</p>
+        
+    </div><hr>
+
+    <div id="Combinatori">
+        
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storia</title>
+    <style>
+        dt{
+            font-size: 40px;
+            font-weight: bold;
+        }
+        dd{
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body style="width: 100%;">
+    <h2 style="color: red; font-size: 70px; text-align: center;">STORIA dei SISTEMI di CALCOLO <a href="../Architettura.html"><img src="../public/homebutton.png" style="height: 55px; width: 55px; padding-left: 30px;"></a></h2>
+    <br><hr><br>
+    <h2 style="color: rgb(0, 4, 255); font-size: 60px; text-align: center;">Generazione 0 (1640 - 1940) - Computer Meccanici</h2>
+
+<table style="text-align: center; font-size: 50px;">
+    <tr>
+        <td style="width: 50%; border: 2px solid black; border-radius: 20px;">
+            1642 <b>"PASCALINA"</b> -> <span style="font-size: smaller;"> Calcolatrice Meccanica per Somme Algebriche</span> 
+            <figure>
+                <img src="../public/ARCH/pascal.jpg" style="width: 95%;"> <br>
+            <figcaption style="font-size: smaller;">Interamente meccanica, azionabile a mano tramite manovella... </figcaption>
+            </figure>
+            <a href="https://it.wikipedia.org/wiki/Pascalina">PASCALINA-WIKI</a>
+        </td>
+        <td style="width: 50%; border: 2px solid black; border-radius: 20px;">
+            1672 <b>"Stepped Reckoner"</b> <span style="font-size: smaller;"> Calcolatrice Meccanica per Somme Algebriche e Prodotti/Divisioni</span>
+            
+                <img src="../public/ARCH/leibniz.jpg" style="height: 500px; width: 90%; padding-top: 30px;" >
+                <a href="https://it.wikipedia.org/wiki/Stepped_Reckoner">LEIBNIZ-WIKI</a>
+            <table>
+                <tr>
+                    <td  style="width: 50%;">
+                        <ul style="font-size: 20px; text-align: left;">
+                            <li><b>Accumulatore</b> 16 cifre decimali</li>
+                            <li><b>Input</b> 8 cifre decimali</li>
+                            <li><b>Moltiplicatore</b>: è una manovella che seleziona il numero di volte da eseguire l'operazione</li>
+                        </ul>
+                        
+                    </td>
+                    <td  style="width: 50%;">
+                        <ul style="font-size: 20px; text-align: left;">
+                            <li><b>Somma algebrica</b> tra 16 cifre e 8 cifre</li>
+                            <li><b>Prodotto</b> (max 16 cifre) di 2 numeri a 8 cifre</li>
+                            <li><b>Divisione</b> tra 16 e 8 cifre</li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+            
+        </td>
+    </tr>
+    <tr>
+        <td style="width: 50%; border: 2px solid black; border-radius: 20px;">
+            1834 <b>"Macchina Differenziale"</b> di Babbage
+            <img src="../public/ARCH/babbage.png" width="90%">
+            <ul style="font-size: 25px; text-align: left;">
+                <li>N colonne da 32 cifre, con virgola mobile</li>
+                <li>MILL: a ogni ciclo (360°) compie una operazione</li>
+                <li>N(n) = N(n) + N(n+1)</li>
+                <li>N(n+1) è il sommatore. Viene rigenerato dopo l'operazione</li>
+            </ul>
+            <div style="font-size: 25px;">
+                <b>"Macchina Analitica"</b> -> differente dalla differenziale perchè programmabile. Era possibile mediante schede di input selezionare il tipo di operazione da andare a svolgere.
+            </div>
+        </td>
+        <td style="width: 50%; border: 2px solid black; border-radius: 20px;">
+            1936 <b>Z1</b> di Kondrad Zuse
+            <figure>
+                <img src="../public/ARCH/zuse.jpg">
+                <figcaption>
+                    Prima Calcolatrice a relè elettromagnetici.
+                </figcaption>
+            </figure>
+            <a href="https://it.wikipedia.org/wiki/Konrad_Zuse">Zuse Z1</a>
+            <ul style="font-size: 25px; text-align: left;">
+                <li>Operandi a 22 bit in virgola mobile</li>
+                <li>Somme Algebriche e Prodotti</li>
+                <li>Memoria da 64 word (22bit)</li>
+                <li>Gli algoritmi NON risiedono in memoria</li>
+            </ul>
+        </td>
+    </tr>
+</table>
+<br><br>
+<hr>
+<h2 style="color: rgb(0, 4, 255); font-size: 60px; text-align: center;">Generazione 1 (1945 - 1955) - Valvole</h2>
+
+<table style="width: 100%; text-align: center; font-size: 50px;">
+    <tr>
+        <td style="width: 50%; border: 2px solid black; border-radius: 20px;">
+            1940 <b>Colossus</b> di Alan Turing
+            <figure>
+                <img src="../public/ARCH/colossus.jpg">
+                <figcaption style="font-size: 30px;">Usata per decodificare i messaggi tedeschi di Enigma</figcaption>
+            </figure>
+            <a href="https://it.wikipedia.org/wiki/Colossus">Colossus</a>
+            <ul style="text-align: left; font-size: 25px;">
+                <li>Operazioni booleane tra 2 flussi</li>
+                <li>Flusso = messaggio</li>
+                <li>Compara i 2 flussi, il primo cifrato e il secondo <br> calcolato dalla macchina stessa con una chiave</li>
+            </ul>
+        </td>
+        <td style="width: 50%; border: 2px solid black; border-radius: 20px;">
+            1946 <b>ENIAC</b> di Mauchly
+            <figure>
+                <img src="../public/ARCH/Eniac.jpg">
+                <figcaption style="font-size: 30px;">Usava le valvole termoioniche, le quali si fondevano in caso di temperature troppo elevate</figcaption>
+            </figure>
+            <a href="https://it.wikipedia.org/wiki/ENIAC">ENIAC</a>
+            <ul style="font-size: 25px; text-align: left;">
+                <li>Macchina binaria che però opera con numeri decimali</li>
+                <li>Memoria Flip-Flop 20 numeri da 10 cifre</li>
+                <li>Input = schede perforate, come le macchine precedenti</li>
+                <li>Operazione di radice quadrata</li>
+                <li>LOOP, Branch e Subroutine</li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" style="width: 100%; border: 2px solid black; border-radius: 20px;">
+            1951 <b>Macchina di Von Neumann</b>
+            <figure>
+                <img src="../public/ARCH/neumann.jpg" style="width: 50%; float: left;">
+                <img src="../public/ARCH/neumann2.jpg" style="width: 50%; float: right;">
+                <figcaption style="font-size: 30px;">Primo modello di calcolatore su cui si basano le moderne architetture</figcaption>
+            </figure>
+            <a href="">Funzionamento</a><br>
+            <a href="https://it.wikipedia.org/wiki/Architettura_di_von_Neumann">Architettura</a>
+            <br>
+            <hr>
+            <table style="width: 100%;">
+                <tr>
+                    <td style="width: 50%;">
+                        <ul style="font-size: 25px; text-align: left;">
+                            <li><a href="../Architettura/Circuiti_Memorie.html">Memoria</a> 4096 locazioni da 40bit ciascuna
+                                <ul>
+                                    <li>2 istruzioni da 20bit l'una</li>
+                                    <li>1 numero da 40bit</li>
+                                </ul>
+                            </li>
+                            <li>Unità di controllo:
+                                <ul >
+                                    <li>Tipo di istruzione da eseguire</li>
+                                    <li>Flag che determinano lo stato della CPU</li>
+                                    <li>Segnali da BUS Controllo</li>
+                                </ul>
+                            </li>
+                            
+                        </ul>
+                    </td>
+                    <td style="width: 50%;">
+                        <ul style="font-size: 25px; text-align: left;">
+                            <li>Unità Aritmetico Logica
+                                <img src="../public/ARCH/ALU_block.jpg " style="width: 70%;">
+                                <ul>
+                                    <li>Operazioni matematiche di qualsiasi tipo <br>+ FPU (processore per operazioni in floating point)</li>
+                                    <li>Operazioni della logica booleana</li>
+                                    <li>Shifting dei registri</li>
+                                </ul>
+                            </li>
+                            <li>Periferiche di Input e Output</li>
+                            <li><a href="">BUS</a> di comunicazione interna <ul>
+                                <li>DATI: nei quali viaggiano i dati di lettura e scrittura</li>
+                                <li>INDIRIZZI: contiene l'indirizzo della locazione sulla quale operare</li>
+                                <li>CONTROLLO: contiene i flag di stato</li>
+                            </ul></li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+            
+        </td>
+    </tr>
+</table>
+
+<br>
+<hr>
+<h2 style="color: rgb(0, 4, 255); font-size: 60px; text-align: center;">Generazione 2 (1955 - 1965) - Transistor</h2>
+<figure style="text-align: center;">
+    <img src="../public/ARCH/transistor.png">
+    <figcaption style="font-size: 25px;">&Egrave; una valvola elettrica che regola il passaggio di corrente tra Source e Drain</figcaption>
+</figure>
+<br>
+<div style="font-size: 30px; text-align: justify;"> 
+    Viene introdotta la <b>legge di Moore</b>
+    <figure>
+        <img src="../public/ARCH/moorelaw.jpg">
+        <figcaption style="font-size: smaller;">La complessità di un circuito misurata in numero di transistor per chip quadruplica ogni 3 anni</figcaption>
+    </figure>
+</div>
+
+</body>
+</html>

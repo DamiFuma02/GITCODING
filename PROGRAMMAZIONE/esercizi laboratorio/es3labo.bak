@@ -1,0 +1,83 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-intermediate-lambda-reader.ss" "lang")((modname es3labo) (read-case-sensitive #t) (teachpacks ((lib "drawings.ss" "installed-teachpacks"))) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ((lib "drawings.ss" "installed-teachpacks")) #f)))
+(define segno                             ;definisce il segno della stringa
+  (lambda (string)
+    (if (or (char=? (string-ref string 0)#\+) (char=? (string-ref string 0)#\-))
+        (if (char=? (string-ref string 0)#\+)
+            (checkpoint (substring string 1) 0)                 ;viene passata la stringa senza il primo carattere, il segno
+            (* -1 (checkpoint (substring string 1) 0))         ;il risultato finale convertito viene moltiplicato per -1 per renderlo negativo
+        )
+        (checkpoint string 0)              ; il primo carattere non è il segno perciò viene espresso come positivo
+    )
+   )
+ )
+
+
+
+
+(define val                             ;converte il numero da formato stringa a formato numero
+  (lambda (str)
+    (if (string=? str "0")              ;      =====       (string->number string)    === converte la string in number
+        0
+        1
+    )
+   )
+)
+
+
+(define conv-tot                                       ;converte la stringa totale senza virgola
+  (lambda (string)
+    (let ((k (- (string-length string) 1)))
+            (if (= k 0)
+                (val string)                     ;la stringa contiene un solo elemento
+                (+ 
+                    (* 2 (conv-tot (substring string 0 k)))     ;funzione ricorsiva a cui viene passata la stringa senza l'ultimo carattere,  che verrà sommato progressivamente
+                    (val (substring string k))                  ;ultimo carattere     
+                )
+            )
+        )
+  )
+)
+
+
+(define checkpoint          ;serve a controllare la presenza della virgola
+  (lambda (stringa i)       ;stringa in cui cercare e indice a cui cercare
+    (if (char=? (string-ref stringa i) #\.) 
+       (divide (conv-tot (string-append (substring stringa 0 i) (substring stringa (+ i 1)))) (- (-(string-length stringa) 1) i))  ;chiama la funzione divide a cui passa il numero decimale
+       (if (< i (-(string-length stringa) 1))
+           (checkpoint stringa (+ 1 i))  ;se non trova "." incrementa il contatore i
+           (conv-tot stringa)  ;se indice è fuori range vuol dire che non ha trovato il punto perciò  i = (-(string-length stringa) 1)
+        )
+       
+   )
+))
+
+(define divide                   ; divide il numero convertito da conv-tot per 2^numbero di cifre dopo la virgola
+  (lambda (number index)
+    (/ number (expt 2 index))
+
+    ))
+
+(define nuovaCifra                ;restuisce il valore numerico del carattere della stringa in base ai simboli dell'insieme. INDICE_INSIEME = VALORE NUMERICO
+  (lambda (carattere insieme)
+    
+  )
+)
+
+
+(define bin-rep           ;funzione chiamata dall'utente
+  (lambda (string)
+    (segno string)       ;invocazione della funzione segno
+  )
+)
+
+
+(define rep
+  (lambda (insieme stringa)                    ;insieme contiene i simboli dell'alfabeto da cui partire con la conversione
+    
+   )
+ )
+
+;risultato = risultato + Base * nuova cifra
+;            risultato + (string-length insieme) * (nuovaCifra (string-ref stringa k) insieme)          
