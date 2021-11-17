@@ -6,92 +6,220 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CODIFICA DIGITALE</title>
     <style>
-        /* Visalizza l'elenco in disposizione orizzontale*/
-        #banner {
-            background-color: lightblue;
-            height:70px;
+        
+        body{
             width: 100%;
-            position: sticky;
-            top: 0px;
-            align-items: center;
-            display: flex;
         }
-        table {
-            width: 100%;
-            font-size: 30px;
-            text-align: center;
-        }
-        div h2{
-            color: blue; font-size: 40px; text-align: center;
-        }
-        nav {
-            background-color: red;
-            height: 100%;
-            position: sticky;
-            top: 0px;
-        }
-        nav ul{
-            padding: 30px;
-            display: flex;
-            justify-content: space-between;
-            font-size: 35px;
-        }
-        nav ul a{
-            color: black;
+
+        li a{
+            /* per togliere a tutti i link contenuti in un elenco qualsiasi il testo sottolineato*/
             text-decoration: none;
-            background-color: white;
-            border-radius: 30px;
-            padding: 10px 10px;
+            color: black;
         }
-        #SND ul{
-            font-size: 35px;
+
+        #title{
+            height: 100px;
+            border-radius: 50px;
+            align-content: center;
+        }
+        #title h2{
+            margin: 0px;
+            width: 100%;
+            
+            color: red; font-size: 70px; text-align: center;
+            border-radius: 50px; border: 3px solid black;
+        }
+        
+        #title h2 .arrow{
+            height: 50px;
+            width: 100px;
+            display: none;
+        }
+        
+        #homebutton {
+            height: 55px; width: 55px;
+            left: 1px;
+            position: relative;
+        }
+        
+        /* fine configurazione stile titolo*/
+        
+        /* NAVBAR */
+        .topnavbar {
+            /* per rendere la navbar fissa sullo schermo quando incontra la condizionie top 0px*/
+            left: 45%;
+            position: sticky;
+            top: 0px;
+            width: 10%;
+            
+            background-color: red;
+            
+            text-align: center;
+            
+            border-radius: 30px;
+            
+        }
+        .topnavbar #threelines{
+            font-size: 30px;
+            padding: 5px;
+        }
+        .topnavbar #index {
             list-style: none;
+            display: none;
+            justify-content: space-around;
+            padding: 20px;
+        }
+        
+        .topnavbar .linkbutton{
+            display: inline; 
+        }
+
+        .drop{
+            /* nasconde il contenuto del dropdown per ogni linkbutton della navbar*/
+            display: none;
+            position: absolute;
+            transform: translateX(-10%);
+            text-align: left;
+        }
+        
+
+        .topnavbar .linkbutton .links{
+            text-decoration: none ;
+            color: black;
+            font-weight: bold;
+            border: 1px solid black;
+            border-radius: 30px;
+            background-color: white;
+            padding: 10px;
+        }
+
+        .drop .dropdown-menu {
+            list-style: disc;
+            margin-top: 20px;
+        }
+
+        
+        .topnavbar:hover {
+            /* allunga la navbar per occupare tutta la pagina*/
+            width: 100%;
+        }
+        .topnavbar:hover #threelines {
+            /* nasconde il simbolo delle 3 linee*/
+            display: none;
+        }
+        .topnavbar:hover #index {
+            /* mostra il primo indice contenente i linkbutton*/
+            display: flex;
+        }
+
+        .linkbutton:hover .drop{
+            display: block;
+        }
+        
+        
+        
+        @media (max-width: 1200px) {
+            #title h2{
+                vertical-align: middle;
+                
+                font-size: 50px;
+            }
+        }
+        @media (max-width: 860px) {
+            #title h2{
+                font-size: 40px;
+            }
+            .arrow {
+                height: 40px;
+                width: 800px;
+            }
+            #homebutton {
+                height: 40px;
+                width: 40px;
+            }
+        }
+        @media (max-width: 680px) {
+            #title h2{
+                vertical-align: middle;
+                
+                font-size: 30px;
+            }
+            .arrow {
+                height: 30px;
+                width: 600px;
+            }
+            #homebutton {
+                height: 30px;
+                width: 30px;
+            }
         }
     </style>
+    
 </head>
 <body>
-    <h2 style="color: red; font-size: 70px; text-align: center;">Rappresentazione Numeri <a href="../Architettura.html"><img src="../public/homebutton.png" style="height: 55px; width: 55px; padding-left: 30px;"></a></h2>
-    <br>
-    <nav>
+    <!-- per togliere il pagecontrol basta uscire con il mouse dal div con il bordo nero -->
+    <div id="title" onmouseleave="pagecontrol(false)"> 
+        <h2>
+            <a href=""><img class="arrow"  src="../public/backarrow.png"></a>
+            LIVELLO DIGITALE <a class="homelink"  onmouseover="pagecontrol(true)" href="../Architettura.html"><img id="homebutton" src="../public/homebutton.png" ></a>
+            <!-- pagecontrol è un dropdown attivato all'hover sull link homebutton -->
+            <a  href=""><img class="arrow" src="../public/arrow.png"></a>
+            
+        </h2>
+    </div>
+    
+    
+    <nav class="topnavbar">
+        <i id="threelines" class="fas fa-bars"></i>
         <ul id="index" style="list-style: none;">
-            <li><a href="#SegnaliInfo">Segnali Informativi</a> </li>
-            <li><a href="#ADC">Digitalizzazione</a></li>
-            <li><a href="#SND">Sistema Numerico Binario</a></li>
-            <li><a href="#Bool">Algebra Booleana</a></li>
-            <li><a href="#Codifica">Codifica dei DATI</a></li>
+            <li class="linkbutton"><a class="links" href="#title"><i class="fas fa-angle-double-up"></i></a></li>
+            <li class="linkbutton"><a class="links" href="#ADC">Digitalizzazione</a></li>
+            <li class="linkbutton"><a class="links" href="#SND">Sistema Binario</a></li>
+            <li class="linkbutton"><a class="links" href="#Bool">Algebra Booleana</a></li>
+            <li class="linkbutton"><a class="links" href="#SegnaliInfo">Segnali Informativi</a> </li>
+            <li class="linkbutton"><a class="links" href="#Codifica">Codifica dei DATI</a>
+                <div class="drop">
+                    <ul class="dropdown-menu">
+                        <li><b><a href="#CodificaNumeri">NUMERI</a></b></li>
+                        <li><b><a href="#CodificaChar">CARATTERI TESTUALI</a></b></li>
+                        <li><b><a href="#CodificaImg">IMMAGINI/VIDEO</a></b></li>
+                        <li><a href="#ADC"><b>SUONI</b></a></li>
+                    </ul>
+                </div>
+            </li>
         </ul>
     </nav>
+    
+    
+    <h2   style="color: blue; font-size: 40px; text-align: center;">Segnali Informativi</h2><br>
+    
     <div id="SegnaliInfo">
-        <h2   style="color: blue; font-size: 40px; text-align: center;">Segnali Informativi</h2>
-        <table >
-            <tr>
-                <td style="width: 50%; border: 3px solid black; border-radius: 30px;">
+        <div>
+            <ul>
+                <li><b>Analogici</b>: variano in analogia con la grandezza fisica (Tensione o Corrente) <br>
+                    <img src="../public/ARCH/analogico.png" style="padding: 30px;">
                     <ul>
-                        <li><b>Analogici</b>: variano in analogia con la grandezza fisica (Tensione o Corrente) <br>
-                            <img src="../public/ARCH/analogico.png" style="padding: 30px;">
-                            <ul>
-                                <li>Possiedono un numero infinito di valori all'interno dell'intervallo di ampiezza</li>
-                                <li>Solitamente vengono rappresentati da un segnale sinusoidale</li>
-                                <li>Maggiormente soggetti all'influenza del rumore</li>
-                            </ul>
-                        </li>
+                        <li>Possiedono un numero infinito di valori all'interno dell'intervallo di ampiezza</li>
+                        <li>Solitamente vengono rappresentati da un segnale sinusoidale</li>
+                        <li>Maggiormente soggetti all'influenza del rumore</li>
                     </ul>
-                </td>
-                <td style="width: 50%; border: 3px solid black; border-radius: 30px;">
+                </li>
+            </ul>
+        </div>
+        <div>
+            <ul>
+                <li><b>Digitali:</b>  vengono rappresentati da cifre binarie (digit) <br>
+                    <img src="../public/ARCH/digitale.png" style="height: 250px; padding: 30px;">
+                    
                     <ul>
-                        <li><b>Digitali:</b>  vengono rappresentati da cifre binarie (digit) <br>
-                            <img src="../public/ARCH/digitale.png" style="height: 250px; padding: 30px;">
-                            
-                            <ul>
-                                <li>Numero finito di valori all'interno dell'intervallo di ampiezza</li>
-                                <li>rappresentati da un segnale onda quadra</li>
-                                <li>Quantizzazione: definisce il numero di valori ammissibili</li>
-                            </ul>
-                        </li>
+                        <li>Numero finito di valori all'interno dell'intervallo di ampiezza</li>
+                        <li>rappresentati da un segnale onda quadra</li>
+                        <li>Quantizzazione: definisce il numero di valori ammissibili</li>
                     </ul>
-                </td>
-            </tr>
-        </table>
+                </li>
+            </ul>
+        </div>
+        
     </div>
     <hr>
     <div id="ADC">
@@ -108,13 +236,267 @@
             </figcaption>
         </figure>
         <h2  style="color: blue; font-size: 35px; text-align: center;">Conversione di base numerica</h2>
-        <ul>
-            <li>Base 10 --> Base N</li>
-            <li>Base N --> Base 10</li>
-            <li>Base 2 --> Base 2^n</li>
-            <li>Base 2^n --> Base 2</li>
-        </ul>
+        <table id="Conversioni">
+            <tr>
+                <td id="drop1"><b>Base 10 --> Base N</b> <br>
+                    <div class="dropdown">
+                        <figure>
+                            <img src="../public/ARCH/Base10-2.png" style="height: 600px;">
+                            <figcaption>
+                                <ul>
+                                    <li>Si divide il numero decimale per N fino a trovare 1 come risultato finale</li>
+                                    <li>Il resto della divisione corrisponde alla codifica del numero nella base scelta</li>
+                                    <li>I resti devono essere letti dal basso verso l'alto</li>
+                                </ul>
+                            </figcaption>
+                        </figure>
+                        
+                    </div>
+                </td>
+                <td id="drop2"><b>Base N --> Base 10</b> <br>
+                    <div class="dropdown">
+                        <figure>
+                            <img src="../public/ARCH/Base2-10.png" style="height: 500px;">
+                            <img src="../public/ARCH/FRAZBase2-10.png" style="height: 500px;">
+                            <figcaption>
+                                <ul>
+                                    <li>Si sfrutta la notazione posizionale</li>
+                                    <li>N(i)10 = 2* N(i-1)10 + N(i)2</li>
+                                    <li>Risultato[i] = 2*Risultato_prec + BIT[i]</li>
+                                </ul>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="border-style: none;">
+                    <br><hr><br>
+                </td>
+            </tr>
+            <tr>
+                <td id="drop3"><b>Base 2 --> Base 2^n</b> <br>
+                    <div class="dropdown">
+                        <figure>
+                            <img src="../public/ARCH/Base2-N.png" style="width: 65%;">
+                            <figcaption>
+                                <ul>
+                                    <li>
+                                        N bit = 1 cifra 
+                                    </li>
+                                    <li>
+                                        Il numero binario viene convertito in decimale e poi convertito in N
+                                    </li>
+                                </ul>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </td>
+                <td id="drop4"><b>Base 2^n a Base 2:</b> <br><div class="dropdown">
+                    <figure>
+                        <img src="../public/ARCH/Base2-N.png" style="width: 65%;">
+                        
+                        <figcaption>
+                            <ul>
+                                <li>1 cifra = N bit</li>
+                                <li>Il numero viene convertito in binario seguendo le classiche operazioni</li>
+                            </ul>
+                        </figcaption>
+                    </figure>
+                </div></td>
+            </tr>
+        </table>
+    </div>
+    <br><hr>
+    <div id="Bool" style="text-align: center;">
+        <h2  style="color: blue; font-size: 35px; text-align: center;">Porte Logiche</h2>
+        <img src="../public/ARCH/portelogiche.png"> 
+        <h2  style="color: blue; font-size: 35px; text-align: center;">Proprietà Logiche</h2>
+        <div style="font-size: 25px;">
+            <b>Dualità</b>: si ottiene lo stesso risultato negando le costanti (0 o 1) e cambiando AND con OR
+            <br>
+        </div>
+        <img src="../public/ARCH/propretalogiche.png" style="height: 350px;">
+    </div>
+    <br><hr><br>
+    <div id="Codifica" style="font-size: 30px;">
+        <h2  style="color: blue; font-size: 35px; text-align: center;">Codifica dei DATI</h2>
+        <p style="text-align: center; font-size: 25px;">
+            Un PC deve essere in grado di codificare opportunamente qualsiasi tipo di dato:
+        </p>
+        <div id="navCode">
+            <ul style="font-size: 20px;">
+                <li><b><a href="#CodificaNumeri">NUMERI</a></b></li>
+                <li><b><a href="#CodificaChar">CARATTERI TESTUALI</a></b></li>
+                <li><b><a href="#CodificaImg">IMMAGINI/VIDEO</a></b></li>
+                <li><a href="#ADC"><b>SUONI</b></a></li>
+            </ul>
+        </div>
+        <div id="CodificaNumeri" >
+            <h2  style="color: blue; font-size: 35px; text-align: center;">Codifica dei NUMERI</h2>
+            
+            
+            <ul style="text-align: left;">
+                <li>16-32-64bit FIXED POINT = virgola fissa posta dopo l'ultimo bit 2^0   <a target=”_blank” href="https://it.wikipedia.org/wiki/Rappresentazione_dei_numeri_relativi#Eccesso_N">???</a>
+                    <ul>
+                        <li>
+                            <b>NATUALI(N)</b>  = solo positivi -> <b>unisigned</b>
+                        </li>
+                        <li><b>INTERI(Z)</b>  = + o -  -> <b>signed</b></li>
+                    </ul>
+                    Tipi di codifica per numeri INTERI:
+                    <ul>
+                        <li style="padding-bottom: 30px;"><b>Ultimo bit</b> assegnato al segno. 1="-"   0="+" <br> 8bit di codifica 9 = 0 0001001   ///  -9 = 1 0001001
+                        </li>
+                        <li style="padding-bottom: 30px;"><b>Complemento a 1 </b><br>
+                            Si nega tutto il numero  ->     9 = 00001001   ///  -9 = 11110110 <br> Vi sono 2 rappresentazioni possibili del numero 0
+                        </li>
+                        <li style="padding-bottom: 30px;"><b>Complemento a 2 </b><br>
+                            <ul>
+                                <li>
+                                    Valori tra 0 e 2^(Nbit-1) = codificati normalmente = <b>POSITIVI</b>
+                                </li>
+                                <li>
+                                    Valori tra -1 e -2^(Nbit-1) = codificati con Complemento a 2   <b>NEGATIVI</b> <br>
+                                    <img src="../public/ARCH/Complementoa2.png" style="padding: 25px;"> <br>
+                                    <b>VANTAGGI</b>
+                                    <ul>
+                                        <li>
+                                            SEGNO Immediatamente riconoscibile dall'ultimo bit
+                                        </li>
+                                        <li><b>Sottrazione</b> si somma un termine NEGATIVO</li>
+                                        <li><b>Prodotto</b> = Somma N volte quante il termine positivo</li>
+                                        <li><b>Divisione</b> = Sottazione del Divisore fino ad annullare il dividendo <b>contando</b> le sottrazioni</li>
+                                        <li>Vi è <b>una sola</b> rappresentazione dello 0</li>
+                                    </ul>
+                                </li>
+                            </ul>          
+                        </li>
+                        <li style="padding-bottom: 30px;"><b>Eccesso N=2^(nbit-1)</b><br>
+                            <ul>
+                                <li>Lo 0 viene codificato come 2(nbit-1)</li>
+                                <li>-2^(nbit-1) - 2^(nbit-1)</li>
+                                <li>Numeri <b>positivi</b> 0 - 2^(nbit-1) = 1000 - 1111</li>
+                                <li>numeri <b>negativi</b> -1 - -2^(nbit-1) = 0111 - 0000</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <img src="../public/ARCH/codifica_numeri.png" style="padding-left: 100px;">
+                </li>
+                <li style="padding: 30px;">32-64-128bit FLOATING POINT
+                    <br><b>REALI(R)</b><br>
+                    Rappresentati in notazione normalizzata, con <b>mantissa</b> e <b>esponente</b><br>
+                    <img src="../public/ARCH/floatingpoint.png"><img src="../public/ARCH/floatingconv.png">
+                    
+                </li>
+            </ul>
+        </div>
+        <div id="CodificaChar">
+            <h2  style="color: blue; font-size: 35px; text-align: center;">Codifica dei CARATTERI</h2>
+            Un carattere è un <b>elemento singolo</b> di una <b>stringa di testo</b><br>
+            
+            <ul>
+                <li>Cifre, Lettere, Simboli di Puntaggiatura</li>
+                <li>Simboli speciali #, %, @, ...</li>
+                <li>Caratteri speciali che contengono informazioni di controllo <br> come tabulazione, ESC, spostamento del cursore</li>
+            </ul>
+            <b>CODICE ARBITRARIO</b> <br>
+            <ul>
+                <li>Per le Cifre si usa la formula C('0') + Cifra</li>
+                <li>Per i caratteri si usa la formula C('A') + posLettera-1</li>
+            </ul>
+            Esistono diversi codici per rappresentare i vari caratteri testuali, <br> ognuno di essi ha una tabella che converte ogni carattere in formato binario
+            <br>
+            <h3 style="color: blue; text-align: center;">CODICE ASCII</h3>
+            <table>
+                <tr>
+                    <td style="width: 50%;">
+                        <figure>
+                            <img src="../public/ARCH/ASCII7bit.jpg" >
+                            <figcaption>ASCII standard 7 bit</figcaption>
+                        </figure>
+                    </td>
+                    <td style="width: 50%;">
+                        <figure>
+                            <img src="../public/ARCH/ASCII8BIT.jpg">
+                            
+                            <figcaption>ASCII esteso 8 bit</figcaption>
+                        </figure>
+                    </td>
+                </tr>
+            </table>
+            <h3 style="color: blue; text-align: center;">CODICE UCS (UNICODE Character Set)</h3>
+            <ul>
+                <li>Codice a lunghezza variabile, 2 o più Byte per Carattere</li>
+                <li>Il codice carattere non è univoco</li>
+                <li>Alcuni codepoint vengono lasciati vuoti per future espansioni</li>
+            </ul>
+            
+            <div style="text-align: center;">
+                
+                
+                <h3 style="color: blue; text-align: center;">UTF (UCS Transformation Format)</h3>
+                <img src="../public/ARCH/UTFCODE.png" style="padding: 30px;"> <br> 
+                Alcuni Bit sono bloccati mentre quelli espressi con 'd' sono liberi di cambiare, codificando ogni tipo di carattere
+            </div>
+            <div>
+                <h3 style="color: blue; text-align: center;">PROPRIET&Aacute; di un CODICE</h3>
+                <ul>
+                    <li><b>compatto</b>: deve limitare il numero di bit necessari per la codifica</li>
+                    <li><b>pratico</b>: ottenere il codice semplicemente</li>
+                    <li><b>accuratezza</b>: deve minimizzare le perdite di informazione</li>
+                </ul>
+                &Eacute; possibile che si verifichino degli errori nella trasmissione o nella memorizzazione.
+                <ul>
+                    <li><b>RUMORE</b> nel canale di trasferimento</li>
+                    <li><b>Imperfezione</b> nei supporti di memorizzazione</li>
+                    <li><b>Alterazioni</b> dei supporti di <b>memoria</b> (radioattività)</li>
+                </ul> 
+                
+            </div>
+            
+            
+        </div>
+        <div id="CorrezioneErrori">
+            <h2  style="color: blue; font-size: 35px; text-align: center;">Codici Correzione Errori</h2>
+            <ul>
+                <li><b>Codice di Parità</b> (PARI o DISPARI) <br>
+                    <img src="../public/ARCH/codiceparità.jpg"> <br>
+                    <ul>
+                        <li>Il <b>codice</b> viene <b>diviso in parole</b> di N bit</li>
+                        <li>A <b>ogni parola</b> viene <b>aggiunto il parity flag</b></li>
+                        <li>Il <b>numero di 1</b> nella parola + flag deve essere <b>PARI o DISPARI</b> a seconda del tipo di codice</li>
+                        <li>Questo codice è in grado di <b> rilevare l'errore</b>, ma <b>non correggerlo</b></li>
+                        <li><b>NON rileva </b> errori che <b>intaccano un numero pari</b> di bit</li>
+                    </ul>
+                </li>
+                <li style="padding: 30px;">Distanza di Hamming</li>
+            </ul>
+        </div>
+        <div id="CodificaIMG">
+            
+        </div>
+        <div id="CodificaSuoni">
+            
+        </div>
     </div>
     
+    <script>
+        
+        function pagecontrol(flag) {
+            let arrows = document.getElementsByClassName("arrow")
+            if (flag) {
+                for (let index = 0; index < arrows.length; index++) {
+                    arrows[index].style.display = "inline"
+                }
+            } else {
+                for (let index = 0; index < arrows.length; index++) {
+                    arrows[index].style.display = "none"
+                }
+            }
+        }
+    </script>
+    
+    <script src="https://kit.fontawesome.com/93e39226bb.js" crossorigin="anonymous"></script>
 </body>
 </html>
