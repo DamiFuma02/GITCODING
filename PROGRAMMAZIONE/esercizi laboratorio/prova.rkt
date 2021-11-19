@@ -11,21 +11,22 @@
 
 
 
-(define char-number                ;converte il simbolo nel suo valore numerico
-  (lambda (char)
+(define string-number                ;converte il simbolo nel suo valore numerico
+  (lambda (s)
     (cond
-      ((char=? char #\-)
+      ((string=? s "-")
        -1
       )
-      ((char=? char #\+)
+      ((string=? s "+")
        1
       )
       (else 0 )
      )
   )
 )
-
-(define btr-rep                                               ; valore: stringa di +/./-
+ 
+;conversione numero decimale in stringa BTR
+(define btr-rep                                               
   (lambda (n)                                                 ; n: intero
     (let ((r (remainder n 3)) (q (quotient n 3))              ; n = 3q + r  dove  -2 <= r <= +2
           )
@@ -40,9 +41,25 @@
             ))
     ))
 
+;conversione stringa BTR in numero decimale
+(define converti
+  (lambda (string)
+          (let ((k (- (string-length string) 1)))
+               (if (= k 0)
+                    (string-number string )
+                    (+
+                         (* 3 (converti (substring string 0 k) ))
+                         (string-number (substring string k) )   ;ultima cifra della stringa
+                     )
+                )
+          )
+  )
+)
+
+
 (define sum  ;restitusce una stringa "carry + somma"
   (lambda (a1 a2 c)
-    (let ((add (btr-rep (+ (char-number a1) (char-number a2) (char-number c)) )))
+    (let ((add (btr-rep (+ (string-number a1) (string-number a2) (string-number c)) )))
       (if (= (string-length add) 1)
           (string-append "." add)      ;si aggiunge il riporto di 0
           add       ;altrimenti si restituisce la stringa intera, formata da 2 caratteri, il primo sarà sempre il riporto
@@ -50,18 +67,27 @@
     )
   )
 )
+(define somma
+  (lambda (add1 add2 c)
+          (let ((k1 (-(string-length add1)1)) (k2 (-(string-length add2)1)))
+            (if (= k1 0)  ;sono rimasti 2 caratteri
+                    (sum add1 add2 c)    ;quando k1 = 0 si è arrivati alla fine della somma 
+                    (string-append (somma (substring add1 0 k1) (substring add2 0 k2) (substring (somma (substring add1 k1) (substring add2 k2) c) 0 1))
+                                   (substring (somma (substring add1 k1) (substring add2 k2) c) 1)
+                    )         
+                 ) 
+            
+             ; (string-append
+              ;            (sum (string-ref add1 (- k1 1)) (string-ref add2 (- k2 1)) (string-ref (sum (string-ref add1 k1) (string-ref add2 k2) #\.) 0))
+              ;            (substring (sum (string-ref add1 k1) (string-ref add2 k2) #\.) 1) ;prende solo la cifra a DX
+              ; ) 
+          )       
+   )
+)
 
-
-
-
-(define prova
-  (lambda (add1 add2)
-    (let ((k1 (-(string-length add1)1)) (k2 (-(string-length add2)1)))
-          (sum (string-ref add1 (- k1 1)) (string-ref add2 (- k2 1)) (string-ref (sum (string-ref add1 k1) (string-ref add2 k2) #\. ) 0) )
+(define btr-sum
+     (lambda (add1 add2)
+           (somma add1 add2 ".")   ; il primo riporto va impostato come nullo
      )
 )
-)
-
-
-
-(prova "++" "-+")
+ 

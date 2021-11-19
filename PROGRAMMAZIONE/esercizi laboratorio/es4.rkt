@@ -4,13 +4,13 @@
 (define btr "-.+")            ;l'indice del vettore fa sotratto con -1 per ottenere il valore numerico di ogni simbolo
 (define result "")            ;risultato da produrre in output da btr-sum, contiene i simboli del btr
 
-(define char-number                ;converte il simbolo nel suo valore numerico
-  (lambda (char)
+(define string-numer                ;converte il simbolo nel suo valore numerico
+  (lambda (s)
     (cond
-      ((string=? char #\-)
+      ((string=? s "-")
        -1
       )
-      ((string=? char #\+)
+      ((string=? s "+")
        1
       )
       (else 0 )
@@ -42,6 +42,24 @@
              (string-append (btr-rep q) (btd-rep r)))         ; n = 3q + r,  q <> 0
             ))
     ))
+
+
+;questa funzione converte una stringa di BTR in numero decimale
+
+(define converti
+  (lambda (string)
+          (let ((k (- (string-length string) 1)))
+               (if (= k 0)
+                    (string-numer string )
+                    (+
+                         (* 3 (converti (substring string 0 k) ))
+                         (string-numer (substring string k) )   ;ultima cifra della stringa
+                     )
+                )
+          )
+  )
+)
+
 
 
 (define sum  ;restitusce una stringa "carry + somma"
