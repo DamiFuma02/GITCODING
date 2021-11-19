@@ -6,180 +6,144 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CODIFICA DIGITALE</title>
     <style>
-        
-        body{
+        .drop ul li{
+            display: block;
+            width: 40px;
+            margin: 10px;
+        }
+        .drop ul{
+            display: inline-block;
+        }
+        table {
             width: 100%;
+            font-size: 30px;
+            text-align: center;
         }
-
-        li a{
-            /* per togliere a tutti i link contenuti in un elenco qualsiasi il testo sottolineato*/
-            text-decoration: none;
-            color: black;
+        div h2{
+            color: blue; font-size: 40px; text-align: center;
         }
-
-        #title{
-            height: 100px;
-            border-radius: 50px;
-            align-content: center;
-        }
-        #title h2{
-            margin: 0px;
-            width: 100%;
-            
-            color: red; font-size: 70px; text-align: center;
-            border-radius: 50px; border: 3px solid black;
-        }
-        
-        #title h2 .arrow{
-            height: 50px;
-            width: 100px;
-            display: none;
-        }
-        
-        #homebutton {
-            height: 55px; width: 55px;
-            left: 1px;
-            position: relative;
-        }
-        
-        /* fine configurazione stile titolo*/
-        
-        /* NAVBAR */
-        .topnavbar {
-            /* per rendere la navbar fissa sullo schermo quando incontra la condizionie top 0px*/
-            left: 45%;
+        nav {
+            background-color: red;
+            height: 100%;
             position: sticky;
             top: 0px;
-            width: 10%;
-            
-            background-color: red;
-            
             text-align: center;
-            
-            border-radius: 30px;
-            
-        }
-        .topnavbar #threelines{
-            font-size: 30px;
-            padding: 5px;
-        }
-        .topnavbar #index {
-            list-style: none;
-            display: none;
-            justify-content: space-around;
-            padding: 20px;
-        }
-        
-        .topnavbar .linkbutton{
-            display: inline; 
-        }
-
-        .drop{
-            /* nasconde il contenuto del dropdown per ogni linkbutton della navbar*/
-            display: none;
-            position: absolute;
-            transform: translateX(-10%);
-            text-align: left;
-        }
-        
-
-        .topnavbar .linkbutton .links{
-            text-decoration: none ;
-            color: black;
-            font-weight: bold;
-            border: 1px solid black;
-            border-radius: 30px;
-            background-color: white;
-            padding: 10px;
-        }
-
-        .drop .dropdown-menu {
-            list-style: disc;
-            margin-top: 20px;
-        }
-
-        
-        .topnavbar:hover {
-            /* allunga la navbar per occupare tutta la pagina*/
-            width: 100%;
-        }
-        .topnavbar:hover #threelines {
-            /* nasconde il simbolo delle 3 linee*/
-            display: none;
-        }
-        .topnavbar:hover #index {
-            /* mostra il primo indice contenente i linkbutton*/
-            display: flex;
-        }
-
-        .linkbutton:hover .drop{
             display: block;
         }
-        
-        
-        
-        @media (max-width: 1200px) {
-            #title h2{
-                vertical-align: middle;
-                
-                font-size: 50px;
-            }
+        nav i{
+            font-size: 35px;
+            padding: 10px;
+            display: block;
+            color: black;
         }
-        @media (max-width: 860px) {
-            #title h2{
-                font-size: 40px;
-            }
-            .arrow {
-                height: 40px;
-                width: 800px;
-            }
-            #homebutton {
-                height: 40px;
-                width: 40px;
-            }
+
+        nav:hover ul{
+            
+            display: flex;
+            justify-content: space-evenly;
         }
-        @media (max-width: 680px) {
-            #title h2{
-                vertical-align: middle;
-                
-                font-size: 30px;
-            }
-            .arrow {
-                height: 30px;
-                width: 600px;
-            }
-            #homebutton {
-                height: 30px;
-                width: 30px;
-            }
+        nav:hover i{
+            display: none;
         }
+        /* Visalizza l'elenco in disposizione orizzontale*/
+        nav ul{
+            padding: 10px;
+            display: none;
+            justify-content: space-evenly;
+            font-size: 35px;
+            list-style: none;
+            align-content: center;
+        }
+        #navCode ul{
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            list-style: none;
+        }
+        #navCode ul li a{
+            text-decoration: none;
+            color: green;
+            border: 2px solid black;
+            border-radius: 15px;
+            padding: 10px 20px;
+            margin: 10px;
+
+        }
+        nav #index li{
+            height: 50px;
+            width: 100%;
+        }
+        nav #index a{
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            background-color: white;
+            border-radius: 30px;
+            padding: 10px 10px;
+            font-size: 20px;
+        }
+        #SND table{
+            width: 100%;
+        }
+        #SND table td{
+            width: 50%;
+            border: 2px solid black;
+            border-radius: 15px;
+        }
+        #SND table td:focus  div.dropdown {
+            display: block;
+        }
+        /* viene reso invisibile, fino all'hover*/
+        .dropdown {
+            display: none;
+        }
+        /* all'hover su qualsiasi td, visualizzare l'elemento dropdown*/
+        tr:hover .dropdown{
+            display: block;
+            height: 100%;
+            text-align: left;
+        }
+        .dropdown img{
+            width: 100%;
+        }
+        
+        #SegnaliInfo {
+            display: flex;
+            justify-content: center;
+        }
+        #SegnaliInfo div{
+            border: 3px solid black;
+            border-radius: 50px;
+            margin: 30px;
+        }
+        #index li:hover .drop{
+            display: block;
+            width: 300px;
+        }
+        
+        #index li .drop{
+            display: none;
+        }
+
+
     </style>
-    
+    <script>
+        document.getElementsByClassName("dropdown")
+    </script>
 </head>
 <body>
-    <!-- per togliere il pagecontrol basta uscire con il mouse dal div con il bordo nero -->
-    <div id="title" onmouseleave="pagecontrol(false)"> 
-        <h2>
-            <a href=""><img class="arrow"  src="../public/backarrow.png"></a>
-            LIVELLO DIGITALE <a class="homelink"  onmouseover="pagecontrol(true)" href="../Architettura.html"><img id="homebutton" src="../public/homebutton.png" ></a>
-            <!-- pagecontrol è un dropdown attivato all'hover sull link homebutton -->
-            <a  href=""><img class="arrow" src="../public/arrow.png"></a>
-            
-        </h2>
-    </div>
-    
-    
-    <nav class="topnavbar">
-        <i id="threelines" class="fas fa-bars"></i>
-        <ul id="index" style="list-style: none;">
-            <li class="linkbutton"><a class="links" href="#title"><i class="fas fa-angle-double-up"></i></a></li>
-            <li class="linkbutton"><a class="links" href="#ADC">Digitalizzazione</a></li>
-            <li class="linkbutton"><a class="links" href="#SND">Sistema Binario</a></li>
-            <li class="linkbutton"><a class="links" href="#Bool">Algebra Booleana</a></li>
-            <li class="linkbutton"><a class="links" href="#SegnaliInfo">Segnali Informativi</a> </li>
-            <li class="linkbutton"><a class="links" href="#Codifica">Codifica dei DATI</a>
+    <h2 style="color: red; font-size: 70px; text-align: center;">Rappresentazione Numeri <a href="../Architettura.html"><img src="../public/homebutton.png" style="height: 55px; width: 55px; padding-left: 30px;"></a></h2>
+    <br>
+    <nav>
+        <i class="fas fa-bars"></i>
+        <ul id="index" >
+            <li><a href="#SegnaliInfo">Segnali Informativi</a> </li>
+            <li><a href="#ADC">Digitalizzazione</a></li>
+            <li><a href="#SND">Sistema Numerico Binario</a></li>
+            <li><a href="#Bool">Algebra Booleana</a></li>
+            <li><a href="#Codifica">Codifica dei DATI</a>
                 <div class="drop">
-                    <ul class="dropdown-menu">
+                    <ul >
                         <li><b><a href="#CodificaNumeri">NUMERI</a></b></li>
                         <li><b><a href="#CodificaChar">CARATTERI TESTUALI</a></b></li>
                         <li><b><a href="#CodificaImg">IMMAGINI/VIDEO</a></b></li>
@@ -189,10 +153,8 @@
             </li>
         </ul>
     </nav>
-    
-    
     <h2   style="color: blue; font-size: 40px; text-align: center;">Segnali Informativi</h2><br>
-    
+
     <div id="SegnaliInfo">
         <div>
             <ul>
@@ -322,7 +284,7 @@
     <div id="Codifica" style="font-size: 30px;">
         <h2  style="color: blue; font-size: 35px; text-align: center;">Codifica dei DATI</h2>
         <p style="text-align: center; font-size: 25px;">
-            Un PC deve essere in grado di codificare opportunamente qualsiasi tipo di dato:
+        Un PC deve essere in grado di codificare opportunamente qualsiasi tipo di dato:
         </p>
         <div id="navCode">
             <ul style="font-size: 20px;">
@@ -394,12 +356,13 @@
         <div id="CodificaChar">
             <h2  style="color: blue; font-size: 35px; text-align: center;">Codifica dei CARATTERI</h2>
             Un carattere è un <b>elemento singolo</b> di una <b>stringa di testo</b><br>
-            
-            <ul>
-                <li>Cifre, Lettere, Simboli di Puntaggiatura</li>
-                <li>Simboli speciali #, %, @, ...</li>
-                <li>Caratteri speciali che contengono informazioni di controllo <br> come tabulazione, ESC, spostamento del cursore</li>
-            </ul>
+            <div id="navCode">
+                <ul>
+                    <li>Cifre, Lettere, Simboli di Puntaggiatura</li>
+                    <li>Simboli speciali #, %, @, ...</li>
+                    <li>Caratteri speciali che contengono informazioni di controllo <br> come tabulazione, ESC, spostamento del cursore</li>
+                </ul>
+            </div>
             <b>CODICE ARBITRARIO</b> <br>
             <ul>
                 <li>Per le Cifre si usa la formula C('0') + Cifra</li>
@@ -480,23 +443,9 @@
             
         </div>
     </div>
-    
-    <script>
-        
-        function pagecontrol(flag) {
-            let arrows = document.getElementsByClassName("arrow")
-            if (flag) {
-                for (let index = 0; index < arrows.length; index++) {
-                    arrows[index].style.display = "inline"
-                }
-            } else {
-                for (let index = 0; index < arrows.length; index++) {
-                    arrows[index].style.display = "none"
-                }
-            }
-        }
-    </script>
-    
+
+
+
     <script src="https://kit.fontawesome.com/93e39226bb.js" crossorigin="anonymous"></script>
 </body>
 </html>
