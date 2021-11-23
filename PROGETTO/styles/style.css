@@ -1,0 +1,111 @@
+.title {
+    color: red;
+    text-align: center;
+    font-size: 50px;
+    width: calc(100% - 100px);
+    border: 3px solid black;
+    border-radius: 50px;
+    font-weight: bold;
+    display: flex;
+     justify-content: center;
+     padding: 15px;
+     margin-bottom: 50px;
+}
+#pagelogo{
+    color: black;
+    vertical-align: middle;
+    padding-right: 10px;
+}
+
+.title .homebutton {
+     height: 60px; width: 60px; vertical-align: middle;
+}
+
+.pdflink {
+    font-size: 35px;
+    text-align: center;
+    margin: 50px;
+}
+
+.pdflink a{
+    color: rgb(25, 0, 255);
+    background-color: rgb(0, 255, 255);
+    text-align: center;
+    border: 2px dashed black;
+    border-radius: 30px;
+    padding: 15px;
+    text-decoration: none;
+}
+.pdflink a:hover {
+    background-color: rgb(0, 17, 255);
+    color: white;
+}
+.pdflink a:hover i{
+    color: white;
+}
+
+.pdflink i{
+    color: black;
+}
+
+.navtable {
+    margin-top:50px;
+    width: 100%;
+    padding: 10px;
+}
+
+
+.navtable .linkcell{
+    width: 50%;
+    height: 60px;
+    border: 1px solid black;
+    border-radius: 30px;
+    font-size: 25px;
+    font-weight: bold;
+    padding-left: 35px;
+}
+.linkcell a{
+    text-decoration: none;
+}
+
+
+.dropdown {
+    display: none;
+    justify-content: center;
+    width: 100%;
+}
+.dropdown li{
+    display: inline;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: 10px;
+    background-color: green;
+    text-align: center;
+}
+.dropdown a{
+    color: white;
+    text-decoration: none;
+}
+
+.dropdown abbr{
+    text-decoration: none;
+}
+
+
+.lincell a:hover .dropdown{
+    display: flex;
+}
+.droplink{
+    color: white;
+}
+
+.navtable .linkcell:hover {
+    background-color: rgb(0, 204, 255);
+    height: 100px;
+
+}
+
+.linkcell .linkimg{
+    width: 50px; height: 50px;
+    vertical-align: middle;
+}

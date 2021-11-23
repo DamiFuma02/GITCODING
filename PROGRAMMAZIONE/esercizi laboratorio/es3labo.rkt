@@ -25,7 +25,7 @@
 
 
 
-(define parte_intera                                          ;viene chiamata solo se la funzione 
+(define parte_intera                                           ;viene chiamata solo se la funzione 
   (lambda (stringa)
          (let ((k (-(string-length stringa)1)))
                 (if (char=? (string-ref stringa k) #\.)
