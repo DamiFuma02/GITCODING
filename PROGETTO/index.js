@@ -22,13 +22,10 @@ app.use(express.urlencoded({ extended: false }));
 const indexRouter = require("./routes/indexrouter")
 const archRouter = require("./routes/archrouter")
 app.use("/", indexRouter); //DEFINISCE COME RISPONDERE A: IP/route
-app.use("/account", archRouter); //DEFINISCE COME RISPONDERE A: IP/account/route
+app.use("/archElab", archRouter); //DEFINISCE COME RISPONDERE A: IP/account/route
 //vengono impostate le directory per il percorso indicato "/img, /css, /js"
 app.use("/img", express.static("public/images"))
 app.use("/css", express.static("public/styles"))
 app.use("/js", express.static("public/scripts"))
-
-//queste 2 funzioni servono per gestire l'indirizzamento corretto verso i file ejs
-//i quali andranno visualizzati dal client
-app.set('view-engine', "ejs");
-app.set("views", path.join(__dirname, "views"));
+//per visualizzare correttamente il file PDF
+app.use("/pdf", express.static("views"))

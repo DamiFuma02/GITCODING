@@ -6,3 +6,6 @@ venv
 package.json
 package-lock.json
 .git
+web
+build
+LICENSE
