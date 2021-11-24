@@ -1,159 +1,200 @@
 /*PROPRIETà VARIABILI IN BASE ALLA PAGINA SELEZIONATA*/
-$titlecolor: red;
-$homebutton_border_color: white;
+
+
 
 
 .title {
-    color: $titlecolor;
+    color: red;
     text-align: center;
     font-size: 50px;
-    width: calc(100% - 60px);
+    width: 95%;
     border: 3px solid rgb(255, 255, 255);
     border-radius: 50px;
     font-weight: bold;
     justify-content: center;
+    align-items: center;
     padding: 30px;
     margin-bottom: 30px;
+    i{
+        color:black;
+    }
+    #pagelogo{
+        margin-right: 15px;
+    }
     
     .homebutton {
+        i{
+            font-size:35px;
+            color: black;
+        }
         height: 60px; width: 60px; 
         text-align: center;
         display: inline-block;
         height: 70px;
         width: 70px;
-        border: 1px solid $homebutton_border_color;
+        border: 1px solid white;
         margin-left: 25px;
         border-radius: 50%;
         padding: 5px;
         vertical-align: middle;
+        font-size: 20px;
     }
     .homebutton:hover {
         transform: scale(1.2);
         background-color: red;
     }
-}
-
-
-
-
-
-.navtable {
-    margin-top:50px;
-    width: 100%;
-    .linkcell{
-        width: 50%;
-        height: 100px;
-        border-radius: 30px;
-        text-align: center;
-        font-size: 25px;
-        font-weight: bold;
-        padding-left: 35px;
-        color: white;
-    }
-    .linkcell:hover {
-        background-color: rgb(0, 204, 255);
-        
-        height: 125px;
-    }
     
-    .linkcell .linkimg{
-        width: 50px; height: 50px;
-        vertical-align: middle;
-    }
-    .linkcell .primarylink{
-        text-decoration: none;
-        color: rgb(7, 7, 7);
-        border: 1px solid white;
-        padding: 15px;
-        border-radius: 25px;
-        background-color: rgba(255, 255, 255, 0.2);
-    }
-    
-    .linkcell .indexdrop {  /*nasconde il indexdrop*/
-        display: none; 
-        margin-top: 15px;
-    }
-    .linkcell i{
-        margin-left: 2%;
-        padding: 0px 2%;
-        border: 1px solid black;
-        border-radius: 5px;
-        background-color: chartreuse;
-    }
-    .linkcell i:hover {
-        transform: scale(1.5);
-    }
 }
-
-
-
-
-
-
-
 
 
 .pdflink {
     font-size: 35px;
     text-align: center;
     margin: 50px;
+    a{
+        color: rgb(25, 0, 255);
+        background-color: rgb(255, 0, 200);
+        text-align: center;
+        border: 2px dashed black;
+        border-radius: 30px;
+        padding: 15px;
+        text-decoration: none;
+    }
+    i{
+        color: black;
+    }
+    a:hover {
+        background-color: rgb(0, 17, 255);
+        color: white;
+    }
+    a:hover i{
+        color: white;
+    }
+    i:hover{
+        transform: scale(1.4);
+        margin: 20px;
+    }
 }
 
-.pdflink a{
-    color: rgb(25, 0, 255);
-    background-color: rgb(0, 255, 255);
-    text-align: center;
-    border: 2px dashed black;
-    border-radius: 30px;
-    padding: 15px;
-    text-decoration: none;
-    
-}
-.pdflink a:hover {
-    background-color: rgb(0, 17, 255);
-    color: white;
-}
-.pdflink a:hover i{
-    color: white;
-}
-.pdflink i:hover{
-    transform: scale(1.4);
-    margin: 20px;
-}
-
-.pdflink i{
-    color: black;
-}
-
-.indexdrop {
-    text-align: center;
-    list-style: none;
-    width: 90%;
+.navtable {
+    margin-top:50px;
     display: flex;
-    justify-content: space-evenly;
-    margin: 0px;
-}
-.indexdrop li{
-    display: inline-block;
-    border: 1px solid black;
-    background-color: blue;
-    border-radius: 15px;
-    width: 80px;
-    height: 30px;
-    align-items: center;
-}
-.indexdrop a{
-    color: white;
-    text-decoration: none;
-}
-.indexdrop a:visited{
-    color: white;
-}
-.indexdrop a:link{
-    color: white;
+    flex-wrap: wrap;
+    
+    .linkcell{
+        margin: 10px 0;
+        height: 100px;
+        border-radius: 30px;
+        text-align: center;
+        font-size: 25px;
+        font-weight: bold;
+        color: white;
+        flex: 1 1 50%;
+        min-width: 150px;
+        justify-content: center;
+        display: flex;
+        flex-wrap: wrap;
+        .container {
+            border: 1px solid white;
+            border-radius: 25px;
+            background-color: rgba(255, 255, 255, 0.2);
+            .linkimg{
+                width: 50px; height: 50px;
+                vertical-align: middle;
+            }
+    
+            .primarylink{
+                padding: 10px;
+                text-decoration: none;
+                color: rgb(7, 7, 7);
+            }
+            i{
+                margin-left: 2%;
+                padding: 0px 2%;
+                border: 1px solid black;
+                border-radius: 5px;
+                background-color: chartreuse;
+                display: inline;
+            }
+            i:hover {
+                transform: scale(1.5);
+                background-color: rgb(241, 242, 247);
+                color: black;
+
+            }
+        }
+        .indexdrop {
+            text-align: center;
+            list-style: none;
+            width: 90%;
+            display: none;
+            justify-content: space-evenly;
+            margin: 0px;
+            li{
+                display: inline-block;
+                border: 1px solid black;
+                background-color: blue;
+                border-radius: 15px;
+                width: 80px;
+                height: 30px;
+                align-items: center;
+            }
+            a{
+                color: white;
+                text-decoration: none;
+            }
+            a:visited{
+                color: white;
+            }
+            a:link{
+                color: white;
+            }
+            abbr{
+                text-decoration: none;
+                color: white;
+            }
+        }
+    }
+    .linkcell:hover{
+        height: 150px;
+    }
 }
 
-.indexdrop abbr{
-    text-decoration: none;
-    color: white;
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+    .title{
+        padding: 10px;
+        font-size: 20px;
+        .homebutton{
+            display: inline;
+            height: 20px;width: 20px;
+            margin: 0 10px;
+            i{
+                font-size:20px;
+            }
+            span{
+                display: none;
+            }
+        }
+    }
+    .pdflink {
+        font-size: 20px;
+        text-align: center;
+        margin: 30px;
+    }
+    .navtable{
+        .linkcell{
+            font-size: 20px;
+        }
+    }
 }
