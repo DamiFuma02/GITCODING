@@ -76,7 +76,7 @@
   display: flex;
   flex-wrap: wrap;
 }
-.navtable .linkcell {
+.navtable .linkcell, .navtable .CFU6, .navtable .CFU12 {
   margin: 10px 0;
   height: 100px;
   border-radius: 30px;
@@ -90,22 +90,22 @@
   display: flex;
   flex-wrap: wrap;
 }
-.navtable .linkcell .container {
+.navtable .linkcell .container, .navtable .CFU6 .container, .navtable .CFU12 .container {
   border: 1px solid white;
   border-radius: 25px;
   background-color: rgba(255, 255, 255, 0.2);
 }
-.navtable .linkcell .container .linkimg {
+.navtable .linkcell .container .linkimg, .navtable .CFU6 .container .linkimg, .navtable .CFU12 .container .linkimg {
   width: 50px;
   height: 50px;
   vertical-align: middle;
 }
-.navtable .linkcell .container .primarylink {
+.navtable .linkcell .container .primarylink, .navtable .CFU6 .container .primarylink, .navtable .CFU12 .container .primarylink {
   padding: 10px;
   text-decoration: none;
   color: #070707;
 }
-.navtable .linkcell .container i {
+.navtable .linkcell .container i, .navtable .CFU6 .container i, .navtable .CFU12 .container i {
   margin-left: 2%;
   padding: 0px 2%;
   border: 1px solid black;
@@ -113,12 +113,12 @@
   background-color: chartreuse;
   display: inline;
 }
-.navtable .linkcell .container i:hover {
+.navtable .linkcell .container i:hover, .navtable .CFU6 .container i:hover, .navtable .CFU12 .container i:hover {
   transform: scale(1.5);
   background-color: #f1f2f7;
   color: black;
 }
-.navtable .linkcell .indexdrop {
+.navtable .linkcell .indexdrop, .navtable .CFU6 .indexdrop, .navtable .CFU12 .indexdrop {
   text-align: center;
   list-style: none;
   width: 90%;
@@ -128,7 +128,7 @@
   margin: 0;
   padding: 0;
 }
-.navtable .linkcell .indexdrop li {
+.navtable .linkcell .indexdrop li, .navtable .CFU6 .indexdrop li, .navtable .CFU12 .indexdrop li {
   margin: 0;
   padding: 0;
   display: inline-block;
@@ -141,17 +141,17 @@
   align-items: center;
   justify-content: center;
 }
-.navtable .linkcell .indexdrop a {
+.navtable .linkcell .indexdrop a, .navtable .CFU6 .indexdrop a, .navtable .CFU12 .indexdrop a {
   color: white;
   text-decoration: none;
 }
-.navtable .linkcell .indexdrop a:visited {
+.navtable .linkcell .indexdrop a:visited, .navtable .CFU6 .indexdrop a:visited, .navtable .CFU12 .indexdrop a:visited {
   color: white;
 }
-.navtable .linkcell .indexdrop a:link {
+.navtable .linkcell .indexdrop a:link, .navtable .CFU6 .indexdrop a:link, .navtable .CFU12 .indexdrop a:link {
   color: white;
 }
-.navtable .linkcell .indexdrop abbr {
+.navtable .linkcell .indexdrop abbr, .navtable .CFU6 .indexdrop abbr, .navtable .CFU12 .indexdrop abbr {
   text-decoration: none;
   color: white;
 }
