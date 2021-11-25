@@ -78,7 +78,7 @@
   justify-content: center;
 }
 .navtable .linkcell, .navtable .CFU6, .navtable .CFU12 {
-  align-content: center;
+  align-content: flex-start;
   margin: 10px 0;
   height: 100px;
   border-radius: 30px;
@@ -136,7 +136,8 @@
   display: inline-block;
   flex: 1 1 33%;
   border: 1px solid black;
-  background-color: blue;
+  background: #6181f2;
+  background: radial-gradient(circle, #6181f2 0%, #a5bcfa 50%, #0bf1f2 100%);
   border-radius: 15px;
   width: 80px;
   height: 30px;
@@ -190,4 +191,4 @@
   }
 }
 
-/*# sourceMappingURL=stile.css.map */
+/*# sourceMappingURL=globalstyle.css.map */

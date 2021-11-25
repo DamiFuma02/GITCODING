@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CODIFICA DIGITALE</title>
+    <title>CODIFICA</title>
+    <link rel="stylesheet" href="/css/stile.css">
     <style>
+        body{
+            background: rgb(253,187,45);
+            background: linear-gradient(0deg, rgb(253, 128, 45) 0%, rgb(195, 184, 34) 100%);}
         .drop ul li{
             display: block;
             width: 40px;
@@ -127,19 +131,42 @@
 
 
     </style>
-    <script>
-        document.getElementsByClassName("dropdown")
-    </script>
 </head>
 <body>
-    <h2 style="color: red; font-size: 70px; text-align: center;">Rappresentazione Numeri <a href="../Architettura.html"><img src="../public/homebutton.png" style="height: 55px; width: 55px; padding-left: 30px;"></a></h2>
+    
+    <div class="title">
+        <i id="pagelogo" class="fas fa-wave-square"></i>CODIFICA DIGITALE<a href="/"><div class="homebutton"><i class="fas fa-home"></i><span>HOME</span></div></a>
+    </div>
+
     <br>
+
+    <div class="navtable">
+        <div class="linkcell" onmouseleave=`dropindex(0, false)`>
+            <div class="container">
+                <a onclick="showContent(0)" class="primarylink" href="/archElab/Storia"><img class="linkimg" src="img/ARCH/storialogo.png" >Digitalizzazione</a><i onclick="dropindex (0, true)" class="fas fa-angle-down"></i>
+            </div>
+        </div>
+        <div class="linkcell" onmouseleave=`dropindex(1, false)`>
+            <div class="container">
+                <a onclick="showContent(1)" class="primarylink" href="/archElab/Storia"><img class="linkimg" src="img/ARCH/storialogo.png" >Sistema Binario</a><i onclick="dropindex (1, true)" class="fas fa-angle-down"></i>
+            </div>
+        </div>
+        <div class="linkcell" onmouseleave=`dropindex(2, false)`>
+            <div class="container">
+                <a onclick="showContent(2)" class="primarylink" href="/archElab/Storia"><img class="linkimg" src="img/ARCH/storialogo.png" >Algebra Booleana</a><i onclick="dropindex (2, true)" class="fas fa-angle-down"></i>
+            </div>
+        </div>
+        <div class="linkcell" onmouseleave=`dropindex(3, false)`>
+            <div class="container">
+                <a onclick="showContent(3)" class="primarylink" href="/archElab/Storia"><img class="linkimg" src="img/ARCH/storialogo.png" >Codifica dei DATI</a><i onclick="dropindex (3, true)" class="fas fa-angle-down"></i>
+            </div>
+        </div>
+    </div>
     <nav>
         <i class="fas fa-bars"></i>
         <ul id="index" >
-            <li><a href="#SegnaliInfo">Segnali Informativi</a> </li>
             <li><a href="#ADC">Digitalizzazione</a></li>
-            <li><a href="#SND">Sistema Numerico Binario</a></li>
+            <li><a href="#SND">Sistema Binario</a></li>
             <li><a href="#Bool">Algebra Booleana</a></li>
             <li><a href="#Codifica">Codifica dei DATI</a>
                 <div class="drop">
@@ -155,8 +182,8 @@
     </nav>
     <h2   style="color: blue; font-size: 40px; text-align: center;">Segnali Informativi</h2><br>
 
-    <div id="SegnaliInfo">
-        <div>
+    <div class="textContent" >
+        <div id="SegnaliInfo">
             <ul>
                 <li><b>Analogici</b>: variano in analogia con la grandezza fisica (Tensione o Corrente) <br>
                     <img src="../public/ARCH/analogico.png" style="padding: 30px;">
@@ -167,8 +194,6 @@
                     </ul>
                 </li>
             </ul>
-        </div>
-        <div>
             <ul>
                 <li><b>Digitali:</b>  vengono rappresentati da cifre binarie (digit) <br>
                     <img src="../public/ARCH/digitale.png" style="height: 250px; padding: 30px;">
@@ -181,15 +206,16 @@
                 </li>
             </ul>
         </div>
+        <div id="ADC">
+            <h2 >Conversione Analogico Digitale</h2>
+            
+        </div>
         
     </div>
     <hr>
-    <div id="ADC">
-        <h2 >Conversione Analogico Digitale</h2>
-        
-    </div>
+    
     <hr>
-    <div id="SND">
+    <div class="textContent" id="SND" >
         <h2 style="color: blue; font-size: 40px; text-align: center;">Sistema Numerico Binario</h2>
         <figure style="text-align: center; font-size: 35px;">
             <img src="../public/ARCH/binario.png" style="height: 300px; width: 550px"> 
@@ -270,7 +296,7 @@
         </table>
     </div>
     <br><hr>
-    <div id="Bool" style="text-align: center;">
+    <div class="textContent" id="Bool" style="text-align: center;">
         <h2  style="color: blue; font-size: 35px; text-align: center;">Porte Logiche</h2>
         <img src="../public/ARCH/portelogiche.png"> 
         <h2  style="color: blue; font-size: 35px; text-align: center;">Proprietà Logiche</h2>
@@ -281,7 +307,7 @@
         <img src="../public/ARCH/propretalogiche.png" style="height: 350px;">
     </div>
     <br><hr><br>
-    <div id="Codifica" style="font-size: 30px;">
+    <div class="textContent" id="Codifica">
         <h2  style="color: blue; font-size: 35px; text-align: center;">Codifica dei DATI</h2>
         <p style="text-align: center; font-size: 25px;">
         Un PC deve essere in grado di codificare opportunamente qualsiasi tipo di dato:
@@ -444,7 +470,22 @@
         </div>
     </div>
 
-
+    <script>
+        let textContents = document.getElementsByClassName("textContent")
+        function showContent(index){
+            console.log(index)
+            textContents[index].style.display = "block"
+        }
+        let dropindexes = document.getElementsByClassName("indexdrop")
+        let buttons = document.getElementsByClassName("fas fa-angle-down")
+        function dropindex (index, flag) {
+            if (flag) dropindexes[index].style.display = "flex"
+            else dropindexes[index].style.display = "none"
+            console.log(index)
+        }
+    
+            
+    </script>
 
     <script src="https://kit.fontawesome.com/93e39226bb.js" crossorigin="anonymous"></script>
 </body>
