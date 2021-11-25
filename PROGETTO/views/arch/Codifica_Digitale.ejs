@@ -5,225 +5,123 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CODIFICA</title>
-    <link rel="stylesheet" href="/css/stile.css">
-    <style>
-        body{
-            background: rgb(253,187,45);
-            background: linear-gradient(0deg, rgb(253, 128, 45) 0%, rgb(195, 184, 34) 100%);}
-        .drop ul li{
-            display: block;
-            width: 40px;
-            margin: 10px;
-        }
-        .drop ul{
-            display: inline-block;
-        }
-        table {
-            width: 100%;
-            font-size: 30px;
-            text-align: center;
-        }
-        div h2{
-            color: blue; font-size: 40px; text-align: center;
-        }
-        nav {
-            background-color: red;
-            height: 100%;
-            position: sticky;
-            top: 0px;
-            text-align: center;
-            display: block;
-        }
-        nav i{
-            font-size: 35px;
-            padding: 10px;
-            display: block;
-            color: black;
-        }
-
-        nav:hover ul{
-            
-            display: flex;
-            justify-content: space-evenly;
-        }
-        nav:hover i{
-            display: none;
-        }
-        /* Visalizza l'elenco in disposizione orizzontale*/
-        nav ul{
-            padding: 10px;
-            display: none;
-            justify-content: space-evenly;
-            font-size: 35px;
-            list-style: none;
-            align-content: center;
-        }
-        #navCode ul{
-            display: flex;
-            justify-content: center;
-            align-content: center;
-            list-style: none;
-        }
-        #navCode ul li a{
-            text-decoration: none;
-            color: green;
-            border: 2px solid black;
-            border-radius: 15px;
-            padding: 10px 20px;
-            margin: 10px;
-
-        }
-        nav #index li{
-            height: 50px;
-            width: 100%;
-        }
-        nav #index a{
-            color: black;
-            text-decoration: none;
-            font-weight: bold;
-            background-color: white;
-            border-radius: 30px;
-            padding: 10px 10px;
-            font-size: 20px;
-        }
-        #SND table{
-            width: 100%;
-        }
-        #SND table td{
-            width: 50%;
-            border: 2px solid black;
-            border-radius: 15px;
-        }
-        #SND table td:focus  div.dropdown {
-            display: block;
-        }
-        /* viene reso invisibile, fino all'hover*/
-        .dropdown {
-            display: none;
-        }
-        /* all'hover su qualsiasi td, visualizzare l'elemento dropdown*/
-        tr:hover .dropdown{
-            display: block;
-            height: 100%;
-            text-align: left;
-        }
-        .dropdown img{
-            width: 100%;
-        }
-        
-        #SegnaliInfo {
-            display: flex;
-            justify-content: center;
-        }
-        #SegnaliInfo div{
-            border: 3px solid black;
-            border-radius: 50px;
-            margin: 30px;
-        }
-        #index li:hover .drop{
-            display: block;
-            width: 300px;
-        }
-        
-        #index li .drop{
-            display: none;
-        }
-
-
-    </style>
+    <link rel="stylesheet" href="/css/globalstyle.css">
+    <link rel="stylesheet" href="/css/CodDig.css">
 </head>
 <body>
     
-    <div class="title">
-        <i id="pagelogo" class="fas fa-wave-square"></i>CODIFICA DIGITALE<a href="/"><div class="homebutton"><i class="fas fa-home"></i><span>HOME</span></div></a>
+    <div class="title" id="title">
+        <i id="pagelogo" class="fas fa-wave-square"></i>CODIFICA DIGITALE<a href="/archElab"><div class="homebutton"><i class="fas fa-home"></i><span>HOME</span></div></a>
     </div>
 
     <br>
 
     <div class="navtable">
-        <div class="linkcell" onmouseleave=`dropindex(0, false)`>
+        <div class="linkcell" onmouseleave="dropindex(0, false)"">
             <div class="container">
-                <a onclick="showContent(0)" class="primarylink" href="/archElab/Storia"><img class="linkimg" src="img/ARCH/storialogo.png" >Digitalizzazione</a><i onclick="dropindex (0, true)" class="fas fa-angle-down"></i>
+                <a onclick="showContent(0)" class="primarylink" href="#Digit"><img class="linkimg" src="/img/ARCH/digitalizzazione.jpg"  >Digitalizzazione</a><i onclick="dropindex (0, true)" class="fas fa-angle-down"></i>
             </div>
+            <ul class="indexdrop">
+                <li><a href="#AnVSDig"><img src="/img/ARCH/segnali.png" alt=""> SEGNALI</a></li>
+                <li><a href="#ADC"><img src="/img/ARCH/ADC.png" alt=""> ADC</a></li>
+            </ul>
         </div>
         <div class="linkcell" onmouseleave=`dropindex(1, false)`>
             <div class="container">
-                <a onclick="showContent(1)" class="primarylink" href="/archElab/Storia"><img class="linkimg" src="img/ARCH/storialogo.png" >Sistema Binario</a><i onclick="dropindex (1, true)" class="fas fa-angle-down"></i>
+                <a onclick="showContent(1)" class="primarylink" href="#SND"><img class="linkimg" src="/img/ARCH/sistemabinario.jpg" >Sistema Binario</a><i onclick="dropindex (1, true)" class="fas fa-angle-down"></i>
             </div>
+            <ul class="indexdrop">
+                <li></li>
+            </ul>
         </div>
         <div class="linkcell" onmouseleave=`dropindex(2, false)`>
             <div class="container">
-                <a onclick="showContent(2)" class="primarylink" href="/archElab/Storia"><img class="linkimg" src="img/ARCH/storialogo.png" >Algebra Booleana</a><i onclick="dropindex (2, true)" class="fas fa-angle-down"></i>
+                <a onclick="showContent(2)" class="primarylink" href="#Bool"><img class="linkimg" src="/img/ARCH/bool.png" >Algebra Booleana</a><i onclick="dropindex (2, true)" class="fas fa-angle-down"></i>
             </div>
+            <ul class="indexdrop">
+                <li></li>
+            </ul>
         </div>
         <div class="linkcell" onmouseleave=`dropindex(3, false)`>
             <div class="container">
-                <a onclick="showContent(3)" class="primarylink" href="/archElab/Storia"><img class="linkimg" src="img/ARCH/storialogo.png" >Codifica dei DATI</a><i onclick="dropindex (3, true)" class="fas fa-angle-down"></i>
+                <a onclick="showContent(3)" class="primarylink" href="#Codifica"><img class="linkimg" src="/img/ARCH/codificaDigitale.png" >Codifica DATI</a><i onclick="dropindex (3, true)" class="fas fa-angle-down"></i>
             </div>
+            <ul class="indexdrop">
+                <li></li>
+            </ul>
         </div>
     </div>
-    <nav>
-        <i class="fas fa-bars"></i>
-        <ul id="index" >
-            <li><a href="#ADC">Digitalizzazione</a></li>
-            <li><a href="#SND">Sistema Binario</a></li>
-            <li><a href="#Bool">Algebra Booleana</a></li>
-            <li><a href="#Codifica">Codifica dei DATI</a>
+
+    <nav class="navbar">
+        <i id="navlogo" class="fas fa-bars"></i>
+        <div id="index" >
+            <a href="#title"><i class="fas fa-angle-double-up">PAGE TOP</i></a>
+            <a onclick="showContent(0)" href="#ADC">Digitalizzazione</a>
+            <a onclick="showContent(1)" href="#SND">Sistema Binario</a>
+            <a onclick="showContent(2)" href="#Bool">Algebra Booleana</a>
+            <a onclick="showContent(3)" href="#Codifica">Codifica dei DATI</a>
+            <button class="hideAll" onclick="hideContent()"><i class="fas fa-ban"></i>HIDE ALL</button>
                 <div class="drop">
-                    <ul >
-                        <li><b><a href="#CodificaNumeri">NUMERI</a></b></li>
-                        <li><b><a href="#CodificaChar">CARATTERI TESTUALI</a></b></li>
-                        <li><b><a href="#CodificaImg">IMMAGINI/VIDEO</a></b></li>
-                        <li><a href="#ADC"><b>SUONI</b></a></li>
-                    </ul>
+                        <a  href="#CodificaNumeri">NUMERI</a>
+                        <a  href="#CodificaChar">CARATTERI TESTUALI</a>
+                        <a  href="#CodificaImg">IMMAGINI/VIDEO</a>
+                        <a  href="#ADC">SUONI</a>
                 </div>
             </li>
-        </ul>
+        </div>
     </nav>
-    <h2   style="color: blue; font-size: 40px; text-align: center;">Segnali Informativi</h2><br>
 
-    <div class="textContent" >
-        <div id="SegnaliInfo">
-            <ul>
-                <li><b>Analogici</b>: variano in analogia con la grandezza fisica (Tensione o Corrente) <br>
-                    <img src="../public/ARCH/analogico.png" style="padding: 30px;">
-                    <ul>
-                        <li>Possiedono un numero infinito di valori all'interno dell'intervallo di ampiezza</li>
-                        <li>Solitamente vengono rappresentati da un segnale sinusoidale</li>
-                        <li>Maggiormente soggetti all'influenza del rumore</li>
-                    </ul>
-                </li>
-            </ul>
-            <ul>
-                <li><b>Digitali:</b>  vengono rappresentati da cifre binarie (digit) <br>
-                    <img src="../public/ARCH/digitale.png" style="height: 250px; padding: 30px;">
-                    
-                    <ul>
-                        <li>Numero finito di valori all'interno dell'intervallo di ampiezza</li>
-                        <li>rappresentati da un segnale onda quadra</li>
-                        <li>Quantizzazione: definisce il numero di valori ammissibili</li>
-                    </ul>
-                </li>
-            </ul>
+    <br><hr><br>
+
+
+
+    <div id="Digit" class="textContent">
+        <h2  >SEGNALI INFORMATIVI</h2>
+
+        <div id="AnVSDig">
+            <div id="analogico">
+                ANALOGICO <br>
+                <figure>
+                    <img src="/img/ARCH/analogico.png">
+                    <figcaption><b>Cambiano in analogia con la grandezza fisica (Tensione o Corrente)</b></figcaption>
+                </figure>
+                <ul>
+                    <li>Possiedono un numero infinito di valori all'interno dell'intervallo di ampiezza</li>
+                    <li>Solitamente vengono rappresentati da un segnale sinusoidale</li>
+                    <li>Maggiormente soggetti all'influenza del <a href="#ADC">rumore</a></li>
+                </ul>
+            </div>
+            <div id="digitale">
+                DIGITALE <br>
+                <figure>
+                    <img src="/img/ARCH/digitale.png">
+                    <figcaption><b>Vengono rappresentati da cifre binarie (DIGIT)</b></figcaption>
+                </figure>
+                <ul>
+                    <li>Numero finito di valori all'interno dell'intervallo di ampiezza</li>
+                    <li>Rappresentati da un segnale onda quadra</li>
+                    <li><a href="#ADC">Quantizzazione</a> : definisce il numero di valori ammissibili</li>
+                </ul>
+
+            </div>
         </div>
         <div id="ADC">
             <h2 >Conversione Analogico Digitale</h2>
-            
         </div>
         
+    <hr>
     </div>
-    <hr>
-    
-    <hr>
+
+
     <div class="textContent" id="SND" >
-        <h2 style="color: blue; font-size: 40px; text-align: center;">Sistema Numerico Binario</h2>
+        <h2 >Sistema Numerico Binario</h2>
         <figure style="text-align: center; font-size: 35px;">
             <img src="../public/ARCH/binario.png" style="height: 300px; width: 550px"> 
             <figcaption>
                 Viene usata la notazione posizionale, perciò ogni cifra ha un'ordine di grandezza
             </figcaption>
         </figure>
-        <h2  style="color: blue; font-size: 35px; text-align: center;">Conversione di base numerica</h2>
+        <h2  >Conversione di base numerica</h2>
         <table id="Conversioni">
             <tr>
                 <td id="drop1"><b>Base 10 --> Base N</b> <br>
@@ -295,20 +193,19 @@
             </tr>
         </table>
     </div>
-    <br><hr>
     <div class="textContent" id="Bool" style="text-align: center;">
-        <h2  style="color: blue; font-size: 35px; text-align: center;">Porte Logiche</h2>
+        <h2  >Porte Logiche</h2>
         <img src="../public/ARCH/portelogiche.png"> 
-        <h2  style="color: blue; font-size: 35px; text-align: center;">Proprietà Logiche</h2>
+        <h2  >Proprietà Logiche</h2>
         <div style="font-size: 25px;">
             <b>Dualità</b>: si ottiene lo stesso risultato negando le costanti (0 o 1) e cambiando AND con OR
             <br>
         </div>
         <img src="../public/ARCH/propretalogiche.png" style="height: 350px;">
     </div>
-    <br><hr><br>
+    
     <div class="textContent" id="Codifica">
-        <h2  style="color: blue; font-size: 35px; text-align: center;">Codifica dei DATI</h2>
+        <h2  >Codifica dei DATI</h2>
         <p style="text-align: center; font-size: 25px;">
         Un PC deve essere in grado di codificare opportunamente qualsiasi tipo di dato:
         </p>
@@ -321,7 +218,7 @@
             </ul>
         </div>
         <div id="CodificaNumeri" >
-            <h2  style="color: blue; font-size: 35px; text-align: center;">Codifica dei NUMERI</h2>
+            <h2  >Codifica dei NUMERI</h2>
             
             
             <ul style="text-align: left;">
@@ -380,7 +277,7 @@
             </ul>
         </div>
         <div id="CodificaChar">
-            <h2  style="color: blue; font-size: 35px; text-align: center;">Codifica dei CARATTERI</h2>
+            <h2  >Codifica dei CARATTERI</h2>
             Un carattere è un <b>elemento singolo</b> di una <b>stringa di testo</b><br>
             <div id="navCode">
                 <ul>
@@ -447,7 +344,7 @@
             
         </div>
         <div id="CorrezioneErrori">
-            <h2  style="color: blue; font-size: 35px; text-align: center;">Codici Correzione Errori</h2>
+            <h2  >Codici Correzione Errori</h2>
             <ul>
                 <li><b>Codice di Parità</b> (PARI o DISPARI) <br>
                     <img src="../public/ARCH/codiceparità.jpg"> <br>
@@ -474,7 +371,12 @@
         let textContents = document.getElementsByClassName("textContent")
         function showContent(index){
             console.log(index)
-            textContents[index].style.display = "block"
+            textContents[index].style.display = "inline-block"
+        }
+        function hideContent(){
+            for (let index = 0; index < textContents.length; index++) {
+                textContents[index].style.display = "none"
+            }
         }
         let dropindexes = document.getElementsByClassName("indexdrop")
         let buttons = document.getElementsByClassName("fas fa-angle-down")

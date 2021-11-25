@@ -1,5 +1,9 @@
 @charset "UTF-8";
 /*PROPRIETà VARIABILI IN BASE ALLA PAGINA SELEZIONATA*/
+body {
+  height: 100%;
+}
+
 .title {
   color: red;
   text-align: center;
@@ -30,7 +34,6 @@
   margin-left: 25px;
   border-radius: 50%;
   padding: 5px;
-  vertical-align: middle;
   font-size: 20px;
 }
 .title .homebutton i {
@@ -72,7 +75,7 @@
 }
 
 .navtable {
-  margin-top: 50px;
+  margin: 50px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -103,8 +106,8 @@
   color: #070707;
 }
 .navtable .linkcell .container .primarylink .linkimg, .navtable .CFU6 .container .primarylink .linkimg, .navtable .CFU12 .container .primarylink .linkimg {
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
   vertical-align: middle;
 }
 .navtable .linkcell .container i, .navtable .CFU6 .container i, .navtable .CFU12 .container i {
@@ -125,28 +128,24 @@
   list-style: none;
   width: 90%;
   display: none;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
-  margin: 0;
-  padding: 0;
 }
-.navtable .linkcell .indexdrop li, .navtable .CFU6 .indexdrop li, .navtable .CFU12 .indexdrop li {
-  margin: 0;
-  padding: 0;
-  display: inline-block;
-  flex: 1 1 33%;
+.navtable .linkcell .indexdrop a, .navtable .CFU6 .indexdrop a, .navtable .CFU12 .indexdrop a {
   border: 1px solid black;
   background: #6181f2;
   background: radial-gradient(circle, #6181f2 0%, #a5bcfa 50%, #0bf1f2 100%);
   border-radius: 15px;
-  width: 80px;
-  height: 30px;
-  align-items: center;
+  display: flex;
+  flex: 1 0 33%;
   justify-content: center;
-}
-.navtable .linkcell .indexdrop a, .navtable .CFU6 .indexdrop a, .navtable .CFU12 .indexdrop a {
   color: white;
   text-decoration: none;
+}
+.navtable .linkcell .indexdrop a img, .navtable .CFU6 .indexdrop a img, .navtable .CFU12 .indexdrop a img {
+  height: 50px;
+  width: 50px;
+  vertical-align: middle;
 }
 .navtable .linkcell .indexdrop a:visited, .navtable .CFU6 .indexdrop a:visited, .navtable .CFU12 .indexdrop a:visited {
   color: white;
@@ -159,13 +158,14 @@
   color: white;
 }
 .navtable .linkcell:hover {
-  height: 150px;
+  margin-bottom: 20px;
+  height: 190px;
 }
 
 @media (max-width: 768px) {
   .title {
     padding: 10px;
-    font-size: 20px;
+    font-size: 30px;
   }
   .title .homebutton {
     display: inline;

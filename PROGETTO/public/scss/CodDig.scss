@@ -1,0 +1,181 @@
+body{
+    background: rgb(45,253,244);
+    background: linear-gradient(0deg, rgba(45,253,244,1) 0%, rgba(34,195,69,1) 100%);
+    background-size: auto;
+    height: 100%;
+}
+
+.navbar {
+    background-color: red;
+    border-radius: 30px;
+    position: sticky;
+    top: 0px;
+    text-align: center;
+    width: 100px;
+    display: flex;
+    margin: 0 auto;  /*mette in centro la NAVBAR*/
+    justify-content: center;
+    display: block;
+    #navlogo{
+        font-size: 35px;
+        display: block;
+        color: black;
+        padding: 10px;
+    }
+    #index{
+        display: none;   /*FLEX all'HOVER di navbar*/
+        justify-content: space-evenly;
+        font-size: 35px;
+        list-style: none;
+        align-items: center;
+        a{
+            display: flex;
+            color: blue;
+            margin: 10px;
+            padding: 5px;
+            border-radius: 20px;
+            text-decoration: none;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(51, 255, 0);
+            
+        }
+        a:visited {
+            color: blue;
+        }
+
+        .drop{
+            display: none;
+        }
+        .hideAll{
+            background-color: red;
+            border-radius: 30px;
+        } 
+        button{
+            height: 50px;
+        }
+    }
+}
+.navbar:hover {
+    background-color: transparent;
+    display: flex;
+    position: sticky;
+    top: 0px;
+    width: 100%;
+    justify-content: space-evenly;
+    #index{
+        display: flex;
+    }
+    #navlogo{
+        display: none;         // NASCONDE IL NAVBAR LOGO
+    }
+}
+
+
+.textContent {
+    display: none;
+    width: 100%;
+    
+    h2{
+        color: blue; font-size: 40px; text-align: center;
+
+    }
+    #AnVSDig{
+        width: 100%;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        flex: 1 0 50%;
+        ul{
+            text-align: left;
+            font-size: 20px;
+        }
+        img{
+            height: 300px; width: 450px;
+        }
+    }
+}
+
+
+
+
+
+
+@media (max-width: 900px){
+    .navbar #index {
+        flex-wrap: wrap;
+        a{
+            font-size:20px;
+        }
+        button{
+            height: 30px;
+        }
+    }
+    .textContent {
+        display: none;
+        width: 100%;
+        position: relative;
+        
+        h2{
+            color: blue; font-size: 40px; text-align: center;
+        }
+        #AnVSDig{ 
+            width: 100%;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            flex: 1 0 50%;
+            ul{
+                text-align: left;
+                font-size: 20px;
+            }
+            img{
+                height: 100px; width: 150px;
+            }
+        }
+    }
+    
+
+}
+
+@media (max-width: 450px) {
+    body{
+        font-size: 20px;
+    }
+    .navbar #index {
+        flex-wrap: wrap;
+        a{
+            font-size:10px;
+        }
+        button{
+            height: 20px;
+        }
+    }
+    
+    .textContent {
+        display: none;
+        width: 100%;
+        position: relative;
+        
+        h2{
+            color: blue; font-size: 40px; text-align: center;
+        }
+        #AnVSDig{ 
+            width: 100%;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            flex: 1 0 50%;
+            ul{
+                text-align: left;
+                font-size: 20px;
+            }
+            img{
+                height: 60px; width: 90px;
+            }
+        }
+    }
+}
