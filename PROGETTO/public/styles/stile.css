@@ -75,8 +75,10 @@
   margin-top: 50px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .navtable .linkcell, .navtable .CFU6, .navtable .CFU12 {
+  align-content: center;
   margin: 10px 0;
   height: 100px;
   border-radius: 30px;
@@ -95,15 +97,15 @@
   border-radius: 25px;
   background-color: rgba(255, 255, 255, 0.2);
 }
-.navtable .linkcell .container .linkimg, .navtable .CFU6 .container .linkimg, .navtable .CFU12 .container .linkimg {
-  width: 50px;
-  height: 50px;
-  vertical-align: middle;
-}
 .navtable .linkcell .container .primarylink, .navtable .CFU6 .container .primarylink, .navtable .CFU12 .container .primarylink {
   padding: 10px;
   text-decoration: none;
   color: #070707;
+}
+.navtable .linkcell .container .primarylink .linkimg, .navtable .CFU6 .container .primarylink .linkimg, .navtable .CFU12 .container .primarylink .linkimg {
+  width: 50px;
+  height: 50px;
+  vertical-align: middle;
 }
 .navtable .linkcell .container i, .navtable .CFU6 .container i, .navtable .CFU12 .container i {
   margin-left: 2%;

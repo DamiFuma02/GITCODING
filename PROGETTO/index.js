@@ -7,7 +7,7 @@ var path = require("path");
 const app = express();
 const server = require("http").createServer(app)
 PORT = process.env.PORT || 5000
-ip = "192.168.1.63"
+ip = "localhost"
 server.listen(PORT, ip, 1, function listener() {
     console.log(`SERVER IN ASCOLTO -> ${ip} : ${PORT}`)
 });

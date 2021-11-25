@@ -80,8 +80,10 @@
     margin-top:50px;
     display: flex;
     flex-wrap: wrap;
-    
+    justify-content: center;
+
     .linkcell, .CFU6, .CFU12 {
+        align-content: center;  
         margin: 10px 0;
         height: 100px;
         border-radius: 30px;
@@ -98,15 +100,17 @@
             border: 1px solid white;
             border-radius: 25px;
             background-color: rgba(255, 255, 255, 0.2);
-            .linkimg{
-                width: 50px; height: 50px;
-                vertical-align: middle;
-            }
+            
     
             .primarylink{
                 padding: 10px;
                 text-decoration: none;
                 color: rgb(7, 7, 7);
+                .linkimg{
+                    width: 50px; height: 50px;
+                    vertical-align: middle;
+                }
+                
             }
             i{
                 margin-left: 2%;
@@ -122,6 +126,7 @@
                 color: black;
 
             }
+            
         }
         .indexdrop {
             text-align: center;
