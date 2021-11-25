@@ -1,0 +1,193 @@
+@charset "UTF-8";
+/*PROPRIETà VARIABILI IN BASE ALLA PAGINA SELEZIONATA*/
+.title {
+  color: red;
+  text-align: center;
+  font-size: 50px;
+  width: 95%;
+  border: 3px solid white;
+  border-radius: 50px;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  margin-bottom: 30px;
+}
+.title i {
+  color: black;
+}
+.title #pagelogo {
+  margin-right: 15px;
+}
+.title .homebutton {
+  height: 60px;
+  width: 60px;
+  text-align: center;
+  display: inline-block;
+  height: 70px;
+  width: 70px;
+  border: 1px solid white;
+  margin-left: 25px;
+  border-radius: 50%;
+  padding: 5px;
+  vertical-align: middle;
+  font-size: 20px;
+}
+.title .homebutton i {
+  font-size: 35px;
+  color: black;
+}
+.title .homebutton:hover {
+  transform: scale(1.2);
+  background-color: red;
+}
+
+.pdflink {
+  font-size: 35px;
+  text-align: center;
+  margin: 50px;
+}
+.pdflink a {
+  color: #1900ff;
+  background-color: #ff00c8;
+  text-align: center;
+  border: 2px dashed black;
+  border-radius: 30px;
+  padding: 15px;
+  text-decoration: none;
+}
+.pdflink i {
+  color: black;
+}
+.pdflink a:hover {
+  background-color: #0011ff;
+  color: white;
+}
+.pdflink a:hover i {
+  color: white;
+}
+.pdflink i:hover {
+  transform: scale(1.4);
+  margin: 20px;
+}
+
+.navtable {
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.navtable .linkcell, .navtable .CFU6, .navtable .CFU12 {
+  align-content: center;
+  margin: 10px 0;
+  height: 100px;
+  border-radius: 30px;
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+  color: white;
+  flex: 1 1 50%;
+  min-width: 200px;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+.navtable .linkcell .container, .navtable .CFU6 .container, .navtable .CFU12 .container {
+  border: 1px solid white;
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.navtable .linkcell .container .primarylink, .navtable .CFU6 .container .primarylink, .navtable .CFU12 .container .primarylink {
+  padding: 10px;
+  text-decoration: none;
+  color: #070707;
+}
+.navtable .linkcell .container .primarylink .linkimg, .navtable .CFU6 .container .primarylink .linkimg, .navtable .CFU12 .container .primarylink .linkimg {
+  width: 50px;
+  height: 50px;
+  vertical-align: middle;
+}
+.navtable .linkcell .container i, .navtable .CFU6 .container i, .navtable .CFU12 .container i {
+  margin-left: 2%;
+  padding: 0px 2%;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: chartreuse;
+  display: inline;
+}
+.navtable .linkcell .container i:hover, .navtable .CFU6 .container i:hover, .navtable .CFU12 .container i:hover {
+  transform: scale(1.5);
+  background-color: #f1f2f7;
+  color: black;
+}
+.navtable .linkcell .indexdrop, .navtable .CFU6 .indexdrop, .navtable .CFU12 .indexdrop {
+  text-align: center;
+  list-style: none;
+  width: 90%;
+  display: none;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+}
+.navtable .linkcell .indexdrop li, .navtable .CFU6 .indexdrop li, .navtable .CFU12 .indexdrop li {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  flex: 1 1 33%;
+  border: 1px solid black;
+  background-color: blue;
+  border-radius: 15px;
+  width: 80px;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+}
+.navtable .linkcell .indexdrop a, .navtable .CFU6 .indexdrop a, .navtable .CFU12 .indexdrop a {
+  color: white;
+  text-decoration: none;
+}
+.navtable .linkcell .indexdrop a:visited, .navtable .CFU6 .indexdrop a:visited, .navtable .CFU12 .indexdrop a:visited {
+  color: white;
+}
+.navtable .linkcell .indexdrop a:link, .navtable .CFU6 .indexdrop a:link, .navtable .CFU12 .indexdrop a:link {
+  color: white;
+}
+.navtable .linkcell .indexdrop abbr, .navtable .CFU6 .indexdrop abbr, .navtable .CFU12 .indexdrop abbr {
+  text-decoration: none;
+  color: white;
+}
+.navtable .linkcell:hover {
+  height: 150px;
+}
+
+@media (max-width: 768px) {
+  .title {
+    padding: 10px;
+    font-size: 20px;
+  }
+  .title .homebutton {
+    display: inline;
+    height: 20px;
+    width: 20px;
+    margin: 0 10px;
+  }
+  .title .homebutton i {
+    font-size: 20px;
+  }
+  .title .homebutton span {
+    display: none;
+  }
+
+  .pdflink {
+    font-size: 20px;
+    text-align: center;
+    margin: 30px;
+  }
+
+  .navtable .linkcell {
+    font-size: 20px;
+  }
+}
+
+/*# sourceMappingURL=stile.css.map */

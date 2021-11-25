@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARCHITETTURA</title>
+    
+    <link rel="stylesheet" href="/css/stile.css">
+    <style> 
+        body {
+            /* background-image: url(/img/architettura-degli-elaboratori.jpeg); background-size: 100%; background-repeat: no-repeat; */
+            background: rgb(97,129,242);
+                background: radial-gradient(circle, rgba(97,129,242,1) 0%, rgba(165,188,250,1) 50%, rgba(11,241,242,1) 100%);
+        }
+        
+    </style>
+    
+</head>
+<body >
+    <div class="title">
+        <i id="pagelogo"  class="fas fa-cogs"></i>ARCHITETTURA degli ELABORATORI<a href="/"><div class="homebutton"><i class="fas fa-home"></i><span>HOME</span></div></a>
+    </div>
+    
+    <div class="pdflink">
+        <a href="/archElab/pdf"><abbr style="text-decoration: none; " title="APRI APPUNTI IN FORMATO PDF">APPUNTI</abbr>  
+            <i  class="far fa-file-pdf"></i>
+        </a>
+    </div>
+
+    <hr>
+
+
+    <!-- modificare la tabella inj un DIV grid o FLEXBOX -->
+    <div class="navtable">
+        <div class="linkcell" onmouseleave="dropindex(0, false)">
+            <div class="container">
+                <a class="primarylink" href="/archElab/Storia"><img class="linkimg" src="img/ARCH/storialogo.png" > - STORIA</a><i onclick="dropindex (0, true)" class="fas fa-angle-down"></i>
+            </div>
+                <ul class="indexdrop">
+                    <li><a href="./Architettura/Storia.html#GEN0">GEN 0</a></li>
+                    <li><a href="./Architettura/Storia.html#GEN1">GEN 1</a></li>
+                    <li><a href="./Architettura/Storia.html#GEN2">GEN 2</a></li>
+                </ul>
+        </div>
+        <div class="linkcell" onmouseleave="dropindex(1, false)">
+            <div class="container">
+                <a class="primarylink" href="/archElab/CodDig"><img class="linkimg" src="img/ARCH/calcolatrice.png" > - Codifica Dati</a><i onclick="dropindex (1, true)" class="fas fa-angle-down"></i>
+            </div>
+                
+                <ul class="indexdrop" >
+                    <li><a href="./Architettura/Codifica_Digitale.html#SegnaliInfo"><abbr title="Segnali Informativi">S.INF</abbr> </a> </li>
+                    <li><a href="./Architettura/Codifica_Digitale.html#ADC"><abbr title="Digitalizzazione">ADC</abbr></a></li>
+                    <li><a href="./Architettura/Codifica_Digitale.html#SND"><abbr title="Sistema Numerico Digitale">SND</abbr></a></li>
+                    <li><a href="./Architettura/Codifica_Digitale.html#Bool"><abbr title="Algebra Booleana">BOOL</abbr></a></li>
+                    <li><a href="./Architettura/Codifica_Digitale.html#Codifica"><abbr title="Codifica dei DATI">DATA</abbr></a></li>
+                </ul>
+        </div>
+        <div class="linkcell" onmouseleave="dropindex(2, false)">
+            <div class="container">
+                <a class="primarylink" href="/archElab/Circuiti"><img class="linkimg" src="img/ARCH/chiplogo.png" > - Circuiti Logici</a><i onclick="dropindex (2, true)" class="fas fa-angle-down"></i>
+            </div>
+                <ul class="indexdrop">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+        </div>
+        <div class="linkcell" onmouseleave="dropindex(3, false)">
+            <div class="container">
+                <a class="primarylink" href="/archElab/Struct"><img class="linkimg" src="img/ARCH/pclogo.png" > -  Architettura</a><i onclick="dropindex (3, true)" class="fas fa-angle-down"></i>
+            </div>
+                <ul class="indexdrop">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+        </div>
+        <div class="linkcell" onmouseleave="dropindex(4, false)">
+            <div class="container">
+                <a class="primarylink" href="/archElab/CPU"><img class="linkimg" src="img/ARCH/cpulogo.png" > - Architettura CPU</a><i onclick="dropindex (4, true)" class="fas fa-angle-down"></i>
+            </div>
+                <ul class="indexdrop">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+        </div>
+        <div class="linkcell" onmouseleave="dropindex(5, false)">
+            <div class="container">
+                <a class="primarylink" href="/archElab/BUS"><img class="linkimg" src="img/ARCH/BUS.png" > - BUS INTERNI</a><i onclick="dropindex (5, true)" class="fas fa-angle-down"></i>
+            </div>
+                <ul class="indexdrop">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+        </div>
+        <div class="linkcell" onmouseleave="dropindex(6, false)">
+            <div class="container">
+                <a class="primarylink" href="/archElab/Memoria"><img class="linkimg" src="img/ARCH/memoria.png" > - Memoria</a><i onclick="dropindex (6, true)" class="fas fa-angle-down"></i>
+            </div>
+                <ul class="indexdrop">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+        </div>
+        <div class="linkcell" onmouseleave="dropindex(7, false)">
+            <div class="container">
+                <a class="primarylink"  href="/archElab/Multi"><img src="/img/ARCH/Multi_Diagram.png" class="linkimg"> - Multithread, Multiprocessi</a><i onclick="dropindex (7, true)" class="fas fa-angle-down"></i>
+            </div>
+                <ul class="indexdrop">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+        </div>
+    </div>
+    
+
+    
+    
+    <script src="https://kit.fontawesome.com/93e39226bb.js" crossorigin="anonymous"></script>
+</body>
+<script>
+    let dropindexes = document.getElementsByClassName("indexdrop")
+    let buttons = document.getElementsByClassName("fas fa-angle-down")
+    function dropindex (index, flag) {
+        if (flag) dropindexes[index].style.display = "flex"
+        else dropindexes[index].style.display = "none"
+        console.log(index)
+        
+    }
+    
+</script>
+</html>
