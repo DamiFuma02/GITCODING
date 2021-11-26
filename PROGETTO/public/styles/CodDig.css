@@ -6,21 +6,26 @@ body {
 }
 
 .navbar {
-  background-color: red;
+  z-index: 1000;
+  background-color: transparent;
   border-radius: 30px;
   position: sticky;
   top: 0px;
   text-align: center;
-  width: 100px;
+  width: 100%;
   display: flex;
   margin: 0 auto;
   /*mette in centro la NAVBAR*/
   justify-content: center;
-  display: block;
 }
-.navbar #navlogo {
+.navbar button {
+  background-color: red;
+  border-radius: 30px;
+  height: 60px;
+}
+.navbar button #navlogo {
   font-size: 35px;
-  display: block;
+  display: inline;
   color: black;
   padding: 10px;
 }
@@ -28,7 +33,7 @@ body {
   display: none;
   /*FLEX all'HOVER di navbar*/
   justify-content: space-evenly;
-  font-size: 35px;
+  font-size: 25px;
   list-style: none;
   align-items: center;
 }
@@ -53,24 +58,6 @@ body {
   background-color: red;
   border-radius: 30px;
 }
-.navbar #index button {
-  height: 50px;
-}
-
-.navbar:hover {
-  background-color: transparent;
-  display: flex;
-  position: sticky;
-  top: 0px;
-  width: 100%;
-  justify-content: space-evenly;
-}
-.navbar:hover #index {
-  display: flex;
-}
-.navbar:hover #navlogo {
-  display: none;
-}
 
 .textContent {
   display: none;
@@ -78,22 +65,26 @@ body {
 }
 .textContent h2 {
   color: blue;
-  font-size: 40px;
+  font-size: 30px;
   text-align: center;
 }
-.textContent #AnVSDig {
+.textContent figure {
+  text-align: center;
+}
+.textContent .content {
   width: 100%;
   text-align: center;
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   flex: 1 0 50%;
 }
-.textContent #AnVSDig ul {
+.textContent .content ul {
   text-align: left;
   font-size: 20px;
 }
-.textContent #AnVSDig img {
+.textContent .content img {
   height: 300px;
   width: 450px;
 }
@@ -112,14 +103,13 @@ body {
   .textContent {
     display: none;
     width: 100%;
-    position: relative;
   }
   .textContent h2 {
     color: blue;
     font-size: 40px;
     text-align: center;
   }
-  .textContent #AnVSDig {
+  .textContent .content {
     width: 100%;
     text-align: center;
     display: flex;
@@ -127,11 +117,11 @@ body {
     flex-wrap: wrap;
     flex: 1 0 50%;
   }
-  .textContent #AnVSDig ul {
+  .textContent .content ul {
     text-align: left;
     font-size: 20px;
   }
-  .textContent #AnVSDig img {
+  .textContent .content img {
     height: 100px;
     width: 150px;
   }
@@ -139,6 +129,9 @@ body {
 @media (max-width: 450px) {
   body {
     font-size: 20px;
+  }
+  body h1 {
+    font-size: 25px;
   }
 
   .navbar #index {
@@ -158,10 +151,10 @@ body {
   }
   .textContent h2 {
     color: blue;
-    font-size: 40px;
+    font-size: 30px;
     text-align: center;
   }
-  .textContent #AnVSDig {
+  .textContent .content {
     width: 100%;
     text-align: center;
     display: flex;
@@ -169,13 +162,9 @@ body {
     flex-wrap: wrap;
     flex: 1 0 50%;
   }
-  .textContent #AnVSDig ul {
+  .textContent .content ul {
     text-align: left;
-    font-size: 20px;
-  }
-  .textContent #AnVSDig img {
-    height: 60px;
-    width: 90px;
+    font-size: 15px;
   }
 }
 
