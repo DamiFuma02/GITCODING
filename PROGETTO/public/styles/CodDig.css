@@ -1,7 +1,7 @@
 body {
   background: #2dfdf4;
   background: linear-gradient(0deg, #2dfdf4 0%, #22c345 100%);
-  background-size: auto;
+  background-size: 100% 100%;
   height: 100%;
 }
 
@@ -87,6 +87,21 @@ body {
 .textContent .content img {
   height: 300px;
   width: 450px;
+}
+.textContent .content .convert {
+  background-color: aqua;
+  width: 100%;
+  border-radius: 50px;
+  justify-content: center;
+  align-items: center;
+}
+.textContent .content .convert input, .textContent .content .convert button {
+  height: 30px;
+  border-radius: 15px;
+}
+.textContent .content .convert button {
+  background-color: #1ac21a;
+  min-width: 180px;
 }
 
 @media (max-width: 900px) {

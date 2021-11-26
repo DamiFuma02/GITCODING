@@ -19,7 +19,7 @@
     <div class="navtable">
         <div class="linkcell" onmouseleave="dropindex(0, false)"">
             <div class="container">
-                <a onclick="showContent(0)" class="primarylink" href="#Digit"><img class="linkimg" src="/img/ARCH/digitalizzazione.jpg"  >Digitalizzazione</a><i onclick="dropindex (0, true)" class="fas fa-angle-down"></i>
+                <a onclick="showContent(0)" class="primarylink" href="#Digit"><img class="linkimg" src="/img/ARCH/digitalizzazione.jpg"  >Digitalizzazione</a><span class="dropButton"><i onclick="dropindex (0, true)" class="fas fa-angle-down"></i></span>
             </div>
             <ul class="indexdrop">
                 <li><a href="#AnVSDig"><img src="/img/ARCH/segnali.png" alt=""> SEGNALI</a></li>
@@ -28,7 +28,7 @@
         </div>
         <div class="linkcell" onmouseleave=`dropindex(1, false)`>
             <div class="container">
-                <a onclick="showContent(1)" class="primarylink" href="#SND"><img class="linkimg" src="/img/ARCH/sistemabinario.jpg" >Sistema Binario</a><i onclick="dropindex (1, true)" class="fas fa-angle-down"></i>
+                <a onclick="showContent(1)" class="primarylink" href="#SND"><img class="linkimg" src="/img/ARCH/sistemabinario.jpg" >Sistema Binario</a><span class="dropButton"><i onclick="dropindex (1, true)" class="fas fa-angle-down"></i></span>
             </div>
             <ul class="indexdrop">
                 <li></li>
@@ -36,7 +36,7 @@
         </div>
         <div class="linkcell" onmouseleave=`dropindex(2, false)`>
             <div class="container">
-                <a onclick="showContent(2)" class="primarylink" href="#Bool"><img class="linkimg" src="/img/ARCH/bool.png" >Algebra Booleana</a><i onclick="dropindex (2, true)" class="fas fa-angle-down"></i>
+                <a onclick="showContent(2)" class="primarylink" href="#Bool"><img class="linkimg" src="/img/ARCH/bool.png" >Algebra Booleana</a><span class="dropButton"><i onclick="dropindex (2, true)" class="fas fa-angle-down"></i></span>
             </div>
             <ul class="indexdrop">
                 <li></li>
@@ -44,7 +44,7 @@
         </div>
         <div class="linkcell" onmouseleave=`dropindex(3, false)`>
             <div class="container">
-                <a onclick="showContent(3)" class="primarylink" href="#Codifica"><img class="linkimg" src="/img/ARCH/codificaDigitale.png" >Codifica DATI</a><i onclick="dropindex (3, true)" class="fas fa-angle-down"></i>
+                <a onclick="showContent(3)" class="primarylink" href="#Codifica"><img class="linkimg" src="/img/ARCH/codificaDigitale.png" >Codifica DATI</a><span class="dropButton"><i onclick="dropindex (3, true)" class="fas fa-angle-down"></i></span>
             </div>
             <ul class="indexdrop">
                 <li></li>
@@ -74,7 +74,6 @@
 </nav>
 
 <br><hr><br>
-
 
 
 <div id="Digit" class="textContent">
@@ -126,7 +125,16 @@
             </figcaption>
         </figure>
     </div>
-    
+    <div class="content">
+        <div  class="convert">
+            <h1>CONVERTITORE DI BASI</h1>
+            <input placeholder="Numero da convertire" type="number" name="Number" id="number">
+            <input placeholder="Base Partenza (2-16)" type="number" name="StartBase" id="startBase">
+            <input placeholder="Base Arrivo (2-16)" type="number" name="toBase" id="toBase">
+            <button id="convertButton">CONVERTI</button>
+            <input placeholder="Risultato" type="number" name="Result" id="Result">  
+        </div>
+    </div>
     <h2>Conversione di base numerica</h2>
     <div class="content">
         <div id="base10-2">
@@ -184,16 +192,6 @@
                     </ul>
                 </figcaption>
             </figure>
-        </div>
-    </div>
-    <div class="content">
-        <h1>CONVERTITORE DI BASI</h1>
-        <div class="convert">
-            <input placeholder="Numero da convertire" type="number" name="" id="Start">
-            <input placeholder="Base Partenza" type="number" name="" id="StartBase">
-            <input placeholder="Base Arrivo" type="number" name="" id="CalcBase">
-            <input placeholder="Risultato" type="number" name="" id="Result">
-            
         </div>
     </div>
     <br><hr><br>
@@ -409,6 +407,7 @@
     
     let dropindexes = document.getElementsByClassName("indexdrop")
     let buttons = document.getElementsByClassName("fas fa-angle-down")
+    
     function dropindex (index, flag) {
         if (flag) dropindexes[index].style.display = "flex"
         else dropindexes[index].style.display = "none"
@@ -418,10 +417,48 @@
     
     //CONVERTITORE DI BASE
     let convert = document.getElementsByClassName("convert")[0]
-    let inputs = convert.children  //array contenete tutti gli input
-    console.log(inputs[0].value)
     
+
+
+
     
+    function checkBases() {
+        if(startBase > 16 || startBase <2) {
+            document.getElementById("startBase").value = ""
+            document.getElementById("startBase").placeholder ="Base NON VALIDA"
+            return false;
+        } else if (toBase > 16 || toBase <2) {
+            document.getElementById("toBase").value = ""
+            document.getElementById("toBase").placeholder ="Base NON VALIDA"
+            return false;
+        }
+        //se le basi sono corrette ritorna TRUE
+        return true;
+
+    }
+
+    let invio = document.getElementById("convertButton")
+    invio.addEventListener("click",()=> {
+        //CONVERSIONE NUMERICA
+        let number = Number(document.getElementById("number").value)
+        let startBase = Number(document.getElementById("startBase").value)
+        let toBase = Number(document.getElementById("toBase").value)
+        //i dati inseriti vengono salvati in formato numero, invece che stringa
+        if (checkBases()){
+            //INIZIO CONVERSIONE
+            if (startBase == 10){
+                //conversione con divisione per la toBase
+            }
+            //controllare se la base è POTENZA DI 2
+            if (toBase == 10) {
+                //si usa il sistema di accumulo ricorsivo 
+                // Risultato =  NuovaCifra + toBase*Risultato_PREC
+            }
+            //controllo se è POTENZA DI 2
+            //ALTRIMENTI startBase -> 10 -> toBase
+        }
+        //CONVERSIONE NON EFFETTUATA
+    })
     
     
     // <!--

@@ -110,7 +110,7 @@ body {
   height: 70px;
   vertical-align: middle;
 }
-.navtable .linkcell .container i, .navtable .CFU6 .container i, .navtable .CFU12 .container i {
+.navtable .linkcell .container .dropButton, .navtable .CFU6 .container .dropButton, .navtable .CFU12 .container .dropButton {
   margin-left: 2%;
   padding: 0px 2%;
   border: 1px solid black;
@@ -118,7 +118,7 @@ body {
   background-color: chartreuse;
   display: inline;
 }
-.navtable .linkcell .container i:hover, .navtable .CFU6 .container i:hover, .navtable .CFU12 .container i:hover {
+.navtable .linkcell .container .dropButton:hover, .navtable .CFU6 .container .dropButton:hover, .navtable .CFU12 .container .dropButton:hover {
   transform: scale(1.5);
   background-color: #f1f2f7;
   color: black;
