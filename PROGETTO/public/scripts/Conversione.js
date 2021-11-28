@@ -42,22 +42,24 @@
     
     
     //CONVERTITORE DI BASE
+
+    function doLog(base, argomento) {
+        //= logbase (argomento)
+        return Math.log10(argomento) / Math.log10(base)
+    }
+
     
     function checkBases(startBase,toBase) {
         //controlla il range della basi inserite
-        if(startBase > 16 || startBase <2) {
+        if((startBase > 16 || startBase <2) || (toBase > 16 || toBase <2 || (toBase<16 && toBase>10)) ){
             document.getElementById("startBase").value = ""
             document.getElementById("startBase").placeholder ="Base NON VALIDA -> (2-16)"
-            if (toBase > 16 || toBase <2 || (toBase<16 && toBase>10)) {
-                document.getElementById("toBase").value = ""
-                document.getElementById("toBase").placeholder ="Base NON VALIDA -> (2-16)"
-                return false;
-            }
+            document.getElementById("toBase").value = ""
+            document.getElementById("toBase").placeholder ="Base NON VALIDA -> (2-16)"
             return false;
         }
         
         //se le basi sono corrette ritorna TRUE
-        console.log("OK")
         return true;
 
     }
@@ -67,7 +69,7 @@
     function parteIntera(string) {
         //RESTITUISCE LE CIFRE A SX DEL "."
         let k = (string.length - 1)
-        if (string.slice(k) == ".") {
+        if (string[k] == ".") {
             return string.substring(0, k)
         } else {
             //toglie l'ultimo carattere della stringa
@@ -173,10 +175,49 @@
         }
     }
 
+    function convPOW(x, tobase, number) {
+        //x = numero di caratteri che la stringa fromBase10() deve avere 
+        
+        let k = number.length
+        if (k==0){
+            let zeroString = "0000000"   //da questa stringa si prendono x 0 e si aggiungono al converted
+            let converted = fromBase10(toBase, number) //STRINGA
+            if (converted.length < x){
+                //si aggiungono x 0 prima della converted
+                return zeroString.substring(0, (x-converted.length)) + converted;
+            }
+            return converted;
+                
+        } else {
+            let zeroString = "0000000"   //da questa stringa si prendono x 0 e si aggiungono al converted
+            let converted = fromBase10(tobase, number[0]) //STRINGA
+            if (converted.length < x) {
+                return zeroString.substring(0, (x-converted.length)) + converted + convPOW(tobase, number.substring(1));
+            }
+            return (
+                fromBase10(tobase, number[0])   //converte il numero in toBase
+                + convPOW(tobase, number.substring(1))   //toglie il primo carattere, coonvertito sopra             
+            )
+        }
+    }
+
+    function numberValidation(number, startBase) {
+        //number == STRINGA
+        for (let index = 0; index < number.length; index++) {
+            //controllo se il numero contiene cifre non valide per la base espressa
+            if ( parseInt(number[index]) >= startBase) {
+                //NUMERO NON VALIDO 
+                return false;
+            }
+        }
+        //se il ciclo finisce vuol dire che il numero inserito è valido
+        return true;
+    }
 
     //funzione che effettua il controllo delle basi 
     //e chiama la funzione conversione corretta
     function convert(startBase, toBase, number) {
+        
         if (number.includes(".")) {
             //se è un numero con la virgola si prelevano le due parti
             //separate e si uniscono
@@ -200,11 +241,41 @@
                 return ( toBase10(startBase, (parteIntera(number)+ parteDec(number)))  / (Math.pow(startBase, parteDec(number).length)) )
             }
 
+            //controllare se le due basi sono una potenza dell'altra
+            if (doLog(startBase, toBase) == Math.floor(doLog(startBase, toBase))) {
+                //toBase = startBase ^ x
+                //1 tobase =>  x cifre di startBase 
+                let x = doLog(startBase, toBase);
+                return convPOW(x, toBase, number);
+
+            } //esegue anche il controllo al contrario
+            if (doLog(toBase ,startBase ) == Math.floor(doLog(toBase , startBase))) {
+                //startBase = toBase ^ x
+                //1 startBase =>  x cifre di toBase 
+                let x = doLog(toBase ,startBase );
+                return convPOW(x, toBase, number);
+            }
+
+
             //elimina la virgola dal numero
             number = "".concat(parteIntera(number), parteDec(number))
-        }
+        } else {
+
+            if (doLog(startBase, toBase) == Math.floor(doLog(startBase, toBase))) {
+                //toBase = startBase ^ x
+                //1 tobase =>  x cifre di startBase 
+                let x = doLog(startBase, toBase);
+                return convPOW(x, toBase, number);
+
+            } //esegue anche il controllo al contrario
+            if (doLog(toBase ,startBase ) == Math.floor(doLog(toBase , startBase))) {
+                //startBase = toBase ^ x
+                //1 startBase =>  x cifre di toBase 
+                let x = doLog(toBase ,startBase );
+                return convPOW(x, toBase, number);
+            }
+        
             
-       
             //CONVERSIONE NORMALE
             if (startBase == 10){
                 //conversione con divisione per toBase
@@ -221,6 +292,7 @@
         //controllare se la base è POTENZA DI 2
         //controllo se è POTENZA DI 2
         //ALTRIMENTI startBase -> 10 -> toBase
+        }
     }
 
     let inputs = document.querySelectorAll("input")
@@ -235,13 +307,28 @@
         //i dati inseriti vengono salvati in formato numero, invece che stringa
         
         if (checkBases(startBase, toBase )){
-            //BASI VALIDE -->  INIZIO CONVERSIONE 
-            //CONTROLLO SE NUMBER POSSIEDE IL "."
-            console.log(number + 1)
-            //number non ha la virgola perciò si effettua la conversione normale
-            result.value = convert(startBase, toBase, number).toString()
+            //BASI VALIDE 
+            //CONTROLLO SE NUMBER è VALIDO
+            if (numberValidation(number, startBase)) {
+                //NUMERO VALIDO
+                //INIZIO CONVERSIONE
+                result.value = convert(startBase, toBase, number).toString()
+            } else {
+                numberCell = document.getElementById("number")
+                numberCell.style.backgroundColor = "rgb(255, 136, 0)"
+                numberCell.placeholder = "Reinserisci il numero"
+                numberCell.value = ""
+                
+                alert("IL NUMERO INSERITO NON RIENTRA NELLA BASE")
+            }
             
-        } else {
+
+            //number non ha la virgola perciò si effettua la conversione normale
+            
+        } 
+        
+        else {
+            alert("BASI INSERITE NON VALIDE")
             result.style.backgroundColor = "rgb(255, 136, 0)"
             result.placeholder = "BASI NON VALIDE"
         }
