@@ -23,6 +23,7 @@ const indexRouter = require("./routes/indexrouter")
 const archRouter = require("./routes/archrouter")
 app.use("/", indexRouter); //DEFINISCE COME RISPONDERE A: IP/route
 app.use("/archElab", archRouter); //DEFINISCE COME RISPONDERE A: IP/account/route
+
 //vengono impostate le directory per il percorso indicato "/img, /css, /js"
 app.use("/img", express.static("public/images"))
 app.use("/css", express.static("public/styles"))

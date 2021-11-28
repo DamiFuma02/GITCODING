@@ -162,6 +162,68 @@ body {
   height: 190px;
 }
 
+.navbar {
+  z-index: 1000;
+  background-color: transparent;
+  border-radius: 30px;
+  position: sticky;
+  top: 0px;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  margin: 0 auto;
+  /*mette in centro la NAVBAR*/
+  justify-content: center;
+}
+.navbar #navButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+  border-radius: 30px;
+  height: 60px;
+  font-size: 30px;
+}
+.navbar #navButton #navlogo {
+  font-size: 35px;
+  display: inline;
+  color: black;
+  padding: 10px;
+}
+.navbar #index {
+  display: none;
+  /*FLEX all'HOVER di navbar*/
+  justify-content: space-evenly;
+  font-size: 25px;
+  list-style: none;
+  align-items: center;
+}
+.navbar #index a {
+  display: flex;
+  color: blue;
+  margin: 10px;
+  padding: 5px;
+  border-radius: 20px;
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+  background-color: #33ff00;
+}
+.navbar #index a:visited {
+  color: blue;
+}
+.navbar #index .drop {
+  display: none;
+}
+.navbar #index #hideAll, .navbar #index #hideNav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+  border-radius: 30px;
+  height: 30px;
+}
+
 @media (max-width: 768px) {
   .title {
     padding: 10px;

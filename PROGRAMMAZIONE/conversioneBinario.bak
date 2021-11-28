@@ -22,25 +22,12 @@
   (lambda (n base)
     (let ((resto (if (even? n) "0" "1")))
       (if (= n 1)
-          "1"
+          1
           (string-append
                 (from10 (quotient n base) base)
                 resto
           )
        )
     )
-  )
-)
-
-
-(define decFrom10
-  (lambda (n base)
-       (if (= n 0.5)
-           "1"      ;cifra del rest prec
-           (string-append
-                     ()
-                     (decFrom10 (quotient) ())
-            )
-        )
   )
 )

@@ -5,60 +5,7 @@ body{
     height:100%;
 }
 
-.navbar {
-    z-index: 1000;
-    background-color: transparent;
-    border-radius: 30px;
-    position: sticky;
-    top: 0px;
-    text-align: center;
-    width: 100%;
-    display: flex;
-    margin: 0 auto;  /*mette in centro la NAVBAR*/
-    justify-content: center;
-    button {
-        background-color: red;
-        border-radius: 30px;
-        height: 60px;
-        #navlogo{
-            font-size: 35px;
-            display: inline;
-            color: black;
-            padding: 10px;
-        }
-    }
-    
-    #index{
-        display: none;   /*FLEX all'HOVER di navbar*/
-        justify-content: space-evenly;
-        font-size: 25px;
-        list-style: none;
-        align-items: center;
-        a{
-            display: flex;
-            color: blue;
-            margin: 10px;
-            padding: 5px;
-            border-radius: 20px;
-            text-decoration: none;
-            justify-content: center;
-            align-items: center;
-            background-color: rgb(51, 255, 0);
-            
-        }
-        a:visited {
-            color: blue;
-        }
 
-        .drop{
-            display: none;
-        }
-        .hideAll{
-            background-color: red;
-            border-radius: 30px;
-        } 
-    }
-}
 
 // .navbar:hover {
 //     background-color: transparent;
@@ -104,9 +51,15 @@ body{
         .convert{
             background-color: aqua;
             width: 100%;
+            padding-bottom: 20px;
             border-radius: 50px;
             justify-content: center;
             align-items: center;
+            #chooseFormat{
+                display: none;
+                justify-content: center;
+                align-items: center;
+            }
             input, button{
                 height: 30px;
                 border-radius: 15px;
@@ -118,7 +71,6 @@ body{
         }
     }
 }
-
 
 
 

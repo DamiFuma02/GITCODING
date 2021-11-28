@@ -5,60 +5,6 @@ body {
   height: 100%;
 }
 
-.navbar {
-  z-index: 1000;
-  background-color: transparent;
-  border-radius: 30px;
-  position: sticky;
-  top: 0px;
-  text-align: center;
-  width: 100%;
-  display: flex;
-  margin: 0 auto;
-  /*mette in centro la NAVBAR*/
-  justify-content: center;
-}
-.navbar button {
-  background-color: red;
-  border-radius: 30px;
-  height: 60px;
-}
-.navbar button #navlogo {
-  font-size: 35px;
-  display: inline;
-  color: black;
-  padding: 10px;
-}
-.navbar #index {
-  display: none;
-  /*FLEX all'HOVER di navbar*/
-  justify-content: space-evenly;
-  font-size: 25px;
-  list-style: none;
-  align-items: center;
-}
-.navbar #index a {
-  display: flex;
-  color: blue;
-  margin: 10px;
-  padding: 5px;
-  border-radius: 20px;
-  text-decoration: none;
-  justify-content: center;
-  align-items: center;
-  background-color: #33ff00;
-}
-.navbar #index a:visited {
-  color: blue;
-}
-.navbar #index .drop {
-  display: none;
-}
-.navbar #index .hideAll {
-  background-color: red;
-  border-radius: 30px;
-}
-
 .textContent {
   display: none;
   width: 100%;
@@ -91,7 +37,13 @@ body {
 .textContent .content .convert {
   background-color: aqua;
   width: 100%;
+  padding-bottom: 20px;
   border-radius: 50px;
+  justify-content: center;
+  align-items: center;
+}
+.textContent .content .convert #chooseFormat {
+  display: none;
   justify-content: center;
   align-items: center;
 }
