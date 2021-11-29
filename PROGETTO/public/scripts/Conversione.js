@@ -104,6 +104,14 @@
         }
     }
 
+    function decToBase10(startBase, number, decLength){
+        //decLength = lunghezza parte decimale del numero da convertire 
+        //number è il numero totale senza VIRGOLA
+        return ( toBase10(startBase, number) 
+                    / (Math.pow(startBase, decLength)) 
+        )
+    }
+
     function fromBase10(toBase, number) {
         //number INTERO DECIMALE
         //RESTITUISCE STRINGA
@@ -250,7 +258,7 @@
                 //RISULTATO concat(RES1, RES2)
                 return (
                     fromBase10(toBase, parteIntera(number)) + "."  //stringa
-                    + decFrom10(toBase, parseFloat("."+parteDec(number)) )  //passa alla funzione un numero = 0.parteDec
+                    + decFrom10(toBase, parseFloat("0."+parteDec(number)) )  //passa alla funzione un numero = 0.parteDec
                 )
             }
             
@@ -258,27 +266,20 @@
                 //si usa il sistema di accumulo ricorsivo 
                 //si effettua la conversione intera e poi 
                 //si divide per 2 ^ parteDec.lenght
-                return ( toBase10(startBase, (parteIntera(number)+ parteDec(number)))  / (Math.pow(startBase, parteDec(number).length)) )
+                return decToBase10(startBase, (parteIntera(number)+ parteDec(number)) , parteDec(number).length)
+            } else {
+                let a = decToBase10(startBase, (parteIntera(number)+ parteDec(number)) , parteDec(number).length)
+                //a = numero decimale inserito dall'utente in startBase, convertito in base 10
+                return ( // da NUMERO CON VIRGOLA da base 10 a toBase 
+                    fromBase10(toBase, parteIntera(a.toString() )) + "."  //stringa
+                    + decFrom10(toBase, parseFloat("0."+parteDec(a.toString())) )  //passa alla funzione un numero = 0.parteDec
+                )
             }
 
             //controllare se le due basi sono una potenza dell'altra
-            if (doLog(startBase, toBase) == Math.floor(doLog(startBase, toBase))) {
-                //toBase = startBase ^ x
-                //1 tobase =>  x cifre di startBase 
-                let x = doLog(startBase, toBase);
-                return convPOW(x, toBase, number);
-
-            } //esegue anche il controllo al contrario
-            if (doLog(toBase ,startBase ) == Math.floor(doLog(toBase , startBase))) {
-                //startBase = toBase ^ x
-                //1 startBase =>  x cifre di toBase 
-                let x = doLog(toBase ,startBase );
-                return convPOW(x, toBase, number);
-            }
+            
 
 
-            //elimina la virgola dal numero
-            number = "".concat(parteIntera(number), parteDec(number))
         } else {
             console.log(`${number} INTERO`)
             //il numero inserito è INTERO senza VIRGOLA
@@ -315,7 +316,9 @@
         }
     }
 
-    let inputs = document.querySelectorAll("input")
+    //preleva il formato della conoversione base 2
+    
+    
 
     let invio = document.getElementById("convertButton")
     invio.addEventListener("click",()=> {
@@ -331,8 +334,42 @@
         if (checkBases(startBase, toBase )){
             //BASI VALIDE 
             //CONTROLLO SE NUMBER è VALIDO
+            
+            
+            
+            
             if (numberValidation(number, startBase)) {
                 //NUMERO VALIDO
+                let convFormat = ""
+                let nBit = 0;  //VALORE DI DEFAULT perciò la conversione viene effettuata in base PC
+                if (toBase == 2) {
+                    let div = document.getElementById("chooseFormat")
+                    div.style.display = "flex"
+                    let checkboxes = div.children
+                    do {
+                        for (let index = 0; index < checkboxes.length; index++) {
+                            if (checkboxes[index].checked) {
+                                if (checkboxes[index].id == "EcessoN") {
+                                    //se è selezionato EcessoN allora bisogna leggere il valore nell input nBit
+                                    document.getElementById("nBit").style.display = "block" //rende visibile l'input nBIT
+                                    do {
+                                        nBit = parseInt(document.getElementById("nBit").value)
+                                        //attende che il valore inserito sia valido (>2)
+                                    } while (nBit < 2);
+                                }
+                                convFormat = checkboxes[index].value
+                            }
+                            
+                        }
+                        //finchè un checkbox non è checked si aspetta
+                    } while (convFormat == "");
+
+
+                    if (convFormat != "Default") {
+                        //conversioni particolari
+                    }
+
+                }
                 //INIZIO CONVERSIONE
                 console.log(`NUMERO ${number} VALIDO`)
                 result.value = convert(startBase, toBase, number).toString()

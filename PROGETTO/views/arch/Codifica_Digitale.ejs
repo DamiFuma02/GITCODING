@@ -129,12 +129,13 @@
     <div class="content">
         <div  class="convert">
             <h1>CONVERTITORE DI BASI</h1>
-            <input placeholder="Numero da convertire" type="number" name="Number" id="number">
+            <input placeholder="Numero da convertire" type="text" name="Number" id="number">
             <div id="chooseFormat">  <!-- si attiva solo se toBase = 2 -->
-                <input type="radio" name="" id="ComplementoA2"><label for="ComplementoA2">Compl a 2</label>
-                <input type="radio" name="" id="ComplementoA1"><label for="ComplementoA1">Compl a 1</label>
-                <input type="radio" name="" id="Ecesso N"><label for="Ecesso N">Ecesso N</label>
-                <input type="radio" checked name="" id="Default"><label for="Default">Default</label>
+                <input type="radio" value="Compl2" id="ComplementoA2"><label for="ComplementoA2">Compl a 2</label>
+                <input type="radio" value="Compl1" id="ComplementoA1"><label for="ComplementoA1">Compl a 1</label>
+                <input type="radio" value="EccN" id="EcessoN"><label for="EcessoN">Ecesso N=(2^[nBit-1])</label>
+                <input type="number" placeholder="nBIT codifica binaria" id="nBit">
+                <input type="radio" value="Default" id="Default"><label for="Default">Default</label>
             </div>
             <input placeholder="Base Partenza (2-16)" type="number" name="StartBase" id="startBase">
             <input placeholder="Base Arrivo (2-16)" type="number" name="toBase" id="toBase">

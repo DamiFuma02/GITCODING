@@ -56,9 +56,12 @@ body{
             justify-content: center;
             align-items: center;
             #chooseFormat{
-                display: none;
+                display: none;  /*FLEX SE toBase = 2*/
                 justify-content: center;
                 align-items: center;
+                #nBit{
+                    display: none;    /* viene mostrato se viene selezionata la casella Eccesso N*/
+                }
             }
             input, button{
                 height: 30px;
