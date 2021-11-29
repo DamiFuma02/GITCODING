@@ -107,8 +107,10 @@
         //number INTERO DECIMALE
         //RESTITUISCE STRINGA
         let q = Math.floor(number / toBase);
+        console.log(`q = ${q}`)
         let r = number % toBase
         if (q == 0){
+            //viene tornato R
             if (r>9){  
                 switch (r) {
                     case 11:
@@ -131,12 +133,9 @@
                         break;
                 }
             }
-            return r;
+            return r.toString();
         }
-        if (number == 1){
-            return "1";
-        } else {
-            //se si converte in base 16
+        else {
             
             return (
                 fromBase10(toBase, q) +
@@ -176,28 +175,39 @@
     }
 
     function convPOW(x, tobase, number) {
+        //EFFETTUA LA CONVERSIONE DELLA PARTE INTERA DI NUMBER
         //x = numero di caratteri che la stringa fromBase10() deve avere 
-        
-        let k = number.length
+        let zeroString = "0000000"   //da questa stringa si prendono x 0 e si aggiungono al converted
+        console.log(`x = ${x}`)
+        console.log(`toBase = ${tobase}`)
+
+        console.log(`number = ${number}`)
+        let k = number.length -1
+        console.log(`k = ${k}`)
         if (k==0){
-            let zeroString = "0000000"   //da questa stringa si prendono x 0 e si aggiungono al converted
-            let converted = fromBase10(toBase, number) //STRINGA
+            console.log(`number = ${number}`)
+            let converted = fromBase10(tobase, parseInt(number[k])) //STRINGA
+            console.log(`${number[0]} converted = ${converted}`)
+
             if (converted.length < x){
                 //si aggiungono x 0 prima della converted
                 return zeroString.substring(0, (x-converted.length)) + converted;
             }
             return converted;
-                
         } else {
-            let zeroString = "0000000"   //da questa stringa si prendono x 0 e si aggiungono al converted
-            let converted = fromBase10(tobase, number[0]) //STRINGA
+            let converted = fromBase10(tobase, parseInt(number[0])) //STRINGA
+            console.log(`${number[0]} converted = ${converted}`)
             if (converted.length < x) {
-                return zeroString.substring(0, (x-converted.length)) + converted + convPOW(tobase, number.substring(1));
+                return ( zeroString.substring(0, (x-converted.length))   //aggiunge x 0
+                        + converted 
+                        + convPOW(x, tobase, number.substring(1))  
+                )
+            } else {
+                return (
+                    converted   //converte il numero in toBase
+                    + convPOW(x, tobase, number.substring(1))   //toglie il primo carattere, coonvertito sopra             
+                )
             }
-            return (
-                fromBase10(tobase, number[0])   //converte il numero in toBase
-                + convPOW(tobase, number.substring(1))   //toglie il primo carattere, coonvertito sopra             
-            )
         }
     }
 
@@ -217,11 +227,12 @@
     //funzione che effettua il controllo delle basi 
     //e chiama la funzione conversione corretta
     function convert(startBase, toBase, number) {
-        
+        //startBase e toBase === NUMERO INTERO
+        //number = STRINGA
         if (number.includes(".")) {
             //se è un numero con la virgola si prelevano le due parti
             //separate e si uniscono
-            console.log(`NUMBER = ${number}`)
+            console.log(`${number} con virgola`)
 
             
             if (startBase == 10){
@@ -260,9 +271,11 @@
             //elimina la virgola dal numero
             number = "".concat(parteIntera(number), parteDec(number))
         } else {
-
+            console.log(`${number} INTERO`)
+            //il numero inserito è INTERO senza VIRGOLA
             if (doLog(startBase, toBase) == Math.floor(doLog(startBase, toBase))) {
                 //toBase = startBase ^ x
+                console.log(`toBase = startBase^${doLog(startBase, toBase)}`)
                 //1 tobase =>  x cifre di startBase 
                 let x = doLog(startBase, toBase);
                 return convPOW(x, toBase, number);
@@ -270,8 +283,11 @@
             } //esegue anche il controllo al contrario
             if (doLog(toBase ,startBase ) == Math.floor(doLog(toBase , startBase))) {
                 //startBase = toBase ^ x
+                console.log(`startBase = toBase^${doLog(toBase, startBase)}`)
+
                 //1 startBase =>  x cifre di toBase 
                 let x = doLog(toBase ,startBase );
+                console.log(toBase)
                 return convPOW(x, toBase, number);
             }
         
@@ -301,17 +317,20 @@
     invio.addEventListener("click",()=> {
         //CONVERSIONE NUMERICA
         let number = document.getElementById("number").value   //salvato come STRINGA per una semplice conversione ricorsiva
-        let startBase = Number(document.getElementById("startBase").value)
-        let toBase = Number(document.getElementById("toBase").value)
+        let startBase = parseInt(document.getElementById("startBase").value)
+        let toBase = parseInt(document.getElementById("toBase").value)
         let result = document.getElementById("Result")
         //i dati inseriti vengono salvati in formato numero, invece che stringa
-        
+        console.log(`startBase = ${startBase}`)
+        console.log(`toBase = ${toBase}`)
+
         if (checkBases(startBase, toBase )){
             //BASI VALIDE 
             //CONTROLLO SE NUMBER è VALIDO
             if (numberValidation(number, startBase)) {
                 //NUMERO VALIDO
                 //INIZIO CONVERSIONE
+                console.log(`NUMERO ${number} VALIDO`)
                 result.value = convert(startBase, toBase, number).toString()
             } else {
                 numberCell = document.getElementById("number")
