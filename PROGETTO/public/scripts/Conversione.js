@@ -88,6 +88,7 @@
     }
     
     function toBase10(startBase, string) {
+        //restituisce un numero decimale intero
         console.log(`string = ${string}`)
 
         let k = (string.length - 1);
@@ -144,6 +145,7 @@
             )
         }
     }
+
     function decFrom10(toBase, number){
         //number = 0.x
         //ricorsione per conversione parte decimale
@@ -174,8 +176,15 @@
         }
     }
 
-    function convPOW(x, tobase, number) {
-        //EFFETTUA LA CONVERSIONE DELLA PARTE INTERA DI NUMBER
+    function convBases(startBase, toBase, number) {
+        //number = Stringa
+        return (
+            fromBase10(toBase, toBase10(startBase, number))
+        )
+    }
+
+    function toLessStart(x, tobase, number) {
+        //toBase < startBase perciò si ALLUNGA di x 
         //x = numero di caratteri che la stringa fromBase10() deve avere 
         let zeroString = "0000000"   //da questa stringa si prendono x 0 e si aggiungono al converted
         console.log(`x = ${x}`)
@@ -200,12 +209,12 @@
             if (converted.length < x) {
                 return ( zeroString.substring(0, (x-converted.length))   //aggiunge x 0
                         + converted 
-                        + convPOW(x, tobase, number.substring(1))  
+                        + toLessStart(x, tobase, number.substring(1))  
                 )
             } else {
                 return (
                     converted   //converte il numero in toBase
-                    + convPOW(x, tobase, number.substring(1))   //toglie il primo carattere, coonvertito sopra             
+                    + toLessStart(x, tobase, number.substring(1))   //toglie il primo carattere, coonvertito sopra             
                 )
             }
         }
@@ -273,22 +282,15 @@
         } else {
             console.log(`${number} INTERO`)
             //il numero inserito è INTERO senza VIRGOLA
-            if (doLog(startBase, toBase) == Math.floor(doLog(startBase, toBase))) {
-                //toBase = startBase ^ x
-                console.log(`toBase = startBase^${doLog(startBase, toBase)}`)
-                //1 tobase =>  x cifre di startBase 
-                let x = doLog(startBase, toBase);
-                return convPOW(x, toBase, number);
-
-            } //esegue anche il controllo al contrario
+            
             if (doLog(toBase ,startBase ) == Math.floor(doLog(toBase , startBase))) {
                 //startBase = toBase ^ x
                 console.log(`startBase = toBase^${doLog(toBase, startBase)}`)
 
                 //1 startBase =>  x cifre di toBase 
                 let x = doLog(toBase ,startBase );
-                console.log(toBase)
-                return convPOW(x, toBase, number);
+                //toBase < startBase
+                return toLessStart(x, toBase, number);
             }
         
             
@@ -301,8 +303,10 @@
             if (toBase == 10) {
                 //si usa il sistema di accumulo ricorsivo 
                 
-                result.style.backgroundColor = "rgb(26, 194, 26)"
-                result.value = toBase10(startBase, number).toString()
+                return toBase10(startBase, number).toString()
+            } else {
+                //si effettua la connversione intermedia a base 10 
+                return convBases(startBase,toBase, number).toString()
             }
         
         //controllare se la base è POTENZA DI 2
