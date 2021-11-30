@@ -224,12 +224,46 @@
 
 (define normalized-btr   ;rimuove gli 0 più significativi
    (lambda (str)
-       (btr-rep    ;converte il valore decimale in stringa BTR per elimiare gli 0 più significativi
-           (converti ;converte la stringa BTR in numero decimale
-              str  
+       (let ((k (- (string-length str) 1)))
+         (cond
+           ((= k 0)
+               (if (char=? (string-ref str k) #\.) ;se l'ultimo char = . si ritorna .
+                 "."
+                 str
+               ) 
            )
-      )
+           (else
+               (if (char=? (string-ref str 0) #\.)
+                   (normalized-btr (substring str 1 ))
+                   str
+               )
+           )
+           
+         ))
+       
    )
+)
+
+(define lsd
+  (lambda (str)
+    (let ((k (- (string-length str) 1) ) )
+      (if (= k -1)
+          #\.   ;stringa str vuota
+          (substring str k)
+       )
+    )
+  )
+)
+
+(define head
+  (lambda (str)
+    (let ((k (- (string-length str) 1) ) )
+      (if (= k -1)
+          ""   ;stringa str vuota
+          (substring str 0 k)
+       )
+    )
+  )
 )
 
 
@@ -259,14 +293,14 @@
           (cond
             ((= k1 k2)
                    ;le due stringhe hanno la stessa lunghezza perciò si esegue la somma normalmente
-                   (normalized-btr (somma add1 add2 "."))
+                   (normalized-btr (somma add1 add2 c))
             )
             ;se non sono uguali si aggiunge (kMag - Kmin) "." a SX della stringa più corta
             ((< k1 k2)     ; add2 < add1 perciò si allunga add2
-                  (normalized-btr (somma (aggiungi add1 (- k2 k1)) add2 "."))
+                  (normalized-btr (somma (aggiungi add1 (- k2 k1)) add2 c))
              )
             ((< k2 k1)  ; add2 < add1 perciò si allunga add2
-                  (normalized-btr (somma (aggiungi add2 (- k1 k2)) add1 "."))
+                  (normalized-btr (somma (aggiungi add2 (- k1 k2)) add1 c))
             )
           )
         )

@@ -64,7 +64,7 @@
 (define checkpoint               ;all'interno della funzione viene eseguito anche il controllo del segno
   (lambda (stringa insieme )
     (if (string-contains? stringa "." )
-        ;se conotiene il punto 
+        ;se conotiene il punto
         (if (or (char=? (string-ref stringa 0)#\+) (char=? (string-ref stringa 0)#\-))
             (let ((k 1))         ;se trova il segno imposta k = 1 in modo da togliere il primo carattere dalla stringa totale
               (let ((numdec (base-dec insieme (string-append (parte_intera (substring stringa k)) (parte_fraz (substring stringa k)) )))  (divisore (expt (string-length insieme) (string-length (parte_fraz (substring stringa k))) )))
@@ -97,20 +97,7 @@
   )
 )
 
-;converte un numero decimale in BASE
-(define from10
-  (lambda (n base)
-    (let ((resto (if (even? n) "0" "1")))
-      (if (= n 1)
-          "1"
-          (string-append
-                (from10 (quotient n base) base)
-                resto
-          )
-       )
-    )
-  )
-)
+
 
 
 (define bin-rep           ;funzione chiamata dall'utente
