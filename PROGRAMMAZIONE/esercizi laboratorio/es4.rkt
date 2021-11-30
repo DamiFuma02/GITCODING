@@ -11,7 +11,7 @@
 
 
 
-(define string-number                ;converte il simbolo nel suo valore numerico
+(define btd-val                ;converte il simbolo nel suo valore numerico
   (lambda (s)
     (cond
       ((string=? s "-")
@@ -46,10 +46,10 @@
   (lambda (string)
           (let ((k (- (string-length string) 1)))
                (if (= k 0)
-                    (string-number string )
+                    (btd-val string )
                     (+
                          (* 3 (converti (substring string 0 k) ))
-                         (string-number (substring string k) )   ;ultima cifra della stringa
+                         (btd-val (substring string k) )   ;ultima cifra della stringa
                      )
                 )
           )
@@ -115,7 +115,8 @@
 
 (define btr-carry                    ; val:     carattere +/./-
   (lambda (u v c)                        ; u, v, c: caratteri +/./-
-    (cond ((char=? u #\-)                ; u == -
+    (cond (
+           (char=? u #\-)                ; u == -
            (cond ((char=? v #\-)
                   (cond ((char=? c #\-)  ; - - -
                          #\-)
@@ -169,57 +170,6 @@
           )))
 
 
-(define sum  ;restitusce una stringa "carry + somma"
-  (lambda (a1 a2 c)
-    (let ((add (btr-rep (+ (string-number a1) (string-number a2) (string-number c)) )))
-      (if (= (string-length add) 1)
-          (string-append "." add)      ;si aggiunge il riporto di 0
-          add       ;altrimenti si restituisce la stringa intera, formata da 2 caratteri, il primo sarà sempre il riporto
-       )
-    )
-  )
-)
-
-
-(define checksum
-  (lambda (a b c)
-       (string-append
-                (btr-carry a b c)
-                (btr-digit-sum a b c)
-       )
-  )
-)
-
-
-
-(define somma    ; fa la somma di due stringhe lunghe uguali
-  (lambda (add1 add2 c)
-          (let ((k1 (-(string-length add1)1)) (k2 (-(string-length add2)1)))
-            (if (= k1 0)  ;sono rimasti 2 caratteri
-                    (sum add1 add2 c)    ;quando k1 = 0 si è arrivati alla fine della somma 
-                    (string-append (somma (substring add1 0 k1) (substring add2 0 k2) (substring (somma (substring add1 k1) (substring add2 k2) c) 0 1))
-                                   (substring (somma (substring add1 k1) (substring add2 k2) c) 1)
-                    )         
-                 ) 
-            
-             ; (string-append
-              ;            (sum (string-ref add1 (- k1 1)) (string-ref add2 (- k2 1)) (string-ref (sum (string-ref add1 k1) (string-ref add2 k2) #\.) 0))
-              ;            (substring (sum (string-ref add1 k1) (string-ref add2 k2) #\.) 1) ;prende solo la cifra a DX
-              ; ) 
-          )       
-   )
-)
-
-
-(define aggiungi
-  (lambda (str k)     ;str è la stringa in cui aggiungere k "."   k = kMag - kmin
-        (if (= k 1)
-            (string-append "." str)
-            (string-append "." (aggiungi str (- k 1)))
-        )
-  )
-)
-
 
 
 (define normalized-btr   ;rimuove gli 0 più significativi
@@ -244,17 +194,19 @@
    )
 )
 
+;restituisce la cifra meno significativa di str
 (define lsd
   (lambda (str)
     (let ((k (- (string-length str) 1) ) )
       (if (= k -1)
           #\.   ;stringa str vuota
-          (substring str k)
+          (string-ref str k) 
        )
     )
   )
 )
 
+;restituisce tutta la stringa - lsd
 (define head
   (lambda (str)
     (let ((k (- (string-length str) 1) ) )
@@ -269,38 +221,30 @@
 
 (define btr-sum
      (lambda (add1 add2)
-        (let ((k1 (string-length add1)) (k2 (string-length add2)))
-          (cond
-            ((= k1 k2)
-                   ;le due stringhe hanno la stessa lunghezza perciò si esegue la somma normalmente
-                   (normalized-btr (somma add1 add2 "."))
-            )
-            ;se non sono uguali si aggiunge (kMag - Kmin) "." a SX della stringa più corta
-            ((< k1 k2)     ; add2 < add1 perciò si allunga add2
-                  (normalized-btr (somma (aggiungi add1 (- k2 k1)) add2 "."))
-             )
-            ((< k2 k1)  ; add2 < add1 perciò si allunga add2
-                  (normalized-btr (somma (aggiungi add2 (- k1 k2)) add1 "."))
-            )
-          )
-        )
+        (btr-carry-sum add1 add2 #\.)
      )
 )
  
 (define btr-carry-sum
      (lambda (add1 add2 c)
-        (let ((k1 (string-length add1)) (k2 (string-length add2)))
+        (let ((k1 (- (string-length add1) 1)) (k2 (- (string-length add2) 1)))
           (cond
-            ((= k1 k2)
-                   ;le due stringhe hanno la stessa lunghezza perciò si esegue la somma normalmente
-                   (normalized-btr (somma add1 add2 c))
-            )
             ;se non sono uguali si aggiunge (kMag - Kmin) "." a SX della stringa più corta
-            ((< k1 k2)     ; add2 < add1 perciò si allunga add2
-                  (normalized-btr (somma (aggiungi add1 (- k2 k1)) add2 c))
+            ((< k1 k2)     ; add1 < add2 perciò si allunga add1
+                  (btr-carry-sum (string-append (substring "......." 0 (- k2 k1)) add1) add2 c)
              )
             ((< k2 k1)  ; add2 < add1 perciò si allunga add2
-                  (normalized-btr (somma (aggiungi add2 (- k1 k2)) add1 c))
+                  (btr-carry-sum add1 (string-append (substring "......." 0 (- k1 k2)) add2) c)
+            )
+            ((or (= k1 0)(= k2 0))
+                  (string (btr-carry (string-ref add1 k1) (string-ref add2 k2) c) (btr-digit-sum (string-ref add1 k1) (string-ref add2 k2) c))  ;restituisce "carry"+"sum"
+            )
+            (else   ;LOOP
+                  (normalized-btr (string-append
+                              ;toglie l'ultimo carattere a DX della stringa, e imposta come c il btr-carry della somma delle ultime 2 cifre
+                       (btr-carry-sum (substring add1 0 k1) (substring add2 0 k2) (btr-carry (string-ref add1 k1) (string-ref add2 k2) c))
+                       (string (btr-digit-sum (string-ref add1 k1) (string-ref add2 k2) c))   ;btr-digit-sum dell'ultima cifra delle stringhe
+                  ) )
             )
           )
         )
