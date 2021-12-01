@@ -5,15 +5,10 @@
 
 (define result "")
 
-(define Fibonacci
-  (lambda (length)
-          ;length è la lunghezza della stringa restituita dalla funzione
-       
-         (if (<= length 2)
-             1
-             (+ (Fibonacci (- length 1))
-                (Fibonacci (- length 2))
-              )
-         )
-  ) 
-)
+(define fibonacci  ; valore: naturale
+  (lambda (n)      ; n: naturale
+    (if (< n 2)
+        1
+        (+ (fibonacci (- n 2)) (fibonacci (- n 1)))
+        )
+    ))

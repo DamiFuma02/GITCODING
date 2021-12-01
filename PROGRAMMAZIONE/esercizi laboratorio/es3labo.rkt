@@ -2,12 +2,11 @@
 ;; about the language level of this file in a form that our tools can easily process.
 #reader(lib "htdp-intermediate-lambda-reader.ss" "lang")((modname es3labo) (read-case-sensitive #t) (teachpacks ((lib "drawings.ss" "installed-teachpacks"))) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ((lib "drawings.ss" "installed-teachpacks")) #f)))
 
-(require racket/string)
 
 
 
-(define base-dec                               ;deve convertire la stringa espressa in base (string-length base) in decimale SENZA VIRGOLA
-  (lambda (base stringa) 
+(define base-dec           ;deve convertire la stringa espressa in base (string-length base) in decimale 
+  (lambda (base stringa)    ;stringa = stringa di NUMERO INTERO 
     (let ((k (- (string-length stringa) 1)))
       (if (= k 0)
                 (nuovaCifra (string-ref stringa k) base 0)                     ;la stringa contiene un solo elemento
@@ -18,9 +17,6 @@
       )
     )
 ))
-
-;risultato = risultato + Base * nuova cifra
-;            risultato + (string-length insieme) * (nuovaCifra (string-ref stringa k) insieme)          
 
 
 
@@ -55,65 +51,90 @@
             k ;CARATTERE TROVATO. Il valore numerico del carattere è rappresentato dall'indice 
             (nuovaCifra carattere insieme (+ k 1))  ;incrementa il contatore per cercare ancora nell'insieme
         )
-        (string-append "ERRORE:" (make-string 1 carattere) " non appartiene all'insieme")         ;stampa a video dell'errore
+        (string-append "ERRORE:" (string carattere) " non appartiene all'insieme")         ;stampa a video dell'errore
     )
     
   )
 )
 
-(define checkpoint               ;all'interno della funzione viene eseguito anche il controllo del segno
-  (lambda (stringa insieme )
-    (if (string-contains? stringa "." )
-        ;se conotiene il punto
-        (if (or (char=? (string-ref stringa 0)#\+) (char=? (string-ref stringa 0)#\-))
-            (let ((k 1))         ;se trova il segno imposta k = 1 in modo da togliere il primo carattere dalla stringa totale
-              (let ((numdec (base-dec insieme (string-append (parte_intera (substring stringa k)) (parte_fraz (substring stringa k)) )))  (divisore (expt (string-length insieme) (string-length (parte_fraz (substring stringa k))) )))
-                 (if (char=? (string-ref stringa 0)#\-)
-                     (* (/ numdec divisore) -1)
-                     (/ numdec divisore)
-                  ) 
-               )
-            )
-            (let ((k 0))         ;se non trova il segno imposta k = 0 in modo da prendere la stringa totale
-              (let ((numdec (base-dec insieme (string-append (parte_intera (substring stringa k)) (parte_fraz (substring stringa k)) )))  (divisore (expt (string-length insieme) (string-length (parte_fraz (substring stringa k))) )))
-                 (/ numdec divisore)
-               )
-            ) 
-         )
-        ;se NON contiene il punto
-        (if (or (char=? (string-ref stringa 0)#\+) (char=? (string-ref stringa 0)#\-))
-            (let ((k 1))
-              (if (char=? (string-ref stringa 0)#\+)
-                (base-dec insieme (substring stringa k) )
-                (* -1 (base-dec insieme (substring stringa k) ) )
-              )
-            )
-            (let ((k 0))         ;se non trova il segno imposta k = 0 in modo da prendere la stringa totale
-              (base-dec insieme (substring stringa k) )
-            ) 
-         )
-    )
 
+
+(define checkSign     ;restituisce il segno dellas tringa, altrimenti FALSE
+  (lambda (stringa)
+       (cond
+          ((char=? (string-ref stringa 0)#\+)
+             #\+
+           )
+          ((char=? (string-ref stringa 0)#\-)
+             #\-
+           )
+          (else
+             #\a    ;non trova il segno perciò restituisce #\a   come carattere indicante della mancanza del segno
+           )
+        )
+  )
+) 
+
+(define hasPoint?
+  (lambda (string)
+    (let ((k (- (string-length string) 1)))
+      (cond
+        ((char=? (string-ref string k) #\.)   ;controlla se l'ultimo carattere è una virgola
+            #true
+         )
+        ((= k 0)
+            #false    ;siccome ha gia controllato se è presente il . allora ritorna falso
+         )
+        (else
+            (hasPoint? (substring string 0 k))   ;richiama se stessa togliendo l'ultimo carattere della stringa
+         )
+      )
+    )
   )
 )
 
 
-
-
-(define bin-rep           ;funzione chiamata dall'utente
+(define bin-rep->number           ;funzione chiamata dall'utente
   (lambda (string)
     (let ((insieme "01"))
-         (checkpoint string insieme)
+         (rep->number insieme string)
      )
     
   )
 )
+ 
 
-
-(define rep
+(define rep->number      ;funzione chiamata dall'utente per conversione generica in BASE 10
   (lambda (insieme stringa)                    ;insieme contiene i simboli dell'alfabeto da cui partire con la conversione
+    ;controllo se il numero inserito ha la VIRGOLA
+    (if (hasPoint? stringa)   ;la stringa contiene il "."
+        ;controllo del segno
+        (if (or (char=? (checkSign stringa) #\+) (char=? (checkSign stringa) #\-))
+            ;se trova il segno toglie il primo carattere dalla stringa
+            (let ((numdec (base-dec insieme (string-append (parte_intera (substring stringa 1)) (parte_fraz (substring stringa 1)) )))  (divisore (expt (string-length insieme) (string-length (parte_fraz (substring stringa 1))) )))
+                 (if (char=? (checkSign stringa) #\-)
+                     (* (/ numdec divisore) -1)
+                     (/ numdec divisore)
+                  ) 
+             )   ;se non trova il segno prende la stringa totale
+            (let ((numdec (base-dec insieme (string-append (parte_intera stringa ) (parte_fraz stringa) )))  (divisore (expt (string-length insieme) (string-length (parte_fraz stringa)) )))
+                 (/ numdec divisore)
+             )
+         )
+        ;;NON TROVA LA VIRGOLA
+        (cond
+          ((char=? (checkSign stringa) #\+)
+             (base-dec insieme (substring stringa 1) )
+           )
+          ((char=? (checkSign stringa) #\-)
+             (* -1 (base-dec insieme (substring stringa 1) ) )
+           )
+          (else
+             (base-dec insieme stringa )
+           )
+        )
+     )
     
-    (checkpoint stringa insieme)
     
    )
  )
