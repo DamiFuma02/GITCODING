@@ -18,7 +18,7 @@
     
 </head>
 <body >
-    <div class="title">
+    <div id="titlePage">
         <i id="pagelogo"  class="fas fa-cogs"></i>ARCHITETTURA degli ELABORATORI<a href="/"><div class="homebutton"><i class="fas fa-home"></i><span>HOME</span></div></a>
     </div>
     
@@ -49,10 +49,10 @@
             </div>
                 
                 <div class="indexdrop" >
-                    <a href="/archElab/CodDig#ADC"><abbr title="Digitalizzazione">ADC</abbr></a>
-                    <a href="/archElab/CodDig#SND"><abbr title="Sistema Numerico Digitale">SND</abbr></a>
-                    <a href="/archElab/CodDig#Bool"><abbr title="Algebra Booleana">BOOL</abbr></a>
-                    <a href="/archElab/CodDig#Codifica"><abbr title="Codifica dei DATI">DATA</abbr></a>
+                    <a href="/archElab/CodDig?id=Digit"><abbr title="Digitalizzazione">ADC</abbr></a>
+                    <a href="/archElab/CodDig?id=SND"><abbr title="Sistema Numerico Digitale">SND</abbr></a>
+                    <a href="/archElab/CodDig?id=Bool"><abbr title="Algebra Booleana">BOOL</abbr></a>
+                    <a href="/archElab/CodDig?id=Codifica"><abbr title="Codifica dei DATI">DATA</abbr></a>
                 </div>
         </div>
         <div class="linkcell" onmouseleave="dropindex(2, false)">
@@ -114,8 +114,14 @@
     let dropindexes = document.getElementsByClassName("indexdrop")
     let buttons = document.getElementsByClassName("fas fa-angle-down")
     function dropindex (index, flag) {
-        if (flag) dropindexes[index].style.display = "flex"
-        else dropindexes[index].style.display = "none"
+        //FLAG TRUE MOSTRA INDEXDROP, FLAG FALSE NASCONDE INDEXDROP
+        if (flag) {
+            
+            dropindexes[index].style.display = "flex"
+        }
+        else {
+            dropindexes[index].style.display = "none"
+        }
         console.log(index)
         
     }

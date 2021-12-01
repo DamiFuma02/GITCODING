@@ -10,7 +10,7 @@
 </head>
 <body>
     
-    <div class="title" id="title">
+    <div id="titlePage">
         <i id="pagelogo" class="fas fa-wave-square"></i>CODIFICA DIGITALE<a href="/archElab"><div class="homebutton"><i class="fas fa-home"></i><span>HOME</span></div></a>
     </div>
     
@@ -52,6 +52,7 @@
         </div>
     </div>
     
+    
     <nav class="navbar">
         <button id="navButton"><i id="navlogo" class="fas fa-bars"></i><b>NAVBAR</b></button>
         
@@ -59,7 +60,7 @@
 
             <button id="hideNav"><i class="fas fa-ban"></i>HIDE BAR</button>
             <a href="#title"><i class="fas fa-angle-double-up">PAGE TOP</i></a>
-            <a onclick="showContent(0)" href="#ADC">Digitalizzazione</a>
+            <a onclick="showContent(0)" href="#Digit">Digitalizzazione</a>
             <a onclick="showContent(1)" href="#SND">Sistema Binario</a>
             <a onclick="showContent(2)" href="#Bool">Algebra Booleana</a>
             <a onclick="showContent(3)" href="#Codifica">Codifica dei DATI</a>
@@ -75,6 +76,9 @@
 </nav>
 
 <br><hr><br>
+
+
+
 
 
 <div id="Digit" class="textContent">
@@ -379,7 +383,25 @@
         
     </div>
 </div>
+
+        <script>
+            //per legger i parametri passati nell'URL
+            var parameters = location.search.substring(1);
+            let names = ""
+            let values = ""
+            if (parameters != "") {
+                //controlla che i parametri non siano vuoti
+                names = parameters.substring(0, parameters.indexOf("="))
+                values = parameters.substring((parameters.indexOf("=") + 1), parameters.length)
+                
+                console.log(names)
+                console.log(values)
+                document.getElementById(values).style.display = "block"
+
+            }
+        </script>
         <script src="/js/Conversione.js"></script>
+        <script src="/js/MainScript.js"></script>
         
         <script src="https://kit.fontawesome.com/93e39226bb.js" crossorigin="anonymous"></script>
     </body>

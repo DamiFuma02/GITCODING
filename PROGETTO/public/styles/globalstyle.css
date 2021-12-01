@@ -4,7 +4,7 @@ body {
   height: 100%;
 }
 
-.title {
+#titlePage {
   color: red;
   text-align: center;
   font-size: 50px;
@@ -17,13 +17,13 @@ body {
   padding: 30px;
   margin-bottom: 30px;
 }
-.title i {
+#titlePage i {
   color: black;
 }
-.title #pagelogo {
+#titlePage #pagelogo {
   margin-right: 15px;
 }
-.title .homebutton {
+#titlePage .homebutton {
   height: 60px;
   width: 60px;
   text-align: center;
@@ -36,11 +36,11 @@ body {
   padding: 5px;
   font-size: 20px;
 }
-.title .homebutton i {
+#titlePage .homebutton i {
   font-size: 35px;
   color: black;
 }
-.title .homebutton:hover {
+#titlePage .homebutton:hover {
   transform: scale(1.2);
   background-color: red;
 }
