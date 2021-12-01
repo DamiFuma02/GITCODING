@@ -15,10 +15,8 @@ app.use("/js", express.static("public/scripts"))
 app.use("/pdf", express.static("views"))
 
 router.get('/CodDig', function (req, res) {
-    let text = req.query.id
     
-    //res.render("arch/Codifica_Digitale.ejs")
-    res.render("arch/Codifica_Digitale.ejs", {id: text})
+    res.render("arch/Codifica_Digitale.ejs")
 })
 
 
