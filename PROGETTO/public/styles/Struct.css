@@ -1,0 +1,64 @@
+.textContent {
+  display: none;
+  width: 100%;
+}
+.textContent h2 {
+  color: blue;
+  font-size: 30px;
+  text-align: center;
+}
+.textContent .content {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex: 1 0 50%;
+}
+.textContent .content figure {
+  text-align: center;
+  font-size: 25px;
+}
+.textContent .content a {
+  text-decoration: none;
+}
+.textContent .content a abbr {
+  text-decoration: none;
+}
+.textContent .content ul {
+  text-align: left;
+  font-size: 20px;
+}
+.textContent .content img {
+  height: 400px;
+  width: 350px;
+}
+.textContent .content .convert {
+  background-color: aqua;
+  width: 100%;
+  padding-bottom: 20px;
+  border-radius: 50px;
+  justify-content: center;
+  align-items: center;
+}
+.textContent .content .convert #chooseFormat {
+  display: none;
+  /*FLEX SE toBase = 2*/
+  justify-content: center;
+  align-items: center;
+}
+.textContent .content .convert #chooseFormat #nBit {
+  display: none;
+  /* viene mostrato se viene selezionata la casella Eccesso N*/
+}
+.textContent .content .convert input, .textContent .content .convert button {
+  height: 30px;
+  border-radius: 15px;
+}
+.textContent .content .convert button {
+  background-color: #1ac21a;
+  min-width: 180px;
+}
+
+/*# sourceMappingURL=Struct.css.map */

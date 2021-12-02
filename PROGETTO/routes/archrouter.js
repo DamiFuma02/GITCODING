@@ -29,6 +29,10 @@ router.get('/Struct', function (req, res) {
     
 })
 
+router.get("/Storia", (req, res)=> {
+    res.render("arch/Storia.ejs")
+})
+
 
 
 
