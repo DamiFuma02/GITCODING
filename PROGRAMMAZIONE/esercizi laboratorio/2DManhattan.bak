@@ -8,4 +8,4 @@
         (+ (manhattan (- down 1) right)
            (manhattan down (- right 1)))
         )
-    ))  
+    ))
