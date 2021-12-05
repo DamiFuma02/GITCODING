@@ -133,18 +133,26 @@
     <div class="content">
         <div  class="convert">
             <h1>CONVERTITORE DI BASI</h1>
-            <input placeholder="Numero da convertire" type="text" name="Number" id="number">
-            <div id="chooseFormat">  <!-- si attiva solo se toBase = 2 -->
-                <input type="radio" value="Compl2" id="ComplementoA2"><label for="ComplementoA2">Compl a 2</label>
-                <input type="radio" value="Compl1" id="ComplementoA1"><label for="ComplementoA1">Compl a 1</label>
-                <input type="radio" value="EccN" id="EcessoN"><label for="EcessoN">Ecesso N=(2^[nBit-1])</label>
-                <input type="number" placeholder="nBIT codifica binaria" id="nBit">
-                <input type="radio" value="Default" id="Default"><label for="Default">Default</label>
-            </div>
-            <input placeholder="Base Partenza (2-16)" type="number" name="StartBase" id="startBase">
-            <input placeholder="Base Arrivo (2-16)" type="number" name="toBase" id="toBase">
-            <button id="convertButton">CONVERTI</button>
-            <input placeholder="Risultato" type="text" name="Result" id="Result">  
+            <?php
+              printf($_POST)
+            
+            ?>
+            <form action="/archElab/CodDig" method="post">
+                <input placeholder="Numero da convertire" type="text" name="Number" id="number" >
+                <input placeholder="Base Partenza (2-16)" type="number" name="StartBase" id="startBase">
+                <input placeholder="Base Arrivo (2-16)" type="number" name="toBase" id="toBase">
+                <div id="chooseFormat">  <!-- si attiva solo se toBase = 2 -->
+                    <input type="radio" value="Compl2" id="ComplementoA2"><label for="ComplementoA2">Compl a 2</label>
+                    <input type="radio" value="Compl1" id="ComplementoA1"><label for="ComplementoA1">Compl a 1</label>
+                    <input type="radio" value="EccN" id="EcessoN"><label for="EcessoN">Ecesso N=(2^[nBit-1])</label>
+                    <input type="number" placeholder="nBIT codifica binaria" id="nBit">
+                    <input type="radio" value="Default" id="Default"><label for="Default">Default</label>
+                </div>
+                <input type="submit" id="convertButton" value="CONVERTI">
+                <input placeholder="Risultato" type="text" name="Result" id="Result">
+            </form>
+            
+              
         </div>
     </div>
     <h2>Conversione di base numerica</h2>
@@ -383,7 +391,12 @@
         
     </div>
 </div>
-
+    <script>
+        document.forms[0].addEventListener("submit", function(e) {
+            e.preventDefault()
+            //toglie il REFRESH automatico della pagina
+        })
+    </script>
         <script src="/js/GestioneQuery.js"></script>
         <script src="/js/Conversione.js"></script>
         <script src="/js/MainScript.js"></script>

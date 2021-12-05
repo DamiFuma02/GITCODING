@@ -19,6 +19,14 @@ router.get('/CodDig', function (req, res) {
     res.render("arch/Codifica_Digitale.ejs")
 })
 
+router.post("/CodDig", (req, res, e)=> {
+    //req.body = { Number: "", StartBase: "", toBase: "", Result: ""}
+    dati = req.body
+    
+    res.render("arch/Codifica_Digitale.ejs", {data: dati})
+    
+})
+
 
 router.get('/pdf', function (req, res) {
     res.render("arch/pdfviewer.ejs")
