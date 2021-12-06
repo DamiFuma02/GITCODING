@@ -308,9 +308,36 @@
     }
     
 
-    let invio = document.getElementById("convertButton")
+    //all'input nel toBase controlla se il valore inserito è 2
+    document.getElementById("toBase").addEventListener("input", ()=> {
+
+        if (document.getElementById("toBase").value == "2") {
+            document.getElementById("chooseFormat").style.display = "flex"
+            
+            
+        } else {
+            document.getElementById("chooseFormat").style.display = "none"
+
+        }
+    })
+
+    if (document.getElementById("EcessoN").checked) {
+        //è stato selezionato il formato Eccesso N
+        let nBit = document.getElementById("nBit")
+        nBit.style.display = "flex"
+        console.log(`nBit = ${nBit}`)
+        //controllo se il valore da convertire supera il limite massimo di conversione
+        if (parseInt(number) > pow(2, (parseInt(nBit.value) - 1))) {
+            let min =  Math.floor(doLog(2, parseInt(number))) + 1
+            alert(`${nBit} INSUFFICIENTI. MINIMO ${min}`)
+
+        }
+    } else {
+        document.getElementById("nBit").style.display = "none"
+    }
     
 
+    let invio = document.getElementById("convertButton")
     invio.addEventListener("click",()=> {
         //CONVERSIONE NUMERICA
         let number = document.getElementById("number").value   //salvato come STRINGA per una semplice conversione ricorsiva
@@ -318,6 +345,7 @@
         let toBase = parseInt(document.getElementById("toBase").value)
         let result = document.getElementById("Result")
         //i dati inseriti vengono salvati in formato numero, invece che stringa
+
         console.log(`startBase = ${startBase}`)
         console.log(`toBase = ${toBase}`)
         let div = document.getElementById("chooseFormat")
@@ -331,46 +359,34 @@
             if (numberValidation(number, startBase)) {
                 //NUMERO VALIDO
                 console.log(`number = ${number} VALIDO in base ${startBase}`)
-                console.log(`div = ${div.style.display}`)  
-                div.style.display = "static"
 
                 let convFormat = ""
                 let nBit = 0;  //VALORE DI DEFAULT perciò la conversione viene effettuata in base PC
                 if (toBase == 2) {
                     console.log("toBase = "+toBase)
-                    let checkboxes = div.children
-<<<<<<< Updated upstream
-                    for (let index = 0; index < checkboxes.length; index++) {
-                        if (checkboxes[index].checked) {
-                            if (checkboxes[index].id == "EcessoN") {
-                                //se è selezionato EcessoN allora bisogna leggere il valore nell input nBit
-                                document.getElementById("nBit").style.display = "block" //rende visibile l'input nBIT
-                                do {
-                                    nBit = parseInt(document.getElementById("nBit").value)
-                                    //attende che il valore inserito sia valido (>2)
-                                } while (nBit < 2);
-                            }
-                            convFormat = checkboxes[index].value
+                    
+                    let arrayFormats = div.children
+                    for (let index = 0; index < arrayFormats.length; index++) {
+                        if (arrayFormats[index].checked) {
+                            convFormat = arrayFormats[index].value
                         }
+                    }
+                    switch (convFormat) {
+                        case "Compl2":
+                            
+                            break;
+                        case "Compl1":
                         
+                        break;
+                        case "EcessoN":
+                        
+                        break;
+                    
+                        default:
+                            //CONVERSIONE STANDARD SENZA RESTRIZIONI DI BIT
+                            break;
                     }
-
-
-                    if (convFormat != "Default") {
-                        //conversioni particolari
-=======
-                    //aspetta la funzione asincrona per capire il formato di conversione
-                    if (await selectConvType(checkboxes) != "") {
-                        //se è VERO è stato selezionato il tipo di conversione
-                        if (convFormat == "Default") {
-                            //conversioni standard
-                            console.log(`NUMERO ${number} VALIDO`)
-                            result.value = convert(startBase, toBase, number).toString()
-                        } else {
-                            //conversioni particolari
-                        }
->>>>>>> Stashed changes
-                    }
+                     
                 } else {
                     //conversione normale senza scelta del convType
                 }

@@ -17,7 +17,7 @@
     <br>
     
     <div class="navtable">
-        <div class="linkcell" onmouseleave="dropindex(0, false)"">
+        <div class="linkcell" onmouseleave="dropindex(0, false)">
             <div class="container">
                 <a onclick="showContent(0)" class="primarylink" href="#Digit"><img class="linkimg" src="/img/ARCH/digitalizzazione.jpg"  >Digitalizzazione</a><span class="dropButton"><i onclick="dropindex (0, true)" class="fas fa-angle-down"></i></span>
             </div>
@@ -133,20 +133,18 @@
     <div class="content">
         <div  class="convert">
             <h1>CONVERTITORE DI BASI</h1>
-            <?php
-              printf($_POST)
             
-            ?>
             <form action="/archElab/CodDig" method="post">
-                <input placeholder="Numero da convertire" type="text" name="Number" id="number" >
-                <input placeholder="Base Partenza (2-16)" type="number" name="StartBase" id="startBase">
-                <input placeholder="Base Arrivo (2-16)" type="number" name="toBase" id="toBase">
+                <input placeholder="Numero da convertire" type="text" name="Number" id="number" required >
+                <input placeholder="Base Partenza (2-16)" type="number" name="StartBase" id="startBase" required>
+                <input placeholder="Base Arrivo (2-16)" type="number" name="toBase" id="toBase" required>
                 <div id="chooseFormat">  <!-- si attiva solo se toBase = 2 -->
-                    <input type="radio" value="Compl2" id="ComplementoA2"><label for="ComplementoA2">Compl a 2</label>
-                    <input type="radio" value="Compl1" id="ComplementoA1"><label for="ComplementoA1">Compl a 1</label>
-                    <input type="radio" value="EccN" id="EcessoN"><label for="EcessoN">Ecesso N=(2^[nBit-1])</label>
-                    <input type="number" placeholder="nBIT codifica binaria" id="nBit">
-                    <input type="radio" value="Default" id="Default"><label for="Default">Default</label>
+                    
+                    <input type="radio" name="convFormat" value="Compl2" id="ComplementoA2"><label for="ComplementoA2">Compl a 2</label> <a href="#COMPL2">??</a>
+                    <input type="radio" name="convFormat" value="Compl1" id="ComplementoA1"><label for="ComplementoA1">Compl a 1</label> <a href="#COMPL1">??</a>
+                    <input type="radio" name="convFormat" value="EccN" id="EcessoN"><label for="EcessoN">Ecesso N=(2^[nBit-1])</label> <a href="#ECCN">??</a>
+                    <input type="number" placeholder="nBIT codifica binaria" id="nBit"> <!--   visibile solo se convFormat = EccessoN -->
+                    <input type="radio" name="convFormat" value="Default" checked id="Default"><label for="Default" >Default</label>
                 </div>
                 <input type="submit" id="convertButton" value="CONVERTI">
                 <input placeholder="Risultato" type="text" name="Result" id="Result">

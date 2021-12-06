@@ -42,19 +42,15 @@ body {
   justify-content: center;
   align-items: center;
 }
-<<<<<<< Updated upstream
 .textContent .content .convert #chooseFormat {
   display: none;
-  /*FLEX SE toBase = 2*/
   justify-content: center;
   align-items: center;
+  font-size: 25px;
 }
-.textContent .content .convert #chooseFormat #nBit {
-  display: none;
-  /* viene mostrato se viene selezionata la casella Eccesso N*/
+.textContent .content .convert #chooseFormat a {
+  font-weight: bold;
 }
-=======
->>>>>>> Stashed changes
 .textContent .content .convert input, .textContent .content .convert button {
   height: 30px;
   border-radius: 15px;

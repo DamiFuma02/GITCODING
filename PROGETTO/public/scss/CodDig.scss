@@ -55,7 +55,13 @@ body{
             border-radius: 50px;
             justify-content: center;
             align-items: center;
-            
+            #chooseFormat {
+                display: none;justify-content: center; align-items: center;
+                font-size: 25px;
+                a{
+                    font-weight: bold;
+                }
+            }
             input, button{
                 height: 30px;
                 border-radius: 15px;
