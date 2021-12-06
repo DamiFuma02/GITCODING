@@ -295,10 +295,22 @@
 
     let inputs = document.querySelectorAll("input")
     //preleva il formato della conoversione base 2
-    
+    async function selectConvType(checkboxes){
+        
+        for (let index = 0; index < checkboxes.length; index++) {
+            if (checkboxes[index].checked) {
+                
+                return checkboxes[index].value
+            }
+            
+        }
+        return ""
+    }
     
 
     let invio = document.getElementById("convertButton")
+    
+
     invio.addEventListener("click",()=> {
         //CONVERSIONE NUMERICA
         let number = document.getElementById("number").value   //salvato come STRINGA per una semplice conversione ricorsiva
@@ -308,22 +320,26 @@
         //i dati inseriti vengono salvati in formato numero, invece che stringa
         console.log(`startBase = ${startBase}`)
         console.log(`toBase = ${toBase}`)
-
+        let div = document.getElementById("chooseFormat")
         if (checkBases(startBase, toBase )){
             //BASI VALIDE 
             //CONTROLLO SE NUMBER è VALIDO
-            
+            console.log("BASI VALIDE")
             
             
             
             if (numberValidation(number, startBase)) {
                 //NUMERO VALIDO
+                console.log(`number = ${number} VALIDO in base ${startBase}`)
+                console.log(`div = ${div.style.display}`)  
+                div.style.display = "static"
+
                 let convFormat = ""
                 let nBit = 0;  //VALORE DI DEFAULT perciò la conversione viene effettuata in base PC
                 if (toBase == 2) {
-                    let div = document.getElementById("chooseFormat")
-                    div.style.display = "flex"
+                    console.log("toBase = "+toBase)
                     let checkboxes = div.children
+<<<<<<< Updated upstream
                     for (let index = 0; index < checkboxes.length; index++) {
                         if (checkboxes[index].checked) {
                             if (checkboxes[index].id == "EcessoN") {
@@ -342,12 +358,23 @@
 
                     if (convFormat != "Default") {
                         //conversioni particolari
+=======
+                    //aspetta la funzione asincrona per capire il formato di conversione
+                    if (await selectConvType(checkboxes) != "") {
+                        //se è VERO è stato selezionato il tipo di conversione
+                        if (convFormat == "Default") {
+                            //conversioni standard
+                            console.log(`NUMERO ${number} VALIDO`)
+                            result.value = convert(startBase, toBase, number).toString()
+                        } else {
+                            //conversioni particolari
+                        }
+>>>>>>> Stashed changes
                     }
-
+                } else {
+                    //conversione normale senza scelta del convType
                 }
                 //INIZIO CONVERSIONE
-                console.log(`NUMERO ${number} VALIDO`)
-                result.value = convert(startBase, toBase, number).toString()
             } else {
                 numberCell = document.getElementById("number")
                 numberCell.style.backgroundColor = "rgb(255, 136, 0)"

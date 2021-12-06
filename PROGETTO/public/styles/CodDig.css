@@ -42,6 +42,7 @@ body {
   justify-content: center;
   align-items: center;
 }
+<<<<<<< Updated upstream
 .textContent .content .convert #chooseFormat {
   display: none;
   /*FLEX SE toBase = 2*/
@@ -52,6 +53,8 @@ body {
   display: none;
   /* viene mostrato se viene selezionata la casella Eccesso N*/
 }
+=======
+>>>>>>> Stashed changes
 .textContent .content .convert input, .textContent .content .convert button {
   height: 30px;
   border-radius: 15px;
@@ -59,6 +62,17 @@ body {
 .textContent .content .convert button {
   background-color: #1ac21a;
   min-width: 180px;
+}
+
+#chooseFormat {
+  display: none;
+  /*FLEX SE toBase = 2*/
+  justify-content: center;
+  align-items: center;
+}
+#chooseFormat #nBit {
+  display: none;
+  /* viene mostrato se viene selezionata la casella Eccesso N*/
 }
 
 @media (max-width: 900px) {
