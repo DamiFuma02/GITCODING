@@ -17,7 +17,7 @@
                         (llcs (substring a 1) b)
                         (llcs a (substring b 1))
                    ) 
-               )
+               ) 
        )
   )
 )
@@ -45,21 +45,40 @@
 ;LCS determina la sottosequenza comune ordinata da SX a DX delle due stringhe inserite
 (define lcs      ;restituisce la STRINGA LCS
   (lambda (a b)   ;a b = STRINGHE
-    (cond
+    (cond 
        ((or (string=? a "") (string=? b ""))
            ""  ;se una stringa è vuota  si restituisce LCS = ""
+        )
+       ((or (= (string-length a) 1) (= (string-length b) 1))
+        ;in caso di stringa lunga 1 solo char controllare il char con tutti gli altri della stringa maggiore
+             (if (= (string-length a) 1)
+                 (if (char=? (string-ref a 0) (string-ref b 0))   ;controlla il primo carattere delle due stringhe
+                     (string-append
+                             a
+                             (lcs a (substring b 1))    ;toglie il primo carattere di b
+                     )
+                     (lcs a (substring b 1))
+                 )
+                 (if (char=? (string-ref a 0) (string-ref b 0))   ;controlla il primo carattere delle due stringhe
+                     (string-append
+                             b
+                             (lcs (substring a 1) b)    ;toglie il primo carattere di a
+                     )
+                     (lcs (substring a 1) b )
+                 )
+             )
         )
        ( (char=? (string-ref a 0) (string-ref b 0)) ;le due stringhe iniziano con lo stesso char
          ; carattere uguale + la LCS delle due stringhe senza il primo carattere
          (string-append
-                  (substring a 0 1)
-                  (lcs (substring a 1) (substring b 1))
+                  (substring a 0 1)   ;PRIMO CARATTERE di A
+                  (lcs (substring a 1) (substring b 1))  ;toglie il primo carattere da entrambe le stringhe
          )   ;restituisce la stringa contente il carattere comune
         )
        (else
         ;se le due stringhe inziano con char diversi
-        ;restituisce la stringa più lunga tra due LCS
-           (longer
+        
+           (longer   ;restituisce la stringa più lunga tra due LCS
                 (lcs (substring a 1) b)    ;toglie il primo char di a 
                 (lcs a (substring b 1))    ;toglie il primo char di b
            ) 

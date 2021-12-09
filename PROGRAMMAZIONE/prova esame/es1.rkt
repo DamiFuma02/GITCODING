@@ -1,6 +1,6 @@
 ;; The first three lines of this file were inserted by DrRacket. They record metadata
 ;; about the language level of this file in a form that our tools can easily process.
-#reader(lib "htdp-intermediate-lambda-reader.ss" "lang")((modname es1) (read-case-sensitive #t) (teachpacks ((lib "drawings.ss" "installed-teachpacks") (lib "puzzle.rkt" "installed-teachpacks"))) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ((lib "drawings.ss" "installed-teachpacks") (lib "puzzle.rkt" "installed-teachpacks")) #f)))
+#reader(lib "htdp-intermediate-lambda-reader.ss" "lang")((modname es1) (read-case-sensitive #t) (teachpacks ((lib "drawings.ss" "installed-teachpacks") (lib "puzzle.rkt" "installed-teachpacks") (lib "puzzle.rkt" "installed-teachpacks"))) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ((lib "drawings.ss" "installed-teachpacks") (lib "puzzle.rkt" "installed-teachpacks") (lib "puzzle.rkt" "installed-teachpacks")) #f)))
 ;dati 2 numeri x e y restituire in una lista
 ;(x+y)/2    e |x-y|/2
 
@@ -24,10 +24,12 @@
             )
             (else
                  (append
-                      (list(pair (car list1) (car list2)))   ;resituisce la lista calcolata da pair
+                      (list
+                            (pair (car list1) (car list2))
+                      )   ;resituisce la lista calcolata da pair
                       (pair-list (cdr list1) (cdr list2))
                  )
             )
-         )
+         ) 
   )
-)
+) 
