@@ -106,13 +106,52 @@
       (rovescia_RIC (cdr lista) (cons (car lista1 listaR ) )  
     )
   )
-)
+))
 
 (define rovescia
-  (lambda (lista)
-      (roverscia_RIC lista null )
+  (lambda (list1)
+      (rovescia_RIC list1 '())
   )
 )
+
+
+(define next   ;restituisce il successivo di un numero
+  (lambda (x)
+     (+ x 1)
+  )
+)
+
+(define mappa
+  (lambda (proc lista)    ;proc = procedura usata
+                          ; lista = lista di numeri/caratteri
+    (let ((k (- (length lista) 1))
+         )
+         (if (= k 0)
+             (list (proc (list-ref lista k)))
+             (append
+                   (list (proc (car lista))     )
+                   (mappa proc (cdr lista))
+             )
+         )
+    )
+  )
+)
+
+
+;; COMPOSIZIONE FUNZIONALE
+;; f: D-> E      g: E -> F,      h: D -> F
+
+;; per ogni x in E h(x) = g(f(x))
+
+(define compFunc
+  (lambda (g f)  ;g e f sono due funzioni
+    (lambda (x)
+      (g (f x))
+    )
+  )
+)
+
+
 
 
 

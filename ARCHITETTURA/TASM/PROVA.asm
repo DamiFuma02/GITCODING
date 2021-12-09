@@ -1,0 +1,10 @@
+TITLE Prova
+.DATA
+.CODE
+.STARTUP
+MOV AX, 04h
+MOV BX, 05h
+CMP AX, BX
+JA maggiore
+maggiore:	XCHG AX, BX
+			JA
