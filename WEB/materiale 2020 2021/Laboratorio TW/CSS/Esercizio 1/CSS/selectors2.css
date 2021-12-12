@@ -1,0 +1,9 @@
+li+li>a{
+	font-family: 'Courier New', Courier, monospace;
+}
+a[href$="example.org"]{
+	font-style: italic;
+}
+li:first-child a{
+	font-size:2em;
+}

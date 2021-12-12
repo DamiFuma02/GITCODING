@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Modulo#2</title>
+		</head>
+		
+		<body>
+			<form action="indirizzo della pagina che riceve" method="post">
+				<h1>Contact information</h1>
+				<fieldset>
+						<legend>Title</legend>
+					<section class="contacts">	
+						<p>					
+							<ul>
+								<li><input type="radio" name="title" value="King" id="#a"><label for="#a">King</label></li>
+								<li><input type="radio" name="title" value="Queen" id="#b"><label for="#b">Queen</label></li>
+								<li><input type="radio" name="title" value="Joker" id="#c"><label for="#c">Joker</label></li>
+							</ul>
+						<p>	
+					
+						<p>
+							<p>
+								<label for="#d">Name:<abbr title="required"><strong> * </strong></abbr></label>
+								<input type="text" id="name" name="username">
+							</p>
+							<p>
+								<label for="#d">E-mail:<abbr title="required"><strong> * </strong></abbr></label>
+								<input type="text" id="e-mail" name="e-mail">
+							</p>
+							<p>
+								<label for="#d">Password:<abbr title="required"><strong> * </strong></abbr></label>
+								<input type="password" id="password" name="password">
+							</p>	
+						</p>
+					</section>
+					<section class="payment_informations">	
+						<p>
+							<h1>Payment information</h1>
+						</p>
+						<p>
+							<p>
+								<label for="#e">Card type:</label>
+								<select name="payment">
+									<option value="Visa">Visa</option>
+									<option value="Mastercard">Mastercard</option>
+									<option value="American Express">American Express</option>
+								</select>	
+							</p>
+							<p>
+								<p>
+									<label for="#f">Card number:<abbr title="required"><strong> * </strong></abbr></label>
+									<input type="text" id="card_n" name="card_number" max="16">
+								</p>
+								<p>
+									<label for="#g">Expiration date:<abbr title="required"><strong> * </strong></abbr><cite>formatted as mm/dd/yyyy</label>
+									<input type="date" id="date" name="date">
+								</p>
+							</p>
+							<input type="submit" name="submit" value="Validate the payment"/>
+						</p>
+					</section>	
+				</fieldset>	
+			</form>
+		</body>
+	</html>	
+			

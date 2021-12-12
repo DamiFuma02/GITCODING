@@ -1,0 +1,92 @@
+----------------------------------------------------------------
+
+ES. 1
+
+a) Si scriva un DTD XML per rappresentare le informazioni su uno studente di un certo corso di laurea. L'elemento radice deve essere studente; vanno rappresentati, per ogni anno di corso frequentato dallo studente, i corsi che lo studente ha scelto di frequentare, ognuno comprendente l'eventuale esame sostenuto positivamente con relativo voto conseguito.
+
+b) Si fornisca un'istanza di documento XML valida rispetto al DTD creato, e si disegni l'albero del documento (sono sufficienti i nodi che rappresentano gli elementi).
+
+c) Si scriva una query XPATH per reperire i nomi di tutti i corsi superati dallo studente con un esito maggiore o uguale a 25.
+
+d) Si scriva una query XPATH per calcolare la media aritmetica dei voti conseguiti considerando tutti gli esami sostenuti.
+
+-----------------------------------------------------------------
+
+ES. 2
+
+Dato il seguente DTD
+
+<!ELEMENT bibliography (bibItem+)>
+<!ELEMENT bibItem (title, (author | editor)*, date, publisher?)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT author (#PCDATA)>
+<!ELEMENT editor (#PCDATA)>
+<!ELEMENT date (year, month?)>
+<!ELEMENT year (#PCDATA)>
+<!ELEMENT month (#PCDATA)>
+<!ELEMENT publisher (#PCDATA)>
+<!ATTLIST bibItem
+                  id ID #REQUIRED
+                  type (article | book | report | video | audio) 'article'>
+
+a) Si scriva un documento XML valido con elemento radice bibliography contente il minor numero possibile di elementi e attributi.
+
+b) Si scriva una query XPATH per reperire il titolo dei bibItem pubblicati prima del 2015.
+
+-------------------------------------------------------------------
+
+ES. 3
+
+Dato il seguente documento XML
+
+<weblog>
+    <entry categoria="personale" data="1-1-2002">
+        <titolo>Sito sulle vacanze</titolo>
+        <testo>Visitate questo sito per informazioni utili sulle vostre vacanze</testo>
+        <link href="http://www.AAA-vacanze.it/" />
+    </entry>
+    <entry categoria="tecnologie" data="12-10-2002">
+        <titolo>Nuova versione del linguaggio XML</titolo>
+        <testo>Tra breve una nuova versione del linguaggio XML!</testo>
+        <link href="http://www.w3.org/" />
+        <link href="http://www.w3.org/xml/" />
+    </entry>
+    <entry categoria="film" data="2-1-2003">
+        <titolo>I film per il mese di luglio</titolo>
+        <testo>Sono in arrivo molti nuovi film.</testo>
+    </entry>
+</weblog>
+
+a) Si scriva un DTD che lo renda valido, assumendo che l'attributo href di link sia obbligatorio.
+
+b) Si scriva una query XPATH per reperire le categorie di tutte le entry presenti.
+
+c) Si scriva una query XPATH per reperire i titoli delle entry aventi almeno un link all'interno del loro contenuto.
+
+---------------------------------------------------------------------
+
+ES. 4
+
+Dato il seguente documento XML relativo all'archivio dati di un sito di e-commerce
+
+<ecommerce>
+    <prodotto prezzo="5" ID_prodotto="_01">Amuchina</prodotto>
+    <prodotto prezzo="15" ID_prodotto="_02">Mascherine Covid19</prodotto>
+    <prodotto prezzo="75" ID_prodotto="_03">Libro &quot;Deep Learning&quot; by Yoshua Bengio, Ian Goodfellow, Aaron Courville</prodotto>
+    <cliente ID_cliente="c01">Andrea Urgolo</cliente>
+    <cliente ID_cliente="c02">Pinco Pallo</cliente>
+    <ordine ID_ordine="ordine1" data="14/3/2020" rif_prodotti="_01 _02" rif_cliente="c01"></ordine>
+    <ordine ID_ordine="ordine2" data="13/3/2020" rif_prodotti="_03" rif_cliente="c02"></ordine>
+</ecommerce>
+
+a) Si scriva un DTD che lo renda valido.
+
+b) Si scriva una query XPATH per reperire tutti i prodotti in vendita.
+
+c) Si scriva una query XPATH per reperire i prodotti ordinati dal cliente Andrea Urgolo.
+
+d) Si scriva una query XPATH per reperire gli ordini con somma dei prezzi dei prodotti inferiore a 50.
+
+------------------------------------------------------------------------
+
+Consegna su teams o via mail (andrea.urgolo@uniud.it). Gli esercizi sono tutti facoltativi e utili per la preparazione del compito. Si consiglia di inviare le risposte almeno una settimana prima dell'appello in cui si vuole sostenere l'esame, in modo da poter ricevere e visionare le correzioni in tempo.

@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>
+            prova html
+        </title>
+    </head>
+
+    <body>        
+        <h1><p align = "center"> Hello world! <br/>How is going?</p></h1>
+        <p>Codice scheme</p>
+        <p><pre>(define ric
+            (lambda (num)
+              (if(> (string-length num) 1)
+                 (string-append
+                  (ric (substring num 0(-(string-length num) 1)))
+                  (compl (substring num (-(string-length num)1)))
+                  )
+                 (compl num))
+              ))</pre></p>
+    </body>
+</html>        

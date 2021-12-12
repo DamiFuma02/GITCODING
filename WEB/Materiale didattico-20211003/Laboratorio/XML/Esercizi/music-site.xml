@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<!DOCTYPE music-site [
+    <!ELEMENT music-site (track*, user*)>
+    <!ELEMENT user (name,surname)> 
+    <!ELEMENT name (#PCDATA)>
+    <!ELEMENT surname (#PCDATA)>
+    <!ELEMENT track (title, artist+, album?)>
+    <!ELEMENT title (#PCDATA)>
+    <!ELEMENT artist (#PCDATA)>
+    <!ELEMENT album (#PCDATA)>
+    <!ATTLIST track id ID #REQUIRED>
+    <!ATTLIST user favorite-tracks IDREFS #REQUIRED>
+]>
+<music-site>
+    <track id="t1"><title>Track 1</title><artist>Artist 1</artist></track>
+    <track id="t2"><title>Track 2</title><artist>Artist 2</artist></track>
+    <track id="t3"><title>Track 3</title><artist>Artist 3</artist></track>
+    <track id="t4"><title>Track 4</title><artist>Artist 4</artist></track> 
+    <track id="t5"><title>Track 5</title><artist>Artist 5</artist></track> 
+    <user favorite-tracks="t2 t5"><name>User</name><surname>One</surname></user>
+    <user favorite-tracks="t1 t3 t5"><name>User</name><surname>Two</surname></user>
+</music-site>
+    

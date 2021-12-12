@@ -1,0 +1,9 @@
+#note-title{
+	color:red;
+}
+a.note{
+	color:rgb(128,64,192);
+}
+ul a{
+	background-color:hsl(120,25%,75%);
+}

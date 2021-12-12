@@ -1,0 +1,11 @@
+<!ELEMENT libro       (autore+,titolo,capitolo+)>
+<!ENTITY % contenuto "titolo, (paragrafo|figura)*">
+<!ELEMENT capitolo    (%contenuto;,sezione*)>
+<!ELEMENT sezione     (%contenuto;)>
+<!ELEMENT autore      (#PCDATA)>
+<!ELEMENT titolo      (#PCDATA)>
+<!ELEMENT paragrafo   (#PCDATA|riferimento)*>
+<!ELEMENT figura      (#PCDATA)>
+<!ELEMENT riferimento EMPTY>
+<!ATTLIST libro isbn ID #IMPLIED>
+<!ATTLIST riferimento risorsa IDREF #REQUIRED>

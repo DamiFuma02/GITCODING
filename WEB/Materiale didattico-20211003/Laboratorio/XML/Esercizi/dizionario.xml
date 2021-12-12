@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<!-- <!DOCTYPE dizionario SYSTEM "dizionario.dtd">  -->
+<dizionario lingua="english">
+    <voce>
+        <termine>mouse</termine>
+        <pronuncia>maus</pronuncia>
+        <significato>
+            <definizione>topo</definizione>
+            <esempio>mouse hole</esempio>
+            <esempio>mouse color</esempio>
+        </significato>
+        <significato>
+            <definizione>mouse</definizione>
+            <esempio>...</esempio>
+        </significato>
+    </voce>
+    <voce>
+        <termine>keyboard</termine>
+        <pronuncia>...</pronuncia>
+        <significato>
+            <definizione>...</definizione>
+            <esempio> ... </esempio>
+        </significato>
+    </voce>
+</dizionario>

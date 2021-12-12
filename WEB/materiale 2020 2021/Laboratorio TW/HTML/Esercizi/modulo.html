@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Modulo#1</title>
+		</head>
+		<body>
+			<form action="indirizzo della pagina che riceve" method="post">
+				<fieldset>
+					<legend>Modulo ordini</legend>
+					<p>
+						<strong>Dati nuovo ordine</strong>
+					</p>
+					<p>
+						Nome:
+							<input type="text" name="username" size="15" maxlength="30"/>
+						Cognome:
+							<input type="text" name="username" size="15" maxlength="30"/>
+					</p>
+					<p>
+						Città
+							<input type="text" name="city" size="15" maxlength="30"/>
+						Stato:
+							<input type="text" name="state" size="15" maxlength="30"/>
+						cap:
+							<input type="text" name="cap" size="15" maxlength="30"/>
+						codice personale:
+							<input type="password" name="personal code" size="15" maxlength="30"/>
+					</p>
+					<hr>
+					<p>
+						<b>Tipo di capo:</b>
+						<select name="dress">
+							<option value="Capo1">Capo1</option>
+							<option value="Capo2">Capo2</option>
+							<option value="Capo3">Capo3</option>
+							<option value="Capo4">Capo4</option>
+						</select>
+						<b>Dimensione:</b>
+						<input type="radio" name="size" value="XL">
+						XL
+						<input type="radio" name="size" value="L">
+						L
+						<input type="radio" name="size" value="M">
+						M
+						<input type="radio" name="size" value="S">
+						S	
+					</p>
+					<p>
+						<b>Tipo di pagamento:</b>
+						<select name="payment">
+							<option value="Contrassegno">Contrassegno</option>
+							<option value="Bonifico">Bonifico</option>
+							<option value="Carta di credito">Carta di credito</option>
+						</select>
+					</p>
+					<hr>
+					<p>
+						<input type="submit" name="submit" value="InviaOrdine"/>
+						<input type="reset" name="reset"value="cancella"/>
+					</p>
+				</fieldset>
+			</form>
+		</body>
+	</html>

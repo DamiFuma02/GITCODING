@@ -1,0 +1,8 @@
+1.Autori presenti in seconda posizione nell'elenco degli autori di ogni libro
+//Authors/Author[2] ​
+
+2. First_Name di tutti gli autori presenti
+//Authors/descendant::First_Name​
+
+3. Titolo dei libri con osservazioni (Remark) contenenti  la parola     "great"​
+//Book[contains(Remark,"great")]/Title 

@@ -1,0 +1,19 @@
+xmllint (http://xmlsoft.org/downloads.html) è un parser XML contenuto nella libreria open source libxml2 e chiamabile da riga di comando.
+
+I passi d'installazione cambiano da sistema operativo a sistema operativo
+
+    - su Linux https://command-not-found.com/xmllint
+    - su Windows https://stackoverflow.com/questions/19546854/installing-xmllint
+    - su MacOS X https://www.explain.com.au/oss/libxml2xslt.html
+
+    
+Esempi di utilizzo
+
+    - per validare:
+        xmllint --noout --valid documento.xml
+        
+    - per validare se il DTD è esterno e non è stato dichiarato nel documento:
+        xmllint --noout --dtdvalid nome_file.dtd documento.xml
+    
+    - per eseguire una query xpath:  
+        xmllint --xpath '/query/xpath/...' documento.xml

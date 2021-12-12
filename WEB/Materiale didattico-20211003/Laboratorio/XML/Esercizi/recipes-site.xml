@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE recipes-site [
+
+<!ELEMENT recipes-site (recipe*,user*)>
+<!ELEMENT recipe (name, description?, calories, preparation?)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT calories (#PCDATA)>
+<!ELEMENT preparation (step+)>
+<!ELEMENT step (#PCDATA)>
+<!ELEMENT user (username, email)>
+<!ELEMENT username (#PCDATA)>
+<!ELEMENT email EMPTY>
+
+<!ATTLIST recipe id ID #REQUIRED>
+<!ATTLIST email address CDATA #REQUIRED>
+<!ATTLIST user favorite-recipes IDREFS #IMPLIED>
+
+]>
+
+<recipes-site>
+<recipe id="r1">
+    <name>Belgian Waffles</name>
+    <description>
+        Two of our famous Belgian Waffles with plenty of real maple syrup
+    </description>
+    <calories>650</calories>
+    <preparation>
+        <step>Step 1</step>
+        <step>Step 2</step>    
+    </preparation>    
+</recipe>
+<recipe id="r2">
+    <name>Strawberry Belgian Waffles</name>
+    <description>
+        Light Belgian waffles covered with strawberries and whipped cream
+    </description>
+    <calories>900</calories>
+    <preparation>
+        <step>Step 1</step>
+        <step>Step 2</step>
+        <step>Step 3</step>
+        <step>Step 4</step>    
+    </preparation>    
+</recipe>
+<recipe id="r3">
+    <name>Berry-Berry Belgian Waffles</name>
+    <description>
+        Belgian waffles covered with assorted fresh berries and whipped cream
+    </description>
+    <calories>900</calories>
+    <preparation>
+        <step>Step 1</step>
+        <step>Step 2</step>
+        <step>Step 3</step>
+    </preparation>
+</recipe>
+<recipe id="r4">
+    <name>French Toast</name>
+    <description>
+        Thick slices made from our homemade sourdough bread
+    </description>
+    <calories>450</calories>
+    <preparation>
+        <step>Step 1</step>
+        <step>Step 2</step>
+    </preparation>   
+</recipe>
+<recipe id="r5">
+    <name>Homestyle Breakfast</name>
+    <description>
+        Two eggs, bacon or sausage, toast, and our ever-popular hash browns
+    </description>
+    <calories>950</calories>
+    <preparation>
+        <step>Step 1</step>
+        <step>Step 2</step>
+        <step>Step 3</step>
+        <step>Step 4</step>    
+        <step>Step 5</step>  
+    </preparation>   
+</recipe>
+<user favorite-recipes="r4"><username>Jhon Doe</username><email address="jdoe@example.com" /></user>
+<user favorite-recipes="r1 r2"><username>Mario Rossi</username><email address="mrossi@email.it" /></user>
+<user favorite-recipes="r1 r3 r5"><username>Pinco Pallo</username><email address="usertwo@email.com" /></user>
+</recipes-site>

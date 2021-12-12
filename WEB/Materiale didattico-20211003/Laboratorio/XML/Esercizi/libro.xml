@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE libro SYSTEM "libro.dtd">
+<libro isbn="isbn:978-81-7525-766-5">
+    <autore>Mario Rossi</autore>
+    <titolo>La storia infinita (ben tre paragrafi)</titolo>
+    <capitolo>
+        <titolo>Capitolo I</titolo>
+        <paragrafo>Questo è il primo paragrafo.</paragrafo>
+        <paragrafo>Questo è il secondo paragrafo.</paragrafo>
+        <paragrafo>Questo è il terzo e ultimo paragrafo.</paragrafo>
+    </capitolo>
+</libro>

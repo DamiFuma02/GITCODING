@@ -1,0 +1,20 @@
+1. nomi delle ricette che richiedono al massimo 3 passi per essere preparate
+//recipe[count(preparation/step) <= 3]/name
+
+2. somma delle calorie di tutte le ricette presenti
+sum(//recipe/calories)
+
+3. media aritmetica delle calorie di tutte le ricette presenti
+sum(//recipe/calories) div count(//recipe)
+ 
+4. utenti a cui piacciono ricette che non superano le 500 calorie​
+//user[id(@favorite-recipes)/calories <= 500]/username
+
+    Alcuni validatori hano problemi con la funzione id(...).
+    Quest'ultima query si può eseguire con xmllint:
+    
+        xmllint  --xpath  '//user[id(@favorite-recipes)/calories <= 500]/username' recipes-site.xml
+    
+        risultato: <username>Jhon Doe</username>
+
+    
