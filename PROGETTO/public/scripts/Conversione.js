@@ -337,6 +337,27 @@
     }
     
 
+
+
+    let codeLinks = document.getElementById("navCode").children
+    for (let index = 0; index < (codeLinks.length -1); index++) {
+        codeLinks[index].addEventListener("click", () => {
+            document.getElementById("Codifica").children[2+index].style.display = "flex"
+        })
+        
+    }
+
+    document.getElementById("hideCodifica").addEventListener("click", () => {
+        console.log("CLICk")
+        let divs = document.getElementById("Codifica").children
+        for (let index = 0; index < 3; index++) {
+            divs[2+index].style.display = "none"
+
+        }
+    })
+
+    
+
     let invio = document.getElementById("convertButton")
     invio.addEventListener("click",()=> {
         //CONVERSIONE NUMERICA
