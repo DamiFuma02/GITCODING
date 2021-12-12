@@ -1,0 +1,11 @@
+#note-title{
+    color: red;
+}
+
+.note {
+    color: rgb(127, 64, 192)
+}
+
+ul li a{
+    color: hsl(132, 98%, 52%)
+}
