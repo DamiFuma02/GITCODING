@@ -133,8 +133,8 @@ body {
 }
 .navtable .linkcell .indexdrop a, .navtable .CFU6 .indexdrop a, .navtable .CFU12 .indexdrop a {
   border: 1px solid black;
-  background: #6181f2;
-  background: radial-gradient(circle, #6181f2 0%, #a5bcfa 50%, #0bf1f2 100%);
+  padding: 10px;
+  background: red;
   border-radius: 15px;
   display: flex;
   flex: 1 0 33%;

@@ -139,8 +139,8 @@ body {
             
             a{
                 border: 1px solid black;
-                background: rgb(97,129,242);
-                background: radial-gradient(circle, rgba(97,129,242,1) 0%, rgba(165,188,250,1) 50%, rgba(11,241,242,1) 100%);
+                padding: 10px;
+                background: red;
                 border-radius: 15px;
                 display: flex;
                 flex: 1 0 33%;

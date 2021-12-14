@@ -41,6 +41,10 @@ router.get("/Storia", (req, res)=> {
     res.render("arch/Storia.ejs")
 })
 
+router.get("/Memoria", (req, res)=> {
+    res.render("arch/Memoria.ejs")
+})
+
 
 
 
