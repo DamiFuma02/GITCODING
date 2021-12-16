@@ -8,13 +8,10 @@
   )
  )
 
-
-
-
 (define hanoi-rec-cod         ; hanoi-rec-cod: list
  (lambda (n k s d t n_backup) ; n, k, n_backup: int  ; s, d, t: lists
   (let
-   ( 
+   (
     (l (expt 2 (- n 1)))
     (h (+ (cadr s) (cadr d) (cadr t)))
     )
@@ -24,5 +21,5 @@
       ((not (< k l)) (hanoi-rec-cod (- n 1) (- k l) t (list (car d) (+ (cadr d) 1)) s n_backup))
       )
    )
-  ))
+  )
  

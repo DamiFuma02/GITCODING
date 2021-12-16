@@ -115,49 +115,6 @@
 )
 
 
-
-(define before   ;restituisce gli elementi a sx della chiave
-  (lambda (key lista)
-        (let (  (listLength (- (length lista) 1)) (lastElement (car (reverse lista) ))
-             )
-             (if (= listLength 0)
-                 lista
-                 (if (= key (car lista))
-                     null
-                     (if  (= key lastElement)
-                       (reverse (cdr (reverse lista)))
-                       (before key (reverse (cdr (reverse lista))))
-                     )
-                 )
-                 
-             )
-        )
-  )
-)
-
-
-(define after   ;restituisce gli elementi a dx della chiave
-  (lambda (key lista)
-    (let (  (listLength (- (length lista) 1)) (lastElement (car (reverse lista) ))
-             )
-             (if (= listLength 0)
-                 lista
-                 (if (= key lastElement)
-                     null
-                     (if  (= key (car lista))
-                        (cdr lista)      ;toglie il primo elemento
-                        (after key (cdr lista))     ;ricorsione togliendo il primo elemento
-                     )
-                 )
-                 
-                 
-             )
-        )
-  )
-)
-
-
-
 (define next   ;restituisce il successivo di un numero
   (lambda (x)
      (+ x 1)
