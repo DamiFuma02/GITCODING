@@ -1,0 +1,10 @@
+/*seleziona tutti gli a che NON sono classe note*/
+ul li a:not(.note){
+    text-decoration: none;
+}
+
+h1::first-letter{
+    letter-spacing: 0.25em;
+    text-shadow: 5px 5px purple;
+    
+}

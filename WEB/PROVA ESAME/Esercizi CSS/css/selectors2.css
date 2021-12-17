@@ -1,0 +1,12 @@
+a[href="http://www.example.org"]{
+    font-style: italic;
+}
+
+/*seleziona tutti gli elementi tranne il primo*/
+ul li:not(:nth-child(1)) a{
+    font-family: monospace;
+}
+
+ul li:nth-child(1) a{
+    font-size: 2em;
+}
