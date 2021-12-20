@@ -1,6 +1,6 @@
 ;; The first three lines of this file were inserted by DrRacket. They record metadata
 ;; about the language level of this file in a form that our tools can easily process.
-#reader(lib "htdp-intermediate-lambda-reader.ss" "lang")((modname hanoiDiskCOPY) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+#reader(lib "htdp-intermediate-lambda-reader.ss" "lang")((modname hanoiDiskCOPY) (read-case-sensitive #t) (teachpacks ((lib "hanoi.ss" "installed-teachpacks") (lib "drawings.ss" "installed-teachpacks"))) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ((lib "hanoi.ss" "installed-teachpacks") (lib "drawings.ss" "installed-teachpacks")) #f)))
 (define hanoi-moves
   (lambda (n)
     (hanoi-rec n 1 2 3)    ;1 2 3 sono gli indici che individuano le aste S D T
@@ -35,31 +35,61 @@
 
 ;; Restituisce la configurazione al termine della "k"-esima mossa
 (define hanoi-disks ; hanoi-disks: list
- (lambda (n k)      ; n, k: int
-  (hanoi-rec-cod n k '(1 0) '(2 0) '(3 0) n)
+ (lambda (n k)      ; n = numero dischi, k = mossa inclusa a cui terminare la ricerca
+  (hanoi-rec-cod n k
+                 ;CONFIGURAZIONI INIZIALI DELLE 3 POSTAZIONI CON 0 DISCHI
+                 '(1 0)    ;SOURCE
+                 '(2 0)    ;DESTINATION
+                 '(3 0)    ;TRANSIT
+                 n)
   )
  )
- 
-
-
+  
 
 (define hanoi-rec-cod         ; hanoi-rec-cod: list
  (lambda (n k s d t n_backup) ; n, k, n_backup: int  ; s, d, t: lists
-    (let  ( (l (expt 2 (- n 1)))
-            (h (+ (cadr s) (cadr d) (cadr t)))
+    (let  ( (l (expt 2 (- n 1)))    ;lunghezza = 2^(n-1)
+            (h (+ (cadr s) (cadr d) (cadr t))) ;somma i secondi elementi delle liste
           )
         (cond
-              ((= h n_backup)
+              ((= h n_backup)   ;mosse terminate perchè h è la somma di tutti i pezzi spostati
                    (list s d t)
               )
-              ((< k l)
-                   (hanoi-rec-cod (- n 1) k (list (car s) (+ (cadr s) 1)) t d n_backup)
+              ((< k l)        ;mosse precedenti a quella intermedia
+                   (hanoi-rec-cod (- n 1) k
+                                  (list (car s) (+ (cadr s) 1)) 
+                                  t d n_backup)
               )
-              ((not (< k l))
-                   (hanoi-rec-cod (- n 1) (- k l) t (list (car d) (+ (cadr d) 1)) s n_backup)
+              ((not (< k l))  ;mossa successiva a quella intermedia
+                   (hanoi-rec-cod (- n 1)
+                                  (- k l) ;l-esimo blocco piazzato 
+                                  t
+                                  (list (car d) (+ (cadr d) 1)) ;incrementa il numero di oggetti in D
+                                  s n_backup)
               )
         )
      )
   )
 )
+
+
+(define hanoi-picture     ;stampa la grafica della posizione alla k-esima mossa
+  (lambda (n k)    ;n blocchi, k-esima mossa
+    (let ((lista (hanoi-disks n k)) ;configurazione delle mosse
+         )
+         "cuiano"
+    )
+    
+  )
+)
+
+;(disk-image ringsize ringnumber position 1)
+;(overlap-images
+      ;(disk-image 1 2 1 1) dischi in pos = 1
+      ;(disk-image 1 2 2 1) dischi in pos = 2
+      ;(disk-image 1 2 3 1) dischi in pos = 3
+;)
+
+
+
  
