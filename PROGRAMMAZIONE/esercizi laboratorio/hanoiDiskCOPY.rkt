@@ -78,7 +78,11 @@
   (lambda (n k)    ;n blocchi, k-esima mossa
     (let ((lista (hanoi-disks n k)) ;configurazione delle mosse
          )
-         "cuiano"
+         (overlap-images
+              (overlap-images (disk-image 1 3 1 1) (disk-image 1 2 2 1)
+               )
+              (towers-background n) 
+          )
     )
     
   )
@@ -86,6 +90,7 @@
 
 ;(disk-image ringsize ringnumber position 1)
 ;(overlap-images
+      ;            size discnumber position
       ;(disk-image 1 2 1 1) dischi in pos = 1
       ;(disk-image 1 2 2 1) dischi in pos = 2
       ;(disk-image 1 2 3 1) dischi in pos = 3
@@ -94,6 +99,7 @@
 ;AGGIUNGE disk-image al BACKGROUND
 ;(overlap-images (disk-image 1 2 1 1) (towers-background 4))
 
-
+;FUNZIONA QUASI
+;(overlap-images (disk-image 1 2 1 1) (disk-image 2 3 1 1) )
 
  
