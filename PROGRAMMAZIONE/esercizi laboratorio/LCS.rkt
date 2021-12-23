@@ -25,9 +25,9 @@
 
 (define longer    ;restituisce la stringa più lunga tra le 2
   (lambda (str1 str2)  ;STRINGA
-     (let (
-              (k1 (- (string-length str1) 1))
-              (k2 (- (string-length str1) 1))
+     (let ( 
+              (k1 (string-length str1))
+              (k2 (string-length str2))
           )
           (if (< k1 k2)
               str2    ;str1 < str2
@@ -45,11 +45,11 @@
 ;LCS determina la sottosequenza comune ordinata da SX a DX delle due stringhe inserite
 (define lcs      ;restituisce la STRINGA LCS
   (lambda (a b)   ;a b = STRINGHE
-    (cond 
+    (cond   
        ((or (string=? a "") (string=? b ""))
            ""  ;se una stringa è vuota  si restituisce LCS = ""
         )
-       ((or (= (string-length a) 1) (= (string-length b) 1))
+       ((or (= (string-length a) 1) (= (string-length b) 1)) 
         ;in caso di stringa lunga 1 solo char controllare il char con tutti gli altri della stringa maggiore
              (if (= (string-length a) 1)
                  (if (char=? (string-ref a 0) (string-ref b 0))   ;controlla il primo carattere delle due stringhe
@@ -71,20 +71,23 @@
        ( (char=? (string-ref a 0) (string-ref b 0)) ;le due stringhe iniziano con lo stesso char
          ; carattere uguale + la LCS delle due stringhe senza il primo carattere
          (string-append
-                  (substring a 0 1)   ;PRIMO CARATTERE di A
+                  (substring a 0 1)   ;PRIMO CARATTERE di A o B
                   (lcs (substring a 1) (substring b 1))  ;toglie il primo carattere da entrambe le stringhe
-         )   ;restituisce la stringa contente il carattere comune
+         )   
         )
        (else
         ;se le due stringhe inziano con char diversi
-        
+         
            (longer   ;restituisce la stringa più lunga tra due LCS
                 (lcs (substring a 1) b)    ;toglie il primo char di a 
                 (lcs a (substring b 1))    ;toglie il primo char di b
            ) 
-        )
+        ) 
     ) 
   ) 
 )
+
+
+
 
 

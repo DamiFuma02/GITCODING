@@ -17,4 +17,40 @@
               )
          )
       )
-) 
+)
+
+
+;caratteri a b c
+(define seqs   ;restituisce la lista delle combinazioni di n caratteri con
+               ;i caratteri a;   j caratteri b;   e rimanenti c
+  (lambda (i j n)       ;!!!!!! 0 <= (i+j) < n !!!!!
+    (let ( (x (if (= i 0)
+                  null
+                  (seqs (- i 1) j (- n 1))  ;si aggiunge una A
+               )
+            )
+           (y (if (= j 0)
+                  null
+                  (seqs i (- j 1) (- n 1))  ;si aggiunge una B
+              )
+           )
+           (z (if (= (+ i j) n)                         
+                  null
+                  (seqs i j (- n 1))        ;si aggiunge una C
+              )
+           )
+         )
+         (if (= n 0)
+             (list "")
+             (append            ;S prende il valore della lista X o Y o Z
+                   (map (lambda (s) (string-append "a" s) )   x)
+                   (map (lambda (s) (string-append "b" s) )   y)
+                   (map (lambda (s) (string-append "c" s) )   z)
+             )
+         )
+
+
+      
+    )
+  )
+)
