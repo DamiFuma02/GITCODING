@@ -9,7 +9,6 @@
 ;;definire una lista contenente le lunghezze della LIS
 ;; per ogni elemento della lista
 
-(define LIS-lengths '())
 
 
 (define llis
@@ -22,7 +21,7 @@
          )
         ((= k 1)
             1
-         )
+         ) 
         (else
             ;; deve trovare il massimo tra 2 LIS calcolate a indici diversi
         )
