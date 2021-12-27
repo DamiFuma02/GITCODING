@@ -11,7 +11,7 @@
 <body>
 
     <div id="titlePage">
-        <i id="pagelogo" class="fas fa-database"></i></i></i>MEMORIE<a href="/"><div class="homebutton"><i class="fas fa-home"></i><span>HOME</span></div></a>
+        <i id="pagelogo" class="fas fa-database"></i></i></i>MEMORIE<a href="/archElab"><div class="homebutton"><i class="fas fa-home"></i><span>HOME</span></div></a>
     </div>
 
     <div class="navtable">
@@ -27,7 +27,7 @@
                 </li>
                 <li>
                     <a href="#Funzione">
-                        FUNZIONE
+                        INTERFACCIA
                     </a>
                 </li>
             </ul>
@@ -44,7 +44,7 @@
         </div>
         <div class="linkcell" onmouseleave="dropindex(2, false)">
             <div class="container">
-                <a class="primarylink" href="#Cache"><img class="linkimg" src="/img/ARCH/sram_basic_cell.png" > - CACHES</a><span class="dropButton"><i onclick="dropindex (2, true)" class="fas fa-angle-down"></i></span>
+                <a class="primarylink" href="#cache"><img class="linkimg" src="/img/ARCH/sram_basic_cell.png" > - CACHES</a><span class="dropButton"><i onclick="dropindex (2, true)" class="fas fa-angle-down"></i></span>
             </div>
             <ul class="indexdrop">
                 <li><a href="#">STRUTTURA</a></li>
@@ -55,22 +55,21 @@
         </div>
         <div class="linkcell" onmouseleave="dropindex(3, false)">
             <div class="container">
-                <a class="primarylink" href="#RAM"><img class="linkimg" src="/img/ARCH/memoria.png" > - Main Memory RAM</a><span class="dropButton"><i onclick="dropindex (3, true)" class="fas fa-angle-down"></i></span>
+                <a class="primarylink" href="#RAM"><img class="linkimg" src="/img/ARCH/memoria.png" > - MEMORIA PRINCIPALE</a><span class="dropButton"><i onclick="dropindex (3, true)" class="fas fa-angle-down"></i></span>
             </div>
             <ul class="indexdrop">
                 <li><a href="#">STRUTTURA</a></li>
                 <li><a href="#">FUNZIONE</a></li>
-                <li><a href="#">PAGINAZIONE</a></li>
+                <li><a href="#">INTERFACCIA</a></li>
             </ul>
         </div>
         <div class="linkcell" onmouseleave="dropindex(4, false)">
             <div class="container">
-                <a class="primarylink" href="#Storage"><img class="linkimg" src="/img/ARCH/HDD.png" > - STORAGE</a><span class="dropButton"><i onclick="dropindex (4, true)" class="fas fa-angle-down"></i></span>
+                <a class="primarylink" href="#VIRTUALE"><img class="linkimg" src="/img/ARCH/HDD.png" > - MEMORIA VIRTUALE</a><span class="dropButton"><i onclick="dropindex (4, true)" class="fas fa-angle-down"></i></span>
             </div>
             <ul class="indexdrop">
                 <li><a href="#">STRUTTURA</a></li>
-                <li><a href="#">FUNZIONE</a></li>
-                <li><a href="#">PAGINAZIONE</a></li>
+                <li><a href="#">INDIRIZZAMENTO</a></li>
             </ul>
         </div>
         <div class="linkcell" onmouseleave="dropindex(5, false)">
@@ -78,7 +77,10 @@
                 <a class="primarylink" href="#Access"><img class="linkimg" src="/img/ARCH/AccessoMEM.png" > - ACCESSO MEMORIE</a><span class="dropButton"><i onclick="dropindex (5, true)" class="fas fa-angle-down"></i></span>
             </div>
             <ul class="indexdrop">
-                
+                <li><a href="#">REGISTRI</a></li>
+                <li><a href="#">CACHE</a></li>
+                <li><a href="#">RAM</a></li>
+                <li><a href="#">DISCO</a></li>
             </ul>
         </div>
     </div>
@@ -94,15 +96,100 @@
         </div>
     </nav>
 
-
-    <div id="" class="textContent">
-        <h2>TITOLO MAIN CONTENUTO</h2>
+    <div id="Gerarchia" class="textContent">
+        <h2>GERARCHIA MEMORIA</h2>
         <div class="content">
             <div id="">
-                <h1>SUBCONTENT1</h1>
+                <h1>LIVELLI</h1>
             </div>
             <div id="">
-                <h1>SUBCONTENT1</h1>
+                <h1>INTERFACCIA</h1>
+            </div>
+        </div>
+        <hr>
+    </div>
+
+    <div id="Registri" class="textContent">
+            <h2>REGISTRI CPU</h2>
+            <div class="content">
+                <div id="">
+                    <h1>TIPOLOGIE</h1>
+                </div>
+                <div id="">
+                    <h1>STRUTTURA</h1>
+                </div>
+                <div id="">
+                    <h1>FUNZIONE</h1>
+                </div>
+            </div>
+            <hr>
+        </div>
+
+    <div id="cache" class="textContent">
+        <h2>MEMORIA CACHE</h2>
+        <div class="content">
+            <div id="">
+                <h1>LIVELLI</h1>
+            </div>
+            <div id="">
+                <h1>FUNZIONE</h1>
+            </div>
+            <div id="">
+                <h1>STRUTTURA</h1>
+            </div>
+            <div id="">
+                <h1>MAPPATURA</h1>
+            </div>
+        </div>
+        <hr>
+    </div>
+
+    
+
+    <div id="" class="textContent">
+        <h2>MEMORIA PRINCIPALE</h2>
+        <div class="content">
+            <div id="">
+                <h1>STRUTTURA</h1>
+            </div>
+            <div id="">
+                <h1>ACCESSO</h1>
+            </div>
+            <div id="">
+                <h1>INTERFACCIA</h1>
+            </div>
+        </div>
+        <hr>
+    </div>
+
+    <div id="VIRTUALE" class="textContent">
+        <h2>MEMORIA VIRTUALE</h2>
+        <div class="content">
+            <div id="PAG">
+                <h1>STRUTTURA</h1>
+
+            </div>
+            <div id="SEG">
+                <h1>INDIRIZZAMENTO</h1>
+            </div>
+        </div>
+        <hr>
+    </div>
+
+    <div id="" class="textContent">
+        <h2>ACCESSO MEMORIA</h2>
+        <div class="content">
+            <div id="">
+                <h1>REGISTRI</h1>
+            </div>
+            <div id="">
+                <h1>CACHE</h1>
+            </div>
+            <div id="">
+                <h1>RAM</h1>
+            </div>
+            <div id="">
+                <h1>DISCO</h1>
             </div>
         </div>
         <hr>
