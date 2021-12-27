@@ -47,6 +47,7 @@
  )
   
 
+;ricorsione di CODA: si stabilisce la posizione dell n-esimo disco, quindi il maggiore e via via sia arriva al minore
 (define hanoi-rec-cod         ; hanoi-rec-cod: list
  (lambda (n k s d t n_backup) ; n, k, n_backup: int  ; s, d, t: lists
     (let  ( (l (expt 2 (- n 1)))    ;lunghezza = 2^(n-1)
@@ -58,13 +59,13 @@
               )
               ((< k l)        ;mosse precedenti a quella intermedia
                    (hanoi-rec-cod (- n 1) k
-                                  (list (car s) (+ (cadr s) 1)) 
-                                  t d n_backup)
+                                  (list (car s) (+ (cadr s) 1)) ;il blocco n-esimo si troverà ancora nella S
+                                  t d n_backup)   ;trasferisce i n-1 blocchi da S a T passando per D
               )
               ((not (< k l))  ;mossa successiva a quella intermedia
                    (hanoi-rec-cod (- n 1)
-                                  (- k l) ;l-esimo blocco piazzato 
-                                  t
+                                  (- k l) ;n-esimo blocco piazzato 
+                                  t      ;n-1 blocchi da T a D passando per S
                                   (list (car d) (+ (cadr d) 1)) ;incrementa il numero di oggetti in D
                                   s n_backup)
               )
