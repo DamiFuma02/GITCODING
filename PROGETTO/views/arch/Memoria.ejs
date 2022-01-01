@@ -55,7 +55,16 @@
         </div>
         <div class="linkcell" onmouseleave="dropindex(3, false)">
             <div class="container">
-                <a class="primarylink" href="#RAM"><img class="linkimg" src="/img/ARCH/memoria.png" > - MEMORIA PRINCIPALE</a><span class="dropButton"><i onclick="dropindex (3, true)" class="fas fa-angle-down"></i></span>
+                <a class="primarylink" href="/archElab/MemVIRT"><img class="linkimg" src="/img/ARCH/HDD.png" > - MEMORIA VIRTUALE</a><span class="dropButton"><i onclick="dropindex (3, true)" class="fas fa-angle-down"></i></span>
+            </div>
+            <ul class="indexdrop">
+                <li><a href="#">STRUTTURA</a></li>
+                <li><a href="#">INDIRIZZAMENTO</a></li>
+            </ul>
+        </div>
+        <div class="linkcell" onmouseleave="dropindex(4, false)">
+            <div class="container">
+                <a class="primarylink" href="/archElab/RAM"><img class="linkimg" src="/img/ARCH/memoria.png" > - MEMORIA PRINCIPALE</a><span class="dropButton"><i onclick="dropindex (4, true)" class="fas fa-angle-down"></i></span>
             </div>
             <ul class="indexdrop">
                 <li><a href="#">STRUTTURA</a></li>
@@ -63,15 +72,7 @@
                 <li><a href="#">INTERFACCIA</a></li>
             </ul>
         </div>
-        <div class="linkcell" onmouseleave="dropindex(4, false)">
-            <div class="container">
-                <a class="primarylink" href="#VIRTUALE"><img class="linkimg" src="/img/ARCH/HDD.png" > - MEMORIA VIRTUALE</a><span class="dropButton"><i onclick="dropindex (4, true)" class="fas fa-angle-down"></i></span>
-            </div>
-            <ul class="indexdrop">
-                <li><a href="#">STRUTTURA</a></li>
-                <li><a href="#">INDIRIZZAMENTO</a></li>
-            </ul>
-        </div>
+        
         <div class="linkcell" onmouseleave="dropindex(5, false)">
             <div class="container">
                 <a class="primarylink" href="#Access"><img class="linkimg" src="/img/ARCH/AccessoMEM.png" > - ACCESSO MEMORIE</a><span class="dropButton"><i onclick="dropindex (5, true)" class="fas fa-angle-down"></i></span>
@@ -146,6 +147,24 @@
 
     
 
+    
+
+    <div id="VIRTUALE" class="textContent">
+        <h2>MEMORIA VIRTUALE</h2>
+        <div class="content">
+            <div id="PAG">
+                <h1>STRUTTURA</h1>
+
+            </div>
+            <div id="SEG">
+                <h1>INDIRIZZAMENTO</h1>
+            </div>
+        </div>
+        <hr>
+    </div>
+
+
+
     <div id="" class="textContent">
         <h2>MEMORIA PRINCIPALE</h2>
         <div class="content">
@@ -162,19 +181,6 @@
         <hr>
     </div>
 
-    <div id="VIRTUALE" class="textContent">
-        <h2>MEMORIA VIRTUALE</h2>
-        <div class="content">
-            <div id="PAG">
-                <h1>STRUTTURA</h1>
-
-            </div>
-            <div id="SEG">
-                <h1>INDIRIZZAMENTO</h1>
-            </div>
-        </div>
-        <hr>
-    </div>
 
     <div id="" class="textContent">
         <h2>ACCESSO MEMORIA</h2>

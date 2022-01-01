@@ -6,16 +6,130 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Architettura CPU</title>
     <link rel="stylesheet" href="/css/globalstyle.css">
-
+    <link rel="stylesheet" href="/css/CPU.css">
 </head>
 <body>
-    <div class="title" id="title">
-        <i id="pagelogo" class="fas fa-wave-square"></i>CODIFICA DIGITALE<a href="/archElab"><div class="homebutton"><i class="fas fa-home"></i><span>HOME</span></div></a>
+    <div id="titlePage">
+        <i id="pagelogo" class="fas fa-microchip"></i>CPU<a href="/archElab"><div class="homebutton"><i class="fas fa-home"></i><span>HOME</span></div></a>
     </div>
+    <div class="navtable">
+        <div class="linkcell" onmouseleave="dropindex(0, false)"> 
+            <div class="container">
+                <a onclick="showContent(0)" class="primarylink" href="#SND"><img class="linkimg" src="/img/ARCH/sistemabinario.jpg" >STRUTTURA</a><span class="dropButton"><i onclick="dropindex (0, true)" class="fas fa-angle-down"></i></span>
+
+            </div>
+            <ul class="indexdrop">
+
+            </ul>
+        </div>
+        <div class="linkcell" onmouseleave="dropindex(1, false)"> 
+            <div class="container">
+                <a onclick="showContent(1)" class="primarylink" href="#SND"><img class="linkimg" src="/img/ARCH/sistemabinario.jpg" >CICLO MACCHINA</a><span class="dropButton"><i onclick="dropindex (1, true)" class="fas fa-angle-down"></i></span>
+
+            </div>
+            <ul class="indexdrop">
+
+            </ul>
+        </div>
+        <div class="linkcell" onmouseleave="dropindex(2, false)"> 
+            <div class="container">
+                <a onclick="showContent(2)" class="primarylink" href="#SND"><img class="linkimg" src="/img/ARCH/sistemabinario.jpg" >DATA PATH</a><span class="dropButton"><i onclick="dropindex (2, true)" class="fas fa-angle-down"></i></span>
+
+            </div>
+            <ul class="indexdrop">
+
+            </ul>
+        </div>
+        <div class="linkcell" onmouseleave="dropindex(3, false)"> 
+            <div class="container">
+                <a  class="primarylink" href="archElab/multi"><img class="linkimg" src="/img/ARCH/sistemabinario.jpg" >MULTICORE</a><span class="dropButton"><i onclick="dropindex (3, true)" class="fas fa-angle-down"></i></span>
+
+            </div>
+            <ul class="indexdrop">
+
+            </ul>
+        </div>
+        
+    </div>
+
+    <nav class="navbar">
+        <button id="navButton"><i id="navlogo" class="fas fa-bars"></i><b>NAVBAR</b></button>
+
+        <div id="index" >
+
+            <button id="hideNav"><i class="fas fa-ban"></i>HIDE BAR</button>
+            <a href="#title"><i class="fas fa-angle-double-up">PAGE TOP</i></a>
+            <a onclick="showContent(0)" href="#Digit">Digitalizzazione</a>
+            <a onclick="showContent(1)" href="#SND">Sistema Binario</a>
+            <a onclick="showContent(2)" href="#Bool">Algebra Booleana</a>
+            <a onclick="showContent(3)" href="#Codifica">Codifica dei DATI</a>
+            <button id="hideAll" ><i class="fas fa-ban"></i>HIDE ALL</button>
+            <div class="drop">
+                <a  href="#CodificaNumeri">NUMERI</a>
+                <a  href="#CodificaChar">CARATTERI TESTUALI</a>
+                <a  href="#CodificaImg">IMMAGINI/VIDEO</a>
+                <a  href="#ADC">SUONI</a>
+            </div>
+            
+        </div>
+    </nav>
+
+
+
+    <div id="struct" class="textContent">
+        <h2>STRUTTURA INTERNA</h2>
+        <div class="content">
+            <div id="registri">
+                <h1>REGISTRI INTERNI</h1>
+            </div>
+            <div id="ALU">
+                <h1>ARITHMETIC LOGICAL UNIT</h1>
+            </div>
+            <div id="CU">
+                <h1>CONTROL UNIT</h1>
+            </div>
+        </div>
+        <hr>
+    </div>
+
+    <div id="" class="textContent">
+        <h2>CICLO MACCHINA</h2>
+        <div class="content">
+            <div id="">
+                <h1>FETCH</h1>
+            </div>
+            <div id="">
+                <h1>DECODE</h1>
+            </div>
+            <div id="">
+                <h1>EXECUTE</h1>
+            </div>
+        </div>
+        <hr>
+    </div>
+
+    <div id="" class="textContent">
+        <h2>DATA PATH</h2>
+        <div class="content">
+            <div id="">
+                <h1>REGISTRI</h1>
+            </div>
+            <div id="">
+                <h1>MEMORIE</h1>
+            </div>
+        </div>
+        <hr>
+    </div>
+
+    
+
+    <a href="https://witscad.com/course/computer-architecture/chapter/cpu-data-path">DATA PATH CPU</a>
     <a href="https://www.edutecnica.it/informatica/macchina/macchina.htm">LINGUAGGIO MACCHINA</a>
     <a href="http://www.elemania.altervista.org/pic/pic7.html">REGISTRI GPR E SPR</a>
     <a href="https://slideplayer.it/slide/585071/">SLIDE INSTRUCTION SET</a>
 
-
+    <script src="/js/GestioneQuery.js"></script>
+    <script src="/js/MainScript.js"></script>
+    <script src="https://kit.fontawesome.com/93e39226bb.js" crossorigin="anonymous"></script>
 </body>
 </html>

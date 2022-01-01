@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memoria VIRTUALE</title>
+    <link rel="stylesheet" href="/css/globalstyle.css">
+    <link rel="stylesheet" href="/css/Memoria.css">
+</head>
+<body>
+
+    <div id="titlePage">
+        <i id="pagelogo" class="fas fa-database"></i></i></i>MEMORIA VIRTUALE<a href="/archElab"><div class="homebutton"><i class="fas fa-home"></i><span>HOME</span></div></a>
+    </div>
+
+    <div class="navtable">
+        <div class="linkcell" onmouseleave="dropindex(0, false)"> 
+            <div class="container">
+                <a onclick="showContent(0)" class="primarylink" href="#"><img class="linkimg" src="/img/ARCH/BANCORAM.jpg" >STRUTTURA</a><span class="dropButton"><i onclick="dropindex (0, true)" class="fas fa-angle-down"></i></span>
+
+            </div>
+            <ul class="indexdrop">
+
+            </ul>
+        </div>
+        <div class="linkcell" onmouseleave="dropindex(1, false)"> 
+            <div class="container">
+                <a onclick="showContent(1)" class="primarylink" href="#"><img class="linkimg" src="/img/ARCH/sistemabinario.jpg" >INDIRIZZI</a><span class="dropButton"><i onclick="dropindex (1, true)" class="fas fa-angle-down"></i></span>
+
+            </div>
+            <ul class="indexdrop">
+
+            </ul>
+        </div>
+        <div class="linkcell" onmouseleave="dropindex(2, false)"> 
+            <div class="container">
+                <a onclick="showContent(2)" class="primarylink" href="#"><img class="linkimg" src="/img/ARCH/SRAM.jpg" >PAGINATA</a><span class="dropButton"><i onclick="dropindex (2, true)" class="fas fa-angle-down"></i></span>
+
+            </div>
+            <ul class="indexdrop">
+
+            </ul>
+        </div>
+        <div class="linkcell" onmouseleave="dropindex(3, false)"> 
+            <div class="container">
+                <a onclick="showContent(3)" class="primarylink" href="#"><img class="linkimg" src="/img/ARCH/DRAM.jpg" >SEGMENTATA</a><span class="dropButton"><i onclick="dropindex (3, true)" class="fas fa-angle-down"></i></span>
+
+            </div>
+            <ul class="indexdrop">
+
+            </ul>
+        </div>
+        <div class="linkcell" onmouseleave="dropindex(4, false)"> 
+            <div class="container">
+                <a onclick="showContent(4)" class="primarylink" href="#"><img class="linkimg" src="/img/ARCH/ACCESSO.jpg" >ACCESSO</a><span class="dropButton"><i onclick="dropindex (4, true)" class="fas fa-angle-down"></i></span>
+
+            </div>
+            <ul class="indexdrop">
+
+            </ul>
+        </div>
+        <div class="linkcell" onmouseleave="dropindex(5, false)"> 
+            <div class="container">
+                <a onclick="showContent(5)" class="primarylink" href="#"><img class="linkimg" src="/img/ARCH/INTERFACCIA.jpg" >INTERFACCIA</a><span class="dropButton"><i onclick="dropindex (5, true)" class="fas fa-angle-down"></i></span>
+
+            </div>
+            <ul class="indexdrop">
+
+            </ul>
+        </div>
+    </div>
+    <nav class="navbar">
+            <button id="navButton"><i id="navlogo" class="fas fa-bars"></i><b>NAVBAR</b></button>
+
+            <div id="index" >
+
+                <button id="hideNav"><i class="fas fa-ban"></i>HIDE BAR</button>
+                <a href="#title"><i class="fas fa-angle-double-up">PAGE TOP</i></a>
+                <a onclick="showContent(0)" href="#Digit">Digitalizzazione</a>
+                <a onclick="showContent(1)" href="#SND">Sistema Binario</a>
+                <a onclick="showContent(2)" href="#Bool">Algebra Booleana</a>
+                <a onclick="showContent(3)" href="#Codifica">Codifica dei DATI</a>
+                <button id="hideAll" ><i class="fas fa-ban"></i>HIDE ALL</button>
+                <div class="drop">
+                    
+                </div>
+        </div>
+    </nav>
+    <div id="" class="textContent">
+        <h1>TITOLO MAIN CONTENUTO</h1>
+        <div class="content">
+            <div id="">
+                <h2>SUBCONTENT1</h2>
+            </div>
+            <div id="">
+                <h2>SUBCONTENT1</h2>
+            </div>
+        </div>
+        <hr>
+    </div>
+
+
+
+
+
+
+
+
+
+    <script src="/js/MainScript.js"></script>
+    <script src="https://kit.fontawesome.com/93e39226bb.js" crossorigin="anonymous"></script>
+</body>
+</html>

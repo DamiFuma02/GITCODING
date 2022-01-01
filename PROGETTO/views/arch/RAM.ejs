@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEMORIA RAM</title>
+
+
+    <link rel="stylesheet" href="/css/globalstyle.css">
+    <link rel="stylesheet" href="/css/RAM.css">
+
+</head>
+<body>
+    
+    <div id="titlePage">
+        <i id="pagelogo" class="fas fa-database"></i></i></i>MEMORIA RAM<a href="/archElab/Memoria"><div class="homebutton"><i class="fas fa-home"></i><span>HOME</span></div></a>
+    </div>
+
+    <div class="navtable">
+        <div class="linkcell" onmouseleave="dropindex(0, false)"> 
+            <div class="container">
+                <a onclick="showContent(0)" class="primarylink" href="#"><img class="linkimg" src="/img/ARCH/BANCORAM.jpg" >STRUTTURA</a><span class="dropButton"><i onclick="dropindex (0, true)" class="fas fa-angle-down"></i></span>
+
+            </div>
+            <ul class="indexdrop">
+
+            </ul>
+        </div>
+        <div class="linkcell" onmouseleave="dropindex(1, false)"> 
+            <div class="container">
+                <a onclick="showContent(1)" class="primarylink" href="#"><img class="linkimg" src="/img/ARCH/sistemabinario.jpg" >INDIRIZZI</a><span class="dropButton"><i onclick="dropindex (1, true)" class="fas fa-angle-down"></i></span>
+
+            </div>
+            <ul class="indexdrop">
+
+            </ul>
+        </div>
+        <div class="linkcell" onmouseleave="dropindex(2, false)"> 
+            <div class="container">
+                <a onclick="showContent(2)" class="primarylink" href="#"><img class="linkimg" src="/img/ARCH/SRAM.jpg" >SRAM</a><span class="dropButton"><i onclick="dropindex (2, true)" class="fas fa-angle-down"></i></span>
+
+            </div>
+            <ul class="indexdrop">
+
+            </ul>
+        </div>
+        <div class="linkcell" onmouseleave="dropindex(3, false)"> 
+            <div class="container">
+                <a onclick="showContent(3)" class="primarylink" href="#"><img class="linkimg" src="/img/ARCH/DRAM.jpg" >DRAM</a><span class="dropButton"><i onclick="dropindex (3, true)" class="fas fa-angle-down"></i></span>
+
+            </div>
+            <ul class="indexdrop">
+
+            </ul>
+        </div>
+        <div class="linkcell" onmouseleave="dropindex(4, false)"> 
+            <div class="container">
+                <a onclick="showContent(4)" class="primarylink" href="#"><img class="linkimg" src="/img/ARCH/ACCESSO.jpg" >ACCESSO</a><span class="dropButton"><i onclick="dropindex (4, true)" class="fas fa-angle-down"></i></span>
+
+            </div>
+            <ul class="indexdrop">
+
+            </ul>
+        </div>
+        <div class="linkcell" onmouseleave="dropindex(5, false)"> 
+            <div class="container">
+                <a onclick="showContent(5)" class="primarylink" href="#"><img class="linkimg" src="/img/ARCH/INTERFACCIA.jpg" >INTERFACCIA</a><span class="dropButton"><i onclick="dropindex (5, true)" class="fas fa-angle-down"></i></span>
+
+            </div>
+            <ul class="indexdrop">
+
+            </ul>
+        </div>
+    </div>
+    <nav class="navbar">
+            <button id="navButton"><i id="navlogo" class="fas fa-bars"></i><b>NAVBAR</b></button>
+    
+            <div id="index" >
+    
+                <button id="hideNav"><i class="fas fa-ban"></i>HIDE BAR</button>
+                <a href="#title"><i class="fas fa-angle-double-up">PAGE TOP</i></a>
+                <a onclick="showContent(0)" href="#Digit">Struttura</a>
+                <a onclick="showContent(1)" href="#SND">Indirizzi</a>
+                <a onclick="showContent(2)" href="#Bool">SRAM</a>
+                <a onclick="showContent(3)" href="#Codifica">DRAM</a>
+                <a onclick="showContent(3)" href="#Codifica">Accesso</a>
+                <a onclick="showContent(3)" href="#Codifica">Interfaccia</a>
+                <button id="hideAll" ><i class="fas fa-ban"></i>HIDE ALL</button>
+                <div class="drop">
+                </div>
+        </div>
+    </nav>
+    <div id="" class="textContent">
+        <h1>STRUTTURA</h1>
+        <div class="content">
+            <div id="RankRAM">
+                <h2>RANK</h2>
+                <figure>
+                    <img src="/img/ARCH/StrutturaRAM.jpg" alt="Il modulo RAM è diviso in CHIP">
+                    <figcaption>Il <b>modulo RAM</b> è diviso in RANK da N <b>CHIP</b> , i quali sono formati da <b>N Banchi</b>, i quali sono formati da <b>M Array</b></figcaption>
+                </figure>
+                <hr>
+            </div>
+            
+            <div id="BanchiRAM">
+                <h2>BANCO</h2>
+                <figure>
+                    <img src="/img/ARCH/BancoRAM.jpg" alt="Banco suddiviso in 8 ARRAY">
+                    <figcaption>Il <b>banco</b> è suddiviso in <b>N(2^x) array</b></figcaption>
+                </figure>
+                Durante un'<b>accesso</b> viene identificata la <b>RIGA <abbr title="Raw Access Strobe">(RAS)</abbr></b> di <b>tutti gli array</b>. <br>
+                Una volta <b>trovata la riga</b> si cerca la <b>COLONNA <abbr title="Coloumn Access Strobe">(CAS)</abbr></b>, individuando <b>1bit</b> per ogni ARRAY <br>
+                Nei sistemi moderni è stato introdotto un <b><abbr title="Quanti bit in successione possono essere letti in un singolo accesso">BURST</abbr></b> per prelevare <b>multiple locazioni di memoria contigue</b>
+                <hr>
+            </div>
+            <div id="ArrayRAM">
+                <h2>ARRAY</h2>
+                <figure>
+                    <img src="/img/ARCH/ArrayRAM.jpg" alt="Array Bidimensionale di celle di BIT">
+                    <figcaption>Ogni ARRAY contiene tante <b>celle da 1bit</b> ciascuna</figcaption>
+                </figure>
+                Durante l'accesso viene prelevato <b>1 bit per ogni ARRAY</b>. <br>
+                Nel caso in cui vi sia un <b>BURST</b> sono lette anche le <b>celle successive</b> a quella appena letta
+                <hr>
+            </div>
+        </div>
+        <hr>
+    </div>
+
+
+    <div id="Indirizzi" class="textContent">
+        <h1>INDIRIZZI MEMORIA</h1>
+        <div class="content">
+            <div id="">
+                <h2>FORMATO</h2>
+                <figure>
+                    <img src="/img/ARCH/FormatoADDR.jpg" alt="L'indirizzo è diviso in differenti campi">
+                    <figcaption><p>La lunghezza totale dipende dalla architettura in uso.<br>Ogni campo individuato ha una sua funzione</p>
+                        <ul>
+                            <li><b>MSB</b>: usato per la mappatura in <a href="/archElab/Cache">CACHE</a></li>
+                            <li><b>PA</b>: usato per la paginazione virtuale</li>
+                            <li><b>PAoffs</b>: usato per l'indirizzamento all'interno di una pagina</li>
+                            <li><b>INDEX</b>: (PA+PAoffs) identifica la linea di CACHE</li>
+                            <li><b>OFFSET</b>: usato per l'accesso alle celle di CACHE</li>
+                        </ul>
+                    </figcaption>
+                </figure>
+                <hr>
+            </div>
+            <div id="">
+                <h2>VIRTUALI</h2>
+                <figure>
+                    <img src="/img/ARCH/IndirizzoVirtuale.jpg" alt="Interpretazione indirizzo logico in fisico">
+                    <figcaption>
+                        L'indirizzo logico è <b>generato dalla CPU</b> e si riferisce alla <a href="/archElab/MemVIRT"><b>memoria virtuale</b></a>  <br>
+
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img src="/img/ARCH/IndirizzamentoVIRT.jpg" alt="Traduzione tra VIRTUALE E FISICO">
+                    <figcaption>
+                        <b>L'indirizzo virtuale viene mappato e associato all'indirizzo fisico della RAM</b> <br>
+                        Il campo OFFSET non viene convertito perchè individua il BYTE da leggere, <br>corrispondente agli utlimi bit della COLONNA dell'Array
+                    </figcaption>
+                </figure>
+                <hr>
+            </div>
+            <div id="">
+                <h2>FISICI</h2>
+                <figure>
+                    <img src="/img/ARCH/IndirizzamentoFISICO.jpg" alt="Suddivisione logica nei campi RIGA, COLONNA e BANCO">
+                    <figcaption>
+                        <ul>
+                            <li><b>BANCO</b>: individua quale dei N banchi selezionare nel CHIP</li>
+                            <li><b>RIGA</b>: individua la RIGA durante il RAS per accedere agli Array</li>
+                            <li><b>COLONNA</b>: individua il bit fisico da leggere nella RIGA</li>
+                        </ul>
+
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+        <hr>
+    </div>
+
+    <div id="" class="textContent">
+        <h1>ACCESSO IN MEMORIA</h1>
+        <div class="content">
+            <div>
+                <h2>SCHEMA LOIGICO ACCESSO</h2>
+                <figure>
+                    <img src="/img/ARCH/AccessoMEM.png" alt="Diagramma per accesso in RAM">
+                    <figcaption>
+                        <ul>
+                            <li>RAS: flag che indica l'inzio della fase di RAS</li>
+                            <li>CAS: flag che indica l'inzio della fase di CAS</li>
+                            <li>WE: Write Enable per differenziare le letture dalle scritture</li>
+                            <li>Address: <a href="#Indirizzi">indirizzo fisico</a></li>
+                        </ul>
+                    </figcaption>
+                </figure>
+            </div>
+            <div id="">
+                <h2>RAS</h2>
+                <figure>
+                    <img src="/img/ARCH/RAS.jpg" alt="Selezione multipla delle righe negli array">
+                    <figcaption>
+                        L'indirizzo di RIGA <b>attiva tutte le WORDLINE</b> di tutti gli ARRAY, <br>trasferendola interamente nel Buffer Lettura, interno all'array.
+                        <br>
+                        Nel caso di una <b>lettura in DRAM i dati</b> nella LINE vengono <b>alterati</b>,<br> e perciò è <b>necessaria una operazione di <a href="#DRAM">REFRESH</a></b>
+                    </figcaption>
+                </figure>
+            </div>
+            <div id="">
+                <h2>CAS</h2>
+                <figure>
+                    <img src="/img/ARCH/CAS.jpg" alt="">
+                    <figcaption></figcaption>
+                </figure>
+            </div>
+            <div id="Lettura">
+                <h2>LETTURA</h2>
+                <figure>
+                    <img src="/img/ARCH/LETTURARAM.jpg" alt="">
+                    <figcaption></figcaption>
+                </figure>
+            </div>
+            <div id="Scrittura">
+                <h2>SCRITTURA</h2>
+                <figure>
+                    <img src="/img/ARCH/SCRITTURARAM.jpg" alt="">
+                    <figcaption></figcaption>
+                </figure>
+            </div>
+            
+        </div>
+        <hr>
+    </div>
+
+
+
+
+    <script src="/js/MainScript.js"></script>
+    <script src="https://kit.fontawesome.com/93e39226bb.js" crossorigin="anonymous"></script>
+</body>
+</html>

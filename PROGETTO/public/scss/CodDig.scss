@@ -23,56 +23,7 @@ html{
 // }
 
 
-.textContent {
-    display: none;
-    width: 100%;
-    
-    h2{
-        color: blue; font-size: 30px; text-align: center;
-    }
-    figure{
-        text-align: center;
-    }
-    .content{
-        width: 100%;
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        flex: 1 0 50%;
-        ul{
-            text-align: left;
-            font-size: 20px;
-        }
-        img{
-            height: 300px; width: 450px;
-        }
-        .convert{
-            background-color: aqua;
-            width: 100%;
-            padding-bottom: 20px;
-            border-radius: 50px;
-            justify-content: center;
-            align-items: center;
-            #chooseFormat {
-                display: none;justify-content: center; align-items: center;
-                font-size: 25px;
-                a{
-                    font-weight: bold;
-                }
-            }
-            input, button{
-                height: 30px;
-                border-radius: 15px;
-            }
-            button{
-                background-color: rgb(26, 194, 26);
-                min-width: 180px;
-            }
-        }
-    }
-}
+
 #Codifica {
     #navCode{
         display: flex;
