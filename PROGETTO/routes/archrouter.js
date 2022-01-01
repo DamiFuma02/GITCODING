@@ -45,6 +45,17 @@ router.get("/Memoria", (req, res)=> {
     res.render("arch/Memoria.ejs")
 })
 
+router.get("/CPU", (req, res)=> {
+    res.render("arch/CPU.ejs")
+})
+
+router.get("/RAM", (req, res)=> {
+    res.render("arch/RAM.ejs")
+})
+
+router.get("/MemVIRT", (req, res)=> {
+    res.render("arch/MemVIRT.ejs")
+})
 
 
 
