@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /*PROPRIETà VARIABILI IN BASE ALLA PAGINA SELEZIONATA*/
-body {
+html {
   height: 100%; }
 
 #titlePage {
@@ -136,7 +136,7 @@ body {
     height: 190px; }
 
 .navbar {
-  z-index: 1000;
+  z-index: 1000;  /*per visualizzarla in primo piano*/
   background-color: transparent;
   border-radius: 30px;
   position: sticky;
@@ -164,6 +164,7 @@ body {
     display: none;
     /*FLEX all'HOVER di navbar*/
     justify-content: space-evenly;
+    flex-wrap: wrap;
     font-size: 25px;
     list-style: none;
     align-items: center; }
@@ -191,6 +192,7 @@ body {
 
 .textContent {
   display: none;
+  
   width: 100%; }
   .textContent h1 {
     color: blue;
@@ -198,7 +200,12 @@ body {
     text-align: center; }
   .textContent figure {
     text-align: center; }
+  .textContent div{
+    border: 2px solid black;
+    border-radius: 10%;
+  }
   .textContent .content {
+    border: none;
     width: 100%;
     text-align: center;
     display: flex;
