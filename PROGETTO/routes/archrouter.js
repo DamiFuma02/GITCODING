@@ -49,14 +49,17 @@ router.get("/CPU", (req, res)=> {
     res.render("arch/CPU.ejs")
 })
 
-router.get("/RAM", (req, res)=> {
-    res.render("arch/RAM.ejs")
+router.get("/Memoria/RAM", (req, res)=> {
+    res.render("arch/Memoria/RAM.ejs")
 })
 
-router.get("/MemVIRT", (req, res)=> {
-    res.render("arch/MemVIRT.ejs")
+router.get("/Memoria/MemVIRT", (req, res)=> {
+    res.render("arch/Memoria/MemVIRT.ejs")
 })
 
+router.get("/Memoria/Cache", (req, res)=> {
+    res.render("arch/Memoria/Cache.ejs")
+})
 
 
 

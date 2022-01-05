@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memoria VIRTUALE</title>
+    <link rel="stylesheet" href="/css/globalstyle.css">
+    <link rel="stylesheet" href="/css/Memoria.css">
+</head>
+<body>
+
+    <div id="titlePage">
+        <i id="pagelogo" class="fas fa-database"></i></i></i>MEMORIA VIRTUALE<a href="/archElab/Memoria"><div class="homebutton"><i class="fas fa-home"></i><span>HOME</span></div></a>
+    </div>
+
+    <div class="navtable">
+        <div class="linkcell" onmouseleave="dropindex(0, false)"> 
+            <div class="container">
+                <a onclick="showContent(0)" class="primarylink" href="#Struttura"><img class="linkimg" src="/img/ARCH/BANCORAM.jpg" >STRUTTURA</a><span class="dropButton"><i onclick="dropindex (0, true)" class="fas fa-angle-down"></i></span>
+
+            </div>
+            <ul class="indexdrop">
+
+            </ul>
+        </div>
+        <div class="linkcell" onmouseleave="dropindex(1, false)"> 
+            <div class="container">
+                <a onclick="showContent(1)" class="primarylink" href="#Indirizzi"><img class="linkimg" src="/img/ARCH/sistemabinario.jpg" >INDIRIZZI</a><span class="dropButton"><i onclick="dropindex (1, true)" class="fas fa-angle-down"></i></span>
+
+            </div>
+            <ul class="indexdrop">
+
+            </ul>
+        </div>
+        <div class="linkcell" onmouseleave="dropindex(2, false)"> 
+            <div class="container">
+                <a onclick="showContent(2)" class="primarylink" href="#Paginazione"><img class="linkimg" src="/img/ARCH/SRAM.jpg" >PAGINATA</a><span class="dropButton"><i onclick="dropindex (2, true)" class="fas fa-angle-down"></i></span>
+
+            </div>
+            <ul class="indexdrop">
+
+            </ul>
+        </div>
+        <div class="linkcell" onmouseleave="dropindex(3, false)"> 
+            <div class="container">
+                <a onclick="showContent(3)" class="primarylink" href="#Segmentazione"><img class="linkimg" src="/img/ARCH/DRAM.jpg" >SEGMENTATA</a><span class="dropButton"><i onclick="dropindex (3, true)" class="fas fa-angle-down"></i></span>
+
+            </div>
+            <ul class="indexdrop">
+
+            </ul>
+        </div>
+        <div class="linkcell" onmouseleave="dropindex(4, false)"> 
+            <div class="container">
+                <a onclick="showContent(4)" class="primarylink" href="#Accesso"><img class="linkimg" src="/img/ARCH/ACCESSO.jpg" >ACCESSO</a><span class="dropButton"><i onclick="dropindex (4, true)" class="fas fa-angle-down"></i></span>
+
+            </div>
+            <ul class="indexdrop">
+
+            </ul>
+        </div>
+        <div class="linkcell" onmouseleave="dropindex(5, false)"> 
+            <div class="container">
+                <a onclick="showContent(5)" class="primarylink" href="#Interfaccia"><img class="linkimg" src="/img/ARCH/INTERFACCIA.jpg" >INTERFACCIA</a><span class="dropButton"><i onclick="dropindex (5, true)" class="fas fa-angle-down"></i></span>
+
+            </div>
+            <ul class="indexdrop">
+
+            </ul>
+        </div>
+    </div>
+    <nav class="navbar">
+            <button id="navButton"><i id="navlogo" class="fas fa-bars"></i><b>NAVBAR</b></button>
+
+            <div id="index" >
+
+                <button id="hideNav"><i class="fas fa-ban"></i>HIDE BAR</button>
+                <a href="#title"><i class="fas fa-angle-double-up">PAGE TOP</i></a>
+                <a onclick="showContent(0)" href="#Struttura">Struttura</a>
+                <a onclick="showContent(1)" href="#Indirizzi">Indirizzi</a>
+                <a onclick="showContent(2)" href="#Paginazione">Paginazione</a>
+                <a onclick="showContent(3)" href="#Segmentazione">Segmentazione</a>
+                <a onclick="showContent(4)" href="#Accesso">Accesso</a>
+                <a onclick="showContent(4)" href="#Interfaccia">Interfaccia</a>
+                <button id="hideAll" ><i class="fas fa-ban"></i>HIDE ALL</button>
+                <div class="drop">
+                    
+                </div>
+        </div>
+    </nav>
+    <div id="Struttura" class="textContent">
+        <h1>STRUTTURA</h1>
+        <div class="content">
+            <div id="">
+                <h2>DIMENSIONE</h2>
+                <ul>
+                    <li>Capacità teoricamente illimitata</li>
+                    <li>L'allocazione dei dati può essere casuale</li>
+                    <li>Il limite di allocazione è determinata dalla capacità della RAM</li>
+                </ul>
+            </div>
+            <div id="">
+                <h2>FUNZIONE</h2>
+                <ul>
+                    <li>Riesce a funzionare anche senza un supporto di memoria fisica</li>
+                    <li>Serve a organizzare logicamente i dati dei vari programmi</li>
+                    <li>Meccanismo di protezione da accessi non permessi da altri processi</li>
+                    <li>Riserva una parte fissa per il sistema operativo</li>
+                    <li>Permette a un processo di essere allocato parzialmente in MM</li>
+                    <li>La restante parte viene mantenuta nello storage in attesa di essere chiamata</li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+    </div>
+
+
+    <div id="Indirizzi" class="textContent">
+        <h1>INDIRIZZI </h1>
+        <div class="content">
+            <div id="">
+                <h2>STRUTTURA</h2>
+                <figure>
+                    <img src="/img/ARCH/IndirizzamentoVIRT.jpg" alt="Traduzione tra VIRTUALE E FISICO">
+                    <figcaption>
+                        <ul>
+                            <li>L'indirizzo logico deve avere una corrispondenza fisica in memoria</li>
+                            <li>Logico = generato della CPU durante l'esecuzione di un processo</li>
+                            <li>A seconda del tipo di mappatura l'indirizzo possiede diversi formati</li>
+                        </ul>
+                    </figcaption>
+                </figure>
+            </div>
+            <div id="">
+                <h2>FORMATO</h2>
+                <figure>
+                    <img src="/img/ARCH/FormatoADDR.jpg" alt="Parte Logica + Spiazzamento Fisico">
+                    <figcaption>
+                        <ul>
+                            <li>I primi BIT sono riservati alla memoria virtuale</li>
+                            <li>La mappatura degli indirizzi viene eseguita dalla <b>MMU</b></li>
+                            <li>Le cifre meno significative dell'indirizzo sono in comune con la memoria Fisica</li>
+                            <li>OFFSET = COLONNA dell'indirizzo FISICO RAM</li>
+                        </ul>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+        <hr>
+    </div>
+
+
+    <div id="Paginazione" class="textContent">
+        <h1>MEMORIA PAGINATA</h1>
+        <div class="content">
+            <div id="">
+                <h2>PAGINAZIONE</h2>
+                <figure>
+                    <img src="/img/ARCH/Paginazione.png" alt="">
+                    <figcaption>
+                        <ul>
+                            <li>Le pagine hanno una dimensione fissa</li>
+                            <li>La dimensione di una pagina è sempre una potenza del 2</li>
+                            <li>Può essere presente sia in <a href="/archElab/Memoria/RAM">MM</a> che in <a href="/archElab/Memoria/Storage">Storage</a></li>
+                        </ul>
+                    </figcaption>
+                </figure>
+            </div>
+            <div id="">
+                <h2>ACCESSO</h2>
+                <figure>
+                    <img src="/img/ARCH/AccessoPAG.jpg" alt="">
+                    <figcaption>
+                        <ul>
+                            <li>La traduzione logico-fisico viene effettuata dalla MMU</li>
+                            <li>Esiste un bit P(Present) che indica se la pagina è in MM o Storage</li>
+                            <li>M (Modified) se la pagina è stata modificata ma non salvata fisicamente</li>
+                            <li>Altri bit di controllo per i permessi di accesso</li>
+                        </ul>
+                    </figcaption>
+                </figure>
+            </div>
+            <div>
+                <h2>MAPPATURA</h2>
+                <figure>
+                    <img src="/img/ARCH/PageTable.png" alt="Tabella delle pagine per mappatura indirizzi">
+                    <figcaption>
+                        <ul>
+                            <li>La Page Table contiene tutta la mappatura tra indirizzo logico e fisico</li>
+                            <li>Page Table può essere troppo grande per essere salvata in MM</li>
+                            <li>Ogni processo ha una Page Table dedicata contenuta in MM, ma non completa</li>
+                            <li>Page number = indirizzo logico / dimensione pagina = 2^ <a href="#Indirizzi">PAOffset</a></li>
+                            <li>Il page number punta a una locazione nella Page Table</li>
+                            <li>Se la pagina non è in MM si genera un <a href="#PageFault">PAGEFAULT</a></li>
+                            <li>Se la pagina è in MM viene effettuata la conversione logica-fisica per ottenere il RPN (Real Page Number)</li>
+                            <li>RPN + OFFSET = Cella FISICA di MM</li>
+
+                        </ul>
+                    </figcaption>
+                </figure>
+            </div>
+            <div id="PageFault">
+                <h1>PAGE FAULT</h1>
+                <figure>
+                    <img src="/img/ARCH/PAGEFAULT.png" alt="La pagina cercata non è in MM">
+
+                    <figcaption>
+                        <ul>
+                            <li>Nella Page Table viene indicata la presenza in Storage</li>
+                            <li>Viene chiamata una procedura di sistema, gestita dall'OS</li>
+                            
+
+
+                        </ul>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img src="/img/ARCH/TIMEPageFault.png" alt="Richiede circa 80 milioni di cicli di clock totali">
+                    <figcaption>
+                        <ul>
+                            <li>OS sceglie una pagina da togliere da MM
+                                <ul>
+                                    <li>Se la pagina da rimuovere è modificata M=1 viene aggiornata e poi rimossa</li>
+                                    <li>Altrimenti viene semplicemente rimossa</li>
+                                </ul>
+                            </li>
+                            <li>OS prende la pagina e la sposta in MM</li>
+                            <li>Viene aggioranta la Page Table per contenere il nuovo indirizzo</li>
+                            <li>OS torna all'esecuzione del flusso di programma che ha causato il PAGE FAULT</li>
+                        </ul>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+        <hr>
+    </div>
+
+    <div id="#ACCESSO" class="textContent">
+        <h1>ACCESSO</h1>
+        <div class="content">
+            <div id="">
+                <h2>MMU</h2>
+                <figure>
+                    <img src="/img/ARCH/IndirizzamentoVIRT.jpg" alt="">
+                    <figcaption>
+                        <ul>
+                            <li>Dispositivo Hardware posto all'interno della CPU</li>
+                            <li>La segment Table deve essere in parte presente nei registri interni delle MMU</li>
+                            <li>Al suo interno vi sono dei registri contenenti le informazioni delle mappature degli indirizzi</li>
+                            
+                            <li>Verifica i criteri di protezione</li>
+                        </ul>
+                    </figcaption>
+                </figure>
+            </div>
+            <div id="">
+                <h2>TLB</h2>
+                <figure>
+                    <img src="/img/ARCH/PaginazioneTLB.png" alt="TLB = Cache intermedia">
+                    <figcaption>
+                        <ul>
+                            <li>IL TLB si comporta come una Cache</li>
+                            <li>Contiene la corrispondenza logico-fisica</li>
+                            <li>Il dato viene controllato in parallelo sia in TLB che in MM</li>
+                            <li>Il primo dispositivo che ottiene il dato lo fornisce alla CPU</li>
+                            <li>Nel caso di un TLB miss il dato viene prelevato dalla MM e aggiornato in TLB</li>
+                        </ul>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+        <hr>
+    </div>
+
+
+
+    <script src="/js/MainScript.js"></script>
+    <script src="https://kit.fontawesome.com/93e39226bb.js" crossorigin="anonymous"></script>
+</body>
+</html>

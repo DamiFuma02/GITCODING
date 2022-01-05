@@ -20,7 +20,7 @@
     <div class="navtable">
         <div class="linkcell" onmouseleave="dropindex(0, false)"> 
             <div class="container">
-                <a onclick="showContent(0)" class="primarylink" href="#"><img class="linkimg" src="/img/ARCH/BANCORAM.jpg" >STRUTTURA</a><span class="dropButton"><i onclick="dropindex (0, true)" class="fas fa-angle-down"></i></span>
+                <a onclick="showContent(0)" class="primarylink" href="#Struttura"><img class="linkimg" src="/img/ARCH/BANCORAM.jpg" >STRUTTURA</a><span class="dropButton"><i onclick="dropindex (0, true)" class="fas fa-angle-down"></i></span>
 
             </div>
             <ul class="indexdrop">
@@ -29,7 +29,7 @@
         </div>
         <div class="linkcell" onmouseleave="dropindex(1, false)"> 
             <div class="container">
-                <a onclick="showContent(1)" class="primarylink" href="#"><img class="linkimg" src="/img/ARCH/sistemabinario.jpg" >INDIRIZZI</a><span class="dropButton"><i onclick="dropindex (1, true)" class="fas fa-angle-down"></i></span>
+                <a onclick="showContent(1)" class="primarylink" href="#Indirizzi"><img class="linkimg" src="/img/ARCH/sistemabinario.jpg" >INDIRIZZI</a><span class="dropButton"><i onclick="dropindex (1, true)" class="fas fa-angle-down"></i></span>
 
             </div>
             <ul class="indexdrop">
@@ -38,7 +38,7 @@
         </div>
         <div class="linkcell" onmouseleave="dropindex(2, false)"> 
             <div class="container">
-                <a onclick="showContent(2)" class="primarylink" href="#"><img class="linkimg" src="/img/ARCH/SRAM.jpg" >SRAM</a><span class="dropButton"><i onclick="dropindex (2, true)" class="fas fa-angle-down"></i></span>
+                <a onclick="showContent(2)" class="primarylink" href="#SRAM"><img class="linkimg" src="/img/ARCH/SRAM.jpg" >SRAM</a><span class="dropButton"><i onclick="dropindex (2, true)" class="fas fa-angle-down"></i></span>
 
             </div>
             <ul class="indexdrop">
@@ -47,7 +47,7 @@
         </div>
         <div class="linkcell" onmouseleave="dropindex(3, false)"> 
             <div class="container">
-                <a onclick="showContent(3)" class="primarylink" href="#"><img class="linkimg" src="/img/ARCH/DRAM.jpg" >DRAM</a><span class="dropButton"><i onclick="dropindex (3, true)" class="fas fa-angle-down"></i></span>
+                <a onclick="showContent(3)" class="primarylink" href="#DRAM"><img class="linkimg" src="/img/ARCH/DRAM.jpg" >DRAM</a><span class="dropButton"><i onclick="dropindex (3, true)" class="fas fa-angle-down"></i></span>
 
             </div>
             <ul class="indexdrop">
@@ -56,7 +56,7 @@
         </div>
         <div class="linkcell" onmouseleave="dropindex(4, false)"> 
             <div class="container">
-                <a onclick="showContent(4)" class="primarylink" href="#"><img class="linkimg" src="/img/ARCH/ACCESSO.jpg" >ACCESSO</a><span class="dropButton"><i onclick="dropindex (4, true)" class="fas fa-angle-down"></i></span>
+                <a onclick="showContent(4)" class="primarylink" href="#ACCESSO"><img class="linkimg" src="/img/ARCH/ACCESSO.jpg" >ACCESSO</a><span class="dropButton"><i onclick="dropindex (4, true)" class="fas fa-angle-down"></i></span>
 
             </div>
             <ul class="indexdrop">
@@ -65,7 +65,7 @@
         </div>
         <div class="linkcell" onmouseleave="dropindex(5, false)"> 
             <div class="container">
-                <a onclick="showContent(5)" class="primarylink" href="#"><img class="linkimg" src="/img/ARCH/INTERFACCIA.jpg" >INTERFACCIA</a><span class="dropButton"><i onclick="dropindex (5, true)" class="fas fa-angle-down"></i></span>
+                <a onclick="showContent(5)" class="primarylink" href="#Interfaccia"><img class="linkimg" src="/img/ARCH/INTERFACCIA.jpg" >INTERFACCIA</a><span class="dropButton"><i onclick="dropindex (5, true)" class="fas fa-angle-down"></i></span>
 
             </div>
             <ul class="indexdrop">
@@ -73,6 +73,7 @@
             </ul>
         </div>
     </div>
+
     <nav class="navbar">
             <button id="navButton"><i id="navlogo" class="fas fa-bars"></i><b>NAVBAR</b></button>
     
@@ -80,17 +81,18 @@
     
                 <button id="hideNav"><i class="fas fa-ban"></i>HIDE BAR</button>
                 <a href="#title"><i class="fas fa-angle-double-up">PAGE TOP</i></a>
-                <a onclick="showContent(0)" href="#Digit">Struttura</a>
-                <a onclick="showContent(1)" href="#SND">Indirizzi</a>
-                <a onclick="showContent(2)" href="#Bool">SRAM</a>
-                <a onclick="showContent(3)" href="#Codifica">DRAM</a>
-                <a onclick="showContent(3)" href="#Codifica">Accesso</a>
-                <a onclick="showContent(3)" href="#Codifica">Interfaccia</a>
+                <a onclick="showContent(0)" href="#Struttura">Struttura</a>
+                <a onclick="showContent(1)" href="#Indirizzi">Indirizzi</a>
+                <a onclick="showContent(2)" href="#SRAM">SRAM</a>
+                <a onclick="showContent(3)" href="#DRAM">DRAM</a>
+                <a onclick="showContent(3)" href="#ACCESSO">Accesso</a>
+                <a onclick="showContent(3)" href="#Interfaccia">Interfaccia</a>
                 <button id="hideAll" ><i class="fas fa-ban"></i>HIDE ALL</button>
                 <div class="drop">
                 </div>
         </div>
     </nav>
+
     <div id="Struttura" class="textContent">
         <h1>STRUTTURA</h1>
         <div class="content">
@@ -100,7 +102,7 @@
                     <img src="/img/ARCH/StrutturaRAM.jpg" alt="Il modulo RAM è diviso in CHIP">
                     <figcaption>Il <b>modulo RAM</b> è diviso in RANK da N <b>CHIP</b> , i quali sono formati da <b>N Banchi</b>, i quali sono formati da <b>M Array</b></figcaption>
                 </figure>
-                <hr>
+                
             </div>
             
             <div id="BanchiRAM">
@@ -117,7 +119,6 @@
                 
                 <br>
                 
-                <hr>
             </div>
             <div id="ArrayRAM">
                 <h2>ARRAY</h2>
@@ -127,10 +128,10 @@
                 </figure>
                 Durante l'accesso viene prelevato <b>1 bit per ogni ARRAY</b>. <br>
                 Nel caso in cui vi sia un <b>BURST</b> sono lette anche le <b>celle successive</b> a quella appena letta
-                <hr>
+                
             </div>
         </div>
-        <hr>
+        
     </div>
 
 
@@ -151,25 +152,23 @@
                         </ul>
                     </figcaption>
                 </figure>
-                <hr>
+                
             </div>
             <div id="">
                 <h2>VIRTUALI</h2>
                 <figure>
                     <img src="/img/ARCH/IndirizzoVirtuale.jpg" alt="Interpretazione indirizzo logico in fisico">
                     <figcaption>
-                        L'indirizzo logico è <b>generato dalla CPU</b> e si riferisce alla <a href="/archElab/MemVIRT"><b>memoria virtuale</b></a>  <br>
-
+                        <ul>
+                            <li>L'indirizzo logico è <b>generato dalla CPU</b></li>
+                            <li>Riferimento alla <a href="/archElab/Memoria/MemVIRT"><b>memoria virtuale</b></a></li>
+                            <li><b>L'indirizzo virtuale viene mappato e associato all'indirizzo fisico della RAM</b></li>
+                            <li>Il campo OFFSET non viene convertito perchè individua il BYTE da leggere corrispondente agli utlimi bit della COLONNA dell'Array</li>
+                        </ul>
                     </figcaption>
                 </figure>
-                <figure>
-                    <img src="/img/ARCH/IndirizzamentoVIRT.jpg" alt="Traduzione tra VIRTUALE E FISICO">
-                    <figcaption>
-                        <b>L'indirizzo virtuale viene mappato e associato all'indirizzo fisico della RAM</b> <br>
-                        Il campo OFFSET non viene convertito perchè individua il BYTE da leggere, <br>corrispondente agli utlimi bit della COLONNA dell'Array
-                    </figcaption>
-                </figure>
-                <hr>
+                
+                
             </div>
             <div id="">
                 <h2>FISICI</h2>
@@ -184,9 +183,9 @@
 
                     </figcaption>
                 </figure>
-            </div>
+            </div> 
         </div>
-        <hr>
+        
     </div>
 
     <div id="SRAM" class="textContent">
@@ -214,7 +213,8 @@
                     <figcaption>
                         <ul>
                             <li>6 transistor: 2 WL gate, 4 per Latch</li>
-                            <li></li>
+                            <li>Il <b>dato</b> viene <b>mantenuto all'infinito</b> finchè c'è alimentazione</li>
+                            <li>Accesso molto rapido</li>
                         </ul>
                     </figcaption>
                 </figure>
@@ -224,8 +224,9 @@
                 <figure>
                     <figcaption>
                         <ul>
-                            <li>Registri CPU <a href="/archElab/CPU">??</a></li>
-                            <li>Memoria Cache:
+                            <li>Memorie ad <b>alta velocità, meno capienti, più vicine</b> alla CPU</li>
+                            <li><b>Registri CPU</b> <a href="/archElab/CPU">??</a></li>
+                            <li><b>Memoria Cache:</b> <a href="/archElab/Cache">??</a>
                                 <dl>
                                     <dt>Sincrona</dt>
                                     <dd><ul>
@@ -248,7 +249,7 @@
                 </figure>
             </div>
         </div>
-        <hr>
+        
     </div>
 
     <div id="DRAM" class="textContent">
@@ -256,12 +257,30 @@
         <div class="content">
             <div id="StruttDRAM">
                 <h2>STRUTTURA</h2>
+                <figure>
+                    <img src="/img/ARCH/CellaDRAM.jpg" alt="1 condensatore + 1 Transistor">
+                    <figcaption>
+                        <ul>
+                            <li>Il condensatore si carica grazie alla tensione sulla BL</li>
+                        </ul>
+                        </figcaption>
+                </figure>
             </div>
             <div id="">
                 <h2>UTILIZZO</h2>
+                <figure>
+                    <img src="/img/ARCH/RAM.png" alt="">
+                    <figcaption>
+                        <ul>
+                            <li>Vengono usate nella <a href="/archElab/RAM">Memoria Principale</a> RAM</li>
+                            <li><b>Meno componenti</b> richiesti = <b>meno costo</b></li>
+                            <li><b>Minore superficie</b> occupata <b>= maggiore capienza</b> per unità di area</li>
+                        </ul>
+                    </figcaption>
+                </figure>
             </div>
         </div>
-        <hr>
+        
     </div>
 
     <div id="ACCESSO" class="textContent">
@@ -394,10 +413,21 @@
                 </figure>
             </div>
         </div>
-        <hr>
+        
     </div>
 
-
+    <div id="Interfaccia" class="textContent">
+        <h1>TITOLO MAIN CONTENUTO</h1>
+        <div class="content">
+            <div id="">
+                <h2>SUBCONTENT1</h2>
+            </div>
+            <div id="">
+                <h2>SUBCONTENT1</h2>
+            </div>
+        </div>
+        <hr>
+    </div>
 
     <script src="/js/GestioneQuery.js"></script>
     <script src="/js/MainScript.js"></script>

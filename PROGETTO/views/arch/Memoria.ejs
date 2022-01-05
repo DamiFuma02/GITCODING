@@ -17,7 +17,7 @@
     <div class="navtable">
         <div class="linkcell" onmouseleave="dropindex(0, false)">
             <div class="container">
-                <a class="primarylink" href="#Gerarchia"><img class="linkimg" src="/img/ARCH/Gerarchia.png" > - GERARCHIA</a><span class="dropButton"><i onclick="dropindex (0, true)" class="fas fa-angle-down"></i></span>
+                <a onclick="showContent(0)" class="primarylink" href="#Gerarchia"><img class="linkimg" src="/img/ARCH/Gerarchia.png" > - GERARCHIA</a><span class="dropButton"><i onclick="dropindex (0, true)" class="fas fa-angle-down"></i></span>
             </div>
             <ul class="indexdrop">
                 <li>
@@ -34,7 +34,7 @@
         </div>
         <div class="linkcell" onmouseleave="dropindex(1, false)">
             <div class="container">
-                <a class="primarylink" href="#Registri"><img class="linkimg" src="/img/ARCH/RegIcon.png" > - REGISTRI CPU</a><span class="dropButton"><i onclick="dropindex (1, true)" class="fas fa-angle-down"></i></span>
+                <a onclick="showContent(1)" class="primarylink" href="#Registri"><img class="linkimg" src="/img/ARCH/RegIcon.png" > - REGISTRI CPU</a><span class="dropButton"><i onclick="dropindex (1, true)" class="fas fa-angle-down"></i></span>
             </div>
             <ul class="indexdrop">
                 <li><a href="#">STRUTTURA</a></li>
@@ -44,18 +44,18 @@
         </div>
         <div class="linkcell" onmouseleave="dropindex(2, false)">
             <div class="container">
-                <a class="primarylink" href="#cache"><img class="linkimg" src="/img/ARCH/sram_basic_cell.png" > - CACHES</a><span class="dropButton"><i onclick="dropindex (2, true)" class="fas fa-angle-down"></i></span>
+                <a onclick="showContent(2)" class="primarylink" href="/archElab/Memoria/Cache"><img class="linkimg" src="/img/ARCH/sram_basic_cell.png" > - CACHES</a><span class="dropButton"><i onclick="dropindex (2, true)" class="fas fa-angle-down"></i></span>
             </div>
             <ul class="indexdrop">
-                <li><a href="#">STRUTTURA</a></li>
-                <li><a href="#">LIVELLI</a></li>
-                <li><a href="#">FUNZIONE</a></li>
-                <li><a href="#">INTERFACCIA</a></li>
+                <li><a href="/Memoria/Cache?id=">STRUTTURA</a></li>
+                <li><a href="/Memoria/Cache?id=">LIVELLI</a></li>
+                <li><a href="/Memoria/Cache?id=">FUNZIONE</a></li>
+                <li><a href="/Memoria/Cache?id=">INTERFACCIA</a></li>
             </ul>
         </div>
         <div class="linkcell" onmouseleave="dropindex(3, false)">
             <div class="container">
-                <a class="primarylink" href="/archElab/MemVIRT"><img class="linkimg" src="/img/ARCH/HDD.png" > - MEMORIA VIRTUALE</a><span class="dropButton"><i onclick="dropindex (3, true)" class="fas fa-angle-down"></i></span>
+                <a onclick="showContent(3)" class="primarylink" href="/archElab/Memoria/MemVIRT"><img class="linkimg" src="/img/ARCH/HDD.png" > - MEMORIA VIRTUALE</a><span class="dropButton"><i onclick="dropindex (3, true)" class="fas fa-angle-down"></i></span>
             </div>
             <ul class="indexdrop">
                 <li><a href="#">STRUTTURA</a></li>
@@ -64,7 +64,7 @@
         </div>
         <div class="linkcell" onmouseleave="dropindex(4, false)">
             <div class="container">
-                <a class="primarylink" href="/archElab/RAM"><img class="linkimg" src="/img/ARCH/memoria.png" > - MEMORIA PRINCIPALE</a><span class="dropButton"><i onclick="dropindex (4, true)" class="fas fa-angle-down"></i></span>
+                <a onclick="showContent(4)" class="primarylink" href="/archElab/Memoria/RAM"><img class="linkimg" src="/img/ARCH/memoria.png" > - MEMORIA PRINCIPALE</a><span class="dropButton"><i onclick="dropindex (4, true)" class="fas fa-angle-down"></i></span>
             </div>
             <ul class="indexdrop">
                 <li><a href="#">STRUTTURA</a></li>
@@ -75,7 +75,7 @@
         
         <div class="linkcell" onmouseleave="dropindex(5, false)">
             <div class="container">
-                <a class="primarylink" href="#Access"><img class="linkimg" src="/img/ARCH/AccessoMEM.png" > - ACCESSO MEMORIE</a><span class="dropButton"><i onclick="dropindex (5, true)" class="fas fa-angle-down"></i></span>
+                <a onclick="showContent(5)" class="primarylink" href="#Access"><img class="linkimg" src="/img/ARCH/AccessoMEM.png" > - STORAGE</a><span class="dropButton"><i onclick="dropindex (5, true)" class="fas fa-angle-down"></i></span>
             </div>
             <ul class="indexdrop">
                 <li><a href="#">REGISTRI</a></li>
@@ -92,54 +92,61 @@
         <div id="index">
             <button id="hideNav"><i class="fas fa-ban"></i>HIDE BAR</button>
             <a href="#title"><i class="fas fa-angle-double-up">PAGE TOP</i></a>
-            <a onclick="showContent(0)" href="#">LINK interno</a>
+            <a onclick="showContent(0)" href="#">Gerarchia</a>
+            <a onclick="showContent(1)" href="#">Gerarchia</a>
+            <a onclick="showContent(2)" href="#">Gerarchia</a>
+            <a onclick="showContent(3)" href="#">Gerarchia</a>
+            <a onclick="showContent(4)" href="#">Gerarchia</a>
+            <a onclick="showContent(5)" href="#">Gerarchia</a>
+            
+
             <button id="hideAll" ><i class="fas fa-ban"></i>HIDE ALL</button>
         </div>
     </nav>
 
     <div id="Gerarchia" class="textContent">
-        <h2>GERARCHIA MEMORIA</h2>
+        <h1>GERARCHIA MEMORIA</h1>
         <div class="content">
             <div id="">
-                <h1>LIVELLI</h1>
+                <h2>LIVELLI</h2>
             </div>
             <div id="">
-                <h1>INTERFACCIA</h1>
+                <h2>INTERFACCIA</h2>
             </div>
         </div>
         <hr>
     </div>
 
     <div id="Registri" class="textContent">
-            <h2>REGISTRI CPU</h2>
+            <h1>REGISTRI CPU</h1>
             <div class="content">
                 <div id="">
-                    <h1>TIPOLOGIE</h1>
+                    <h2>TIPOLOGIE</h2>
                 </div>
                 <div id="">
-                    <h1>STRUTTURA</h1>
+                    <h2>STRUTTURA</h2>
                 </div>
                 <div id="">
-                    <h1>FUNZIONE</h1>
+                    <h2>FUNZIONE</h2>
                 </div>
             </div>
             <hr>
         </div>
 
     <div id="cache" class="textContent">
-        <h2>MEMORIA CACHE</h2>
+        <h1>MEMORIA CACHE</h1>
         <div class="content">
             <div id="">
-                <h1>LIVELLI</h1>
+                <h2>LIVELLI</h2>
             </div>
             <div id="">
-                <h1>FUNZIONE</h1>
+                <h2>FUNZIONE</h2>
             </div>
             <div id="">
-                <h1>STRUTTURA</h1>
+                <h2>STRUTTURA</h2>
             </div>
             <div id="">
-                <h1>MAPPATURA</h1>
+                <h2>MAPPATURA</h2>
             </div>
         </div>
         <hr>
@@ -150,14 +157,14 @@
     
 
     <div id="VIRTUALE" class="textContent">
-        <h2>MEMORIA VIRTUALE</h2>
+        <h1>MEMORIA VIRTUALE</h1>
         <div class="content">
             <div id="PAG">
-                <h1>STRUTTURA</h1>
+                <h2>STRUTTURA</h2>
 
             </div>
             <div id="SEG">
-                <h1>INDIRIZZAMENTO</h1>
+                <h2>INDIRIZZAMENTO</h2>
             </div>
         </div>
         <hr>
@@ -166,16 +173,16 @@
 
 
     <div id="" class="textContent">
-        <h2>MEMORIA PRINCIPALE</h2>
+        <h1>MEMORIA PRINCIPALE</h1>
         <div class="content">
             <div id="">
-                <h1>STRUTTURA</h1>
+                <h2>STRUTTURA</h2>
             </div>
             <div id="">
-                <h1>ACCESSO</h1>
+                <h2>ACCESSO</h2>
             </div>
             <div id="">
-                <h1>INTERFACCIA</h1>
+                <h2>INTERFACCIA</h2>
             </div>
         </div>
         <hr>
@@ -183,19 +190,19 @@
 
 
     <div id="" class="textContent">
-        <h2>ACCESSO MEMORIA</h2>
+        <h1>ACCESSO MEMORIA</h1>
         <div class="content">
             <div id="">
-                <h1>REGISTRI</h1>
+                <h2>REGISTRI</h2>
             </div>
             <div id="">
-                <h1>CACHE</h1>
+                <h2>CACHE</h2>
             </div>
             <div id="">
-                <h1>RAM</h1>
+                <h2>RAM</h2>
             </div>
             <div id="">
-                <h1>DISCO</h1>
+                <h2>DISCO</h2>
             </div>
         </div>
         <hr>

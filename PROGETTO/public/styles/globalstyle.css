@@ -215,7 +215,9 @@ html {
     flex: 1 0 50%; }
     .textContent .content ul {
       text-align: left;
+      
       font-size: 20px; }
+      
     .textContent .content img {
       height: 300px;
       width: 450px; }
