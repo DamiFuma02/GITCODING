@@ -75,19 +75,46 @@
 )
 
 
-(define hanoi-picture     ;stampa la grafica della posizione alla k-esima mossa
-  (lambda (n k)    ;n blocchi, k-esima mossa
-    (let ((lista (hanoi-disks n k)) ;configurazione delle mosse
-         )
-         (overlap-images
-              (overlap-images (disk-image 1 3 1 1) (disk-image 1 2 2 1)
-               )
-              (towers-background n) 
-          )
-    )
-    
+(define recursive-picture
+     (lambda (N n k s d t ns nd nt img) ;N < n; n dischi totali da spostare; k mosse da fare;
+                                        ;s d t = posizioni; ns nd nt: numero di disci per ogni posizione
+                                        ;image : immagine generata in precedenza
+           (if (= n 0)
+                img ;CASO BASE ritorna l'immagine costruita
+                (if (< k (expt 2 (- n 1)))
+                    (recursive-picture N (- n 1) k
+                                       s t d   ;viene scambiata la destinazione
+                                       (+ ns 1) ;aggiornato il numero di elementi per la posizione S
+                                       nt nd
+                                       (above (disk-image (- n 1) N s ns) img)
+                    )
+                    (recursive-picture N (- n 1) (- k (expt 2 (- n 1)))
+                                       t d s   ;viene scambiata la destinazione
+                                       nt
+                                       (+ nd 1) ;aggiornato il numero di elementi per la posizione D
+                                       ns
+                                       (above (disk-image (- n 1) N d nd) img)
+                    )
+                    
+                  
+                ) 
+           )
+     )
+)
+
+;restituisce la configurazione grafica della situazione dopo K mosse
+(define hanoi-picture 
+  (lambda (n k)
+       (recursive-picture n n k
+                    1 2 3  ;; S D T
+                    0 0 0  ;ns nd nt
+                    (towers-background n) ;imposta la dimensione dello sfondo
+       )
   )
 )
+
+
+
 
 ;(disk-image ringsize ringnumber position 1)
 ;(overlap-images

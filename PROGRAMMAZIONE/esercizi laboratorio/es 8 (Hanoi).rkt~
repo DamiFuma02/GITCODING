@@ -1,0 +1,50 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-advanced-reader.ss" "lang")((modname |es 8 (Hanoi)|) (read-case-sensitive #t) (teachpacks ((lib "drawings.ss.txt" "installed-teachpacks"))) (htdp-settings #(#t constructor repeating-decimal #t #t none #f ((lib "drawings.ss.txt" "installed-teachpacks")) #f)))
+
+"Parte I"
+
+(define hanoi-rep                    ; Ritorna la lista di tre liste
+  (lambda (n k s d t ns nd nt)       ; Prende n dei dischi da spostare, k step da fare, i numeri dei dischi sulle asticelle e l'ordine
+    (if (= n 0)
+        (list (list s ns) (list d nd) (list t nt))
+        (if (< k (expt 2 (- n 1)))
+            (hanoi-rep (- n 1) k s t d (+ ns 1) nt nd)
+            (hanoi-rep (- n 1) (- k (expt 2 (- n 1))) t d s nt (+ nd 1) ns)))))
+
+     
+(define hanoi-disks                  ; Ritorna lista di numeri
+  (lambda (n k)                      ; Prende due interi n di dischi e k numero di mosse
+    (hanoi-rep n k 1 2 3 0 0 0)))
+
+(hanoi-disks 3 0)
+(hanoi-disks 3 1)
+(hanoi-disks 3 2)
+(hanoi-disks 3 3)
+(hanoi-disks 3 4)
+(hanoi-disks 3 5)
+(hanoi-disks 3 6)
+(hanoi-disks 3 7)
+(hanoi-disks 5 13)
+(hanoi-disks 15 19705)
+(hanoi-disks 15 32767)
+
+"Parte II"
+
+(define picture-rep                  ; Ritorna una immagine
+  (lambda (nn n k s d t ns nd nt image) ; Prende nn dei dischi tot, n dei dischi da spostare, k step da fare, i numeri dei dischi sulle asticelle e l'ordine e un immagine
+    (if (= n 0)
+        image
+        (if (< k (expt 2 (- n 1)))
+            (picture-rep nn (- n 1) k s t d (+ ns 1) nt nd (above (disk-image (- n 1) nn s ns) image))
+            (picture-rep nn (- n 1) (- k (expt 2 (- n 1))) t d s nt (+ nd 1) ns (above (disk-image (- n 1) nn d nd) image))))))
+    
+(define hanoi-picture                ; Ritorna una immagine
+  (lambda (n k)                      ; Prende deu interi n dei dischi e k numero delle mosse
+    (picture-rep n n k 1 2 3 0 0 0 (towers-background n))))
+
+(hanoi-picture 5 0)
+(hanoi-picture 5 13)
+(hanoi-picture 5 22)
+(hanoi-picture 5 31)
+(hanoi-picture 15 19705)
