@@ -41,8 +41,8 @@
            )
          )
          (if (= n 0)
-             (list "") 
-             (append            ;s prende il valore della stringa X o Y o Z
+             (list "")
+             (append            ;S prende il valore della lista X o Y o Z
                    (map (lambda (s) (string-append "a" s) )   x)
                    (map (lambda (s) (string-append "b" s) )   y)
                    (map (lambda (s) (string-append "c" s) )   z)

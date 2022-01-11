@@ -9,10 +9,6 @@
 ;;definire una lista contenente le lunghezze della LIS
 ;; per ogni elemento della lista
 
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 
 
 (define llis
@@ -25,11 +21,9 @@
          )
         ((= k 1)
             1
-<<<<<<< Updated upstream
          ) 
         (else
             ;; deve trovare il massimo tra 2 LIS calcolate a indici diversi
-=======
          )
         ((> (list-ref lista k) (list-ref lista (- k 1)))
             (max
@@ -38,14 +32,13 @@
                       
                 (2)
             );; deve trovare il massimo tra 2 LIS calcolate a indici diversi
->>>>>>> Stashed changes
         )
       )
     )
   )
 )
 
-(define longer
+(define longer ;restituisce la lista più lunga tra a e b
   (lambda (a b)
     "ciao"
   )
