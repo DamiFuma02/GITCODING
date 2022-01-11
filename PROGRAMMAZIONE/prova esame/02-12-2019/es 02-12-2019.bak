@@ -324,7 +324,7 @@
              (if (null? lista)
                  (list char)
                  (if (char>? (car lista) char)
-                      (cons char lista)   
+                      (cons char lista)  
                       (if (char<? (car lista) char)
                          (cons (car lista)  ;primo elemento della lista
                               (sorted-ins (cdr lista) char)  ;lista ordinata togliendo il primo elemento
