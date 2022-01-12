@@ -48,14 +48,62 @@
 
 ;(crittazione (crittazione "CIAOCIAO" (regola-cesare 3)) testo cifrato
 ;             (regola-cesare 23)
-;)  RESTITUISCE IL TESTO INIZIALE 23 + 3 = 26 = rotazione completa
+;)  --> TESTO INIZIALE 23 + 3 = 26 = rotazione completa
 
 
 ;PROCEDURE CON ARGOMENTI E VALORI PROCEDURALI
 ;data la funzione di crittazione restituire quella di decrittazione
 
+(define posA (char->integer #\A))
+
 (define regola-inversa ;restituisce la procedura decifr per decifrare
-  (lambda (cifr)    ;cifr =procedura di crittazione
-     ""
+  (lambda (cifra)    ;cifr =procedura di crittazione
+     (let ( (k (char->integer (cifra #\A)))  ;ASCII del char cifrato da A
+          )
+         (regola-cesare (- 26(- k posA))) ;differenza tra il carattere cifrato e il carattere A
+                    ;corrisponde alla key di crittazione nella regola di cesare
+     ) 
   )
 )
+
+;(define chiaveCrittazione (regola-cesare 3))
+
+;(crittazione "CIAO" chiaveCrittazione)
+;= "FLDR"   -> testo shiftato di 3
+
+;(crittazione "FLDR"
+;          (regola-inversa chiaveCrittazione) = (regola-cesare (26 - (k - posA)))
+;)   = "CIAO"
+
+
+
+(define regola-gen-inv  ;valore: procedura inversa generale
+  (lambda (reg)
+    ;bisogna scoprire il carattere inverso
+    ;si usa una ricorsione finchè si trova la chiave giusta
+    ;BRUTE FORCE
+      (lambda (c)   ;carattere da trovare
+           (trova reg c posA) ;cod= codice ASCII del carattere progressivo da controllare
+        
+      )
+  )
+)
+
+
+(define trova   ;trova la chiave da restituire
+  (lambda (reg c i)   ;indice = cod ASCII da controllare ricorsivamente
+                           ;c : carattere
+          (if (char=? (reg (integer->char i)) c)
+             (integer->char i) ;CHIAVE TROVATA
+             (trova reg c (+ i 1)) ;ricerca successiva
+          )
+  )
+)
+
+;(define regola (regola-cesare 3))
+
+;(crittazione "CIAO" regola)  --> CIFRA IL TESTO CIAO = "FLDR"
+
+;(crittazione "FLDR" (regola-gen-inv regola))  -->DECIFRA
+
+
