@@ -6,21 +6,19 @@
 
 
 (define toDec           ;deve convertire la stringa espressa in base (string-length base) in decimale 
-  (lambda (insieme stringa)    ;stringa = stringa di NUMERO INTERO   insieme: stringa di valori 
-    (let (   (k (- (string-length stringa) 1))
-             (base (string-length base))
-         )
+  (lambda (base stringa)    ;stringa = stringa di NUMERO INTERO 
+    (let ((k (- (string-length stringa) 1)))
       (if (= k 0)
                 (nuovaCifra (string-ref stringa k) base 0)                     ;la stringa contiene un solo elemento
-                (+   ;NUOVACIFRA + BASE * PREC
-                    (* base (toDec insieme (substring stringa 0 k)))     ;funzione ricorsiva a cui viene passata la stringa senza l'ultimo carattere,  che verrà sommato progressivamente
+                (+ 
+                    (* (string-length base) (toDec base (substring stringa 0 k)))     ;funzione ricorsiva a cui viene passata la stringa senza l'ultimo carattere,  che verrà sommato progressivamente
                     (nuovaCifra (string-ref stringa k) base 0)                  ;viene calcolato il valore numerico del carattere all'ultima posizione della stringa    
                 )
       )
     )
 ))
 
- 
+
 
 
 (define parte_intera                                           ;viene chiamata solo se la funzione 
@@ -35,18 +33,18 @@
     )
  )
 
-(define parte_fraz     ;restituisce i caratteri a DX della virgola
+(define parte_fraz
   (lambda (stringa)
     (if (char=? (string-ref stringa 0) #\.)
-        (substring stringa 1)                          
+        (substring stringa 1)                          ;restituisce i caratteri a DX della virgola
         (parte_fraz (substring stringa 1))             ;richiama se stessa passando la stringa senza il carattere iniziale
      )
   ))
 
 
  
-;restuisce il valore numerico del carattere della stringa in base ai simboli dell'insieme. INDICE_INSIEME = VALORE NUMERICO
-(define nuovaCifra   
+
+(define nuovaCifra                ;restuisce il valore numerico del carattere della stringa in base ai simboli dell'insieme. INDICE_INSIEME = VALORE NUMERICO
   (lambda (carattere insieme k)               ;k è l'indice in cui cercare il carattere, vale 0  se è la prima volta che si chiama la funzione nuovaCifra
     (if (< k (string-length insieme))         ;k deve essere minore della lunghezza della stringa, per non incorrere in una lettura fuori indice
         (if (char=? (string-ref insieme k) carattere )
@@ -61,10 +59,10 @@
 
 
 
-(define checkSign     ;restituisce il segno della stringa
+(define checkSign     ;restituisce il segno dellas tringa, altrimenti FALSE
   (lambda (stringa)
        (cond
-          ((char=? (string-ref stringa 0) #\+)
+          ((char=? (string-ref stringa 0)#\+)
              #\+
            )
           ((char=? (string-ref stringa 0)#\-)
@@ -94,7 +92,7 @@
     )
   )
 )
- 
+
 
 (define bin-rep->number           ;funzione chiamata dall'utente
   (lambda (string)
@@ -108,36 +106,35 @@
 
 (define rep->number      ;funzione chiamata dall'utente per conversione generica in BASE 10
   (lambda (insieme stringa)                    ;insieme contiene i simboli dell'alfabeto da cui partire con la conversione
-         (if   (hasPoint? stringa) ;controllo se il numero inserito ha la VIRGOLA
-              (let (   (numdec  ;valore decimale della stringa totale senza la virgola
-                                    (toDec insieme (string-append   
-                                                           (parte_intera (substring stringa 1))
-                                                           (parte_fraz (substring stringa 1))
-                        )))
-                        (divisore  ;numero da dividere per ottenere la conversione giusta
-                                     (expt (string-length insieme) (string-length (parte_fraz (substring stringa 1))) )
-                        )
-                    )
-                    (cond (   (char=? (checkSign stringa) #\-)
-                              (* (/ numdec divisore) -1)
-                          )
-                          (else
-                              ;se è positivo o se non ha segno si fa la divisione normale
-                              (/ numdec divisore)
-                          )
-                    )
-              )
-              ;;NON TROVA LA VIRGOLA
-              (cond   (  (char=? (checkSign stringa) #\+)
-                         (toDec insieme (substring stringa 1) )
-                      )
-                      (  (char=? (checkSign stringa) #\-)
-                         (* -1 (toDec insieme (substring stringa 1) ) )
-                      )
-                      (else
-                         (toDec insieme stringa )
-                      )
-              )
-          )
+    ;controllo se il numero inserito ha la VIRGOLA
+    (if (hasPoint? stringa)   ;la stringa contiene il "."
+        ;controllo del segno
+        (if (or (char=? (checkSign stringa) #\+) (char=? (checkSign stringa) #\-))
+            ;se trova il segno toglie il primo carattere dalla stringa
+            (let ((numdec (base-dec insieme (string-append (parte_intera (substring stringa 1)) (parte_fraz (substring stringa 1)) )))  (divisore (expt (string-length insieme) (string-length (parte_fraz (substring stringa 1))) )))
+                 (if (char=? (checkSign stringa) #\-)
+                     (* (/ numdec divisore) -1)
+                     (/ numdec divisore)
+                  ) 
+             )   ;se non trova il segno prende la stringa totale
+            (let ((numdec (base-dec insieme (string-append (parte_intera stringa ) (parte_fraz stringa) )))  (divisore (expt (string-length insieme) (string-length (parte_fraz stringa)) )))
+                 (/ numdec divisore)
+             )
+         )
+        ;;NON TROVA LA VIRGOLA
+        (cond
+          ((char=? (checkSign stringa) #\+)
+             (base-dec insieme (substring stringa 1) )
+           )
+          ((char=? (checkSign stringa) #\-)
+             (* -1 (base-dec insieme (substring stringa 1) ) )
+           )
+          (else
+             (base-dec insieme stringa )
+           )
+        )
+     )
+    
+    
    )
  )
