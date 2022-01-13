@@ -15,7 +15,7 @@
     <div class="navtable">
         <div class="linkcell" onmouseleave="dropindex(0, false)"> 
             <div class="container">
-                <a onclick="showContent(0)" class="primarylink" href="#SND"><img class="linkimg" src="/img/ARCH/sistemabinario.jpg" >STRUTTURA</a><span class="dropButton"><i onclick="dropindex (0, true)" class="fas fa-angle-down"></i></span>
+                <a onclick="showContent(0)" class="primarylink" href="#SND"><img class="linkimg" src="/img/ARCH/chiplogo.png" >STRUTTURA</a><span class="dropButton"><i onclick="dropindex (0, true)" class="fas fa-angle-down"></i></span>
 
             </div>
             <ul class="indexdrop">
@@ -33,7 +33,7 @@
         </div>
         <div class="linkcell" onmouseleave="dropindex(2, false)"> 
             <div class="container">
-                <a onclick="showContent(2)" class="primarylink" href="#SND"><img class="linkimg" src="/img/ARCH/sistemabinario.jpg" >DATA PATH</a><span class="dropButton"><i onclick="dropindex (2, true)" class="fas fa-angle-down"></i></span>
+                <a onclick="showContent(2)" class="primarylink" href="#SND"><img class="linkimg" src="/img/ARCH/sistemabinario.jpg" >INSTRUCTION SET</a><span class="dropButton"><i onclick="dropindex (2, true)" class="fas fa-angle-down"></i></span>
 
             </div>
             <ul class="indexdrop">
@@ -59,17 +59,12 @@
 
             <button id="hideNav"><i class="fas fa-ban"></i>HIDE BAR</button>
             <a href="#title"><i class="fas fa-angle-double-up">PAGE TOP</i></a>
-            <a onclick="showContent(0)" href="#Digit">Digitalizzazione</a>
-            <a onclick="showContent(1)" href="#SND">Sistema Binario</a>
-            <a onclick="showContent(2)" href="#Bool">Algebra Booleana</a>
-            <a onclick="showContent(3)" href="#Codifica">Codifica dei DATI</a>
+            <a onclick="showContent(0)" href="#Struct">Struttura</a>
+            <a onclick="showContent(1)" href="#Ciclo">Ciclo Macchina</a>
+            <a onclick="showContent(2)" href="#DataPath">ISA</a>
+            <a onclick="showContent(3)" href="#Multicore">Multicore</a>
             <button id="hideAll" ><i class="fas fa-ban"></i>HIDE ALL</button>
-            <div class="drop">
-                <a  href="#CodificaNumeri">NUMERI</a>
-                <a  href="#CodificaChar">CARATTERI TESTUALI</a>
-                <a  href="#CodificaImg">IMMAGINI/VIDEO</a>
-                <a  href="#ADC">SUONI</a>
-            </div>
+            
             
         </div>
     </nav>
@@ -77,45 +72,126 @@
 
 
     <div id="struct" class="textContent">
-        <h2>STRUTTURA INTERNA</h2>
+        
+        
         <div class="content">
+            <div>
+                <h2>STRUTTURA INTERNA</h2>
+                <figure>
+                    <img src="/img/ARCH/StrutturaCPU.jpg" alt="Memoria + Registri + CU + ALU">
+                    <figcaption>
+                        <ul>
+                            <li><a href="/archElab/Memoria/RAM">Memoria Principale</a></li>
+                            <li><a href="#ControlUnit">Unità di Controllo</a></li>
+                            <li><a href="#ALU">Unità Aritmetico Logica</a></li>
+                            <li><a href="Registri">Registri Interni</a></li>
+                        </ul>
+                    </figcaption>
+                </figure>
+            </div>
             <div id="registri">
-                <h1>REGISTRI INTERNI</h1>
+                <h2>REGISTRI INTERNI</h2>
+                <figure>
+                    <img src="/img/ARCH/ArchitetturaCPU.png" alt="">
+                    <img src="/img/ARCH/FLAGRegister.png" alt="">
+                    <figcaption>
+                        <ul>
+                            <li>Costruiti in tecnologia SRAM, molto veloci e mantengono il dato finchè c'è alimentazione</li>
+                            <li>Solitamente ci sono 32 registri totali n=32. Indirizzabili con 5bit: lunghezza campo RD/RS nell'<a href="#ISA">ISA</a></li>
+                            <li><b>General Purpose:</b> STACK dei registri che contengono dati e istruzioni da eseguire</li>
+                            <li><b>Special Purpose:</b> dedicati a una sola funzione specifica
+                                <ul>
+                                    <li><b>REGISTRI ISTRUZIONI</b>
+                                        <ul>
+                                            <li><b>IR:</b> INSTRUCTION REGISTER: contiene l'indirizzo di memoria della istruzione in esecuzione</li>
+                                            <li><b>IP:</b> INSTRUCTION POINTER: indirizzo di memoria della prossima istruzione da eseguire. </li>
+                                            <li><b>PC:</b> PROGRAM COUNTER</li>
+                                            <li><b>MAR:</b> (Memory Address Register): contiene l'istruzione prelevata durante il <a href="#Fetch">FETCH</a>, successivamente inserito in IR</li>
+                                        </ul>
+                                    </li>
+                                    <li><b>REGISTRI DATI</b>
+                                        <ul>
+                                            <li>Per <b>Costanti</b> Numeriche: 0, PiGreco, e</li>
+                                            <li><b>MDR:</b> (Memory Data Register): contiene i dati/istruzioni da Leggere/Scrivere in Memoria</li>
+                                            <li>Registri <b>Vettoriali</b> per le istruzioni <a href="#TipiIstruzione">SIMD</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <b>REGISTRI CONTROLLO</b>
+                                        <ul>
+                                            <li>Servono ad attivare un determinato processo/serivizio</li>
+                                            <li>Setting dei parametri</li>
+                                        </ul>
+                                    </li>
+                                    <li><b>REGISTRI STATO</b>
+                                        <ul>
+                                            <li><b>SR: </b>Status Register <i>(immagine sopra)</i></li>
+                                            <li><a href="https://it.wikipedia.org/wiki/Registro_di_stato">FLAG REGISTER</a> 16 bit : determina lo stato dei processi in esecuzione del Sistema Operativo</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </figcaption>
+                </figure>
             </div>
             <div id="ALU">
-                <h1>ARITHMETIC LOGICAL UNIT</h1>
+                <h2>ARITHMETIC LOGICAL UNIT</h2>
             </div>
-            <div id="CU">
-                <h1>CONTROL UNIT</h1>
+            <div id="ControlUnit">
+                <h2>CONTROL UNIT</h2>
+                <figure>
+                    <img src="/img/ARCH/ControlUnit.png" alt="Ingresso=OPCODE, Uscita=Segnali di Controllo">
+                    <figcaption>
+                        <ul>
+                            <li>Si tratta di Un decoder che attiva alcuni segnali di controllo in base ai segnali di ingrsso</li>
+                            <li>A ogni ciclo di CLK riceve in ingresso:
+                                <ul>
+                                    <li><a href="FormatoIstr">OPCODE</a></li>
+                                    <li>Segnali di FLAG derivanti dal <a href="#registri">SR</a></li>
+                                    <li>Segnali di controllo dal <a href="/archElab/BUS">BUS controllo</a></li>
+                                </ul>
+                            </li>
+                            <li>Attiva i segnali di controllo responsabili all'esecuzione delle istruzioni Hardware</li>
+                        </ul>
+                    </figcaption>
+                </figure>
+            </div>
+            <div>
+                <h2>DATA PATH</h2>
+                <a href="https://www.youtube.com/watch?v=oETOwVBzu1s">DATA PATH + DECODE INSTRUCTION</a>
             </div>
         </div>
         <hr>
     </div>
 
     <div id="" class="textContent">
-        <h2>CICLO MACCHINA</h2>
+        <h1>CICLO MACCHINA</h1>
         <div class="content">
-            <div id="">
-                <h1>FETCH</h1>
+            <div>
+                <h2>PIPELINE</h2>
             </div>
             <div id="">
-                <h1>DECODE</h1>
+                <h2>FETCH</h2>
             </div>
             <div id="">
-                <h1>EXECUTE</h1>
+                <h2>DECODE</h2>
+            </div>
+            <div id="">
+                <h2>EXECUTE</h2>
             </div>
         </div>
         <hr>
     </div>
 
     <div id="" class="textContent">
-        <h2>DATA PATH</h2>
+        <h1>INSTRUCTION SET</h1>
         <div class="content">
-            <div id="">
-                <h1>REGISTRI</h1>
+            <div id="FormatoIstr">
+                <h2>FORMATO ISTRUZIONE</h2>
             </div>
-            <div id="">
-                <h1>MEMORIE</h1>
+            <div id="TipiIstruzione">
+                <h2>TIPI DI ISTRUZIONE</h2>
             </div>
         </div>
         <hr>
