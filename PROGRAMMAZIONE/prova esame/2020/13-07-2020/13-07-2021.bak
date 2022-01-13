@@ -12,7 +12,7 @@
 
 
 (define repeats-rec ; val : intero
-     (lambda (p s k r) ; p ≠ "", s : stringhe, k = len(p), r : numero di occorrenze iniziali
+     (lambda (p s k r) ; p ≠ "", s : stringhe, k = len(p), r : interi
           (cond (   (< (string-length s) k)
                     ;la stringa pattern è più lunga della stringa in cui cercare
                     ;perciò restituisce il numero di occorrenza calcolate finora

@@ -120,7 +120,6 @@
   )
 )
 
-;ESERCIZIO 4
 
 (define btr-val-tr ; val: intero
    (lambda (btr) ; btr: stringa di – / . / +
@@ -151,21 +150,24 @@
 (define comb
    (lambda (k n)
       (if (= n 0)
-          "c";
+          (list "")  ;numero max di caratteri raggiunto
           (let ( (u (if (= k 0)
-                       XXXX
-                       (comb (- k 1) (- n 1) ) ;viene aggiunto "1" perchè k viene decrementato
+                       ;terminato il numero di 1 da aggiungere
+                       (comb k (- n 1))
+                       ;viene aggiunto "1" perchè k viene decrementato
+                       (comb (- k 1) (- n 1) ) 
                     )
                  )
-                 (v (comb k (- n 1)))  ;viene aggiunto "0" perchè k non viene decrementato
+                 ;viene aggiunto "0" perchè k non viene decrementato
+                 (v (comb k (- n 1)))    
                )
                (append
-                   (map XXX XX)
-                   (map XXX  v)
-               )
+                   (map (lambda (s) (string-append "1" s) )  u)
+                   (map (lambda (s) (string-append "0" s) )  v)
+               ) 
           )
       )
-   )
+   ) 
 )
 
 

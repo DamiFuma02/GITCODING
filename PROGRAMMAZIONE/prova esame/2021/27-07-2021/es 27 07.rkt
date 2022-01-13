@@ -35,14 +35,14 @@
               )
            )
            (z (if (= (+ i j) n)                         
-                  null
+                  null 
                   (seqs i j (- n 1))        ;si aggiunge una C
               )
            )
          )
          (if (= n 0)
              (list "") 
-             (append            ;s prende il valore della stringa X o Y o Z
+             (append            ;s prende il valore di ogni stringa della lista x, y, z
                    (map (lambda (s) (string-append "a" s) )   x)
                    (map (lambda (s) (string-append "b" s) )   y)
                    (map (lambda (s) (string-append "c" s) )   z)
