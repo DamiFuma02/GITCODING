@@ -16,16 +16,15 @@
         ;MOSSA 1 = sposta i primi n-1 dischi da S --> T
         ;MOSSA 2 = poi sposta nesimo disco da S --> D
         ;MOSSA 3 = per ultimo sposta n-1 dischi da T --> D
-        (let ( (m1 (hanoi-rec (- n 1) s t d) );source = S destinazion = T
+        (let ( (m1 (hanoi-rec (- n 1) s t d) )    ;source = S destination = T
                (m2 (list s d))    ;ultimo disco da S --> D
                (m3 (hanoi-rec (- n 1) t d s)); source = T, destination = D
-               ;; COSTRUISCE LA LISTA DELLE MOSSE IN ORDINE da m1 a m3
-               
              )
+          ;; COSTRUISCE LA LISTA DELLE MOSSE IN ORDINE da m1 a m3
           (append
-                      m1 
+                      m1  
                       (cons m2 m3)
-               )
+               ) 
         )
      )
   )
@@ -47,7 +46,8 @@
  )
   
 
-;ricorsione di CODA: si stabilisce la posizione dell n-esimo disco, quindi il maggiore e via via sia arriva al minore
+;ricorsione di CODA: si stabilisce la posizione dell n-esimo disco,
+; e via via sia arriva al minore
 (define hanoi-rec-cod         ; hanoi-rec-cod: list
  (lambda (n k s d t n_backup) ; n, k, n_backup: int  ; s, d, t: lists 
     (let  ( (l (expt 2 (- n 1)))    ;lunghezza = 2^(n-1)
@@ -76,24 +76,33 @@
 
 
 (define recursive-picture
-     (lambda (N n k s d t ns nd nt img) ;N < n; n dischi totali da spostare; k mosse da fare;
+     (lambda (N n k s d t ns nd nt img) ;N: numero torale dei dischi da usare per la dimensione delle figure tramite il teachpack
+                                        ;n: dischi ancora da spostare, progressivamente diminuisce fino a 0, quando tutti saranno stati piazzati
+                                        ;k: mosse da trovare
                                         ;s d t = posizioni; ns nd nt: numero di disci per ogni posizione
-                                        ;image : immagine generata in precedenza
+                                        ;image : immagine generata in precedenza a cui sovrapporre la nuova generata
            (if (= n 0)
                 img ;CASO BASE ritorna l'immagine costruita
                 (if (< k (expt 2 (- n 1)))
-                    (recursive-picture N (- n 1) k
-                                       s t d   ;viene scambiata la destinazione
-                                       (+ ns 1) ;aggiornato il numero di elementi per la posizione S
+                    ;mossa precedente a quella intermedia
+                    ;deve ancora finire di spostare (n-1)blocchi da S a T, oppure ha appena finito ma non si può sapere
+                    (recursive-picture N (- n 1) k    ;configurazione di (n-1) blocchi dopo la k-esima mossa
+                                       s t d   ;da S --> T
+                                       (+ ns 1) ;il n-esimo si trova in S 
                                        nt nd
-                                       (above (disk-image (- n 1) N s ns) img)
+                                       (above (disk-image (- n 1) N s ns) img)   ;nuova immagine generata
+                                       ;viene piazzato l'n-esimo blocco nell'asticella S
                     )
+                    ;mossa successiva o uguale
+                    ;n-esimo è sicuramente stato spostato in D
+                    ;--> si procede con le mosse in ordine giusto
+                    ;== (n-1)blocchi da T a D
                     (recursive-picture N (- n 1) (- k (expt 2 (- n 1)))
-                                       t d s   ;viene scambiata la destinazione
+                                       t d s   ;da T --> D   
                                        nt
-                                       (+ nd 1) ;aggiornato il numero di elementi per la posizione D
+                                       (+ nd 1) ;n-esimo si trova in D
                                        ns
-                                       (above (disk-image (- n 1) N d nd) img)
+                                       (above (disk-image (- n 1) N d nd) img)   ;nuova immagine generata
                     )
                     
                   
@@ -112,10 +121,6 @@
        )
   )
 )
-
-
-
-
 ;(disk-image ringsize ringnumber position 1)
 ;(overlap-images
       ;            size discnumber position
@@ -127,7 +132,51 @@
 ;AGGIUNGE disk-image al BACKGROUND
 ;(overlap-images (disk-image 1 2 1 1) (towers-background 4))
 
-;FUNZIONA QUASI
-;(overlap-images (disk-image 1 2 1 1) (disk-image 2 3 1 1) )
+
+
+;; Problema generalizzato della Torre di Hanoi
+;;
+;; Rappresentazione di una configurazione generica:  (d1 d2 ... dk)
+;;
+;; lista delle posizioni (asticelle) dei dischi, a partire da quello
+;; di diametro maggiore, e via via in ordine decrescente di diametro.
 
  
+;; Numero di mosse
+
+(define number-of-moves               ; valore: intero
+  (lambda (cfg dst)                   ; cfg: lista, dst: {1, 2, 3} (posizioni)
+    (if (null? cfg)
+        0
+        (let ((b (car cfg)))          ; b: posizione del disco piu' grande
+          (if (= b dst)
+              (number-of-moves (cdr cfg) dst)
+              (+
+               (number-of-moves (cdr cfg) (other b dst))
+               1
+               (number-of-moves (tower (other b dst) (- (length cfg) 1)) dst)
+               ))
+          ))
+    ))
+
+
+;; Date due posizioni (asticelle), individuazione della terza
+
+(define other                         ; valore: {1, 2, 3}
+  (lambda (x y)                       ; x, y: {1, 2, 3}
+    (- 6 (+ x y))                     ; aritifizio
+    ))
+
+
+;; Rappresentazione di una mossa
+
+
+;; Torre di n dischi in posizione (asticella) data
+
+(define tower                         ; valore: lista di posizioni
+  (lambda (x n)                       ; z: {1, 2, 3}, n: intero non negativo
+    (if (= n 0)
+        null
+        (cons x (tower x (- n 1)))
+        )))
+
