@@ -15,8 +15,7 @@
   (lambda (key) ; chiave di crittazione passata durante la chiamata
 
     (lambda (x)  ;valore procedurale restituito dalla funzione
-        ;x: CHAR
-     
+    
       (integer->char
         (let ( (i (+ key (char->integer x))) ;;cod ASCII di X shiftata di key
              )
@@ -34,7 +33,7 @@
 
 
 (define crittazione   ;resituisce una stringa contente il msg cifrato in base alla funzione espressa da reg
-  (lambda (msg reg)   ;msg: STRINGA , reg: funzione di crittazione
+  (lambda (msg reg)   ;reg: funzione di crittazione
     (if (string=? msg "")
         ""
         (string-append

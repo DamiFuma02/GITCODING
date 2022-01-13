@@ -120,6 +120,10 @@
   )
 )
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 
 (define btr-val-tr ; val: intero
    (lambda (btr) ; btr: stringa di – / . / +
