@@ -32,6 +32,34 @@
 )
 
 
+(define f2
+   (lambda (u v x y)    ;INTERI >= 0
+      (cond ( (and (= x u) (= y v) )
+                0
+            )
+            ( (= x 0)
+                  (if (= u 0)
+                      0
+                      1
+                  )
+            )
+            ( (= y 0)
+                  (if (= v 0)
+                      0
+                      1
+                  )
+            )
+            (else
+                (+ (f u v (- x 1) y)
+                   (f u v x (- y 1))
+                )
+            )
+           
+      )
+   )
+)
+
+
 
 
 ;ESERCIZIO 2
@@ -120,10 +148,6 @@
   )
 )
 
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 
 (define btr-val-tr ; val: intero
    (lambda (btr) ; btr: stringa di – / . / +
@@ -173,7 +197,7 @@
       )
    ) 
 )
-
+ 
 
 
 

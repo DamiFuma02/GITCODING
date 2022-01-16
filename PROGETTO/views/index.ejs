@@ -7,57 +7,57 @@
     <title>HOMEPAGE</title>
     <link rel="stylesheet" href="/css/globalstyle.css">
     <style>
-        .navtable .CFU12{
-            flex: 1 1 100%;
-            background-color: transparent;
-            font-size: 50px;
-        }
-        .navtable .CFU6 {            
-
-            
-            flex: 1 1 50%;
-        }
-        .navtable .CFU12 .container .linkimg{
-            height: 90px;width: 90px;
-            padding: 10px 0px;
+        html {
+            background: #2d4afd;
+            background: linear-gradient(90deg, #2d4afd 0%, #22c3b6 100%);
+            height: 100%;
+            width: 100%;
         }
     </style>
 </head>
 <body>
     
-    <b>
-        <div class="title">
-            
+    <div id="titlePage">
+        <i id="pagelogo" class="fas fa-database"></i>I ANNO IBML
+    </div>
+
+    <div class="navtable">
+        <div class="linkcell" onmouseleave="dropindex(0, false)"> 
+            <div class="container">
+                <a onclick="showContent(0)" class="primarylink" href="#SND"><img class="linkimg" src="/img/ARCH/sistemabinario.jpg" >ANALISI</a><span class="dropButton"><i onclick="dropindex (0, true)" class="fas fa-angle-down"></i></span>
+
+            </div>
+            <ul class="indexdrop">
+
+            </ul>
         </div>
-        
-        <a href="/archElab">auwebid</a>
-        
-        <div class="navtable">
-            <div class="CFU12">
-                12 CFU
+        <div class="linkcell" onmouseleave="dropindex(1, false)" >
+            <div class="container">
+                <a onclick="showContent(1)" class="primarylink" target="_blank" href="https://elearning.uniud.it/moodle/course/view.php?id=3746"><img class="linkimg" src="/img/ARCH/sistemabinario.jpg" >ELEMENTI</a><span class="dropButton"><i onclick="dropindex (1, true)" class="fas fa-angle-down"></i></span>
+
             </div>
-            <div class="CFU12">
-                <div class="container">
-                    <a href="/analisi" class="primarylink"><img src="/img/analisi.jpg" alt="analisiimg" class="linkimg">ANALISI</a>
-                </div>
-            </div>
-            <div class="CFU12">
-                <div class="container">
-                    <a href="/elementi" class="primarylink"><img src="/img/elementi.jpg" alt="analisiimg" class="linkimg">ANALISI</a>
-                </div>
-            </div>
-            <div class="CFU12"> 
-                <div class="container">
-                    <a href="/program" class="primarylink"><img src="/img/analisi.jpg" alt="analisiimg" class="linkimg">ANALISI</a>
-                </div>
-            </div>
-            <div class="CFU12">6 CFU</div>
-            <div class="CFU6">ARCHITETTURA</div>
-            <div class="CFU6">TECNOLOGIE WEB</div>
-            <div class="CFU6">FISICA IOT</div>
-            <div class="CFU6">BASI DI DATI</div>
         </div>
-        </b>
-        
+        <div class="linkcell" onmouseleave="dropindex(2, false)" >
+            <div class="container">
+                <a onclick="showContent(2)" class="primarylink" href="/archElab"><img class="linkimg" src="/img/ARCH/sistemabinario.jpg" >ARCHITETTURA</a><span class="dropButton"><i onclick="dropindex (2, true)" class="fas fa-angle-down"></i></span>
+
+            </div>
+        </div>
+        <div class="linkcell" onmouseleave="dropindex(3, false)" >
+            <div class="container">
+                <a onclick="showContent(3)" class="primarylink" href="#SND"><img class="linkimg" src="/img/ARCH/sistemabinario.jpg" >PROGRAMMAZIONE</a><span class="dropButton"><i onclick="dropindex (3, true)" class="fas fa-angle-down"></i></span>
+
+            </div>
+        </div>
+        <div class="linkcell" onmouseleave="dropindex(4, false)" >
+            <div class="container">
+                <a onclick="showContent(4)" class="primarylink" href="#SND"><img class="linkimg" src="/img/ARCH/sistemabinario.jpg" >WEB</a><span class="dropButton"><i onclick="dropindex (4, true)" class="fas fa-angle-down"></i></span>
+
+            </div>
+        </div>
+    </div>
+
+
+
     </body>
     </html>
