@@ -92,7 +92,7 @@
                                        nt nd
                                        (above (disk-image (- n 1) N s ns) img)   ;nuova immagine generata
                                        ;viene piazzato l'n-esimo blocco nell'asticella S
-                    )
+                    ) 
                     ;mossa successiva o uguale
                     ;n-esimo è sicuramente stato spostato in D
                     ;--> si procede con le mosse in ordine giusto

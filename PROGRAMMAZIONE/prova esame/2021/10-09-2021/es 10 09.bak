@@ -27,7 +27,6 @@
 
 (define str-freq    ;restituisce un numero intero di occorrenze del carattere char nella stringa
   (lambda (char)    ;char da contare
-    
       (lambda (stringa) ;valore procedurale
         (cond (  (string=? stringa "")
                  0 ;CASO BASE

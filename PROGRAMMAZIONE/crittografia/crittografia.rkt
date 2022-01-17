@@ -28,7 +28,7 @@
       )
     
                       
-   )
+     )
   )
 )
 
@@ -38,7 +38,7 @@
     (if (string=? msg "")
         ""
         (string-append
-             (string (reg (string-ref msg 0)) )    ;coverte il primo carattere della stringa msg
+             (string (reg (string-ref msg 0))  )    ;coverte il primo carattere della stringa msg
              (crittazione (substring msg 1) reg)
         )
     )

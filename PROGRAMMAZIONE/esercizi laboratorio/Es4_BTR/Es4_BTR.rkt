@@ -226,7 +226,7 @@
 )
  
 (define btr-carry-sum
-     (lambda (add1 add2 c)
+     (lambda (add1 add2 c) 
         (let ((k1 (- (string-length add1) 1)) (k2 (- (string-length add2) 1)))
           (cond
             ;se non sono uguali si aggiunge (kMag - Kmin) "." a SX della stringa più corta
