@@ -39,7 +39,7 @@
     (lambda (u v) ; u, v: stringhe
          (let ((m (string-length u)) (n (string-length v))
               )
-              (cond ((or (= m 0) (= n 0))
+              (cond ((or (= m 0) (= n 0))   ;almeno una delle 2 stringhe ha solo 1 carattere
                         (list (string->list u) (string->list v))
                     )
                     ((char=? (string-ref u 0) (string-ref v 0))
@@ -47,16 +47,16 @@
                         (lcs-align (substring u 1) (substring v 1) )
                     )
                     (else
-                        (let ( (du (lcs-align (substring u 1) v))
-                               (dv (lcs-align u (substring v 1)))
+                        (let ( (du (lcs-align (substring u 1) v))  ;toglie il primo char di u
+                               (dv (lcs-align u (substring v 1)))  ;toglie il primo char di v
                              )
                              (if (> (+ (length (car du)) (length (cadr du)))
                                     (+ (length (car dv)) (length (cadr dv)))
                                  )
-                                 (list (car dv)
+                                 (list (car dv)   ;primo elemento di DV
                                        (cons (string-ref v 0) (cadr dv))
                                  )
-                                 (list (car du)
+                                 (list (car du)   ;primo elemento di DU
                                        (cons (string-ref u 0) (cadr du))
                                  ) 
                              )

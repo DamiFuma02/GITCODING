@@ -1,0 +1,24 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-intermediate-lambda-reader.ss" "lang")((modname |Argomenti procedurali|) (read-case-sensitive #t) (teachpacks ((lib "drawings.ss" "installed-teachpacks"))) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ((lib "drawings.ss" "installed-teachpacks")) #f)))
+;; Procedure con argomenti procedurali
+
+(define ascii-Z (char->integer #\Z))
+;; Codice-cesare restituisce la lettera che si trova 3 posizioni più avanti
+(define codice-cesare ;;val: lettera
+  (lambda (c)   ;;c: lettera maiuscola
+    (let ((k (+ (char->integer c) 3)))
+      (integer->char
+      (if (> k ascii-Z)
+          (- k 26) ;;26 è il numero di lettere inglesi dell'alfabeto
+          k)))
+    ))
+
+(define crittazione-cesare ;;val: stringa
+  (lambda (msg)    ;;stringa di lettere maiuscole
+    (if (string=? msg "")
+        ""
+        (string-append (string (codice-cesare (string-ref msg 0)))
+        (crittazione-cesare (substring msg 1)))
+        )
+    ))

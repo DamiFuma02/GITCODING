@@ -1,6 +1,43 @@
 ;; The first three lines of this file were inserted by DrRacket. They record metadata
 ;; about the language level of this file in a form that our tools can easily process.
 #reader(lib "htdp-intermediate-lambda-reader.ss" "lang")((modname 03-09-2019) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+;ESERCIZIO 1
+(define lis ; val : lista di liste (di interi)
+ (lambda (s)   ; s : lista di inter
+   (lis-rec s 0 null)
+ )
+) 
+
+(define best ;retituise la lista più lunga
+  (lambda (a b) ;a, b: LISTE
+    (if (< (length a) (length b))
+        a
+        (if (= (length a) (length b))
+            (list a b)
+            b
+        )
+    )
+  )
+)
+
+
+(define lis-rec
+    (lambda (s t p)
+           (cond (   (null? s)
+                     (list (reverse p))
+                 )
+                 (   (<= (car s) t)
+                     (lis-rec (cdr s) t p)
+                 )
+                 (else
+                       (best (lis-rec (cdr s) t p)
+                             (lis-rec (cdr s) (car s) (cons (car s) p))
+                       )
+                 )
+            )
+     )
+)
+
 ;ESERCIZIO 2
 
 

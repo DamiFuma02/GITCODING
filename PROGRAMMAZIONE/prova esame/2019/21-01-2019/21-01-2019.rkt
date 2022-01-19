@@ -152,6 +152,65 @@
 
 ;ESERCIZIO 5
 
+(define mh ; val: lista di interi
+   (lambda (y x) ; x y interi che corrispondono alle coordinate del rispettivo ASSE
+         (if (or (= y 0) (= x 0))
+                (list 0)
+                (append (md (- y 1) x) ;si procede verso BASSE
+                        (mr y (- x 1)) ;si procede verso DX
+                )
+         )
+   ) 
+) 
+
+
+;PASSO PRECEDENTE ASSE Y verso il BASSO
+;ritorna i percorsi creati effettuando una mossa verso il BASSO
+(define md ; md: passo precedente in giù, 
+    (lambda (y x)
+        (cond (  (and (= y 0) (= x 0)) ;PUNTO DI ARRIVO RAGGIUNTO
+                 (list 0)
+              )
+              (  (= y 0)    ;1 percorso disponibile, verso DX (x)
+                 (list 1)
+              )
+              (  (= x 0)    ;si può solo scendere
+                 (list 0)
+              )
+              (  else
+                     (append (md (- y 1) x) ;si procede verso il Basso e si prelevano le mosse successive
+                             (map (lambda (x) (+ x 1) )  ;FUNZIONE: incrementa ogni valore della lista mr
+                                  (mr y (- x 1))  ;ARGOMENTO = LISTA si procede verso DX 
+                             )
+                     )
+              )
+        )
+     )
+)
+
+;MOSSA PRECEDENTE ASSE X --> DX
+;percorsi creati dopo effettuata una mossa verso DX
+(define mr      ; md: passo precedente a destra
+     (lambda (y x)
+          (cond (  (and (= y 0) (= x 0))    ;PUNTO DI ARRIVO RAGGIUNTO
+                   (list 0)
+                )
+                (  (= y 0)  ;non si può più scendere
+                   (list 0)
+                )
+                (  (= x 0)  ;si deve scendere = 1 PERCORSO
+                   (list 1)
+                )
+                (else
+                      (append   (map  (lambda (x) (+ x 1) )  ;FUNZIONE
+                                      (md (+ y 1) x)  ;ARGOMENTO: LISTA
+                                )
+                                (mr y (- x 1))   ;si procede verso DX (x)
+                      )
+                )
+           )
+      )
+)
 
 
 
