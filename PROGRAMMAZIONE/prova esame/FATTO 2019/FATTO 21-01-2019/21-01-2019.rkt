@@ -84,6 +84,7 @@
 
 ;ESERCIZIO 3
 
+
 (define stars             ;conta il numero di "*" in q
         (lambda (q)       ;q; STRINGA
             (if (string=? q "")

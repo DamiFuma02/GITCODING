@@ -2,7 +2,9 @@
 ;; about the language level of this file in a form that our tools can easily process.
 #reader(lib "htdp-intermediate-lambda-reader.ss" "lang")((modname 11-06-18) (read-case-sensitive #t) (teachpacks ((lib "hanoi.ss" "installed-teachpacks"))) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ((lib "hanoi.ss" "installed-teachpacks")) #f)))
 
-
+;ESERCIZIO 1 11-06-2018
+;LISTA DI TUTTI I NUMERI PRIMI FINO A N
+;(primes-rec 20)
 
 (define primes-rec
       (lambda (k n prime?)
@@ -30,16 +32,16 @@
                     (sieve (+ k 1) n
                          ;P? 
                         (lambda (x)    ;argomento INTERO
-                               (if (and (> x k) (> x n) )
-                                     false
-                                     
+                               (if (and (> x k) (= (remainder x k) 0) )
+                                     #false
+                                     (p? x)
                                )
                         )
                      )
                   ) 
                  (else
                        (sieve (+ k 1) n
-                              XXXX ; funzione
+                              p? ; funzione
                        )
                  )
             )
@@ -50,8 +52,7 @@
 (define eratosthenes
     (lambda (n)
          (sieve 2 n
-               (lambda (n) ;val:  booleano
-               )
+               (lambda (x) true  )      ;val:  booleano)
          )
     )
 )
@@ -62,3 +63,32 @@
         (primes-rec 2 n (eratosthenes n))
     )
 )
+
+
+;; trovare quali sono i numeri primi in un intervallo
+
+(define ha-divisori-fra?
+  (lambda (x y n)
+    (cond((> x y) false)     ;;intervallo di numeri vuoto
+         ((= (remainder n x) 0) true)
+         (else
+          (ha-divisori-fra? (+ x 1) y n))
+    )
+))
+
+(define primo?
+  (lambda (n)
+    (not (ha-divisori-fra? 2 (- n 1) n))
+  ))
+
+;TUTTI I NUMERI PRIMI NELL INTERVALLO [X, Y]
+(define primi
+  (lambda (x y)
+    (cond ((> x y)
+           null)
+          ((primo? x)
+           (cons x (primi (+ x 1) y)))
+          (else
+           (primi (+ x 1) y))
+          )
+    ))

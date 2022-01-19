@@ -2,7 +2,8 @@
 ;; about the language level of this file in a form that our tools can easily process.
 #reader(lib "htdp-intermediate-lambda-reader.ss" "lang")((modname 22-01-2018) (read-case-sensitive #t) (teachpacks ((lib "hanoi.ss" "installed-teachpacks"))) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ((lib "hanoi.ss" "installed-teachpacks")) #f)))
 
-;ESERCIZIO 1
+;ESERCIZIO 3
+;(powers-of-two 26) → (16 8 2)
 
 (define powers-of-two    ;restituisce la lista contenente le potenze di 2
   ;;in ordine decrescente che sommate danno origine a n
@@ -28,6 +29,8 @@
   )
 )
 
+;esercizio 4 22-01-2018
+
 (define manhattan-var ; val: intero
      (lambda (i j k) ; i, j, k: interi non negativi tali che k ≤ i e k ≤ j
            (let (  (x (if (= i k)
@@ -42,17 +45,36 @@
                    )
                    (z (if (= k 0)
                           0
-                          (manhattan-var i j (- k 1))
+                          (manhattan-var (- i 1) (- j 1) (- k 1))
                       )
                    ) 
                 )
                 (if (and (> i 0) (> j 0))
                      (+ x
                         y
+                        z
                      )
                      ;almeno una delle 2 coordinate = 0, perciò 1 solo percorso disponibile ma non in diagonale
-                     0
+                     1
                 )
            )
     )
+)
+
+
+;ESERCIZIO 5
+
+(define ufo
+     (lambda (n)
+         (cond (  (= n 1)
+                  1
+               )
+               (  (even? n)
+                   (- (* 2 (ufo (quotient n 2)))  1)
+               )
+               (else
+                   (+ (* 2 (ufo (quotient n 2))) 1)
+               )
+         )
+     )
 )

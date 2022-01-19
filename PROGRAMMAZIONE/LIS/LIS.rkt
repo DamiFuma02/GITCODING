@@ -106,3 +106,43 @@
   )
 )
 
+;ESERCIZIO 1 03-09-2019
+;(lis '(27 90 7 29 49 8 53 1 28 6)) → ((7 29 49 53) (27 29 49 53))
+;LISTA DI TUTTE LE LIS della lista passata come argomento
+
+(define lis ; val : lista di liste (di interi)
+ (lambda (s)   ; s : lista di inter
+   (lis-rec s 0 null)
+ )
+) 
+
+(define best ;retituise la lista più lunga
+  (lambda (a b) ;a, b: LISTE
+    (if (< (length a) (length b))
+        a
+        (if (= (length a) (length b))
+            (list a b)
+            b
+        )
+    )
+  )
+)
+
+
+(define lis-rec
+    (lambda (s t p)
+           (cond (   (null? s)
+                     (list (reverse p))
+                 )
+                 (   (<= (car s) t)
+                     (lis-rec (cdr s) t p)
+                 )
+                 (else
+                       (best (lis-rec (cdr s) t p)
+                             (lis-rec (cdr s) (car s) (cons (car s) p))
+                       )
+                 )
+            )
+     )
+)
+

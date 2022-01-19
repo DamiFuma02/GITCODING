@@ -141,3 +141,33 @@
           )
    )
  )
+
+
+
+
+;ESERCIZIO 3 22-01-2018
+;(powers-of-two 26) → (16 8 2)
+
+(define powers-of-two    ;restituisce la lista contenente le potenze di 2
+  ;;in ordine decrescente che sommate danno origine a n
+  (lambda (n)     ;n: INTERO >= 0
+     (cond ( (= n 0)   ;CASO BASE
+             null
+           )
+           ( (= n 1)   
+             (list 1)
+           )
+           (else
+             (let ( (lg (inexact->exact 
+                          (floor (/ (log n) (log 2)) ) 
+                        )
+                     )  ;Log2(n) : approssimato difetto INTERO
+                  ) 
+                  (cons (expt 2 lg) ;(potenza di 2) < n più vicina a n stesso
+                        (powers-of-two (- n (expt 2 lg))) ; n - (potenza di 2) 
+                  )
+              )
+           )
+     )
+  )
+)
