@@ -13,10 +13,11 @@
 }
 body {
     background-color: blue;
+    font-family: 'Press Start 2P', cursive;
+
 }
 
 .container{
-    width: 600px;
 
     display: flex;
     flex-direction: column;
