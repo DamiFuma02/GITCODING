@@ -22,7 +22,7 @@
 
 
 
-;ES 2
+;ES 2 02-12-2019
 (define offset
   (char->integer #\0)
 )
@@ -182,20 +182,11 @@
 
 (define r-val
   (lambda (number)  ;number: STRINGA
-    (let ( (k (- (string-length number) 1))
-         )
-         (if (= k 0)
-             0 ;è rimasto solo il "." 
-             (+ (*
-                    (- (char->integer (string-ref number k)) offset) ;converte il carattere numerico in INTERO
-                    (expt 2 (* k -1) )
-                )  ;= digit * 2 ^ (-k)
-                (r-val (substring number 0 k)) ;toglie l'ultimo carattere appena calcolato
-             )
-         )
-    )
-  )
-)
+    (let ( (k (- (string-length number) 1))  )
+         (if (= k 0)  0 ;è rimasto solo il "." 
+             (+ (*  (- (char->integer (string-ref number k)) offset) ;converte il carattere numerico in INTERO
+                    (expt 2 (* k -1) ) )  ;= digit * 2 ^ (-k)
+                (r-val (substring number 0 k)) ))))) ;toglie l'ultimo carattere appena calcolato
 
 ;ES 7
 

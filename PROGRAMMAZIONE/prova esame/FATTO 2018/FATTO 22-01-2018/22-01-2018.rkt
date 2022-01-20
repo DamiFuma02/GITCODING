@@ -65,16 +65,10 @@
 ;ESERCIZIO 5
 
 (define ufo
-     (lambda (n)
-         (cond (  (= n 1)
-                  1
-               )
-               (  (even? n)
-                   (- (* 2 (ufo (quotient n 2)))  1)
-               )
-               (else
-                   (+ (* 2 (ufo (quotient n 2))) 1)
-               )
-         )
-     )
+    (lambda (n)
+           (cond ((= n 1) 1)
+                 ((even? n) (- (* 2 (ufo (quotient n 2))) 1))
+                 (else (+ (* 2 (ufo (quotient n 2))) 1))
+           )
+    )
 )

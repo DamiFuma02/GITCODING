@@ -4,7 +4,7 @@
 ;ESERCIZIO 1.a
 ;se y = 1, f(x y) = 2^x
 ;se x = 1, f(x y) = 2
-;se x = 2y allora (f 2 1) + y-1
+;se x = 2y allora = (f 2 1) + y-1
 (define f ; val: intero
     (lambda (x y) ; x ≥ 0, y > 0 interi
         (if (< x y)
@@ -18,11 +18,23 @@
 )
 
 
+;FIBONACCI SEQUENCE
+
+
+
+(define fibonacci  ; valore: naturale
+  (lambda (n)      ; n: naturale
+    (if (< n 2)
+        1
+        (+ (fibonacci (- n 2)) (fibonacci (- n 1)))
+        )
+    ))
+
 
 ;ESERCIZIO 1.b
-;se y = 0, (f x 0)  = 2^x
+;se y = 0, (f x 0)  = 2^x   per qualsiasi x>=0
 ;se x = y, (f x y) = 1
-;se y = 1, f(x 1) = fibonacci(x-2)
+;se y = 1, f(x 1) = fibonacci(x) per x>=0
 ;se x = y+1, f(x y) = 2
 (define f2      ; val: intero
      (lambda (x y)    ; x, y: interi non negativi
@@ -213,7 +225,37 @@
       )
 )
 
+;(blcs "cincia" "piani") → "/c*/*c*a"
 
 
+(define blcs ; val: stringa
+    (lambda (q r) ; q, r: stringhe
+         (cond ((string=? r "") q) 
+               ( (string=? q "")
+                   (string-append "/" (blcs q (substring r 1))))
+               ((char=? (string-ref q 0) (string-ref r 0))
+                   (string-append "*" (blcs (substring q 1) (substring r 1))))
+               (else (beter (string-append (substring q 0 1) (blcs (substring q 1) r ))
+                             (string-append "/"  (blcs q (substring r 1)))
+                             )))))
+
+(define beter
+   (lambda (u v)
+       (if (> (star u) (star v))
+            u
+            v
+     )))
 
 
+(define star
+      (lambda (s)
+            (if (string=? s "")
+                0
+                (let ((n (star (substring s 1))))
+                       (if (char=? (string-ref s 0) #\* )
+                              (+ n 1)
+                              n
+                            )  ))))
+
+
+(blcs "cincia" "piani")
