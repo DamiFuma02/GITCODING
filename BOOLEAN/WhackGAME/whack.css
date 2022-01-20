@@ -1,0 +1,50 @@
+:root{
+    --cell-size: 120px;
+    --cell-gutter: 60px;
+}
+
+#grid{
+    
+    width: calc(var(--cell-size)*3 + var(--cell-gutter));
+    height: calc(var(--cell-size)*3 + var(--cell-gutter));
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
+}
+
+h3{
+    margin: 30px;
+    
+}
+
+.cell{
+    height: var(--cell-size);
+    width: var(--cell-size);
+    border: 1px solid red;
+    cursor: pointer;
+    background-color: white;
+}
+
+.bugImage{
+    background-image: url("./bug.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center ;
+}
+
+.splat{
+    background-image: url("./splat.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center ;
+}
+
+#startButton{
+    background-color: green;
+    height: 100px;
+    font-size: 25px;
+    width: 150px;
+    font-family: 'Press Start 2P', cursive;
+}
