@@ -33,11 +33,11 @@ function cleanBoard(){
 
 
 function randomBug() {
-    //PULIRE TUTTE LE CELLE
     if (scoreDisplay.innerText == 20) {
         //AUMENTA LA DIFFICOLTà
         bugSpeed /= 2;
     }
+    //PULIRE TUTTE LE CELLE
     cleanBoard()
     //ASSEGNAMENTO RANDOMICO DEL BUG 
     let index = Math.floor( Math.random()*9) //genera un numero randomico tra [0,8]
@@ -58,11 +58,6 @@ function splatBug(index) {
     }
     return
 }
-
-
-
-
-
 
 for (let index = 0; index < cells.length; index++) {
     const cell = cells[index];
