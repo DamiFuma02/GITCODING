@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RUNNING DUCK ARCADE GAME</title>
-    <link rel="stylesheet" href="../common/main.css">
-    <link rel="stylesheet" href="style.css">
+    <title>Running Duck - Arcade Mania</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">    
+    <link rel="stylesheet" href="../common/style.css">
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    
+
     <div class="board">
         <div class="game-area">
             <div id="grid">
                 <div></div>
-                <div ></div>
+                <div></div>
                 <div></div>
                 <div></div>
                 <div></div>
@@ -29,16 +29,13 @@
             </div>
         </div>
         <div class="game-data">
-            <h1>Running Dyno</h1>
-            <p>Salta(Tasto SPACE) gli ostacoli fino alla FINE!</p>
-            
-            <a href="" id="reset">RESET</a>
+            <h1>Running Duck</h1>
+            <p>Premi SPAZIO per saltare e evita le piante!</p>
+            <h3>Score: <span id="score"></span></h3>
         </div>
     </div>
-    
-    <!-- <a href="https://fonts.google.com/?query=press">LINK PER FONT GOOGLE</a> -->
-    <!-- script per il gioco -->
-    <!-- <script src="../common/showResult.js"></script> -->
-    <script src="script.js"></script>
+
+    <script src="../common/utils.js"></script>
+    <script src="./script.js"></script>
 </body>
 </html>
