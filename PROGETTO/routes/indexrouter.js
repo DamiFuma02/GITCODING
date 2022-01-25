@@ -16,6 +16,14 @@ router.get("/archElab", (req, res) => {
 })
 
 
+router.get("/Elementi", (req, res) => {
+    res.render("elementi/MCD.ejs")
+})
+
+router.post("/Elementi", (req, res) => {
+    let link = `/Elementi?A=${req.body.A}&B=${req.body.B}`
+    res.redirect(link)
+})
 
 
 
