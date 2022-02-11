@@ -116,3 +116,9 @@ html {
         font-size: 15px; } }
 
 /*# sourceMappingURL=CodDig.css.map */
+/*la classe active viene aggiunta*/
+/*quando si seleziona la casella*/
+.active{
+  border: 1px solid black;
+  font-weight: bold;
+}
