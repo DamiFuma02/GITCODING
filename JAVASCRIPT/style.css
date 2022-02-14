@@ -36,3 +36,21 @@ button:hover {
   color: gray;
   text-decoration: line-through;
 }
+
+.slick-dots button{
+  height: 10px;
+  background-color: rgb(90, 88, 88);
+}
+/* slick-active viene aggiunta quando viene selezionata  */
+/* la casella, che mostrerà il contenuto nel carosello */
+.slick-dots button.slick-active{
+  height: 10px;
+  background-color: black;
+  border: 2px solid white;
+}
+
+
+div.text > p > a {
+  font-weight: bold;
+  border: 1px solid black;
+}
