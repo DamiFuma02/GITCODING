@@ -1,32 +1,65 @@
-from array import array
-from math import floor
-import math
-import random as rnd
-import math
-
-rosse = 20
-nere = 10
-bianche = 30
-totale = rosse + bianche + nere
-
-probTot2 = pow(totale, 2)   #casi possibili di estrazione di 2 palline prese dal totale
-probTot3 = pow(totale, 3)   #casi possibili di estrazione di 3 palline prese dal totale
-
-def estrazione():
-    colore = math.floor( rnd.random()*3)      #0=rosse, 1=nere, 2=bianche
-    return colore
+import math      #per funzione floor
+import random as rnd 
 
 
+lunghezza = 0
 
-scelta1 = estrazione()
-if (scelta1 == 0):    #colore rosso
-    scelta2 = estrazione()
-    if (scelta2 == 0):   #2 palline rosse estratte
-        print("Sono state estratte 2 palline rosse. la probabilità è:")
-        print(rosse / totale * rosse / totale)
-    if (scelta2 == 1):    #una rossa e una nera
-        scelta3 = estrazione()
-        if(scelta3 == 2):    #tutte le palline di un colore diverso
-            print("3 palline di colore diverso: ")
-            print("Non conta l'ordine delle palline in uscita e sono ammesse ripetizioni, perchè la stessa pallina può essere estratta piu volte")
-            print(rosse / totale * nere/totale * bianche/totale)
+def inserimento():
+    #lunghezza del vettore 
+    lunghezza = int(input("inserisci la lunghezza del vettore: "))
+    #inserimento del vettore
+    arr = []
+    print("Inserisci gli elementi del vettore: ")
+    for i in range(lunghezza):
+        dato = int(input("Inserisci il dato: "))
+        arr.append(dato)
+    a = [arr,lunghezza]
+    return a
+
+
+
+def sommaVettori(a,b):
+    lungh = len(a)
+    somma = []
+    for i in range(lungh):
+        s = a[i] + b[i]
+        somma.append(s)
+    return somma
+
+
+
+def stampa(a):           #a contiene 3 vettori 
+    print("STAMPA FOMRATTATA DEI DUE VETTORI")
+    ciclo = len(a)
+    lungh = len(a[0])
+    for i in range(ciclo):
+        print("VETTORE "+str(i+1))
+        for b in range(lungh):
+            print(str(a[i][b])+" ")
+    return
+
+
+
+def generaSecondo(length):
+    arr = []
+    print(length)
+    for i in range(length):
+        n = math.floor(rnd.random()*50)
+        arr.append(n)
+    return arr
+
+
+
+
+#print(lunghezza)    #errata
+#PRIMA FUNZIONE
+datiInseriti = inserimento()
+vettore1 = datiInseriti[0]
+lunghezza = datiInseriti[1] 
+#SECONDA FUNZIONE
+vettore2 = generaSecondo(lunghezza)
+#print(vettore2)
+#TERZA FUNZIONE
+vettoreSomma = sommaVettori(vettore1, vettore2)
+
+stampa([vettore1, vettore2, vettoreSomma])
