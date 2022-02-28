@@ -1,0 +1,9 @@
+<!ELEMENT dizionario (parola+)>
+<!ELEMENT parola (sillabe+, significato+, sinonimi?, contrari?)>
+<!ELEMENT sillabe (#PCDATA)>
+<!ELEMENT significato (image+)>
+<!ELEMENT sinonimi (#PCDATA)>
+<!ELEMENT contrari (#PCDATA)>
+<!ELEMENT image EMPTY>
+<!ATTLIST image type (gif | tiff | jpeg | png) #REQUIRED>
+<!ATTLIST dizionario lingua (ita | eng | usa | ger) #REQUIRED>

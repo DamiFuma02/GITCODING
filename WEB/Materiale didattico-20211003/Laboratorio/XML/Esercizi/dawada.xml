@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<queen xmlns:xlink="http://www.w3.org/1999/xlink">
+    <band>
+        xlink:type="simple"
+        xlink:href="http://localhost/queen/freddie-mercury.html">
+        Voce e piano: Freddie Mercury
+    </band>
+    <band>
+        xlink:type="simple"
+        xlink:href="http://localhost/queen/brian-may.html">
+        Chitarra elettrica: Brian May
+    </band>
+    <band>
+        xlink:type="simple"
+        xlink:href="http://localhost/queen/john-deacon.html">
+        Basso: John Deacon
+    </band>
+    <band>
+        xlink:type="simple"
+        xlink:href="http://localhost/queen/roger-taylor.html">
+        Batteria: Roger Taylor
+    </band>
+</queen>

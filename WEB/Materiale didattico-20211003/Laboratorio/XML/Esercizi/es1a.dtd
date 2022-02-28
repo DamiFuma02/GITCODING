@@ -1,0 +1,17 @@
+<!ELEMENT studente (nominativo+, corso+)>
+<!ELEMENT nominativo (cognome+,nome+, dataNascita?)>
+<!ELEMENT cognome (#PCDATA)>
+<!ELEMENT nome (#PCDATA)>
+<!ELEMENT dataNascita (#PCDATA)>
+<!ELEMENT corso (nomeCorso+, crediti+, voto?)>
+<!ELEMENT nomeCorso (#PCDATA)>
+<!ELEMENT crediti EMPTY>
+<!ELEMENT voto (#PCDATA)>
+
+<!ATTLIST corso link IDREFS #REQUIRED>
+
+<!ATTLIST corso annoAccademico (1 | 2 | 3) #REQUIRED>
+<!ATTLIST corso tipoLaurea (triennale | magistrale) "triennale">
+<!ATTLIST crediti numero (6 | 9 | 12) #REQUIRED>
+<!ATTLIST annoFrequenza anno (1 | 2 | 3) #REQUIRED>
+<!ATTLIST studente matricola ID #REQUIRED>

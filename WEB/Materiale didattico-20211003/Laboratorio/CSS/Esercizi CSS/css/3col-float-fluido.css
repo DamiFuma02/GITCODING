@@ -1,3 +1,43 @@
+/* 
+body{
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+#header {
+	background-color: rgb(79, 101, 221);
+
+}
+#footer{
+	width: 100%;
+	background-color: rgb(75, 150, 65);
+
+}
+
+#navigation{
+	width: 50%;
+	float: right;
+	background-color: red;
+
+}
+#secondary{
+	width: 50%;
+	float: left;
+	background-color: red;
+
+} */
+
+
+
+
+
+
+
+
+
+
 body {
 	margin: 0;
 	padding: 0;

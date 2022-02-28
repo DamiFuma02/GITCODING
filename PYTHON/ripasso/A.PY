@@ -2,7 +2,6 @@ import math      #per funzione floor
 import random as rnd 
 
 
-lunghezza = 0
 
 def inserimento():
     #lunghezza del vettore 
@@ -13,6 +12,7 @@ def inserimento():
     for i in range(lunghezza):
         dato = int(input("Inserisci il dato: "))
         arr.append(dato)
+    #per ritornare sia la lunghezza che il vettore generato
     a = [arr,lunghezza]
     return a
 
@@ -29,18 +29,21 @@ def sommaVettori(a,b):
 
 
 def stampa(a):           #a contiene 3 vettori 
-    print("STAMPA FOMRATTATA DEI DUE VETTORI")
+    print("STAMPA FOMRATTATA DEI 3 VETTORI")
     ciclo = len(a)
     lungh = len(a[0])
     for i in range(ciclo):
-        print("VETTORE "+str(i+1))
+        if (i<2):
+            print("VETTORE "+str(i+1))
+        else:
+            print("\nVETTORE SOMMA")
         for b in range(lungh):
             print(str(a[i][b])+" ")
     return
 
 
 
-def generaSecondo(length):
+def generaSecondoVettore(length):
     arr = []
     print(length)
     for i in range(length):
@@ -51,15 +54,14 @@ def generaSecondo(length):
 
 
 
-#print(lunghezza)    #errata
 #PRIMA FUNZIONE
 datiInseriti = inserimento()
 vettore1 = datiInseriti[0]
 lunghezza = datiInseriti[1] 
 #SECONDA FUNZIONE
-vettore2 = generaSecondo(lunghezza)
+vettore2 = generaSecondoVettore(lunghezza)
 #print(vettore2)
 #TERZA FUNZIONE
 vettoreSomma = sommaVettori(vettore1, vettore2)
-
-stampa([vettore1, vettore2, vettoreSomma])
+vettoreStampa = [vettore1, vettore2, vettoreSomma]
+stampa(vettoreStampa)

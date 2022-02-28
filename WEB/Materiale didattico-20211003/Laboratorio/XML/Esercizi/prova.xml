@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dizionario SYSTEM "prova.dtd">
+<dizionario lingua="ger">
+    <parola>
+        <sillabe></sillabe>
+        <significato>
+            <image type="gif" />
+        </significato>
+        <sinonimi></sinonimi>
+        <contrari></contrari>
+    </parola>
+</dizionario>

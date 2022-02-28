@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<!-- <!DOCTYPE dizionario SYSTEM "dizionario.dtd">  -->
+<!DOCTYPE dizionario SYSTEM "dizionario.dtd"> 
 <dizionario lingua="english">
     <voce>
         <termine>mouse</termine>
