@@ -1,0 +1,54 @@
+---
+title: "CHALLENGE"
+author: "Damiano Fumagalli"
+date: "`r Sys.Date()`"
+output: html_document
+---
+## [CHALLENGE](http://users.dimi.uniud.it/~massimo.franceschet/ns/plugandplay/challenges/read/read.html)
+
+
+* **Leggere il contenuto della tabella principale al seguente [URL](http://lib.stat.cmu.edu/datasets/wseries)**
+* **Saltare le prime 35 linee di paragrafi inutili**
+* **Leggere SOLO le righe della tabella**
+
+```{r}
+URL = "http://lib.stat.cmu.edu/datasets/wseries"
+(world_series = scan(URL, skip = 35, nlines = 23, what = list(1L, "")))
+typeof(world_series)
+names(world_series) = c("year", "results")
+
+
+# DOPO LA RINOMINA
+world_series   # DATAFRAME
+length(world_series)
+typeof(world_series[1])
+typeof(world_series[[1]])
+
+
+# TRASFORMAZIONE DA LISTA A DATAFRAME
+DF = data.frame( world_series$year,  world_series$results)
+names(DF) = c("year", "results")
+dim(DF)
+```
+
+* **creare una funzione in grado di ordinare gli anni**
+
+```{r}
+(vettoreAnni = world_series[[1]])  # oppure DF[[1]]
+sort(vettoreAnni)
+```
+> **ordina gli elementi in valore crescente e restituisce il valore**
+
+
+```{r}
+(perm = order(vettoreAnni))
+```
+> **restituisce gli indici degli elementi in ordine crescente**
+
+## **CREARE UN DATASET ORDINATO RISPETTO AL PRECEDENTE**
+
+```{r}
+(DF[perm,])
+```
+
+

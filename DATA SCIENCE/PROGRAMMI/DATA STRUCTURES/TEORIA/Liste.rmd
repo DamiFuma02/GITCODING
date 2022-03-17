@@ -1,0 +1,76 @@
+---
+title: "LISTE"
+author: "Damiano Fumagalli"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+> Vettore con elementi di diverso tipo
+
+
+```{r}
+(IO = list(list("Damiano", cognome = "Fumagalli"), eta = 19))
+#STAMPA LA STRUTTURA
+str(IO) 
+```
+
+
+
+### **DIFFERENZE LISTA-VETTORE**
+
+
+* **LISTA**
+  * contiene elementi di qualsiasi tipo (obj)
+  * **ogni elemento è una coppia ($chiave : valore)**
+* **VETTORE**
+  * il tipo di dato del vettore rispetta la [gerarchia](../INDEX.html)
+  * **ogni elemento** ha **solo** il suo **valore**
+  
+  
+
+## INDEXING parte da 1
+```{r}
+(IO)
+(IO[2])    #2° elemento della lista inziale #($eta : 19)
+(primaLista = IO[1])   
+```
+> lista contenente due valori (nome, valore)
+
+
+```{r}
+typeof(primaLista)
+(a = primaLista[[1]])    #list("Damiano", cognome = "Fumagalli")
+(a[1])   #($chiave : valore)
+(a[2])   #2° elemento : ($cognome : "Fumagalli")
+```
+### ACCESSO DIRETTO
+```{r}
+(a[[2]])  #valore della coppia
+
+
+#ACCESSO a un ELEMENTO tramite CHIAVE
+(a$cognome)
+#SOTTOLISTE
+(IO[c("cognome", "eta")])   #lista di chiavi
+(IO[c(1,2)])   #lista di posizioni
+```
+##  ESERCIZIO 1
+Data la seguente lista:
+```{r}
+(l = list(1, list(1,2,3), list("a",1, list("TRUE", "FALSE"))))
+```
+TROVARE:
+
+
+* la lista list(1,2,3)
+```{r}
+(l[[2]])
+```
+* l'elemento 1 della list(1,2,3)
+```{r}
+(l[[2]][[1]])
+```
+* l'elemento "TRUE" della list("TRUE", "FALSE")
+```{r}
+(l[[3]][[3]][[2]])
+```

@@ -1,0 +1,497 @@
+---
+title: "MATRICI"
+author: "Damiano Fumagalli"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+## **INDICE**
+* [DEFINIZIONE](#definizione)
+  * [Lunghezza](#lunghezza-campo-data)
+  * [Diagonale](#diagonale-principale)
+  * [Identità](#matrice-identità)
+* [INDEXING](#indexing)
+  * [Matrici RIGA](#vettore-riga)
+  * [Matrici COLONNA](#vettore-colonna)
+  * [sottomatrici](#sottomatrici)
+  vettore-colonna)
+  * [selezione condizionata](#selezione-condizionata)
+  * [AGGIUNTA ELEMENTI](#aggiungere-elementi)
+* [ARITMETICA](#aritmetica)
+  * [condizione fondamentale](#element-wise)
+  * [POTENZA]
+* [ESERCIZI MATRICI](../../Esercizi.pdf)
+  
+
+
+
+## DEFINIZIONE
+
+
+Possiedono le **properietà dei VETTORI**
+
+
+* **elementi dello stesso tipo**
+* **ogni cella contienesolo il valore**
+```{r}
+V = 1:12   #length(v) multipla di nrow | ncol
+(M = matrix(data = V, ncol = 3))
+dim(M)   #restituisce nrow e ncol
+```
+### **LUNGHEZZA CAMPO DATA**
+
+
+>**( length(V) %% (nrow | ncol) = 0 )**  affinchè la **Matrice possa essere creata**
+
+
+* **V viene diviso in nrow vettori riga da (lenght(V) / nrow) vettori colonna**
+* **V viene diviso in ncol vettori colonna da (lenght(V) / ncol) vettori riga**
+
+
+### DIAGONALE PRINCIPALE
+```{r}
+(M)
+diag(M)
+```
+>restituisce gli elementi con lo **stesso indice riga e colonna**
+
+
+### **MATRICE IDENTITÀ**
+> **MATRICE QUADRATA**
+
+
+**Ogni cella = 0 tranne quelle della [diagonale principale](#diagonale-principale)**
+
+```{r}
+# MATRICE NULLA
+(N = matrix(data = c(0,0,0,0,0,0,0,0,0), nrow = 3, ncol = 3))
+(diag(N) = 1)
+# MATRICE IDENTITÀ CREATA
+(I = N)
+```
+
+
+
+
+
+
+## INDEXING
+
+
+```{r}
+(M)
+```
+
+### **MATRICE RIGA**
+
+> **Definita come vettoreRiga di elementi Colonna = c( M[,1 ], ... , M[ ,ncol(M) ] )**
+
+```{r}
+# DICHIARAZIONE MATRICE VUOTA DELLE STESSE DIMENSIONI DI M
+k = ncol(M)
+(matriceRiga = matrix(data = array(data = c(0), dim = k), ncol=k, nrow=nrow(M)))
+# matriceRiga[,i] = vettoreRIGA[i] in cui ogni elemento è un vColonna
+for (i in 1:k) (matriceRiga[,i] = M[,i])
+(matriceRiga)
+```
+
+### **MATRICE RIGA**
+> **vettore Colonna con elementi vettori Riga**
+
+#### **vettore Riga**
+
+>**Selezionando l'indice del vettoreRiga si seleziona la i-esima colonna**
+
+
+```{r}
+nRiga = 3  #riga da visualizzare
+(vettoreRiga = M[nRiga, ])
+nCol = 2   #colonna da visualizzare
+(vettoreRiga[nCol])
+```
+
+
+>**Notazione analoga**
+
+
+```{r}
+(M[nRiga,nCol])  
+```
+
+
+
+
+### **VETTORE COLONNA**
+
+>**Selezionando l'indice del vettoreColonna si seleziona la i-esima riga**
+
+
+```{r}
+nCol = 2   #colonna da visualizzare
+(vettoreColonna = M[ ,nCol])
+nRiga = 3  #riga da visualizzare
+(vettoreColonna[nRiga])
+```
+>**Notazione analoga**
+
+
+```{r}
+(M[nRiga,nCol])  
+```
+
+
+
+
+
+### **SOTTOMATRICI**
+```{r}
+(M)
+righeDesiderate = 1:2   #c(1,2)
+colDesiderate = 1:3    #c(1,2,3)
+M[righeDesiderate , colDesiderate]
+```
+
+
+### **SELEZIONE CONDIZIONATA**
+
+```{r}
+(M)
+elementiNonDesiderati = c(1,2,7)
+(M[-elementiNonDesiderati])   #non visualizza gli elementi indicati
+condizione = M%%2==0
+(M[condizione])   #solo gli elementi PARI
+```
+
+
+## **AGGIUNGERE ELEMENTI**
+
+```{r}
+(P = matrix(data = runif(9), nrow = 3, byrow = TRUE))
+colonnaDaAggiungere = c(3,3,3)
+(P = cbind(P, colonnaDaAggiungere))
+rigaDaAggiungere = c(3,3,3,3)
+(P = rbind(P, rigaDaAggiungere))
+(P)
+```
+
+## **ARITMETICA**
+### **ELEMENT-WISE**
+```{r}
+(A = matrix(data = 1:9, nrow = 3))
+(B = matrix(data = runif(9), ncol = 3))
+(vettore = (dim(A) == dim(B)))
+condizioneFondamentale = all(vettore)
+if (condizioneFondamentale == TRUE) {
+  print("DIMENSIONI COMPATIBILI PER ELEMENT-WISE")
+}
+```
+> **all(vettore) = TRUE se ogni elemento di vettore == TRUE, perciò se le dimensioni delle 2 matrici da sommare sono uguali**
+
+
+### **SOMMA**
+A(nxm) + B(nxm) = C(nxm) = (ci,j) ==> ci,j = A(i,j) + B(i,j)
+```{r}
+(A+B)
+```
+> **VALIDA se condizioneFondamentale == TRUE**
+
+
+### **PRODOTTO**
+A(nxm) \* B(nxm) = C(nxm) = (ci,j) ==> ci,j = A(i,j) \* B(i,j)
+```{r}
+(A * B)
+```
+> **VALIDA se condizioneFondamentale == TRUE**
+
+
+### **CASO PARTICOLARE**
+> **vettore Riga x matrice di righe = prodotto scalare**
+
+* **vRiga = [v1,v2,...,vn]**
+```{r}
+(vRiga = c(1,2,0))
+```
+* **vCOL = matCOL(nxm) = [A[1,], A[2,] , ... , A[nrow(matCOL),]]**
+```{r}
+# vettore COLONNA con 3 ELEMENTI vettori RIGA, ognuno lungo 4(=ncol(B))
+(B = matrix(data = c(0,-1,2,3,1,2,1,0,0,1,1,0), nrow=length(vRiga), byrow=TRUE ))
+```
+* **come si nota i due vettori hanno la stessa lunghezza perciò si effettua il classico prodotto scalare v1\*matCOL[1] + ... + vn\*matCOL[n]   (==> matCOL[i] = A[i, ])**
+
+* **si tratta di un numero intero moltiplicato per un vettoreColonna, il quale produce un vettore colonna**
+
+* **si ottiene alla fine una somma in serie di x vettori riga tutti della stessa dimensione, che ne producono uno equidimensionale length(vSOMMA) = n = 4**
+
+
+```{r}
+dim(vRiga %*% B)
+(vRiga %*% B)
+```
+### **CASO PARTICOLARE**
+> **Matrice di Colonne (= vettore riga di vettori colonne) x vettore colonna**
+
+* **vCol = [v1, ... , vn]**
+```{r}
+(vCol = matrix(data = c(1,0,-1), ncol = 1))
+```
+* **matRiga = [A[ ,1] , ... , A[,n] ]**
+```{r}
+(A = matrix(data = c(-1,2,3,1,2,0,0,1,0), ncol = nrow(vCol), byrow=TRUE))
+```
+* **matRiga x vCol = prodotto scalare**
+* **matRiga[1]*vCol[1] + ... + matRiga[n]*vCol[n]**
+* **prodotto di numero intero \* vettore colonna che ne genera uno equidimensionale n = nrow(vCOl)**
+* **somma di vettori colonna(nx1)**
+```{r}
+(nrow(vCol))
+( A %*% vCol)
+```
+
+### **PRODOTTO MATRICIALE**
+Segue le **regole** dettate dall'**algebra delle matrici**
+
+
+### **CONDIZIONE FONDAMENTALE**
+
+
+> * **A(n,m) = Matrice di n righe e m colonne**
+* **B(m,c)      per  n != m != c**
+* **A x B = C(n,c)   =  (ci,j)   --> ci,j = [A[i,]](#vettore-riga) \* [B[,j]](#vettore-colonna)**
+* **il prodotto è fattibile se ncol(A) == nrow(B)**
+* **ci,j corrisponde a un prodotto [vettoriale](./Vettori.html#prodotto-vettoriale-scalare)**
+  
+
+
+```{r}
+(A = matrix(data = 1:6, ncol = 3))
+(B = matrix(data = 12:1, nrow = 3))
+(C = A %*% B)
+cond = (dim(C) == c( nrow(A) , ncol(B) ))
+if (all(cond) == TRUE) {
+  print("PRODOTTO FATTIBILE")
+} else {
+  print("DIMENSIONI NON COMPATIBILI")
+}
+```
+> ( cij = A[i, ] %\*% B[,j] )--> prodotto scalare tra vettoreRiga(A[i,]) e vettoreColonna(B[,j])
+
+
+```{r}
+(c11 = A[1,] %*% B[,1])   # C[1,1] 1 riga, 1 col
+(C[1,1])
+(c12 = A[1,] %*% B[,2])   # C[1,2] 1 riga, 2 col
+(C[1,2])
+(c21 = A[2,] %*% B[,1])   # C[2,1] 2 riga, 1 col
+(C[2,1])
+```
+> **affinchè il prodotto scalare sia fattibile i due vettori devono avere la stessa lunghezza**
+
+
+* **lenght(A[1,]) = m = ncol(A)**
+* **length(B[,1]) = m = nrow(B)**
+
+
+### **PROPRIETÀ DEL PRODOTTO**
+* **ASSOCIATIVA**
+  * **A(nxm) , B(mxk) , C(k,h) --> rispettata la [condizione](#condizione-fondamentale) fondamentale**
+  * **A x ( B x C) = (A x B) x C**
+  * **(ncol(A) == nrow(B)   &&   ncol(B) == nrow(C))**
+* **DISTRIBUTIVA SULLA SOMMA**
+  * **A(nxm) , B(mxk) , C(mxk) **
+  * **A x (B+C) = (A x B) + (A x C)**
+  * **(B+C) = [somma matriciale](#somma-a-b)**
+  * **A x B = [prodotto matriciale](#prodotto-matriciale)**
+  
+
+### **MATRICI A BLOCCHI**
+```{r}
+# PRIMA MATRICE
+(M = matrix(data = c(1,2,3,0,5,0,3,1,2,4,0,1,0,2,1),nrow=3, byrow = TRUE))
+# DICHIARAZIONE DEI BLOCCHI
+(A = matrix(data = c(1,2,3,0,3,1), nrow=2, byrow = TRUE))
+(B = matrix(data = c(0,5,2,4), nrow=2, byrow = TRUE))
+(C = matrix(data = c(0,1,0), nrow=1, byrow = TRUE))
+(D = matrix(data = c(2,1), nrow=1, byrow = TRUE))
+# SECONDA MATRICE
+(N = matrix(data = c(1,-1,0,1,0,0,1,-1,0,1), ncol=2, byrow = TRUE))
+(E = matrix(data = c(1,-1,0,1,0,0), ncol=2, byrow=TRUE))
+(G = matrix(data = c(1,-1,0,1), ncol=2, byrow=TRUE))
+#PRIMA MATRICE
+(M) 
+#SECONDA MATRICE
+(N) 
+(p=M %*% N)  # usando l'operatore a disposizione
+```
+> **PRODOTTO DEI SINGOLI BLOCCHI**
+
+
+**M(2x2) x N(2x1) = C(2x1) = (ci,j) per ci,j = M[i,] * N[,j]**
+
+* C(1,1) = M[1,] * C[,1]
+  * C(1,1) = vRiga[A B] * vCol[E G] = A\*E + B\*G
+
+* C(2,1) = M[2,] * C[,1]
+  * C(1,1) = vRiga[C D] * vCol[E G] = C\*E + D\*G
+
+
+```{r}
+(a = A %*% E)   #prodotto scalare
+(b = B %*% G)   #prodotto scalare
+(e = a + b) #somma element-wise
+(c = C %*% E)   #prodotto scalare
+(d = D %*% G)   #prodotto scalare
+(g = c + d) #somma element-wise
+(MperN = rbind(e,g))
+if (all((MperN == p)) == TRUE) {
+  print("RISULTATO CORRETTO")
+  print(MperN)
+} else {
+  print("ERRORE")
+}
+```
+
+### **POTENZA MATRICE**
+> **(A)^2 = (A * A) ==> prodotto element-wise, NON SCALARE**
+
+
+```{r}
+(A = matrix(data = 1:9, nrow=3, byrow=TRUE))
+(e = A ^ 3)
+(E = A %*% A)
+all(e == E)
+```
+> **EQUIVALE A ELEVARE A POTENZA OGNI ELEMENTO DELLA MATRICE**
+
+
+## **TRASPOSIZIONE MATRICE**
+> **M(nxm) --> scambia le righe con le colonne  --> M(mxn)==M(nxm)^T**
+
+```{r}
+(Matrice = matrix(data = 1:12, ncol=3))
+#VETTORE RIGA
+(Matrice[1,]) 
+# (Matrice)^T
+(MTrasposta = t(Matrice))  
+#VETTORE COLONNA
+(MTrasposta[,1])
+```
+>**come si nota il vettoreRiga della Matrice corrisponde al vettoreColonna della matrice trasposta**
+
+## **PROPRIETÀ**
+### **((A)^T )^T = A**
+```{r}
+(a = Matrice)
+(b = MTrasposta)
+(c = t(b))
+if (all(a == c) == TRUE) {
+  print("LE DUE MATRICI CORRISPONDONO")
+  print(c)
+} else {
+  print("ERRORE LE MATRICI NON SONO UGUALI")
+}
+```
+### **(k * M)^T == k * (M)^T**
+```{r}
+k = 3
+(a)
+(b = t(k * a))
+(c = (t(a) * k))
+if (all(b == c) == TRUE){
+  print("CORRETTO")
+} else {
+  print("ERRORE")
+}
+```
+### **(k\*A + x\*B)^T == k\*(A)^T + x\*(B)^T**
+```{r}
+k=3
+x=2
+(A = matrix(data = 1:9, nrow=3))
+(B = matrix(data = 9:1, nrow=3))
+(b = t(k*A + x*B))
+(c = k*t(A) + x*t(B))
+if (all(b == c) == TRUE){
+  print("CORRETTO")
+} else {
+  print("ERRORE")
+}
+```
+### **(AxB)^T == (B)^T x (A)^T**
+```{r}
+(A = cbind(A, c(1,2,3)))
+(B = rbind(B, c(1,2,3)))
+t(A %*% B)
+t(B) %*% t(A)
+#ERRORE
+t(A) %*% t(B) 
+```
+### **DIMOSTRAZIONE **
+* **A(2x4) = matrice 2 righe 4 colonne**
+```{r}
+(A = matrix(data = 1:8, nrow=2))
+```
+* **B(4x1) = matrice 4 righe 1 colonna = vettoreColonna**
+```{r}
+(B = matrix(data = 1:4, ncol=1))
+```
+> **IPOTESI: (A x B)^T == (B)^T x (A)^T**
+
+
+**(A x B)^T = ( vRiga=[A[,1] , A[,2], ... ,A[,ncol(A)]] x vCol = B) ^ T**
+
+
+**= A[,1]\*b1 + A[,2]\*b2 + ... + A[,ncol(A)]\*bnrow(B) --> ncol(A) == nrow(B)**
+
+
+**Trattandosi di un prodotto scalare tra vRiga e vCol il risultato è un numero intero**
+
+
+**(B)^T x (A)^T**
+
+
+```{r}
+#VETTORE COLONNA
+(B)
+# TRASPOSTO = VETTORE RIGA
+t(B)
+# MATRICE ORIGINALE
+(A)
+# TRASPOSTA
+t(A)
+```
+
+
+## ESERCIZIO
+
+```{r}
+(A = matrix(data = c(0,7,1,2,0,4), nrow = 2, byrow = TRUE))
+(B = matrix(data = c(1,-6,0,-3,0,2), nrow = 2, byrow = TRUE))
+(C = matrix(data = c(-1,-1,1,0,0,5), nrow = 3, byrow = TRUE))
+(D = matrix(data = c(-1,1,0), ncol = 1))
+# A x C
+(A %*% C)   
+# (A -2B)C
+(A - 2*B)%*%C
+
+```
+
+Verificare che la traccia della matrice = diagonale principale sommata
+
+
+Spettro da cui prendere gli autovalori
+
+
+```{r}
+(C = matrix(data = 1:9, nrow = 3))
+(v = eigen(C)$values)
+sum(v)
+sum(diag(C))
+```
+
+Prodotto degli autovalori
+
+
+```{r}
+prod(v)
+```
+

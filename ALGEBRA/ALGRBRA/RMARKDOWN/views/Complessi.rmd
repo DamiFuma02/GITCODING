@@ -1,0 +1,15 @@
+---
+title: "NUMERI COMPLESSI"
+author: "Damiano Fumagalli"
+date: '`r Sys.Date()`'
+output: html_document
+---
+i numeri complessi possono essere rappresentati come matrici 2x2
+> **z = a\*1 + i\*b**
+
+
+```{r}
+(numero1 = matrix(data = c(1,0,0,1), nrow = 2, byrow = TRUE))
+(i = matrix(data = c(0,-1,1,0), nrow = 2, byrow = TRUE))
+(z = matrix(data = c("a", "-b", "b", "a"), nrow = 2, byrow = TRUE))
+```

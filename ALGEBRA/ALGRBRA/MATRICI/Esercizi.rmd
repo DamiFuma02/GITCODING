@@ -1,0 +1,150 @@
+---
+title: "ESERCIZI MATRICI"
+author: "Damiano Fumagalli"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+[File Esercizi](../Esercizi.pdf)
+
+
+
+### **MATRICE A**
+```{r}
+(A = matrix(data = c(0,7,1,2,0,4), nrow = 2, byrow = TRUE))
+```
+### **MATRICE B**
+```{r}
+(B = matrix(data = c(1,-6,0,-3,0,-2), nrow = 2, byrow = TRUE))
+```
+### **MATRICE C**
+```{r}
+(C = matrix(data = c(-1,-1,1,0,0,-5), ncol = 2, byrow = TRUE))
+```
+### **MATRICE D**
+```{r}
+(D = matrix(data = c(-1,1,0), ncol = 1, byrow = TRUE))
+```
+* **Calcolare e2,2 di E = (A \* C)**
+
+A(2x3) * C(3x2) = E(2x2) = (ei,j) **==> ei,j = A[ i, ] x C[ ,j ] = PRODOTTO SCALARE = vRiga * vCOL**
+```{r}
+(E = A %*% C)
+(e22 = A[2,] %*% C[,2])
+(e22 == E[2,2])      
+```
+* **Calcolare (A - 2B)C**
+
+
+```{r}
+(E = (A - (2*B) ) %*% C)
+(u = 2*B)
+# v = A - 2B
+(v = A - u) 
+# e = (A -2B) %*% C
+(e = v %*% C)
+if (all(E == e)) print("CALCOLO CORRETTO")
+```
+* **Calcolare C(A-2B)**
+
+**Siccome dim(A) == dim(B) la somma produce una matrice(S) di eguali dimensioni**
+
+**IPOTESI: C(3x2) x S(2x3) = E(3x3)**
+```{r}
+# PER IPOTESI
+dimE = c(3,3)
+(E = C%*%(A - 2*B))
+(u = 2*B)
+# v = A - 2B
+(v = A - u)
+
+(e = C%*% v)
+if (dim(e) == dimE) print("LE DIMENSIONI IPOTIZZATE COINCIDONO")
+if (all(E == e)) print("CALCOLO CORRETTO")
+```
+
+* **Calcolare (A-2B)D**
+
+**(A-2B) è una matrice S(2x3)**
+
+**IPOTESI: S(2x3) x D(3x1) = E(2x1)**
+
+```{r}
+# PER IPOTESI
+dimE = c(2,1)
+(e = (A-2*B)%*%D)
+# (A-2B) salvato in precedenza
+(v)
+(E = v %*% D)
+if (all(dim(E) == dimE)) print("LE DIMENSIONI IPOTIZZATE COINCIDONO")
+if (e == E) print("CALCOLO CORRETTO")
+```
+
+* **Calcolare D(A-2B)**
+
+**(A-2B) è una matrice S(2x3)**
+
+**D(3x1) x S(2x3) NON è FATTIBILE**
+
+**IPOTESI ncol(D) != nrow(A-2B)**
+```{r}
+# (A-2B) salvato in precedenza
+(v)
+(ncol(D) == nrow(v))
+# (D %*% v)
+# PRODUCE UN ERRORE
+```
+
+
+* **(AC)^2 = AC \* AC **
+```{r}
+(A)
+(C)
+(A %*% C)
+(A %*% C) ^ 2
+(E = (A %*% C) * (A %*% C))
+```
+
+
+* **(A^2 %\*% C^2)**
+
+
+```{r}
+(A)
+(C)
+(A^2)
+(C^2)
+(e = (A^2)%*%(C^2))
+```
+
+**IPOTESI (AC)^2 = (A^2) \* (C^2)**
+
+```{r}
+if (all(e == E)){
+  print("IPOTESI VERIFICATA")
+} else {
+  print("IPOTESI ERRATA")
+}
+```
+
+* **CONSIDERARE LA MATRICE A**
+```{r}
+(A = matrix(data = c(0,7,1,3,2,0,4,1,0,-1,4,2,1,0,-2,-5), nrow=4, byrow=TRUE))
+```
+* **dato il vettore riga v = [1,0,0,0]**
+```{r}
+(vRiga = c(1,0,0,0))
+```
+  * **IPOTESI (vRiga x A) == A[ 1, ]**
+```{r}
+# vRiga[1]*A[1,] + ... + vRiga[n]*A[n,]
+(e = vRiga %*% A)
+if (all(e == A[1,])) print("IPOTESI CONFERMATA")
+```
+
+* **dato il vettore riga v = [0,0,-2,0] e la matrice A precedente**
+```{r}
+(vRiga = c(0,0,-2,0))
+(A)
+(vRiga %*% A)
+```

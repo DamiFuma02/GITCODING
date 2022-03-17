@@ -1,0 +1,17 @@
+---
+title: "SISTEMI LINEARI"
+author: "Damiano Fumagalli"
+date: "`r Sys.Date()`"
+output: html_document
+---
+# **DEFINIZIONE**
+> **Sistemi di n(=nrow(M)) equazioni con m(=ncol(M)) parametri**
+
+
+**Prodotto tra Matrice M(nxm) * v(mx1) = B(nx1) corrisponde a un sistema lineare**
+
+
+* **A(nxm) = matrice dei coefficienti del sistema**
+* **X(mx1) = vettore Colonna delle incognite**
+* **B(nx1) = vettore colonna NOTO dei risultati delle n(nrow(A)) equazioni lineari**
+* **B(nx1) = (bi,1) = A[ i, ] * X[ ,1]**
