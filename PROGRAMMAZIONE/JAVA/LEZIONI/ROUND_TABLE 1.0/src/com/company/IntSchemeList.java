@@ -79,8 +79,7 @@ public class IntSchemeList {
         } return desc+")";
     }
     // RITORNA LA LISTA INVERTITA
-    public IntSchemeList reverse()
-    {
+    public IntSchemeList reverse()  {
         //RESTITUISCE LA LISTA STESSA INVERTITA
         // lista nulla
         IntSchemeList lista = new IntSchemeList();
