@@ -11,7 +11,7 @@
 
 <meta name="author" content="Damiano Fumagalli" />
 
-<meta name="date" content="2022-03-15" />
+<meta name="date" content="2022-03-17" />
 
 <title>MATRICI</title>
 
@@ -365,7 +365,7 @@ pre code {
 
 <h1 class="title toc-ignore">MATRICI</h1>
 <h4 class="author">Damiano Fumagalli</h4>
-<h4 class="date">2022-03-15</h4>
+<h4 class="date">2022-03-17</h4>
 
 </div>
 
@@ -378,6 +378,7 @@ pre code {
 <li><a href="#lunghezza-campo-data">Lunghezza</a></li>
 <li><a href="#diagonale-principale">Diagonale</a></li>
 <li><a href="#matrice-identità">Identità</a></li>
+<li><a href="#matrice-scala">SCALA</a></li>
 </ul></li>
 <li><a href="#indexing">INDEXING</a>
 <ul>
@@ -460,15 +461,43 @@ colonna</strong></p>
 ## [2,]    0    1    0
 ## [3,]    0    0    1</code></pre>
 </div>
+<div id="matrice-scala" class="section level3">
+<h3>MATRICE SCALA</h3>
+<blockquote>
+<p>PIVOT = primo numero non nullo si una riga i</p>
+</blockquote>
+<blockquote>
+<p>una matrice si dice a scala quando in una colonna della matrice vi è
+solo 1 pivot, ed essi procedono per ordine crescente di colonna e
+riga</p>
+</blockquote>
+<pre class="r"><code>(M = matrix(data = c(1,2,3,0,2,3,0,0,2), ncol= 3, byrow=TRUE))</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    2    3
+## [2,]    0    2    3
+## [3,]    0    0    2</code></pre>
+<pre class="r"><code>primaRiga = M[1,]
+secRiga = M[2,]
+terzaRiga = M[3,]
+(piv1 = primaRiga[primaRiga&gt;0][1]) </code></pre>
+<pre><code>## [1] 1</code></pre>
+<pre class="r"><code>(piv2 = secRiga[secRiga&gt;0][1])</code></pre>
+<pre><code>## [1] 2</code></pre>
+<pre class="r"><code>(piv3 = terzaRiga[terzaRiga&gt;0][1])</code></pre>
+<pre><code>## [1] 2</code></pre>
+<blockquote>
+<p>IL PIVOT è SEMPRE il PRIMO ELEMENTO DEL VETTORE CON I COEFFICIENTI
+&gt; 0 rispetto al vettore RIGA della MATRICE originale</p>
+</blockquote>
+</div>
 </div>
 <div id="indexing" class="section level2">
 <h2>INDEXING</h2>
 <pre class="r"><code>(M)</code></pre>
 <pre><code>##      [,1] [,2] [,3]
-## [1,]    1    5    9
-## [2,]    2    6   10
-## [3,]    3    7   11
-## [4,]    4    8   12</code></pre>
+## [1,]    1    2    3
+## [2,]    0    2    3
+## [3,]    0    0    2</code></pre>
 <div id="matrice-riga" class="section level3">
 <h3><strong>MATRICE RIGA</strong></h3>
 <blockquote>
@@ -481,16 +510,14 @@ k = ncol(M)
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    0    0    0
 ## [2,]    0    0    0
-## [3,]    0    0    0
-## [4,]    0    0    0</code></pre>
+## [3,]    0    0    0</code></pre>
 <pre class="r"><code># matriceRiga[,i] = vettoreRIGA[i] in cui ogni elemento è un vColonna
 for (i in 1:k) (matriceRiga[,i] = M[,i])
 (matriceRiga)</code></pre>
 <pre><code>##      [,1] [,2] [,3]
-## [1,]    1    5    9
-## [2,]    2    6   10
-## [3,]    3    7   11
-## [4,]    4    8   12</code></pre>
+## [1,]    1    2    3
+## [2,]    0    2    3
+## [3,]    0    0    2</code></pre>
 </div>
 <div id="matrice-riga-1" class="section level3">
 <h3><strong>MATRICE RIGA</strong></h3>
@@ -505,15 +532,15 @@ colonna</strong></p>
 </blockquote>
 <pre class="r"><code>nRiga = 3  #riga da visualizzare
 (vettoreRiga = M[nRiga, ])</code></pre>
-<pre><code>## [1]  3  7 11</code></pre>
+<pre><code>## [1] 0 0 2</code></pre>
 <pre class="r"><code>nCol = 2   #colonna da visualizzare
 (vettoreRiga[nCol])</code></pre>
-<pre><code>## [1] 7</code></pre>
+<pre><code>## [1] 0</code></pre>
 <blockquote>
 <p><strong>Notazione analoga</strong></p>
 </blockquote>
 <pre class="r"><code>(M[nRiga,nCol])  </code></pre>
-<pre><code>## [1] 7</code></pre>
+<pre><code>## [1] 0</code></pre>
 </div>
 </div>
 <div id="vettore-colonna" class="section level3">
@@ -524,73 +551,71 @@ i-esima riga</strong></p>
 </blockquote>
 <pre class="r"><code>nCol = 2   #colonna da visualizzare
 (vettoreColonna = M[ ,nCol])</code></pre>
-<pre><code>## [1] 5 6 7 8</code></pre>
+<pre><code>## [1] 2 2 0</code></pre>
 <pre class="r"><code>nRiga = 3  #riga da visualizzare
 (vettoreColonna[nRiga])</code></pre>
-<pre><code>## [1] 7</code></pre>
+<pre><code>## [1] 0</code></pre>
 <blockquote>
 <p><strong>Notazione analoga</strong></p>
 </blockquote>
 <pre class="r"><code>(M[nRiga,nCol])  </code></pre>
-<pre><code>## [1] 7</code></pre>
+<pre><code>## [1] 0</code></pre>
 </div>
 <div id="sottomatrici" class="section level3">
 <h3><strong>SOTTOMATRICI</strong></h3>
 <pre class="r"><code>(M)</code></pre>
 <pre><code>##      [,1] [,2] [,3]
-## [1,]    1    5    9
-## [2,]    2    6   10
-## [3,]    3    7   11
-## [4,]    4    8   12</code></pre>
+## [1,]    1    2    3
+## [2,]    0    2    3
+## [3,]    0    0    2</code></pre>
 <pre class="r"><code>righeDesiderate = 1:2   #c(1,2)
 colDesiderate = 1:3    #c(1,2,3)
 M[righeDesiderate , colDesiderate]</code></pre>
 <pre><code>##      [,1] [,2] [,3]
-## [1,]    1    5    9
-## [2,]    2    6   10</code></pre>
+## [1,]    1    2    3
+## [2,]    0    2    3</code></pre>
 </div>
 <div id="selezione-condizionata" class="section level3">
 <h3><strong>SELEZIONE CONDIZIONATA</strong></h3>
 <pre class="r"><code>(M)</code></pre>
 <pre><code>##      [,1] [,2] [,3]
-## [1,]    1    5    9
-## [2,]    2    6   10
-## [3,]    3    7   11
-## [4,]    4    8   12</code></pre>
+## [1,]    1    2    3
+## [2,]    0    2    3
+## [3,]    0    0    2</code></pre>
 <pre class="r"><code>elementiNonDesiderati = c(1,2,7)
 (M[-elementiNonDesiderati])   #non visualizza gli elementi indicati</code></pre>
-<pre><code>## [1]  3  4  5  6  8  9 10 11 12</code></pre>
+<pre><code>## [1] 0 2 2 0 3 2</code></pre>
 <pre class="r"><code>condizione = M%%2==0
 (M[condizione])   #solo gli elementi PARI</code></pre>
-<pre><code>## [1]  2  4  6  8 10 12</code></pre>
+<pre><code>## [1] 0 0 2 2 0 2</code></pre>
 </div>
 </div>
 <div id="aggiungere-elementi" class="section level2">
 <h2><strong>AGGIUNGERE ELEMENTI</strong></h2>
 <pre class="r"><code>(P = matrix(data = runif(9), nrow = 3, byrow = TRUE))</code></pre>
-<pre><code>##            [,1]        [,2]       [,3]
-## [1,] 0.88672600 0.528937109 0.13605042
-## [2,] 0.09168846 0.003592076 0.06680025
-## [3,] 0.24119472 0.779905325 0.04580656</code></pre>
+<pre><code>##           [,1]      [,2]      [,3]
+## [1,] 0.4089128 0.8797645 0.3067928
+## [2,] 0.4403594 0.5252610 0.9260815
+## [3,] 0.4811296 0.4244934 0.4324574</code></pre>
 <pre class="r"><code>colonnaDaAggiungere = c(3,3,3)
 (P = cbind(P, colonnaDaAggiungere))</code></pre>
-<pre><code>##                                        colonnaDaAggiungere
-## [1,] 0.88672600 0.528937109 0.13605042                   3
-## [2,] 0.09168846 0.003592076 0.06680025                   3
-## [3,] 0.24119472 0.779905325 0.04580656                   3</code></pre>
+<pre><code>##                                    colonnaDaAggiungere
+## [1,] 0.4089128 0.8797645 0.3067928                   3
+## [2,] 0.4403594 0.5252610 0.9260815                   3
+## [3,] 0.4811296 0.4244934 0.4324574                   3</code></pre>
 <pre class="r"><code>rigaDaAggiungere = c(3,3,3,3)
 (P = rbind(P, rigaDaAggiungere))</code></pre>
-<pre><code>##                                                    colonnaDaAggiungere
-##                  0.88672600 0.528937109 0.13605042                   3
-##                  0.09168846 0.003592076 0.06680025                   3
-##                  0.24119472 0.779905325 0.04580656                   3
-## rigaDaAggiungere 3.00000000 3.000000000 3.00000000                   3</code></pre>
+<pre><code>##                                                colonnaDaAggiungere
+##                  0.4089128 0.8797645 0.3067928                   3
+##                  0.4403594 0.5252610 0.9260815                   3
+##                  0.4811296 0.4244934 0.4324574                   3
+## rigaDaAggiungere 3.0000000 3.0000000 3.0000000                   3</code></pre>
 <pre class="r"><code>(P)</code></pre>
-<pre><code>##                                                    colonnaDaAggiungere
-##                  0.88672600 0.528937109 0.13605042                   3
-##                  0.09168846 0.003592076 0.06680025                   3
-##                  0.24119472 0.779905325 0.04580656                   3
-## rigaDaAggiungere 3.00000000 3.000000000 3.00000000                   3</code></pre>
+<pre><code>##                                                colonnaDaAggiungere
+##                  0.4089128 0.8797645 0.3067928                   3
+##                  0.4403594 0.5252610 0.9260815                   3
+##                  0.4811296 0.4244934 0.4324574                   3
+## rigaDaAggiungere 3.0000000 3.0000000 3.0000000                   3</code></pre>
 </div>
 <div id="aritmetica" class="section level2">
 <h2><strong>ARITMETICA</strong></h2>
@@ -603,9 +628,9 @@ M[righeDesiderate , colDesiderate]</code></pre>
 ## [3,]    3    6    9</code></pre>
 <pre class="r"><code>(B = matrix(data = runif(9), ncol = 3))</code></pre>
 <pre><code>##           [,1]      [,2]      [,3]
-## [1,] 0.7068227 0.6184038 0.6622576
-## [2,] 0.3057603 0.8538863 0.9153915
-## [3,] 0.7490850 0.1103358 0.5935238</code></pre>
+## [1,] 0.7501207 0.6127942 0.4992697
+## [2,] 0.3528053 0.7761931 0.4080110
+## [3,] 0.9100835 0.8720731 0.9257901</code></pre>
 <pre class="r"><code>(vettore = (dim(A) == dim(B)))</code></pre>
 <pre><code>## [1] TRUE TRUE</code></pre>
 <pre class="r"><code>condizioneFondamentale = all(vettore)
@@ -624,9 +649,9 @@ uguali</strong></p>
 <p>A(nxm) + B(nxm) = C(nxm) = (ci,j) ==&gt; ci,j = A(i,j) + B(i,j)</p>
 <pre class="r"><code>(A+B)</code></pre>
 <pre><code>##          [,1]     [,2]     [,3]
-## [1,] 1.706823 4.618404 7.662258
-## [2,] 2.305760 5.853886 8.915392
-## [3,] 3.749085 6.110336 9.593524</code></pre>
+## [1,] 1.750121 4.612794 7.499270
+## [2,] 2.352805 5.776193 8.408011
+## [3,] 3.910084 6.872073 9.925790</code></pre>
 <blockquote>
 <p><strong>VALIDA se condizioneFondamentale == TRUE</strong></p>
 </blockquote>
@@ -635,10 +660,10 @@ uguali</strong></p>
 <h3><strong>PRODOTTO</strong></h3>
 <p>A(nxm) * B(nxm) = C(nxm) = (ci,j) ==&gt; ci,j = A(i,j) * B(i,j)</p>
 <pre class="r"><code>(A * B)</code></pre>
-<pre><code>##           [,1]      [,2]     [,3]
-## [1,] 0.7068227 2.4736152 4.635803
-## [2,] 0.6115206 4.2694316 7.323132
-## [3,] 2.2472550 0.6620147 5.341714</code></pre>
+<pre><code>##           [,1]     [,2]     [,3]
+## [1,] 0.7501207 2.451177 3.494888
+## [2,] 0.7056107 3.880965 3.264088
+## [3,] 2.7302506 5.232439 8.332110</code></pre>
 <blockquote>
 <p><strong>VALIDA se condizioneFondamentale == TRUE</strong></p>
 </blockquote>

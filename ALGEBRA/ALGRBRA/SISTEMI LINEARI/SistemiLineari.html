@@ -371,6 +371,50 @@ pre code {
 
 
 <p><a href="./Slide.pdf">SLIDE TEORIA</a></p>
+<blockquote>
+<p><strong>Un sistema lineare di n equazioni lineari può essere
+rappresentato sottoforma di matrice</strong></p>
+</blockquote>
+<p><strong>x + 2y + z = 3</strong></p>
+<p><strong>y + z = 4</strong></p>
+<p><strong>x + 2z = 7</strong></p>
+<ul>
+<li>l’<strong>insieme delle incognite</strong> può essere rappresentato
+come un <strong>vettore colonna di nrighe = numero delle
+incognite</strong></li>
+</ul>
+<pre class="r"><code># VETTORE DELLE INCOGNITE
+(X = matrix(data = c(&quot;x&quot;, &quot;y&quot;, &quot;z&quot;), ncol=1))</code></pre>
+<pre><code>##      [,1]
+## [1,] &quot;x&quot; 
+## [2,] &quot;y&quot; 
+## [3,] &quot;z&quot;</code></pre>
+<ul>
+<li>l’insieme dei coefficienti numerici di ogni incognita può essere
+rappresentato da una matrice A(nxm) con n righe(equazioni) e m
+colonne(variabili di X)</li>
+</ul>
+<p>###<strong>IL PRODOTTO A(nxm) * X(mx1) = C(nx1) (ci,1) ==&gt; ci,1 =
+A[1,] * X = NUMERO </strong></p>
+<ul>
+<li>C(mx1) = insieme dei termini noti, a DX dell’uguale in ogni
+espressione lineare del sistema</li>
+</ul>
+<div id="risoluzione" class="section level3">
+<h3>RISOLUZIONE</h3>
+<blockquote>
+<p><strong>una volta trovato l’insieme delle solzioni, esso deve
+coincidere come lunghezza con il vettore X delle incognite</strong></p>
+</blockquote>
+</div>
+<div id="sistemi-scalari" class="section level3">
+<h3>SISTEMI SCALARI</h3>
+<blockquote>
+<p>un sistema si dice scalare quando la matrice dei coefficienti è una
+<a href="../RMARKDOWN/views/Matrici.html#matrice-scala">matrice a
+scala</a></p>
+</blockquote>
+</div>
 
 
 

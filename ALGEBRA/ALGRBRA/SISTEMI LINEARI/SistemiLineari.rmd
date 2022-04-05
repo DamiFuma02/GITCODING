@@ -5,3 +5,37 @@ date: "`r Sys.Date()`"
 output: html_document
 ---
 [SLIDE TEORIA](./Slide.pdf)
+
+> **Un sistema lineare di n equazioni lineari può essere rappresentato sottoforma di matrice**
+
+
+**x + 2y + z = 3**
+
+**y + z = 4**
+
+**x + 2z = 7**
+
+* l'**insieme delle incognite** può essere rappresentato come un **vettore colonna di nrighe = numero delle incognite**
+```{r}
+# VETTORE DELLE INCOGNITE
+(X = matrix(data = c("x", "y", "z"), ncol=1))
+```
+
+* l'insieme dei coefficienti numerici di ogni incognita può essere rappresentato da una matrice A(nxm) con n righe(equazioni) e m colonne(variabili di X)
+
+###**IL PRODOTTO A(nxm) * X(mx1) = C(nx1) (ci,1) ==> ci,1 = A[1,] * X = NUMERO **
+
+* C(mx1) = insieme dei termini noti, a DX dell'uguale in ogni espressione lineare del sistema
+
+### RISOLUZIONE
+
+> **una volta trovato l'insieme delle solzioni, esso deve coincidere come lunghezza con il vettore X delle incognite**
+
+
+
+### SISTEMI SCALARI
+
+> un sistema si dice scalare quando la matrice dei coefficienti è una [matrice a scala](../RMARKDOWN/views/Matrici.html#matrice-scala)
+
+
+

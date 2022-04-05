@@ -10,6 +10,7 @@ output: html_document
   * [Lunghezza](#lunghezza-campo-data)
   * [Diagonale](#diagonale-principale)
   * [Identità](#matrice-identità)
+  * [SCALA](#matrice-scala)
 * [INDEXING](#indexing)
   * [Matrici RIGA](#vettore-riga)
   * [Matrici COLONNA](#vettore-colonna)
@@ -72,6 +73,23 @@ diag(M)
 
 
 
+### MATRICE SCALA
+
+> PIVOT = primo numero non nullo si una riga i
+
+> una matrice si dice a scala quando in una colonna della matrice vi è solo 1 pivot, ed essi procedono per ordine crescente di colonna e riga
+
+
+```{r}
+(M = matrix(data = c(1,2,3,0,2,3,0,0,2), ncol= 3, byrow=TRUE))
+primaRiga = M[1,]
+secRiga = M[2,]
+terzaRiga = M[3,]
+(piv1 = primaRiga[primaRiga>0][1]) 
+(piv2 = secRiga[secRiga>0][1])
+(piv3 = terzaRiga[terzaRiga>0][1])
+```
+> IL PIVOT è SEMPRE il PRIMO ELEMENTO DEL VETTORE CON I COEFFICIENTI > 0 rispetto al vettore RIGA della MATRICE originale
 
 
 
