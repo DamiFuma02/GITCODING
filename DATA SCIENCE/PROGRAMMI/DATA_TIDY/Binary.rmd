@@ -1,0 +1,77 @@
+---
+title: "BINARY VERBS"
+author: "Damiano Fumagalli"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+
+## **INDICE**
+
+* [operazioni-insiemi](#OPERAZIONI)
+* [JOIN](./Join.html)
+
+```{r}
+library(dplyr)
+x = starwars$height[6:10]
+y = starwars$height[8:12]
+```
+
+## **OPERAZIONI**
+> SI TRATTA DELLE OPERAZIONI ESEGUIBILI SUGLI INSIEMI, SECONDO LE REGOLE ALGEBRICHE DEGLI INSIEMI
+
+
+### **INTERSEZIONE**
+
+```{r}
+x
+y
+intersect(x,y)
+```
+> **RESTITUISCE GLI ELEMENTI COMUNI TRA X E Y = x ∩ y**
+
+
+### **UNIONE**
+
+```{r}
+x
+y
+union(x,y)
+```
+
+> **RESTITUISCE L'UNIONE TRA I DUE INSIEMI = A U B**
+
+### **DIFFERENZA**
+
+```{r}
+x
+y
+setdiff(x,y)
+```
+
+> **RESTITUISCE GLI ELEMENTI DI X CHE NON SONO PRESENTI IN Y = A \ B**
+
+```{r}
+(b = union(intersect(x,y),setdiff(x,y)))
+all(x == b)
+```
+> **(X ∩ Y) U (X \ Y) = X**
+
+**Secondo le proprietà della matematica funziona perchè negli insiemi l'ordine degli elementi non conta**
+
+
+> **ORDINANDO GLI ELEMENTI DEI DUE INSIEMI IN ORDINE CRESCENTE CI SI ACCORGE DELLA CORRISPONDENZA**
+
+```{r}
+(x = x[order(x)])
+(b = b[order(b)])
+all(x == b)
+```
+
+## 
+
+
+
+
+
+

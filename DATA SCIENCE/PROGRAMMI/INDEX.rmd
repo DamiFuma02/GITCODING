@@ -1,0 +1,11 @@
+---
+title: "INDEX"
+author: "Damiano Fumagalli"
+date: "`r Sys.Date()`"
+output: html_document
+---
+# INDICE PER ARGOMENTI
+
+##[DATA STRUCTURES](./DATA_STRUCTURES)
+##[DATA IMPORT](./DATA_IMPORT)
+##[DATA TIDY](./DATA_TIDY)

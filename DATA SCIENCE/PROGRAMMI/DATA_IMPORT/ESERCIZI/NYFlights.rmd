@@ -1,0 +1,15 @@
+---
+title: "NYFLIGHTS"
+author: "Damiano Fumagalli"
+date: "`r Sys.Date()`"
+output: html_document
+---
+```{r}
+library("nycflights13")
+library(dplyr)
+View(flights)
+spec(flights)
+spec(planes)
+select(planes, "year")
+filter(planes, year<1934)
+```

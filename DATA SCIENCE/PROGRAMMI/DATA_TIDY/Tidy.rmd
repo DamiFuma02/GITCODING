@@ -1,0 +1,169 @@
+---
+title: "TIDY"
+author: "Damiano Fumagalli"
+date: "`r Sys.Date()`"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+# INDICE
+
+* [DEFINIZIONE](#definizione)
+  * [VANTAGGI](#vantaggi)
+  * [LIBRERIE](#librerie)
+* [GATHERING](#gathering)
+* [SPREADING](#spreading)
+* [SEPARATING](#separating)
+* [UNITING](#uniting)
+* [FILTRI E SELEZIONI](./Transform.html#select)
+* [JOINS](./JOIN/Join.html)
+
+# DEFINIZIONE
+
+> **library(tidyr)**
+
+
+* **VARIABILE** = proprietà della classe che viene quantificata dai valori nelle rispettive colonne
+* **VALORE** = è la quantità che caratterizza una variabile
+* **OSSERVAZIONE** = righe, l'insieme di tutte le variabili cha caratterizzano una riga, quindi un oggetto
+
+
+### **VANTAGGI**
+
+
+* Cercare di ottenere una **uniformità delle strutture dati**
+* Sia **variabili** che **osservazioni** sono indicate da **vettori**
+* **MATRICE ADIACENTE** per rappresentare una **rete di collegamenti e relazioni**
+
+### **MATRICE ADIACENTE**
+
+* **RIGHE = COLONNE = INSIEME degli elementi tra cui creare le relazioni**
+
+
+# LIBRERIE
+
+
+* **DATA COLLECTION**: Rcrawler, readxl, tidyverse
+* **DATA WRANGLING**: readr(per file.CSV e RDS), dplyr, sqldf, data.table, tidyr
+* **DATA VISUALIZATION**: Ggplot2, ggvis, plotly, Esquisse, Shiny, 
+
+
+
+```{r}
+library(tidyr)
+library(tibble)
+library(readr)
+library(tidyverse)
+table1
+table2
+```
+
+
+
+
+```{r}
+(table1 = cbind(table1, relative = table1[,3]+table1[,4]))
+```
+
+
+> **Aggiunge una colonna alla fine in cui vengono sommati ogni valore della 3° e 4° colonna della table1**
+
+
+## GATHERING
+
+> Le varabili possono essere dei valori di altre variabili, non dello stesso dataset. 
+
+```{r}
+table4a
+gather(table4a,"1999", "2000",  key = "year", value = "cases")
+```
+### SOLUZIONE ALTERNATIVA
+```{r}
+table4a
+# DA ELIMINARE 
+variabiliCorrenti = c("1999", "2000")
+# nuova variabile che classificai 2 valori delle variabili correnti errate
+nuovoNome = "year"
+# variabile che ospiterà i valori delle variabili errate correnti
+nomeColonnaValori = "cases"
+pivot_longer(table4a, all_of(variabiliCorrenti), names_to = nuovoNome, values_to = nomeColonnaValori, names_transform = list(year = as.integer))
+```
+> **names_transform forza il tipo di dato delle variabili passate come chiave degli argomenti della lista**
+
+
+## **SPREADING**
+
+
+> è il passaggio contrario rispetto al [gathering](#gathering)
+
+```{r}
+table2
+(valoriAmmessi = factor(table2$type))
+length(valoriAmmessi)
+```
+> siccome i valori ammessi dalla variabile type sono solo 2 si possono separare in 2 variabili aggiuntive che prenderanno valore della corrispondenza (type,count )
+
+```{r}
+table2
+pivot_wider(table2, names_from = type, values_from = count)
+```
+
+
+## SEPARATING
+
+> Quando un valore è composto da altri 2 sommati/moltiplicati è possibile dividere il valore nelle sue 2 componenti, che apparterranno ad altre variabili
+
+
+```{r}
+table3
+oggettoDaSeparare = "rate"
+table3$rate
+
+valoriSeparati = c("cases", "population")
+# IMPOSTANDO CONVERT = TRUE i valori vengono convertiti nel tipo più corretto
+separate(table3,oggettoDaSeparare, into = valoriSeparati, sep = "/", convert = TRUE)
+```
+### SOLUZIONE ALTERNATIVA
+
+```{r}
+table3
+# separarlo in century e decade
+table3$year
+oggettoDaSeparare = "year"
+valoriSeparati = c("century", "decade")
+# sep = 2 --> carattere di separazione, il secondo carattere 
+separate(table3, oggettoDaSeparare, into = valoriSeparati,sep=2, convert = TRUE)
+```
+
+## UNITING
+
+> Passaggio opposto al precedente
+
+```{r}
+table5
+colonneDaUnire = c("century", "year")
+colonnaUnita = "year"
+# SEP è il carattere che viene interposto tra i due valori delle colonne da unire
+(nuovaTabella = unite(table5, col = colonnaUnita,colonneDaUnire, sep = "", remove = TRUE ))
+```
+> impostando remove = FALSE non vengono rimosse le colonne di INPUT (colonnaDaUnire) dal dataframe risultante dopo la funzione unite()
+
+Per essere ancora più precisi sarebbe opportuno convertire la colonna nuova in INT
+
+```{r}
+nuovaTabella
+(DF = as.data.frame(nuovaTabella))
+typeof(DF)
+str(DF)
+typeof(DF$colonnaUnita)
+Anni = DF$colonnaUnita
+(Anni = strtoi(Anni, base = 10L))
+typeof(Anni)
+DF$colonnaUnita = Anni
+str(DF)
+# CONVERTITO CON TIPO DI DATO CORRETTO
+DF
+#spec(DF)
+```
+

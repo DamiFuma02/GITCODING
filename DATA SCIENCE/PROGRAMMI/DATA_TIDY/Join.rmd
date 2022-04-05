@@ -1,0 +1,265 @@
+---
+title: "JOIN"
+author: "Damiano Fumagalli"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+# [ESERCIZI](./ESERCIZI/Esercizi.html)
+
+
+# JOINING
+
+```{r}
+#update.packages("dplyr")
+library(dplyr)
+library(tibble)
+```
+
+# **INDICE**
+
+* **MUTATING JOINS**: aggiunge nuove variabili in una nuova tabella da corrispondenze nelle righe di un altra tabella
+  * **[INNER JOIN](#inner)**: le righe che hanno corrispondenza in entrambe le tabelle
+  * **[OUTER JOIN](#outer)**([left](#left-join), [right](#right-join), [full](#full-join)): aggiunge anche le righe che non possiedono corrispondenza
+  
+* **FILTERING JOINS**: combina la funzione filter() con il join()
+  * **SEMI-JOIN**: deve esserci corrispondenza tra le due tabelle
+  * **ANTI-JOIN**: preleva solo le righe che NON hanno corrispondenza
+* **[MERGE](#merge) == JOIN**
+  
+## **INNER**
+[indice](#indice)
+
+> SOLO LE OSSRERVAZIONI CORRISPONDENTI IN ENTRAMBE LE TABELLE PER NOME VARIABILE
+
+```{r}
+x = tribble(
+  ~key, ~val_x,
+     1, "x1",
+     2, "x2",
+     3, "x3"
+)
+x
+y = tribble(
+  ~key, ~val_y,
+     1, "y1",
+     2, "y2",
+     4, "y3"
+)
+y
+
+inner_join(x, y)
+```
+## **OUTER**
+### **LEFT JOIN**
+[indice](#indice)
+
+> COME INNER SOLO CHE AGGIUNGE ANCHE LE OSSERVAZIONI DELLA TABELLA DI SX
+
+```{r}
+x <- tribble(
+  ~key, ~val_x,
+     1, "x1",
+     2, "x2",
+     3, "x3"
+)
+y <- tribble(
+  ~key, ~val_y,
+     1, "y1",
+     2, "y2",
+     4, "y3"
+)
+
+left_join(x, y)
+```
+
+### **RIGHT JOIN**
+[indice](#indice)
+
+> ANALOGO A LEFT SOLO CHE PRENDE LE OSSERVAZIONI DELLA TABELLA DI DX
+
+```{r}
+x <- tribble(
+  ~key, ~val_x,
+     1, "x1",
+     2, "x2",
+     3, "x3"
+)
+y <- tribble(
+  ~key, ~val_y,
+     1, "y1",
+     2, "y2",
+     4, "y3"
+)
+
+right_join(x, y)
+```
+
+### **FULL JOIN**
+[indice](#indice)
+
+> INNER + LEFT + RIGHT
+
+```{r}
+x <- tribble(
+  ~key, ~val_x,
+     1, "x1",
+     2, "x2",
+     3, "x3"
+)
+y <- tribble(
+  ~key, ~val_y,
+     1, "y1",
+     2, "y2",
+     4, "y3"
+)
+
+full_join(x, y)
+```
+
+### **SEMI JOIN**
+[indice](#indice)
+
+```{r}
+x <- tribble(
+  ~key, ~val_x,
+     1, "x1",
+     2, "x2",
+     3, "x3"
+)
+y <- tribble(
+  ~key, ~val_y,
+     1, "y1",
+     2, "y2",
+     4, "y3"
+)
+
+semi_join(x, y)
+```
+
+### **ANTI JOIN**
+[indice](#indice)
+
+> SOLO LE OSSERVAZIONI CHE NON POSSIEDONO CORRISPONDENZA NELLA SECONDA TABELLA
+
+```{r}
+x <- tribble(
+  ~key, ~val_x,
+     1, "x1",
+     2, "x2",
+     3, "x3"
+)
+y <- tribble(
+  ~key, ~val_y,
+     1, "y1",
+     2, "y2",
+     4, "y3"
+)
+
+anti_join(x, y)
+```
+
+## **MERGE**
+
+> LA FUNZIONE MERGE() è ANALOGA AL JOIN, CON QUALCHE LIEVE DIFFERENZA
+
+
+
+|dplyr|merge|
+|--- |--- |
+|[inner_join(x,y)](#inner-merge)|merge(x,y)| 
+|[left_join(x, y)](#left-merge)|merge(x, y, all.x = TRUE)|  
+|[right_join(x, y)](#right-merge)|merge(x, y, all.y = TRUE)|
+|[full_join(x, y)](#full-merge)|merge(x, y, all.x = TRUE, all.y = TRUE)|
+
+### INNER-MERGE
+[MERGE](#merge) -- [indice](#indice) -- [inner-join](#inner)
+```{r}
+x = tribble(
+  ~key, ~val_x,
+     1, "x1",
+     2, "x2",
+     3, "x3"
+)
+x
+y = tribble(
+  ~key, ~val_y,
+     1, "y1",
+     2, "y2",
+     4, "y3"
+)
+y
+
+(a=inner_join(x, y))
+(b=merge(x,y))
+a==b
+```
+
+### LEFT-MERGE
+[MERGE](#merge) -- [indice](#indice) -- [left-join](#left-join)
+
+```{r}
+x <- tribble(
+  ~key, ~val_x,
+     1, "x1",
+     2, "x2",
+     3, "x3"
+)
+y <- tribble(
+  ~key, ~val_y,
+     1, "y1",
+     2, "y2",
+     4, "y3"
+)
+
+(a=left_join(x, y))
+(b=merge(x,y,all.x=TRUE))
+(a==b)
+```
+
+### RIGHT-MERGE
+[MERGE](#merge) -- [indice](#indice) -- [right-join](#right-join)
+
+```{r}
+x <- tribble(
+  ~key, ~val_x,
+     1, "x1",
+     2, "x2",
+     3, "x3"
+)
+y <- tribble(
+  ~key, ~val_y,
+     1, "y1",
+     2, "y2",
+     4, "y3"
+)
+
+(a=right_join(x, y))
+(b=merge(x,y,all.y=TRUE))
+a==b
+```
+
+### FULL-MERGE
+[MERGE](#merge) -- [indice](#indice) -- [full-join](#full-join)
+
+```{r}
+x <- tribble(
+  ~key, ~val_x,
+     1, "x1",
+     2, "x2",
+     3, "x3"
+)
+y <- tribble(
+  ~key, ~val_y,
+     1, "y1",
+     2, "y2",
+     4, "y3"
+)
+
+(a = full_join(x, y))
+typeof(a)
+(b = merge(x,y,all.x=TRUE,all.y=TRUE))
+typeof(b)
+all(a == b)
+```
+

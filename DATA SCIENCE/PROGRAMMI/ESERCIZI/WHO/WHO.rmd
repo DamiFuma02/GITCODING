@@ -1,0 +1,77 @@
+---
+title: "WHO"
+author: "Damiano Fumagalli"
+date: "`r Sys.Date()`"
+output: html_document
+---
+```{r}
+library(dplyr)
+library(tidyr)
+library(tidyverse)
+library(stringr)
+```
+
+```{r}
+who1 = who %>% pivot_longer(new_sp_m014:newrel_f65, names_to = "key",values_to = "cases", values_drop_na = TRUE )
+who1
+```
+
+# MUTATE
+> cambia i valori della colonna key da "newrel" a "new_rel"
+
+```{r}
+who1$key  #PRIMA DEL CAMBIAMENTO
+testoDaSost = "newrel"
+who2 = who1 %>% mutate(key = str_replace(key,"newrel","new_rel"))
+who2$key
+```
+
+# SEPARATE
+
+> Separa il valore della colonna key in 3, tramite il separatore "_"
+
+```{r}
+nomiColonneNuove = c("new","type", "sexage")
+who3 = who2 %>% separate(key, into = nomiColonneNuove, sep = "_")
+who3
+```
+
+> Separa SEXAGE in SEX e AGE
+
+```{r}
+who4 = who3 %>% separate(sexage, into = c("sex","age"), sep = 1) # 1 = indice a cui separare
+who4
+```
+
+> SEPARARE AGE in AGE_HIGH e AGE_LOW
+
+```{r}
+who5 = who4 %>% mutate(age = str_replace(age,"014","0014")) %>% mutate(age = str_replace(age,"65","6565")) %>% separate(age,into = c("age_high", "age_low"),sep = 2)
+who5
+```
+
+
+# DROP
+
+> Verificare se la colonna NEW è ridondante, cioè se tutte le osservazioni possiedono lo stesso valore di NEW
+
+```{r}
+conta = who5 %>% count(new,name="numeroDiNew")
+if (conta$numeroDiNew == nrow(who5)) print("NEW RIDONDANTE")
+```
+> SICCOME è RIDONDANTE ALLORA SI RIMUOVE LA COLONNA NEW e iso2, iso3
+
+```{r}
+who6 = who5 %>% select(-new,-iso2,-iso3)
+who6
+```
+
+
+# PIPELINE
+
+```{r}
+who7 = who %>% pivot_longer(new_sp_m014:newrel_f65, names_to = "key",values_to = "cases", values_drop_na = TRUE ) %>% mutate(key = str_replace(key,"newrel","new_rel")) %>% separate(key, into = c("new","type", "sexage"), sep = "_") %>% separate(sexage, into = c("sex","age"), sep = 1) %>% mutate(age = str_replace(age,"014","0014")) %>% mutate(age = str_replace(age,"65","6565")) %>% separate(age,into = c("age_high", "age_low"),sep = 2) %>% select(-new,-iso2,-iso3)
+all(who7 == who6) 
+```
+
+

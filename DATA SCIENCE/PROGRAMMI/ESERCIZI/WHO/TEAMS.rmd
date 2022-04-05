@@ -1,0 +1,77 @@
+---
+title: "TEAMS"
+author: "Damiano Fumagalli"
+date: "`r Sys.Date()`"
+output: html_document
+---
+# DATABASE ONLINE
+
+
+```{r}
+library(readr)
+library(tidyr)
+library(dplyr)
+library(lubridate)
+library(stringr)
+```
+
+> PREPARAZIONE LINK DATABASE
+
+```{r}
+head = "https://www.football-data.co.uk/mmz4281/"
+tail = "/I1.csv"
+# LINK = head+year+tail
+(years = sprintf("%02d",c(seq(93,99),seq(0,21))))  #  "%02d" serve per formattare ogni numero in 2 caratteri in stringa
+# SOLUZIONE ANALOGA
+(years2 = c(as.character(seq(93,99)),str_c("0",as.character(seq(0,9))),as.character(seq(10,21))))
+if (all(years == years2)) print("SOLUZIONI ANALOGHE")
+```
+
+> CREAZIONE VETTORE CON I LINKS
+
+```{r}
+nseasons = length(years)-1
+links = str_c(head,str_c(years[1:nseasons],years[2:length(years)]),tail)
+links[1:3]
+```
+
+
+
+
+> LETTURA IN SERIE DI TUTTI I DATABSE TREAMITE LINK
+
+```{r}
+# CREAZIONE LISTA CON n ELEMENTI VUOTI PER INSERIRCI OGNI LETTURA DA LINK
+lista = vector("list",length(years)-1)
+# LETTURA IN SERIE
+for (i in 1:nseasons){
+  lista[[i]] = read_csv(links[i], show_col_types = FALSE)
+}
+names(lista) = years[1:nseasons]
+names(lista)
+lista$`93`
+```
+
+
+> SELEZIONA SOLO LE COLONNE Date, HomeTeam, AwayTeam,FTHG,FTAG
+
+```{r}
+for (i in 1:nseasons) {
+  lista[[i]] = lista[[i]] %>% 
+    select(Date, HomeTeam, AwayTeam, FTHG, FTAG) %>%
+    filter(!is.na(Date), !is.na(FTHG), !is.na(FTAG)) %>% 
+    mutate(Date = dmy(Date)) 
+}
+(a= lista[[1]]$Date[1] )
+dmy(a)
+
+```
+
+> FILTRA LE RIGHE CON UN CAMPO DATA VALIDO
+
+
+
+
+
+
+

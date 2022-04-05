@@ -1,0 +1,61 @@
+---
+title: "GRAFICI"
+author: "Damiano Fumagalli"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+
+## **BARPLOT**
+```{r}
+M = matrix(c(
+   c(1200, 1190, 1100, 1120, 890),
+   c(6200, 6690, 6700, 7120, 7150),
+   c(8900, 8790, 8760, 8800, 9010),
+   c(3300, 3490, 3660, 4300, 4510),
+   c(2190, 2000, 1890, 1740, 1500)), ncol = 5
+) 
+row.names(M) = c("riga1", "riga2", "riga3", "riga4", "riga5")
+colnames(M) = LETTERS[1:5]
+M
+barplot(M[1,])
+barplot(M[,1])
+barplot(M, legend = TRUE)
+# visualizza gli elementi delle righe uno accanto all'altro
+barplot(M, legend = TRUE, beside = TRUE)
+
+```
+
+
+## **ISTOGRAMMA**
+
+```{r}
+# genera 1000 numeri casuali la cui media = m (0 di DEFAULT)
+X = rnorm(1000, mean = 10, sd = 10)
+barplot(X)
+hist(X, probability = TRUE, main = "Istogramma per X randomici")
+# mostra la distribuzione dei numeri generati
+rug(X)
+```
+
+### DENSITÀ VALORI GENERATI
+
+
+```{r}
+d = density(X)
+plot(d, main="Grafico della densità dei numeri generati")
+rug(X)
+```
+
+## **BOXPLOT**
+
+```{r}
+boxplot(X, range = 1.5)
+```
+
+## SCATTER PLOT
+
+```{r}
+Y = rnorm(1000)
+plot(X, Y)
+```

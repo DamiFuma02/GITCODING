@@ -1,0 +1,107 @@
+---
+title: "TRANSFORM"
+author: "Damiano Fumagalli"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+* [SELECT](#select)
+* [FILTER](#filter)
+* [MUTATE](#mutate)
+* [ARRANGE](#arrange)
+* [GROUPING](#grouping)
+* [SUMMARIZE](#summarize)
+
+
+```{r}
+library(dplyr)
+library(tibble)
+library("nycflights13")
+```
+
+## PIPELINE
+
+> **%>%** INDIVIDUA UN FLUSSO DI ISTRUZIONI DA ESEGUIRE IN SERIE, CON RISULTATI E PARAMETRI INTERMEDI UTILI AL PROCESSO
+
+
+# LIBRERIE
+
+
+* **DATA COLLECTION**: Rcrawler, readxl, tidyverse
+* **DATA WRANGLING**: readr(per file.CSV e RDS), dplyr, sqldf, data.table, tidyr
+* **DATA VISUALIZATION**: Ggplot2, ggvis, plotly, Esquisse, Shiny, 
+
+
+
+## FILTRI SELEZIONI
+
+### SELECT
+
+> Seleziona da un oggetto le variabili indicate
+
+```{r}
+select(starwars, name, gender, birth_year)
+select(starwars, ends_with("color"))
+# SELEZIONA TUTTI GLI ELEMETNI SENZA IL PARAMETRO COLOR
+select(starwars, -contains("color"))
+dim(starwars)
+```
+
+### FILTER 
+> Seleziona gli elementi che verificano l'espressione indicata
+
+```{r}
+# SOLO I PERSONAGGI UMANI
+starwars %>% filter(species == "Human")
+# SOLO I DROIDI CHE HANNO UN ANNO DI NASCITA NON NA(Not Available)
+starwars %>% 
+  filter(species == "Droid", !is.na(birth_year))
+```
+
+### CONCATENAZIONE
+
+> SELECT e FILTER POSSONO ESSERE CONCATENATI PER EFFETTUARE SELEZIONI ANCORA PIù PRECISE
+
+
+Per Esempio selezionare tutti i personaggi umani con capelli marroni e visualizzarne nome , anno di nascita , sesso
+```{r}
+starwars %>% filter(species == "Human", hair_color == "brown")  %>%
+  select(name, birth_year, sex, species, hair_color)
+```
+
+[ESERCIZI](./ESERCIZI/Esercizi.html)
+
+
+### MUTATE
+> Aggiunge nuove variabili che sono in funzione di alcune già esistenti
+
+```{r}
+# CREA LA VARIABILE bmi = mass / h[m]^2 e SELEZIONA i campi da name a mass, e bmi
+starwars %>% mutate(bmi = mass / ((height/100)^2)) %>% select(name:mass, bmi)
+## AGGIUNGE UNA COLONNA CON NUMERO PROGRESSIVO IDENTIFICATIVO PER OGNI RIGA
+flights = flights %>% mutate(id = 1:nrow(flights)) %>% select(id, everything())
+```
+
+### ARRANGE
+> Cambia l'ordine delle righe/OGGETTI
+
+```{r}
+# MASS IN ORDINE CRESCENTE
+starwars %>% arrange(mass) %>% select(name, mass, height)
+# MASS IN ORDINE DECRESCENTE
+starwars %>%  arrange(desc(mass)) %>%  select(name, mass, height)
+# OPPURE
+starwars %>%  arrange(-mass, -height) %>%  select(name, mass, height)
+```
+
+### GROUPING
+> Raggruppa le righe con i relativi valori in gruppi definiti dai valori e variabili
+
+```{r}
+# CREA UN TIBBLE CON LE CATEGORIE DI SPECIE, IN ORDINE DESCRESCENTE PER NUMERO DI CASI
+starwars %>% group_by(species) %>% summarise(count = n()) %>% arrange(desc(count))
+```
+
+
+### SUMMARIZE
+> Raggruppa tutti i valori in un singolo sommario, usato insieme a group_by()

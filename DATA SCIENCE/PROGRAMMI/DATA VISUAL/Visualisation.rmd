@@ -1,0 +1,105 @@
+---
+title: "VISUAL"
+author: "Damiano Fumagalli"
+date: "`r Sys.Date()`"
+output: html_document
+---
+# DATA VISUALIZATION
+
+* **VARIAZIONE**: i valori delle variabili cambiano a ogni osservazione/misurazione
+* **COVARIAZIONE**: due variabili diverse cambiano in relazione tra loro
+
+
+```{r}
+library(dplyr)
+library(tidyr)
+library(gapminder)
+library(ggplot2)
+library(stringr)
+```
+
+> DATABASE mpg
+
+```{r}
+View(mpg)
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy))
+
+
+```
+> CONFIGURARE CON I COLORI
+
+```{r}
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy, color = drv))
+```
+
+
+```{r}
+best_in_class = mpg %>%
+  group_by(class) %>%
+  filter(row_number(desc(hwy)) == 1)
+best_in_class
+```
+> GRAFICO
+
+```{r}
+ggplot(mpg,aes(displ,hwy)) + geom_point(aes(colour = class)) + geom_point(data = best_in_class,size=3,shape=1) + ggrepel::geom_label_repel(data = best_in_class,mapping=aes(label = model)) + geom_smooth(se = FALSE) +  labs(
+    title = "Fuel efficiency generally decreases 
+    with engine size",
+    subtitle = "Two seaters (sports cars) are an exception 
+    because of their light weight",
+    caption = "Data from fueleconomy.gov",
+    x = "Engine Volume (L)",
+    y = "Highway fuel economy (mpg = miles per gallon)",
+    colour = "Car class"
+  ) +
+  theme_classic()
+```
+
+# PRESIDENTIAL
+
+
+```{r}
+#View(presidential)
+presidential %>% 
+  # AGGIUNGE UN ID a OGNI RIGA
+  mutate(id = 33+ (1:nrow(presidential))) %>%
+  # START = x, ID = y, PARTY = COLOUR
+  ggplot(aes(x=start, y=id, colour = party)) +
+  # AGGIUNGERE UN PUNTO CHE IDENTIFICHI L'INIZIO DELLA CANDIDATURA
+  geom_point() +
+  # AGGIUNGE UN SEGMENTO CON LUNGHEZZA PROPORZIONALE ALLA DURATA DEL MANDATO
+  geom_segment(aes(xend = end, yend = id)) + 
+  # SETTING MANUALE DEI COLORI
+  scale_colour_manual(values = c(Republican = "red", Democratic = "blue")) + 
+  # PER MODIFICARE IL TEMA DI BACKGROUND
+  theme_bw()
+
+```
+
+
+# GAPMINDER
+
+```{r}
+gaplot = function(cont, year1, year2) {
+  gapminder %>% 
+  filter(continent == cont, year >= year1, year <= year2) %>%
+  ggplot(aes(gdpPercap, lifeExp, size = pop, colour = country)) +
+  # ALPHA = OPACITÀ IN PERCENTUALE
+  geom_point(alpha = 0.5, show.legend = FALSE) +
+  # DARE DEI VALORI MANUALI
+  scale_colour_manual(values = country_colors) +  # countr_colors contiene una lista di colori associati per ogni paese del mondo
+  scale_size(range = c(2, 20)) +
+  # IMPOSTA L'ASSE LOGARITMICO, NON LINEARE
+  scale_x_log10() +
+  labs(title = paste(cont,"[",year1,"-",year2,"]"), x = "GDP", y = "Aspettativa di Vita",colour = "PAESI") +    
+  theme_minimal() 
+}
+gaplot("Africa",1960,1970)
+```
+
+
+
+
+

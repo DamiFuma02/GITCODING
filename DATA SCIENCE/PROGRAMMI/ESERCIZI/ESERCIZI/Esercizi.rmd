@@ -1,0 +1,67 @@
+---
+title: "ESERCIZI"
+author: "Damiano Fumagalli"
+date: "`r Sys.Date()`"
+output: html_document
+---
+```{r}
+library("nycflights13")
+library(dplyr)
+View(flights)
+View(airports)
+flights = flights %>% mutate(id = 1:nrow(flights))
+```
+
+> TROVARE I VOLI IN CUI DEST E ORIGINE DIFFERISCONO DI 600PIEDI(183m) DI ALTITUDINE
+
+
+```{r}
+inner_join(flights, airports, by = c("origin" = "faa")) %>%
+  inner_join(airports, by = c("dest" = "faa")) %>%
+  select(id, alt.x, alt.y) %>%
+  mutate(altdelta = alt.y - alt.x) %>%
+  filter(altdelta > 6000) %>% 
+  arrange(id)
+```
+
+
+```{r}
+inner_join(mutate(airports, dummy = TRUE), 
+           mutate(airports, dummy = TRUE), 
+           by = "dummy") %>%
+  mutate(altdelta = alt.y - alt.x) %>%
+  filter(altdelta > 6000) %>%
+  inner_join(flights, by = c("faa.x" = "origin", "faa.y" = "dest"))  %>%
+  select(id, alt.x, alt.y, altdelta) %>% 
+  arrange(id)
+```
+
+> ASSICURARSI CHE NELLA COLONNA TAILNUM DI PLANES NON CI SIANO DOPPIONI
+
+```{r}
+# CONTA LE OCCORRENZE DI OGNI VALORE IN TAILNUM
+planes %>% count(tailnum) %>%
+  # VERIFICA CHE OGNI VALORE ABBIA SOLO 1 OCCORRENZA
+  filter(n>1)
+```
+```{r}
+flights %>% 
+  anti_join(airports,by = c("dest" = "faa")) %>%
+  count(dest,sort=TRUE)
+
+id_set = 
+  flights %>% 
+  anti_join(airports, by = c("dest" = "faa")) %>% 
+  pull(id)
+
+flightsValid = 
+  flights %>%   # if (id presente in vettore id_set) NA else dest
+  mutate(dest = ifelse(id %in% id_set, NA, dest))
+
+flightsValid %>%
+  anti_join(airports, by = c("dest" = "faa")) %>%
+  count(dest, sort = TRUE)
+```
+
+
+

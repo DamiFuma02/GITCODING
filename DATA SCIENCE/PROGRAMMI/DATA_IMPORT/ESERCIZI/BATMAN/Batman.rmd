@@ -1,0 +1,35 @@
+---
+title: "BATMAN"
+author: "Damiano Fumagalli"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+# ESERCIZI
+
+Dato il seguente dataset su file CSV
+
+```{r}
+library(readr)
+(URL = paste(getwd(), "BATMAN/batman.csv", sep = "/"))
+file = read_csv(URL, col_names = TRUE)
+names(file)
+dim(file)
+# VISUALIZZA I TIPI DI DATO DELLE COLONNE
+spec(file)
+write_csv(file, "./BATMAN/batmanCorretto.csv")
+a = read_csv("./BATMAN/batmanCorretto.csv", col_names = TRUE)
+a[,14]
+valori  = file[,13][[1]]
+valori
+# TRADUZIONE STRINGHE --> INTERI
+valori = strtoi(substr(valori, 0, nchar(valori)-1), base = 0L)
+(file[,13] = valori)
+# RIGAGGIORNAMENTO FILE
+file = file
+# View(file)
+spec(file)
+#write_csv(file, "./BATMAN/batmanCorretto.csv")
+#prova = read_csv("./BATMAN/batmanCorretto.csv", col_names = TRUE)
+#spec(prova)
+```
