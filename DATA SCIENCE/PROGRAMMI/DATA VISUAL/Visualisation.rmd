@@ -16,6 +16,8 @@ library(tidyr)
 library(gapminder)
 library(ggplot2)
 library(stringr)
+library(gganimate)
+library(gifski)
 ```
 
 > DATABASE mpg
@@ -96,7 +98,33 @@ gaplot = function(cont, year1, year2) {
   labs(title = paste(cont,"[",year1,"-",year2,"]"), x = "GDP", y = "Aspettativa di Vita",colour = "PAESI") +    
   theme_minimal() 
 }
+# INVOCAZIONE DELLA FUNZIONE
 gaplot("Africa",1960,1970)
+```
+
+
+# ANIMAZIONI
+
+```{r}
+p = ggplot(mtcars, aes(factor(cyl), mpg)) + 
+  geom_boxplot()
+
+# Here comes the gganimate code
+ap = p +  
+  transition_states(
+    gear,
+    # secondi che dura la transizione
+    transition_length = 2,
+    # mostra per 1 secondo lo stato corrente
+    state_length = 1
+  ) +
+  # USA UNA DISSOLVENZA
+  enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out') + 
+  labs(title = 'Fuel consumption for {closest_state} gears', x = 'cyl')
+(gif_cars = animate(ap))
+
 ```
 
 
