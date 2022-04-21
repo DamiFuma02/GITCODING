@@ -1,8 +1,6 @@
-package com.company;
 
 
-import java.lang.reflect.Array;
-import java.util.List;
+
 
 //  PER DEFINIRE DELLE LISTE SIMILI A LINGUAGGIO SCHEME
 public class IntSchemeList {
@@ -39,7 +37,7 @@ public class IntSchemeList {
     }
 
     // CREA UNA LISTA CON GLI ELEMENTI COMPRESI NEGLI INTERVALLI DEL RANGE sup e inf
-    public IntSchemeList creaListaRange(int inf, int sup){
+    public static IntSchemeList creaListaRange(int inf, int sup){
         if (inf > sup) {
             return new IntSchemeList();
         } else {

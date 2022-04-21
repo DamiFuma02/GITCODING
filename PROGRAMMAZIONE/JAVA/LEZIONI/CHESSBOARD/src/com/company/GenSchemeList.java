@@ -90,10 +90,10 @@ public class GenSchemeList<TIPO> {
         String desc = "(";
         if (!isNull()){
             //CONTIENE CARATTERI E LI STAMPA IN STRINGA
-            desc = desc +car();
+            desc = desc +((Board)car()).BoardConfig();
             GenSchemeList<TIPO> resto = cdr();
             while (!resto.isNull()){
-                desc = desc + ","+ resto.car() ;
+                desc = desc + ","+ ((Board)resto.car()).BoardConfig() ;
                 // TOGLIE IL PRIMO ELEMENTO
                 resto = resto.cdr();
             }
@@ -105,5 +105,11 @@ public class GenSchemeList<TIPO> {
         if (isNull()) return  new GenSchemeList<TIPO>();
         return new GenSchemeList<TIPO>((TIPO)f.apply(car()),cdr().map(f));
     }
+
+    public GenSchemeList<TIPO> append(GenSchemeList<TIPO> Lista){
+        if (isNull()) return Lista;
+        return (cdr().append(Lista)).cons(car());
+    }
+
 
 }
