@@ -1,0 +1,134 @@
+---
+title: "MODELLING"
+author: "Damiano Fumagalli"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+# MODELLING
+* Sono degli oggetti computazionali matematici a cui vengono implementati dati e algoritmi.
+* Rappresentare un sommario di ridottte dimensioni di un dataset
+* Il modello deve rilevare e agire solamente sui dati utili, e ignorare il noise (segnali indesiderati)
+* **HYPOTHESIS GENERATION**
+* **HYPOTHESIS CONFIRMATION**
+
+## PARTIZIONARE 
+> Una osservazione viene divisa e categorizzata nelle seguenti parti
+
+* PATTERN: segnale informativo utile estratto
+* RESIDUAL: rumore, segnale inutile
+
+> UN MODELLO VIENE DIVISO IN DUE CATEGORIE
+
+* FAMIGLIA: equazione algebrica che rappresenta il grafico da trovare
+  * Retta: y = mx + q
+  * Esponenziale y = a^x
+* FITTING: individuare a quale sottofamiglia il pattern appartiene e verificarne la correttezza e l'andamento previsto
+
+### VERIDICITà
+
+> Un modello è in grado di rappresentare fedelmente l'andamento di determinati dati.   
+> In realtà è il modello più corretto all'interno delle famiglie proposte, ma non è detto che sia corretto globalmente
+
+# REGRESSIONE LINEARE
+
+> Rappresenta la **relazione tra variabili dipendenti (risposta) e una o più variabili indipendenti (esplicative)**
+
+* **SIMPLE REGRESSION**: 1 sola variabile indipendente
+* **MULTIPLE REGRESSION**: più variabili indipendenti
+
+# OBIETTIVI
+
+> Lo scopo della regressione è di **individuare l'andamento della varianza della variabile risposta** in corrispondenza delle variazioni delle variabili esplicative
+
+
+> PREVISIONI per il futuro in risposta agli stimoli e alle variazioni delle variabili esplicative
+
+
+# VARIABILI RISPOSTA
+
+* y osservata = calcolata tramite le x dei dati 
+* y predetta = calcolata tramite il modello predetto
+* yoss - ypred = residuo --> Può essere sia positivo che negativo
+  * identificano la perdita di dati
+
+
+# CORRELAZIONI LINEARI
+
+* scatterplot per visualizzare immediatamente l'andamento delle y rispetto le x
+* una volta rilevata una correlazione, creare un modello di regressione computazionale
+* calcolo del coefficiente di correlazione di Pearson R = covarianza / prodotto scarti quadratici --> covarianza normalizzata in un intervallo [-1;1]
+  * valori positivi individuano una correlazione positiva
+  * valori negativi correlazione negativa
+  
+* coefficiente di determinazione = R^2
+  * range [0;1]
+  * 0 = 
+  indipendenza
+  * 1 = correlazione
+
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(modelr)
+# scatterplot
+ggplot(sim1,aes(x,y)) + geom_point()
+
+# regressione
+
+mod1 = lm(formula = y ~ x,data= sim1)
+summary(mod1)
+mod1$coefficients
+
+```
+
+
+# VISUALIZZAZIONE
+
+> **GRAFICO DI PREVISIONE DELL'ANDAMENTO LINEARE**
+
+
+```{r}
+ggplot(sim1,aes(x,y)) + geom_point() + geom_abline(intercept = mod1$coefficients[1], slope = mod1$coefficients[2], color = "red")
+```
+
+# COEFFICIENTE PEARSON
+
+```{r}
+( r = cor(sim1$x, sim1$y))
+```
+### DETERMINAZIONE
+
+```{r}
+summary(mod1)$r.squared
+# or
+r^2
+```
+
+
+# METODO GENERALE
+
+```{r}
+(grid = data_grid(sim1,x))
+# AGGIUNGE UNA PREDIZIONE DEI VALORI IN BASE AL MODELLO MOD1
+(grid = add_predictions(grid,mod1))
+
+ggplot(sim1, aes(x=x)) + geom_point(aes(y=y)) + geom_line(data = grid, mapping = aes(y=pred), colour = "red")
+
+
+(sim1 = add_predictions(sim1, mod1))
+
+(sim1 = add_residuals(sim1, mod1))
+
+# histogram of residuals (mean is always 0)
+ggplot(sim1, aes(resid)) + 
+  geom_freqpoly(binwidth = 0.5)
+
+# scatterplot of residuals (plot residuals as outcomes)
+ggplot(sim1, aes(x, resid)) + 
+  geom_ref_line(h = 0) +
+  geom_point() 
+```
+
+

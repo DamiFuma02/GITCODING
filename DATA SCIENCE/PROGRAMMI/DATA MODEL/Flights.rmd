@@ -1,0 +1,35 @@
+---
+title: "FLIGHTS"
+author: "Damiano Fumagalli"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(dplyr)
+library(lubridate)
+library(ggplot2)
+library(modelr)
+library(nycflights13)
+```
+
+```{r}
+daily <- flights %>%  mutate(date = make_date(year, month, day)) %>%   group_by(date) %>%   summarise(n = n())
+
+ggplot(daily, aes(date,n)) + geom_line()
+```
+
+```{r}
+daily = daily %>% mutate(weekDay = wday(date,label = TRUE))
+daily
+
+ggplot(daily,aes(weekDay,n)) + geom_boxplot()
+```
+
+```{r}
+ggplot(filter(daily, ! (weekDay %in% c("sab", "dom"))), aes(date,n)) +  geom_line() +  geom_smooth(se = FALSE, span = 0.20)
+```
