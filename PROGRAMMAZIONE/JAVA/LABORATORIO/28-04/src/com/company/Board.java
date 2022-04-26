@@ -3,7 +3,6 @@ package com.company;
 import java.util.function.BiPredicate;
 
 
-
 public class Board {
     // RIGHE E COLONNE
     private static final String ROWS = " 123456789ABCDEF";
@@ -35,7 +34,7 @@ public class Board {
      * @param j riga in cui aggiungere (1234...)
      * @return Board in cui è aggiunta la regina
      */
-    private Board(Board B,int i, int j){
+    private Board(Board B, int i, int j){
         size = B.getSize();
         queens = B.getQueens()+1;
         minaccia = ( u, v ) -> (    (u == i) ||                // minaccia la riga i
@@ -84,7 +83,7 @@ public class Board {
     /**
      * @return conofigurazione finale della board
      */
-    public String BoardConfig(){
+    public String toString(){
         return "[ " + config + " ]";
     }
 

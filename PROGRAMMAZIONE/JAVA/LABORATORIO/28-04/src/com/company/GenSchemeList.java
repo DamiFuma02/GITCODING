@@ -91,10 +91,10 @@ public class GenSchemeList<TIPO> {
         String desc = "(";
         if (!isNull()){
             //CONTIENE CARATTERI E LI STAMPA IN STRINGA
-            desc = desc +((Board)car()).BoardConfig();
+            desc = desc +(car()).toString();
             GenSchemeList<TIPO> resto = cdr();
             while (!resto.isNull()){
-                desc = desc + ","+ ((Board)resto.car()).BoardConfig() ;
+                desc = desc + ","+ resto.car().toString() ;
                 // TOGLIE IL PRIMO ELEMENTO
                 resto = resto.cdr();
             }
