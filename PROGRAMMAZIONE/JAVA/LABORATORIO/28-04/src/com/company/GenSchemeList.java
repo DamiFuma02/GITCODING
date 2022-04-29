@@ -73,7 +73,7 @@ public class GenSchemeList<TIPO> {
 
 
     public GenSchemeList<TIPO> reverse(){
-        if (isNull()) return new GenSchemeList<TIPO>();
+        if (isNull()) return this;
         // lista nulla
         GenSchemeList<TIPO> lista = new GenSchemeList<TIPO>();
         // lista corrente

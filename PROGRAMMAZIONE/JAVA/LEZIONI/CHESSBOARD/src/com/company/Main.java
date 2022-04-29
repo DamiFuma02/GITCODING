@@ -4,8 +4,10 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
-        System.out.println(NQueens.nSol(4));
-        GenSchemeList<Board> nuova = NQueens.listOfSol(4);
+        int n = 5;
+        System.out.println(NQueens.nSol(n));
+        GenSchemeList<Board> nuova = NQueens.listOfSol(n);
         System.out.println(nuova.listToString());
+
     }
 }

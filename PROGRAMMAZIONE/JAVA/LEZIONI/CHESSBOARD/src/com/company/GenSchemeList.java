@@ -40,6 +40,10 @@ public class GenSchemeList<TIPO> {
         return restoLista;
     }
 
+    /**
+     * @param el elemento da aggiungere alla lista corrente
+     * @return lista con l'elemento aggiunto in prima posizione
+     */
     public GenSchemeList<TIPO> cons(TIPO el){
         return new GenSchemeList<TIPO>(el,this);
     }
@@ -91,10 +95,10 @@ public class GenSchemeList<TIPO> {
         String desc = "(";
         if (!isNull()){
             //CONTIENE CARATTERI E LI STAMPA IN STRINGA
-            desc = desc +((Board)car()).BoardConfig();
+            desc = desc +(car()).toString();
             GenSchemeList<TIPO> resto = cdr();
             while (!resto.isNull()){
-                desc = desc + ","+ ((Board)resto.car()).BoardConfig() ;
+                desc = desc + ","+ ((TIPO)resto.car()).toString() ;
                 // TOGLIE IL PRIMO ELEMENTO
                 resto = resto.cdr();
             }

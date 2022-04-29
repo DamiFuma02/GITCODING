@@ -11,6 +11,19 @@ public class Board {
     // VARIABILI DI ISTANZA
     private final int size;   // dimensione board
     private final int queens; //numero di regine piazzate
+    private final GenSchemeList<Integer> rowCod;
+    private final GenSchemeList<Integer> colCod;
+
+    /**
+     * a1, b2, c3, ...
+     */
+    private final GenSchemeList<Integer> diagLeft;
+
+    /**
+     *  altoSX -> basso DX
+     */
+    private final GenSchemeList<Integer> diagRight;
+
 
     /**
      * rappresenta un valore procedurale che verrà applicato quando vengono passati i parametri Integer
@@ -26,6 +39,10 @@ public class Board {
         // NESSUNA POSIZIONE FINACCIATA
         minaccia = (x,y) -> false;
         config = " ";
+        rowCod = new GenSchemeList<Integer>();
+        colCod = rowCod;
+        diagLeft = rowCod;
+        diagRight = rowCod;
     }
 
     /**
@@ -44,7 +61,12 @@ public class Board {
                                     B.sottoScacco(u,v)     // minaccia delle regine in board
                                 );
         config = B.getConfig() + COLS.charAt(j) + ROWS.charAt(i) + " ";
+        rowCod = B.rowCod.reverse().cons(i).reverse();
+        colCod = B.colCod.reverse().cons(j).reverse();
+        diagLeft = B.diagLeft.reverse().cons(i-j).reverse();
+        diagRight = B.diagRight.reverse().cons(i+j).reverse();
     }
+
 
     /**
      * @return dimensione della scacchiera nxn
@@ -87,8 +109,19 @@ public class Board {
         return "[ " + config + " ]";
     }
 
+    public GenSchemeList<Integer> getColCod() {
+        return colCod;
+    }
 
+    public GenSchemeList<Integer> getDiagLeft() {
+        return diagLeft;
+    }
 
+    public GenSchemeList<Integer> getDiagRight() {
+        return diagRight;
+    }
 
-
+    public GenSchemeList<Integer> getRowCod() {
+        return rowCod;
+    }
 }

@@ -9,6 +9,10 @@ public class Board {
     private static final String ROWS = " 123456789ABCDEF";
     private static final String COLS = " abcdefghijklmno";
 
+    public static String getCOLS() {
+        return COLS;
+    }
+
     // VARIABILI DI ISTANZA
     private final int size;   // dimensione board
     private final int queens; //numero di regine piazzate
@@ -84,7 +88,7 @@ public class Board {
     /**
      * @return conofigurazione finale della board
      */
-    public String BoardConfig(){
+    public String toString(){
         return "[ " + config + " ]";
     }
 
