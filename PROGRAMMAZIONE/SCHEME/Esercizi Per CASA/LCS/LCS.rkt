@@ -67,7 +67,7 @@
 ;-------------------------------------------------------------
 ;ES 3 02-12-2019 
 ;(lcs "pino" "pino") → ((1 1 "p") (2 2 "i") (3 3 "n") (4 4 "o")) ;(lcs "pelo" "peso") → ((1 1 "p") (2 2 "e") (4 4 "o"))
-(define lcs ; restituisce una lista di terne (posU posV carattere_comune)
+(define elcs ; restituisce una lista di terne (posU posV carattere_comune)
       (lambda (u v) ; u, v: stringhe
          (lcs-rec  0 u 0 v ))) ;= i ;= j
 

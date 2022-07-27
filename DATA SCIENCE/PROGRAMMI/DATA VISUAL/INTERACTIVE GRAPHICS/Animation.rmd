@@ -1,0 +1,129 @@
+---
+title: "Animated graphics"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(cache = TRUE)
+```
+
+
+[gganimate](https://gganimate.com/articles/gganimate.html) extends the grammar of graphics as implemented by ggplot2 to include the description of animation. It does this by providing a range of new grammar classes that can be added to the plot object in order to customise how it should *change with time*.
+
+
+```{r}
+library(ggplot2)
+library(gganimate)
+```
+
+
+## Animate a qualitative variable
+
+Here we take a simple boxplot of fuel consumption as a function of cylinders and lets it transition between the number of gears available in the cars:
+
+* as this is a discrete split (gear being best described as a qualitative variable) we use `transition_states` and provides a relative length to use for transition and state (pause) view;
+* as not all combinations of data is present there are states missing a box. We define that when a box appears it should fade into view, whereas it should shrink away when it disappears;
+* lastly we decide to use a sinusoidal easing for all our aesthetics (here, only `y` is changing);
+* we also see the use of string literal interpolation in titles. 
+
+```{r}
+head(mtcars)
+```
+
+
+```{r }
+# ggplot code
+p = ggplot(mtcars, aes(factor(cyl), mpg)) + 
+  geom_boxplot()
+
+# Here comes the gganimate code
+ap = p +  
+  transition_states(
+    gear,
+    transition_length = 2,
+    state_length = 1
+  ) +
+  enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out') + 
+  labs(title = 'Fuel consumption for {closest_state} gears', x = 'cyl')
+
+# gif output
+gif_cars = animate(ap)
+gif_cars
+
+# Video output
+vp_cars = animate(ap, renderer = av_renderer())
+vp_cars
+
+```
+
+
+## Animate a quantitative variable
+
+* in this example we see the use of `transition_time()` which can be used with quantitative variables such as year; 
+* with this transition it is not necessary to provide transition and state length as the "transition variable" provides this directly; 
+* we also depict a wake for the points using `shadow_wake()` function.
+
+
+```{r }
+library(gapminder)
+
+p = ggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, colour = country)) +
+  geom_point(alpha = 0.7, show.legend = FALSE) +
+  scale_colour_manual(values = country_colors) +
+  scale_size(range = c(2, 12)) +
+  scale_x_log10() +
+  facet_wrap(~continent)
+
+# Here comes the gganimate specific bits
+ap = p +
+  labs(title = 'Year: {frame_time}', x = 'GDP per capita', y = 'life expectancy') +
+  transition_time(year) +
+  ease_aes('linear') +
+  shadow_wake(0.25, wrap = FALSE)
+
+# gif output
+gif_gap = animate(ap)
+gif_gap
+
+# Video output
+vp_gap = animate(ap, renderer = av_renderer())
+vp_gap
+
+```
+
+
+Let's make a focus on the African continent:
+
+```{r }
+library(dplyr)
+
+p = gapminder %>% 
+  filter(continent == "Africa") %>%
+  ggplot(aes(gdpPercap, lifeExp, size = pop, colour = country)) +
+  geom_point(alpha = 0.5, show.legend = FALSE) +
+  scale_colour_manual(values = country_colors) +
+  scale_size(range = c(2, 20)) +
+  scale_x_log10() +
+  theme_minimal()
+
+# Here comes the gganimate specific bits
+ap = p +  
+  labs(title = 'Year: {frame_time}', x = 'GDP per capita (log)', y = 'life expectancy') +
+  transition_time(year) +
+  ease_aes('linear') +
+  shadow_wake(0.20, wrap = FALSE)
+
+# gif output
+gif_gap2 = animate(ap)
+gif_gap2
+
+
+# Video output
+vp_gap2 = animate(ap, renderer = av_renderer())
+vp_gap2
+
+
+```
+

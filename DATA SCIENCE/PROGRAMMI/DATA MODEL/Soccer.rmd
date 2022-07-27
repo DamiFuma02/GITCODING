@@ -1,0 +1,133 @@
+---
+title: "SOCCER"
+author: "Damiano Fumagalli"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r library}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(modelr)
+```
+
+```{r import}
+rating <- read_csv("rating.csv")
+View(rating)
+spec(rating)
+```
+
+
+# GOALS FOR
+
+```{r}
+modPTGF = lm(PT ~ GF, data=rating)
+
+rating = add_predictions(rating,modPTGF)
+
+# VALORI DEL DATABSE + VALORI PREDETTI DAL MODELLO
+ggplot(rating, aes(x=GF)) + geom_point(aes(y=PT)) + geom_line(aes(y = pred), colour = "red")
+
+#  CALCOLO RESIDUI
+rating = add_residuals(rating, modPTGF)
+ggplot(rating, aes(GF, resid)) + 
+  geom_ref_line(h = 0) +
+  geom_point()
+
+# ORDINAMENTO DECRESCENTE PER RESIDUO
+rating %>%
+  arrange(desc(resid)) %>% 
+  head(3)
+# ORDINAMENTO CRESCENTE PER RESIDUO
+rating %>%
+  arrange(resid) %>% 
+  head(3)
+
+# remove predictions and residulas
+rating = select(rating, -resid, -pred)
+
+# compute model quality
+corPTGF = cor(rating$PT, rating$GF)
+quality = list()
+quality$PFGF = corPTGF^2
+quality
+```
+
+
+
+## Goals against
+
+```{r}
+modPTGS = lm(PT ~ GS, data = rating)
+
+# plot observed and predicted values
+ggplot(rating, aes(x = GS, y = PT)) + 
+  geom_point() + 
+  geom_abline(intercept = modPTGS$coefficients[1], 
+              slope = modPTGS$coefficients[2], 
+              color = "red") 
+
+corPTGS = cor(rating$PT, rating$GS)
+quality$PFGS = corPTGS^2
+quality
+
+```
+
+## Goal spread
+
+```{r}
+
+# add goal spread
+rating = mutate(rating, DG = GF - GS)
+modPTDG = lm(PT ~ DG, data = rating)
+
+# plot observed and predicted values
+ggplot(rating, aes(x = DG, y = PT)) + 
+  geom_point() + 
+  geom_abline(intercept = modPTDG$coefficients[1], 
+              slope = modPTDG$coefficients[2], 
+              color = "red")
+
+corPTDG = cor(rating$PT, rating$DG)
+quality$PFDG = corPTDG^2
+quality
+
+# add and plot residuals
+rating = add_residuals(rating, modPTDG)
+
+# sort by residuals
+rating %>%
+  arrange(desc(resid)) %>% 
+  head(3)
+
+rating %>%
+  arrange(resid) %>% 
+  head(3)
+
+
+```
+
+
+
+## Multiple linear regression
+
+```{r}
+modPTGFGS = lm(PT ~ GF + GS, data = rating)
+
+summary(modPTGFGS)$coefficients
+# VALORE ASSOLUTO
+coe = abs(summary(modPTGFGS)$coefficients[2:3])
+names(coe) = c("attack", "defense")
+round(coe / sum(coe), 2)
+
+quality$PTGFGS = summary(modPTGFGS)$r.squared
+quality
+
+```
+
+

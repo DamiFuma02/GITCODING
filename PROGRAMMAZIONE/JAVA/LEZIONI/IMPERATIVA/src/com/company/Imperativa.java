@@ -82,7 +82,6 @@ public class Imperativa {
         int a = (x%2==0)? -1 : +1;
         return 2*UFO2(x/2) + a;
     }
-
     //SORTED INS
     public static void sortedIns(double[] v) {
         for (int k=0; k<v.length; k++) {

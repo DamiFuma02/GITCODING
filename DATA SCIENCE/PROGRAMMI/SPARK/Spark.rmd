@@ -1,0 +1,24 @@
+---
+title: "SPARK"
+author: "Damiano Fumagalli"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+# SPARK
+
+-   PERMETTE DI LAVORARE CON DATABASE GRANDI CHE NON STANNO IN MEMORIA RAM
+
+-   I CODICI SCRITTI IN R VENGONO CONVERITI IN SQL PRIMA DI ESSERE PROCESSATI IN SPARKLYR
+
+```{r}
+
+library(sparklyr)
+spark_install()
+
+# Connect to your Spark cluster
+sc <- spark_connect("local")
+
+# Print the version of Spark
+spark_version(sc)
+```
