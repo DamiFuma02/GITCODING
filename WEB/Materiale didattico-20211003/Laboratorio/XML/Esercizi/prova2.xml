@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE CorsoDiLaurea SYSTEM "prova.dtd">
+<CorsoDiLaurea facolta="">
+    <Corso numeroCrediti="" semestre="primo">
+        <NomeCorso>INFORMATICA</NomeCorso>
+        <DescrizioneCorso>CORSO DI INFORMATICA</DescrizioneCorso>
+        <Docente></Docente>
+        <Studente matricola="m1"></Studente>
+        <Studente matricola="m1"></Studente>
+    </Corso>
+</CorsoDiLaurea>

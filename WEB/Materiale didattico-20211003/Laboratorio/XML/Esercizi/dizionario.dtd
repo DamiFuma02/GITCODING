@@ -1,8 +1,12 @@
 <!ELEMENT dizionario (voce*)> 
-<!ELEMENT voce (termine, pronuncia, significato+)>  
+<!ELEMENT voce (termine, pronuncia, significato+)> 
+
 <!ELEMENT termine (#PCDATA)>
 <!ELEMENT pronuncia (#PCDATA)> 
 <!ELEMENT significato (definizione, esempio*)> 
 <!ELEMENT definizione (#PCDATA)> 
 <!ELEMENT esempio (#PCDATA)> 
-<!ATTLIST dizionario lingua (english|french|german|italian|spanish) 'italian'>
+<!ELEMENT user (#PCDATA) >
+<!ATTLIST dizionario lingua (english|french|german|italian|spanish)  #REQUIRED>
+<!ATTLIST track lingua ID #REQUIRED>
+<!ATTLIST voce lingue IDREFS #REQUIRED> 

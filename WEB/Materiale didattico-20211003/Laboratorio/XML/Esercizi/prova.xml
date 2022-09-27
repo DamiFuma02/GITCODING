@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE dizionario SYSTEM "prova.dtd">
-<dizionario lingua="ger">
-    <parola>
-        <sillabe></sillabe>
-        <significato>
-            <image type="gif" />
-        </significato>
-        <sinonimi></sinonimi>
-        <contrari></contrari>
-    </parola>
-</dizionario>
+<!DOCTYPE CorsoDiLaurea SYSTEM "prova.dtd">
+<CorsoDiLaurea facolta="">
+    <Corso numeroCrediti="ciao" semestre="primo" sede="udine" tipo="obbligatorio">
+        <NomeCorso>
+
+        </NomeCorso>
+        <Docente>
+            <Cognome>Montresor</Cognome>
+            <Nome>Francesca</Nome>
+            <Dipartimento>Telecomunicazioni</Dipartimento>
+        </Docente>
+    </Corso>
+</CorsoDiLaurea>

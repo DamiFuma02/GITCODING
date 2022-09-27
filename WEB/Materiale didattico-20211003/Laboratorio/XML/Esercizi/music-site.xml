@@ -9,7 +9,7 @@
     <!ELEMENT artist (#PCDATA)>
     <!ELEMENT album (#PCDATA)>
     <!ATTLIST track id ID #REQUIRED>
-    <!ATTLIST user favorite-tracks IDREFS #REQUIRED>
+    <!ATTLIST album attr CDATA ()>
 ]>
 <music-site>
     <track id="t1"><title>Track 1</title><artist>Artist 1</artist></track>
@@ -17,7 +17,10 @@
     <track id="t3"><title>Track 3</title><artist>Artist 3</artist></track>
     <track id="t4"><title>Track 4</title><artist>Artist 4</artist></track> 
     <track id="t5"><title>Track 5</title><artist>Artist 5</artist></track> 
-    <user favorite-tracks="t2 t5"><name>User</name><surname>One</surname></user>
-    <user favorite-tracks="t1 t3 t5"><name>User</name><surname>Two</surname></user>
+    <user favorite-tracks="t6 t5">
+        <name>User</name>
+        <surname>One</surname>
+    </user>
+    <user favorite-tracks="t1"><name>User</name><surname>Two</surname></user>
 </music-site>
     

@@ -1,0 +1,33 @@
+---
+title: "LEZIONE 1"
+author: "Damiano Fumagalli"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+
+# **STATISTICA**
+
+-   Matematica applicata avendo come riferimento concreto i dati
+
+-   Fornisce concetti e strumento per rilevare relazioni o aspetti rilevanti nei dati
+
+-   Quantificare la forza delle conclusioni derivanti dalla analisi
+
+-   è una materia di supporto per molte discipline, economia, data science, ingegneria gestionale
+
+## ANALISI STATISTICA
+
+-   **FORMULAZIONE** **PROBLEMA:** individuare il contesto, obiettivi e tradurre in linguaggio matematico-statistico
+
+-   **RACCOLTA DATI:** Organizzazione e Pulizia
+
+-   **ANALISI INIZIALE:** sintesi numeriche e grafiche
+
+-   **ANALISI COMPLETA**
+
+-   **PRESENTAZIONE**

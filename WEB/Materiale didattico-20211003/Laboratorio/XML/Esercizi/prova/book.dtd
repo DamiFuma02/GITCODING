@@ -1,0 +1,4 @@
+<!ELEMENT book (Title,Author)>
+<!ELEMENT Title (#PCDATA)>
+<!ELEMENT Author (#PCDATA)>
+<!ATTLIST book destination ID #REQUIRED>

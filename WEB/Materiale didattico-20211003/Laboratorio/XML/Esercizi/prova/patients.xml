@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE patient_list SYSTEM "patients.dtd">
+<patient_list>
+<patient serialNo="a1b2c3">
+    <patientFName>Jon</patientFName>
+    <patientLName>Won</patientLName>
+    <gender>male</gender>
+    <medID IDREF="M1"/>
+    <docID IDREF="D37"/>
+</patient>
+
+<patient serialNo="k4t5g2">
+<patientFName>Min</patientFName>
+<patientLName>Hin</patientLName>
+<gender>female</gender>
+<medID IDREF="M2"/>
+<docID IDREF="D21"/>
+</patient>
+
+<medicine medID="M1">
+<name>Panadol</name>
+<manufacture>GSK</manufacture>
+<regNo>oo9807</regNo>
+</medicine>
+
+<medicine medID="M2">
+<name>Alprazolam</name>
+<manufacture>Novartis</manufacture>
+<regNo>hu5432</regNo>
+</medicine>
+
+<doctor docID="D21">
+<registration ID="8472392"/>
+<fName>Alfred</fName>
+<lName>Campbell</lName>
+<specialisation>Paediatrics</specialisation>
+</doctor>
+
+<doctor docID="D37">
+<registration ID="4364786"/>
+<fName>Mick</fName>
+<lName>Foley</lName>
+<specialisation>Psychiatry</specialisation>
+</doctor>
+</patient_list>

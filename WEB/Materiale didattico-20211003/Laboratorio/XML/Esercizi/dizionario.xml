@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!DOCTYPE dizionario SYSTEM "dizionario.dtd"> 
-<dizionario lingua="english">
+<dizionario lingua="german">
     <voce>
         <termine>mouse</termine>
         <pronuncia>maus</pronuncia>

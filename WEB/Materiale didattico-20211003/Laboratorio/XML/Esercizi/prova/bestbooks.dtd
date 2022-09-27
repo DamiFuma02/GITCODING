@@ -1,0 +1,3 @@
+<!ELEMENT bestbooks (bookref)* >
+<!ELEMENT bookref (#PCDATA)>
+<!ATTLIST bookref target IDREF #IMPLIED>
