@@ -1,0 +1,19 @@
+---
+title: "Temperatura"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Esercizio 2.4 (Ieva, Masci, Paganoni)
+Si consideri il file "temperatura.txt"(Mackowiak, P. A., Wasserman, S. S. et al., "A Critical Appraisal of 98.6 Degrees F, the Upper Limit of the Normal Body Temperature,  and Other Legacies of Carl Reinhold August Wunderlich", Journal of the American Medical Association 268, pp. 1578-1580, 1992.). I dati rappresentano 130 osservazioni di3 variabili: Temperatura, Sesso e Freq cardiaca; la variabile Temperatura si riferisce alla temperatura corporea di 130 pazienti (espressa in gradi Fahrenheit), la variabile Sesso Indica il sesso del paziente (U = uomo, D = donna) e la variabile Freq cardiaca indica la frequenza cardiaca (espressa in battiti al minuto).
+
+a) Analizzare la variabile "Temperatura" di questo dataset sia graficamente che numericamente e commentare i risultati ottenuti.
+
+b) Analizzare la variabile Sesso di questo dataset sia graficamente che numericamente e commentare i risultati ottenuti.
+
+c) Analizzare la variabile Temperatura nei sottogruppi degli Uomini e delle Donne sia graficamente che numericamente e commentare i risulatti ottenuti.
+
+d) Stabilire se vi siano delle differenze nella temperatura corporea dovute al sesso del soggetto.

@@ -1,0 +1,44 @@
+---
+title: "Analisi dataset Diamonds"
+author: "Nome e Cognome, Matricola"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+Il dataset Diamonds.csv contiene dati su 193 diamanti (dimensione in carati, colore, chiarezza, tipo di certificazione, prezzo in dollari di Singapore). Si considerino le variabili certificazione dei diamanti (Certification) e prezzo (Price).
+
+*   Si effettui un’analisi descrittiva delle variabili certificazione dei diamanti e prezzo.
+
+*    Si valuti come la certficazione dei diamanti riferito alle sole modalità “IGI” ed “HRD” influisca sul prezzo.
+
+*    Interpretare i risultati ottenuti.
+ 
+```{r}
+Diamonds_new <- read.csv("C:/Users/mamel/Desktop/LABORATORIO DI STATISTICA/Network Shortcuts/diamonds/Diamonds3.csv")
+View(Diamonds_new)
+summary(as.factor(Diamonds_new$Certification))
+barplot(table(as.factor(Diamonds_new$Certification)),xlab="Certificazione")
+summary(Diamonds_new$Price)
+boxplot(Diamonds_new$Price,ylab="Prezzo")
+boxplot(Diamonds_new$Price~Diamonds_new$Certification,xlab="Certficazione",ylab="Prezzo")
+tapply(Diamonds_new$Price,Diamonds_new$Certification,summary)
+price_hrd = Diamonds_new$Price[Diamonds_new$Certification=="HRD"]
+price_igi = Diamonds_new$Price[Diamonds_new$Certification=="IGI"]
+library(moments)
+skewness(price_igi)
+skewness(price_hrd)
+kurtosis(price_igi)
+kurtosis(price_hrd)
+
+
+qqnorm(price_hrd)
+qqline(price_hrd)
+qqnorm(price_igi)
+qqline(price_igi)
+var.test(price_hrd,price_igi)
+t.test(price_hrd,price_igi,var.equal = T)
+```

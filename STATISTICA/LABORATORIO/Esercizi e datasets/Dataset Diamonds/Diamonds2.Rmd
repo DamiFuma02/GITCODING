@@ -1,0 +1,52 @@
+---
+title: "Analisi dataset Diamonds"
+author: "Nome e Cognome, Matricola"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Il dataset Diamonds.csv contiene dati su 184 diamanti (dimensione in carati, colore, chiarezza, tipo di certificazione, prezzo in dollari di Singapore). Si considerino le variabili colore dei diamanti (Color) e prezzo (Price).
+
+* Si effettui un'analisi descrittiva delle variabili colore dei diamanti e prezzo.
+
+* Si valuti come il colore dei diamanti riferito alle sole modalità "G" ed "H" influisca sul prezzo.
+
+* Interpretare i risultati ottenuti.
+ 
+
+```{r}
+Diamonds_new <- read.csv("C:/Users/mamel/Desktop/LABORATORIO DI STATISTICA/Network Shortcuts/diamonds/Diamonds2.csv")
+View(Diamonds_new)
+
+summary(as.factor(Diamonds_new$Color))
+barplot(table(as.factor(Diamonds_new$Color)),xlab="Colore")
+summary(Diamonds_new$Price)
+boxplot(Diamonds_new$Price,ylab="Prezzo")
+boxplot(Diamonds_new$Price~Diamonds_new$Color,xlab="Colore",ylab="Prezzo")
+tapply(Diamonds_new$Price,Diamonds_new$Color,summary)
+price_h=Diamonds_new$Price[Diamonds_new$Color=="H"]
+price_g=Diamonds_new$Price[Diamonds_new$Color=="G"]
+```
+
+```{r}
+qqnorm(price_h)
+qqline(price_h)
+qqnorm(price_g)
+qqline(price_g)
+```
+
+```{r}
+library(moments)
+skewness(price_g)
+skewness(price_h)
+kurtosis(price_g)
+kurtosis(price_h)
+```
+
+```{r}
+var.test(price_h,price_g)
+t.test(price_h,price_g,var.equal = T)
+```

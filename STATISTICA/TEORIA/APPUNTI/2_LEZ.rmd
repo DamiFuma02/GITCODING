@@ -1,0 +1,226 @@
+---
+title: "LEZIONE_2"
+output: pdf_document
+date: "`r Sys.Date()`"
+---
+
+```{r, include=FALSE}
+library("dplyr")
+```
+
+# INDICE
+
+-   [**INTRODUZIONE**](#introduzione)
+
+-   [**VARIABILI STATISTICHE**](#varstat)
+
+-   [**DISTRIBUZIONI DI FREQUENZA**](#distrfreq)
+
+-   **RAPPRESENTAZINONI GRAFICHE**
+
+-   **INDICI SINTETICI**
+
+# INTRODUZIONE {#introduzione}
+
+-   DISTINZIONE tra ANALISI
+
+    -   UNIVARIATE: 1 CARATTERISTICA
+
+    -   MULTIVARIATE: 2+ CARATTERISTICHE
+
+-   PRIMA di un'analisi INFERENZIALE è opportuno svolgerne una DESCRITTIVA iniziale, per comprendere il [CONTESTO TEORICO](./1_LEZ.pdf#analisi)
+
+## ANALISI ESPLORATIVA
+
+-   **TIPOLOGIA DI DATI**
+
+    -   **OSSERVAZIONALI / SPERIMENTALI**
+
+    -   **CAMPIONARI / CENSITI**
+
+    -   [**VARIABILI STATISTICHE**](#varstat)
+
+-   **INDIVIDUARE UNITÀ STATISTICHE**
+
+    -   **DATI MANCANTI**
+
+    -   **DATI SPORCHI**
+
+-   **PULIZIA DATI**
+
+    -   **CODIFICA**
+
+    -   **ORGANIZZAZIONE**
+
+-   **METODI GRAFICI**
+
+# VARIABILI STATISTICHE {#varstat}
+
+> **IDENTIFICANO LE PROPRIETÀ DELLE UNITÀ STATISTICHE**
+
+## MODALITÀ
+
+> **SONO I VALORI CHE UNA VARIABILE PUÒ ASSUMERE**
+
+## NOTAZIONI
+
+-   **Y = variabile generica**
+
+-   **y = modalità generica**
+
+-   **Y' = dominio dei valori ammessi da Y**
+
+    -   **Sy = {y1, ... , yj} con j\<=N**
+
+        -   per qualsiasi j != i --\> yj != yi
+
+    -   **N = numero di unità statistiche considerate**
+
+## TIPOLOGIE
+
+-   **VARIABILI QUALITATIVE (CATEGORIALI) --\> STRINGHE TESTUALI:**
+
+    -   **SCONNESSE (NOMINALI): non è possibile individuare un'ordine "naturale"**
+
+        -   religione
+
+        -   colore degli occhi
+
+        -   genere
+
+    -   **ORDINALI: è possibile identificare un ordine**
+
+        -   livello di istruzione
+
+        -   gerarchie
+
+    -   **DICOTOMICHE: se \| Y' \| = 2**
+
+        -   i due valori ammessi possono essere codificati come 0 e 1, risparmiando memoria e preservando la quantità di informazione
+
+-   **VARIABILI QUANTITATIVE (NUMERICHE):**
+
+    -   **DISCRETE: se Y' è un insieme FINITO**
+
+    -   **CONTINUE: se Y' possiede un range continuo di valori, e ogni valore è valido**
+
+    -   **INTERVALLI: non esiste uno 0 arbitrario**
+
+    -   **RAPPORTI: esiste uno 0 arbitrario**
+
+## GERARCHIA
+
+1.  **QUANTITATIVE CONTINUE**
+
+2.  **QUANTITATIVE DISCRETE**
+
+3.  **QUALITATIVE ORDINALI**
+
+4.  **QUALITATIVE NOMINALI**
+
+> **SALENDO DI LIVELLO GERARCHICO SI AUMENTA LA QUANTITÀ DI INFORMAZIONE**
+
+# DISTRIBUZIONI DI FREQUENZA {#distrfreq}
+
+### FREQUENZE ASSOLUTE
+
+```{r}
+head(mtcars)
+Y = mtcars$cyl  # SCEGLIAMO LA VARIABILE Y = mtcars$cyl
+(Sy = unique(Y))  # SUPPORTO DELLA VARIABILE Y
+(J = length(Sy))   # LUNGHEZZA DEL SUPPORTO
+(N = length(Y))     # NUMERO DI UNITÀ STATISTICHE
+(cylFreqTable = group_by(mtcars,cyl) %>% summarise(frequency = n())  ) # ANALOGO A --> (cylFreqTable = table(Y))
+# LA SOMMA DI TUTTE LE FREQUENZE ASSOLUTE = NUMERO DI UNITÀ STATISTICHE
+sum(cylFreqTable$frequency) == N
+```
+
+> VARIABILE QUANTITATIVA CONTINUA --\> J QUASI UGUALE A N
+>
+> È OPPORTUNO CREARE DELLE CLASSI DI MODALITÀ E CONTARE LE OCCORRENZE IN ESSE
+
+### CLASSI DI MODALITÀ
+
+-   RAPPRESENTANO DEI SOTTOINSIEMI DEL RANGE DI UNA VARIABILE
+
+-   DEVONO ESSERE NE TROPPE NE TROPPO POCHE
+
+    -   NUMERO OTTIMALE CIRCA N\^(1/2)
+
+-   DEVONO RAPPRESENTARE DEGLI INTERVALLI DISGIUNTI
+
+    -   [yo,y1) --\> y1 escluso
+    -   [y1,y2) --\> y2 escluso
+
+```{r}
+Sy = levels(factor(mtcars$mpg))
+length(Sy)
+# ci sono tanti possibili valori ammessi da mpg (Miles Per Gallon)
+(mpgRange = max(mtcars$mpg)-min(mtcars$mpg) )# ==> range(mtcars$mpg)
+
+(classList = split(mtcars$mpg, cut(mtcars$mpg, length(Sy)^0.5)) )
+(classFreqTable = data.frame(
+  "freq"= unlist(lapply(classList, length))
+))
+sum(classFreqTable$freq) == length(mtcars$mpg)
+
+
+```
+
+### FREQUENZE RELATIVE
+
+> INDICA IL RAPPORTO TRA LA FREQUENZA ASSOLUTA E IL NUMERO TOTALE DI UNITÀ STATISTICHE
+>
+> ```{r}
+> # p1 = f1 / sum([f1,f2,...,fj]) j<=N --> N = n° unità 
+> #    = f1 / n
+> ```
+
+```{r}
+(cylRelFreqTable = table(mtcars$cyl)/length(mtcars$cyl)*100)  # *100 finale serve a mostrare i valori percetuali della frequenza relativa
+cylRelFreqTable[[1]]/100 * length(mtcars$cyl) == cylFreqTable[cylFreqTable$cyl==4,]$frequency
+# calcola la frequenza assoluta a partire da quella relativa e la confronta con quella assoluta effettiva
+```
+
+# FREQUENZE CUMULATE
+
+-   **VARIABILI ORDINABILI, QUALITATIVE E QUANTITATIVE**
+
+-   Fi = Frequenza assoluta con cui si presentano modalità con ordini \<= i-esimo ordine
+
+    -   Dato F = {f1,...,fj} j = \| [Sy](#notazioni) \| \<= N n° unità
+
+    -   F1 = f1 --\> Fj = N
+
+-   Pi = Frequenza relativa cumulata, analoga a Fi
+
+    -   Dato P = {p1, ... , pj} --\> \| P \| = \| F \|
+
+    -   IPOTESI: P1 = p1 --\> Pj = N
+
+```{r}
+(cylCumFreq = cumsum(table(mtcars$cyl)))    # FREQUENZE CUMULATE
+ll = nrow(cylFreqTable) # = nrow(cylFreqTable)
+if (   (cylCumFreq[[1]] == cylFreqTable[1,"frequency"]) && 
+       (cylCumFreq[[ll]] == N)    # N definito in precedenza come n° di unità
+) {
+  print("IPOTESI CONFERMATA")
+}
+
+
+
+ok=TRUE
+for(i in 1:nrow(cylFreqTable)){
+   if(cylCumFreq[[names(cylCumFreq)[i]]] != sum(cylFreqTable[1:i,"frequency"])){
+     ok = FALSE;
+     break;
+   } 
+}
+if (ok) {
+  print("cumsum WORKS!!!")
+} else {
+  print("SOMETHING IS WRONG!!!")
+}
+
+
+```

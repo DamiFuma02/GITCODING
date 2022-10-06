@@ -1,0 +1,22 @@
+---
+title: "Esercizi su dati reali"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Dataset reali
+
+## Esercizio 8.1 (Ieva et al., 2016)
+Due capoluoghi di provincia della stessa regione sono ritenuti simili per molte caratteristiche tra cui gli affitti degli alloggi. Per meglio evidenziare quest'ultima similitudine si vogliono confrontare le medie degli affitti mensili (espressi in euro) di un appartamento di 60 mq nei due capoluoghi. Allo scopo viene estratto un campione casuale di 30 appartamenti nel capoluogo A e 29 nel capoluogo B.
+
+I dati sono riportati nel file "affitti.txt". 
+
+Si esprima un giudizio sull'uguaglianza delle medie degli affitti  nei due capoluoghi.
+
+## Esercizio 8.2 (Ieva et al., 2016)
+Si consideri il file "plasma.txt" (dati da: Bland JM, Altman DG, "Measuring agreement in method comparison studies", Statistical Methods in Medical Research, 8, 135-160, 1999). I dati indicano il volume di plasma, in 99 soggetti, espresso come percentuale rispetto a due differenti valori di riferimento dovuti uno a Nadler e l'altro a Hurley.
+
+Si esegua un'opportuna analisi statistica per decidere se esiste una differenza statistica tra i due differenti metodi di misura clinica.

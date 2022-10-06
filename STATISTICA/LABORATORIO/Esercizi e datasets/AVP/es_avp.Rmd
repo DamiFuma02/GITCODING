@@ -1,0 +1,11 @@
+---
+title: "Analisi del data set AVP "
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(fig.path = "C://Users/Mamel/Desktop" #make sure you create the folder first in Windows
+                      )
+```
+
+Si consideri il file "avp.txt" (dati da: Bland, M., An introduction to Medical Statistics, Oxford University Press, 1995). I dati rappresentano la misurazione in 41 feti di sesso maschile di due variabili: Gestazione (periodo di gestazione [giorni]) e AVP (livello dell'ormone antidiuretico AVP nel sangue del cordone ombelicale [pg/ml]). Si esegua un'analisi dei dati per vedere se `e possibile spiegare mediante un modello di regressione lineare la variabile AVP come funzione della variabile Gestazione. Analizzare le variabili prima separatamente e poi congiuntamente. Commentare i risultati ottenuti.

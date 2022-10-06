@@ -1,0 +1,29 @@
+---
+title: "Analisi dataset Crimine"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Analisi del dataset Crime
+Si analizzi il file di dati "Crime_R.csv" che 
+contiene un insieme di variabili rilevate per ogni stato degli Stati Uniti, le stesse variabili vengono rilevate a distanza di 10 anni sugli stessi stati (tranne la variabile **Southern**): 
+
+
+* **CrimeRate**	Tasso di criminalità (numero di reati per milione di abitanti)
+* **Youth**	Giovani maschi (numero di maschi di età compresa tra 18 e 24 anni per 1000)
+* **Southern**	Stato meridionale 1 = si, 0 = no
+* **Education**	Tempo di istruzione (numero medio di anni di scolarizzazione fino a 25)
+* **ExpenditureYear0**	Spesa (spesa pro capite per la polizia)
+* **LabourForce**	Forza lavoro giovanile (uomini occupati 18-24 per 1000)
+* **Males**	Maschi (per 1000 femmine)
+* **MoreMales**	Più maschi identificati per 1000 femmine 1 = si, 0 = no
+* **StateSize**	Dimensione dello stato (in centinaia di migliaia)
+* **YouthUnemployment**	Disoccupazione giovanile (numero di maschi di età compresa tra 18 e 24 anni per 1000) 
+* **MatureUnemployment**	Disoccupazione matura (numero di uomini di età compresa tra 35 e 39 anni per 1000)
+* **HighYouthUnemploy**	Alto tasso di disoccupazione giovanile 1 = si, 0 = no (alto se i giovani >3*maturi)
+* **Wage**	Salario (salario settimanale medio)
+* **BelowWage**	Al di sotto del salario (numero di famiglie al di sotto della metà dello stipendio per 1000)
+

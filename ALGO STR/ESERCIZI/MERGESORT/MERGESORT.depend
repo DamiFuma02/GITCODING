@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1665062739 source:/media/damiano/Windows/LOCAL_REPO/Nuova cartella/ALGO STR/ESERCIZI/MERGESORT/main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+

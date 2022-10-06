@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1664974114 source:/media/damiano/Windows/LOCAL_REPO/Nuova cartella/ALGO STR/ESERCIZI/INSERTIONSORT/InsertionSort/main.c
+	<stdio.h>
+	<stdlib.h>
+

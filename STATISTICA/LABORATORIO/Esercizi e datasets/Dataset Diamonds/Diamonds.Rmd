@@ -1,0 +1,70 @@
+---
+title: "Analisi dataset Diamonds"
+author: "Nome e Cognome, Matricola"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Il dataset Diamonds.csv contiene dati su 184 diamanti (dimensione in carati, colore, chiarezza, tipo di certificazione, prezzo in dollari di Singapore). Si considerino le variabili dimensione in carati (Size) e prezzo dei diamanti (in dollari).
+
+*    Si effettui un’analisi descrittiva delle variabili prezzo e dimensione dei diamanti.
+
+*    Si studi la relazione tra le due variabili.
+
+*    Interpretare i risultati ottenuti.
+
+```{r}
+Diamonds_new <- read.csv("C:/Users/mamel/Desktop/LABORATORIO DI STATISTICA/Network Shortcuts/diamonds/Diamonds1.csv")
+View(Diamonds_new)
+summary(Diamonds_new$Size)
+par(mfor=c(1,2))
+hist(Diamonds_new$Size,breaks=c(0,0.2,0.4,0.6,0.8,1,1.2),freq=F,main="Istogramma della dimensione",xlab="Dimensione")
+lines(density(Diamonds_new$Size),col=2)
+boxplot(Diamonds_new$Size)
+library(moments)
+skewness(Diamonds_new$Size)
+kurtosis(Diamonds_new$Size)
+```
+
+
+```{r}
+summary(Diamonds_new$Price)
+boxplot(Diamonds_new$Price)
+skewness(Diamonds_new$Price)
+kurtosis(Diamonds_new$Price)
+```
+
+```{r}
+par(mfrow=c(1,2))
+qqnorm(Diamonds_new$Size,main="Dimensione")
+qqline(Diamonds_new$Size)
+qqnorm(Diamonds_new$Price,main="Prezzo")
+qqline(Diamonds_new$Price)
+```
+
+```{r}
+plot(Diamonds_new$Size,Diamonds_new$Price)
+```
+
+## Test di correlazione
+```{r}
+cor.test(Diamonds_new$Size,Diamonds_new$Price,method="spearman")
+```
+
+
+## Analisi della regressione
+```{r}
+mod = lm(Price~Size,data=Diamonds_new)
+summary(mod)
+plot(Diamonds_new$Size,Diamonds_new$Price,xlab="Dimensione",ylab="Prezzo")
+abline(mod,col=2)
+```
+
+```{r}
+plot(mod,which=1)
+plot(mod,which=2)
+plot(mod,which=4)
+```
