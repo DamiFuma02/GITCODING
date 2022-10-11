@@ -4,3 +4,15 @@
 	<stdlib.h>
 	<time.h>
 
+1665336008 source:/home/damiano/GITCODING/ALGO STR/ESERCIZI/MERGESORT/main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"merge.h"
+	"mergeArr.h"
+
+1665336543 /home/damiano/GITCODING/ALGO STR/ESERCIZI/MERGESORT/merge.h
+	<math.h>
+
+1665335921 /home/damiano/GITCODING/ALGO STR/ESERCIZI/MERGESORT/mergeArr.h
+

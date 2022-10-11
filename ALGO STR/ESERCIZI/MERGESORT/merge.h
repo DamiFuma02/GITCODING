@@ -1,16 +1,33 @@
-//
-// Created by damiano on 11/10/22.
-//
-
-#ifndef MERGE_MERGE_H
-#define MERGE_MERGE_H
+#ifndef MERGE_H_INCLUDED
+#define MERGE_H_INCLUDED
 
 #include <math.h>
 
+// MERGESORT FORNITO DAL CORSO DI PROGRAMMAZIONE
 
 
+void mergeSortV2(int inputArr[], int inputLength){
+    int copyArray[inputLength];   // array di supporto
+    // startIndex = 0; endIndex=lastIndex of the inputArray
+    mergeSortRec(inputArr,copyArray,0,inputLength-1,inputLength);
+}
 
+void mergeSortRec(int inputArr[],int copyArray[], int startIndex, int endIndex,int inputLength){
+    if (startIndex<endIndex){
+        int middleIndex = startIndex  +  (endIndex-startIndex)/2;
+        // lunghezza della pozione considerata = endIndex-startIndex+1
 
+        // chiamate ricorsive per le due metà
+        // se (endIndex-startIndex) è dispari la metà viene arrotondata per difetto,
+        // generando due vettori diversi, il più lungo nella prima metà
+        mergeSortRec(inputArr,copyArray,startIndex,middleIndex,inputLength);
+        mergeSortRec(inputArr,copyArray,middleIndex+1,endIndex,inputLength);
+
+        // unione delle due metà già ordinate crescentemente
+        merge2(inputArr,copyArray,startIndex,middleIndex,endIndex,inputLength);
+    }
+    // startIndex >= endIndex quindi sono selezionati 0/1 elementi, di conseguenza sono già ordinati
+}
 
 
 
@@ -60,34 +77,4 @@ void merge2(int inputArr[],int copyArray[], int start, int middle, int endIndex,
 
 }
 
-
-
-void mergeSortRec(int inputArr[],int copyArray[], int startIndex, int endIndex,int inputLength){
-    if (startIndex<endIndex){
-        int middleIndex = startIndex  +  (endIndex-startIndex)/2;
-        // lunghezza della pozione considerata = endIndex-startIndex+1
-
-        // chiamate ricorsive per le due metà
-        // se (endIndex-startIndex) è dispari la metà viene arrotondata per difetto,
-        // generando due vettori diversi, il più lungo nella prima metà
-        mergeSortRec(inputArr,copyArray,startIndex,middleIndex,inputLength);
-        mergeSortRec(inputArr,copyArray,middleIndex+1,endIndex,inputLength);
-
-        // unione delle due metà già ordinate crescentemente
-        merge2(inputArr,copyArray,startIndex,middleIndex,endIndex,inputLength);
-    }
-    // startIndex >= endIndex quindi sono selezionati 0/1 elementi, di conseguenza sono già ordinati
-}
-
-
-
-
-void mergeSortV2(int inputArr[], int inputLength){
-    int copyArray[inputLength];   // array di supporto
-    // startIndex = 0; endIndex=lastIndex of the inputArray
-    mergeSortRec(inputArr,copyArray,0,inputLength-1,inputLength);
-}
-
-
-
-#endif //MERGE_MERGE_H
+#endif // MERGE_H_INCLUDED

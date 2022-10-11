@@ -6,13 +6,13 @@ public class Main {
         Random rd = new Random(); // creating Random object
         int[] arr = new int[100000];
         for (int i = 0; i < arr.length; i++) {
-            arr[i] = rd.nextInt(); // storing random integers in an array
+            arr[i] = rd.nextInt(1000); // storing random integers in an array
         }
         long start = System.currentTimeMillis();
         mergeSort(arr);
         long end = System.currentTimeMillis();
         float sec = (end - start) / 1000F;
-        System.out.println(sec + " seconds");
+        System.out.println("MERGESORT CON ARRAYS. Tempo Trascorso "+sec + " seconds");
         /*for (int i = 0; i < arr.length; i++) {
 
             System.out.print(arr[i]+" "); // printing each array element
@@ -23,7 +23,8 @@ public class Main {
         ab.mergeSort(0, arr.length-1);
         end = System.currentTimeMillis();
         sec = (end - start) / 1000F;
-        System.out.println(sec + " seconds");
+        System.out.println("MERGESORT OTTIMIZZATO . Tempo Trascorso "+sec + " seconds");
+
 
     }
 
