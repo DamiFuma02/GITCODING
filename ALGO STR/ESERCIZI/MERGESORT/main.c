@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "merge.h"
-#include "mergeArr.h"
+//#include "mergeArr.h"
 
 
 
@@ -20,20 +20,20 @@ int main()
 
 
 
+//    clock_t begin = clock();
+//    mergeSort(array,n);
+//    clock_t end = clock();
+//    double time_spent = (double)(end - begin) / (CLOCKS_PER_SEC) ;
+//    printf("MERGESORT ARRAYS\nTIME SPENT %f seconds\n",time_spent);
+//
+
+
+
     clock_t begin = clock();
-    mergeSort(array,n);
+    mergeSortV2(array,n);
     clock_t end = clock();
     double time_spent = (double)(end - begin) / (CLOCKS_PER_SEC) ;
-    printf("MERGESORT ARRAYS\nTIME SPENT %f seconds\n",time_spent);
-
-
-
-
-     begin = clock();
-    mergeSortV2(array,n);
-     end = clock();
-     time_spent = (double)(end - begin) / (CLOCKS_PER_SEC) ;
-    printf("MERGESORT OTTIMIZZATO CON INDICI\nTIME SPENT %f seconds\n",time_spent);
+    printf("MERGESORT OTTIMIZZATO CON INDICI\nTEMPO TRASCORSO %f seconds\n",time_spent);
 
 
 

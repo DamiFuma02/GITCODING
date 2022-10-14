@@ -4,9 +4,9 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("O(n*logn)");
         Random rd = new Random(); // creating Random object
-        int[] arr = new int[100000];
+        int[] arr = new int[1000000];
         for (int i = 0; i < arr.length; i++) {
-            arr[i] = rd.nextInt(1000); // storing random integers in an array
+            arr[i] = rd.nextInt(10000); // storing random integers in an array
         }
         long start = System.currentTimeMillis();
         mergeSort(arr);

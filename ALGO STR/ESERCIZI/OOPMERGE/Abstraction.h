@@ -8,7 +8,19 @@
 
 class Abstraction {
 
-};
 
+public:
+    void mergeSort(int inputArray[],int inputLength){
+
+    }
+
+
+
+
+};
+private:
+int length;
+int inputArray[];
+int copyArray[];
 
 #endif //OOPMERGE_ABSTRACTION_H
