@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1665768810 source:/home/damiano/GITCODING/ALGO STR/ESERCIZI/QUICKSORT/main.c
+	<stdio.h>
+	<time.h>
+	<stdlib.h>
+
