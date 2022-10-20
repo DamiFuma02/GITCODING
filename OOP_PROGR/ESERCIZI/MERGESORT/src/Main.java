@@ -2,9 +2,13 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
+
+
+
+
         System.out.println("O(n*logn)");
         Random rd = new Random(); // creating Random object
-        int[] arr = new int[1000000];
+        int[] arr = new int[100000];
         for (int i = 0; i < arr.length; i++) {
             arr[i] = rd.nextInt(10000); // storing random integers in an array
         }
@@ -26,7 +30,17 @@ public class Main {
         System.out.println("MERGESORT OTTIMIZZATO . Tempo Trascorso "+sec + " seconds");
 
 
+
+        /*start = System.currentTimeMillis();
+        int[] u = Mergesort.sort( arr );
+        end = System.currentTimeMillis();
+        sec = (end - start) / 1000F;
+        System.out.println("MERGESORT MIROLO . Tempo Trascorso "+sec + " seconds");
+        */
+
+
     }
+
 
     public static void mergeSort(int[] inputArray){
         int arrLength = inputArray.length;

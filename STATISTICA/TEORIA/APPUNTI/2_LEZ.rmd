@@ -226,7 +226,7 @@ if (ok) {
 (cylRelCumFreq = data.frame(Pi = cumsum(cylRelFreqTable)))   # frequenze relative cumulate
 ```
 
-# RAPPRESENTAZIONI GRAFICHE
+# RAPPRESENTAZIONI GRAFICHE {#grafici}
 
 ## DATI QUALITATIVI
 

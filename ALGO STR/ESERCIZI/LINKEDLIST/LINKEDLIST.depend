@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1666184037 source:/home/damiano/GITCODING/ALGO STR/ESERCIZI/LINKEDLIST/main.cpp
+	<iostream>
+
+1666184286 source:/home/damiano/GITCODING/ALGO STR/ESERCIZI/LINKEDLIST/src/Node.cpp
+	"Node.h"
+
+1666184424 /home/damiano/GITCODING/ALGO STR/ESERCIZI/LINKEDLIST/include/Node.h
+
