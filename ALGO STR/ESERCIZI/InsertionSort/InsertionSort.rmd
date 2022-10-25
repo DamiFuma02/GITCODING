@@ -46,3 +46,11 @@ insertionSort = function (ARR){
   }
 }
 ```
+
+## COMPLESSITÀ
+
+$$
+T(n) = d*n + e* \sum_{j=2}^{n}tj + f| d,e,f \in R
+$$
+
+### CASO PEGGIORE

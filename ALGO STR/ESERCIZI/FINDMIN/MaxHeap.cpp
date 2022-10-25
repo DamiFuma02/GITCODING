@@ -123,12 +123,6 @@ void MaxHeap::heapifyRec(int index) {
 
 }
 
-void MaxHeap::heapSort(int arr[], int arrLgt) {
-    for (int i=(arrLgt-1);i>=0;i--){
-        swap(0,i);
-        heapifyRec()
-    }
-}
 
 
 

@@ -1,0 +1,3 @@
+/home/damiano/GITCODING/ALGO STR/ESERCIZI/OOP_MERGESORT/cmake-build-debug/CMakeFiles/OOP_MERGESORT.dir
+/home/damiano/GITCODING/ALGO STR/ESERCIZI/OOP_MERGESORT/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/damiano/GITCODING/ALGO STR/ESERCIZI/OOP_MERGESORT/cmake-build-debug/CMakeFiles/rebuild_cache.dir

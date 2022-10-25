@@ -1,0 +1,3 @@
+/home/damiano/GITCODING/ALGO STR/ESERCIZI/SELECTIONSORT/cmake-build-debug/CMakeFiles/SELECTIONSORT.dir
+/home/damiano/GITCODING/ALGO STR/ESERCIZI/SELECTIONSORT/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/damiano/GITCODING/ALGO STR/ESERCIZI/SELECTIONSORT/cmake-build-debug/CMakeFiles/rebuild_cache.dir

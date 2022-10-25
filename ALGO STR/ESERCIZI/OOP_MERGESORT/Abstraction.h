@@ -7,7 +7,14 @@
 
 
 class Abstraction {
-
+private:
+    int* inputArray;
+    int* copyArray;
+    int inputLength;
+public:
+    Abstraction(int ar[],int n);
+    void mergeSort(int start,int end);
+    void mergeArrs(int startIndex, int middleIndex, int endIndex);
 };
 
 

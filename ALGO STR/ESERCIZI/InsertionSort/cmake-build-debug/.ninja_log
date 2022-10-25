@@ -1,0 +1,13 @@
+# ninja log v5
+0	202	1666542103818852554	CMakeFiles/InsertionSort.dir/main.cpp.o	48b631191dc0bc22
+203	255	1666542103870858052	InsertionSort	9badae48601ef5ef
+1	192	1666542118728239836	CMakeFiles/InsertionSort.dir/main.cpp.o	48b631191dc0bc22
+192	246	1666542118780244085	InsertionSort	9badae48601ef5ef
+1	191	1666542131237143210	CMakeFiles/InsertionSort.dir/main.cpp.o	48b631191dc0bc22
+191	235	1666542131277145730	InsertionSort	9badae48601ef5ef
+1	194	1666542158782405580	CMakeFiles/InsertionSort.dir/main.cpp.o	48b631191dc0bc22
+194	241	1666542158826406891	InsertionSort	9badae48601ef5ef
+0	190	1666542189538831046	CMakeFiles/InsertionSort.dir/main.cpp.o	48b631191dc0bc22
+190	236	1666542189586831018	InsertionSort	9badae48601ef5ef
+1	311	1666616533597094696	CMakeFiles/InsertionSort.dir/main.cpp.o	48b631191dc0bc22
+311	466	1666616533749091745	InsertionSort	9badae48601ef5ef
