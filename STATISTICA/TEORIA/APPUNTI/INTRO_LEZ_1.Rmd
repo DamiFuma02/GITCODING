@@ -1,0 +1,101 @@
+---
+title: "LEZIONE1"
+output: pdf_document
+date: "`r Sys.Date()`"
+---
+
+# DATI
+
+## OSSERVAZIONALI
+
+-   Sono già presenti e vanno semplicemente misurati
+
+## SPERIMENTALI
+
+-   Vengono rilevati dopo opportune modifiche e azioni ai dati osservazionali
+
+### ANALISI STATISTICA {#analisi}
+
+-   PROBLEMA: Capire il contesto, specificare gli obiettivi e tradurre il problema in lingaggio matematico e statistico
+
+-   RACCOLTA E PULIZIA DATI
+
+-   ANALISI INIZIALE: sintesi numeriche e grafiche
+
+-   ANALISI COMPLETA
+
+-   PRESENTAZIONE RISULTATI
+
+# UNITÀ STATISTICHE
+
+-   **POPOLAZIONI REALI**:
+
+    -   hanno un'esistenza fisica al momento dell'osservazione.
+
+    -   Sono FINITE, e possono essere esaminate in modo completo tramite [CENSIMENTO]
+
+-   **POPOLAZIONI VIRTUALI**:
+
+    -   hanno un'esistenza concettuale, e derivano da osservazioni sperimentali.
+
+    -   Sono potenzialmente INFINITE, quindi non misurabili completamente, attraverso il [CAMPIONAMENTO]
+
+## CENSIMENTO
+
+-   Vengono esaminate tutte le unità statistiche della popolazione reale.
+
+-   Vengono determinate delle caratteristiche di interesse
+
+### ESEMPIO
+
+-   censimento generale della popolazione e delle abitazioni
+
+## CAMPIONAMENTO
+
+-   Si esamina un sottoinsieme finito della popolazione reale o virtuale
+-   ESPERIMENTO DI CAMPIONAMENTO:
+    -   ESTRAZIONE CASUALE DI UNITÀ STATISTICHE
+
+        -   Ogni unità deve rappresentare tutte le caratteristiche della popolazione
+
+        -   CALCOLO DELLE PROBABILITÀ
+
+            -   Studio degli esperimenti casuali
+
+            -   Esperimenti di campionamento
+
+    -   VARIABILITÀ CAMPIONATORIA:
+
+        -   Causata dalla randomicitò delle estrazioni
+
+        -   I risultati sono affetti da incertezza
+
+### ESEMPIO
+
+-   Indagine sui consumi delle famiglie
+
+# STATISTICA:
+
+-   Fornisce concetti e strumenti per evidenziare gli aspetti rilevanti racchiusi nei dati
+
+-   Quantifica la forza delle conclusioni ipotizzate durante l'analisi
+
+## DESCRITTIVA
+
+-   ANALISI UNIVARIATE ([LEZ 2](./2_LEZ.pdf))
+
+-   ANALISI MULTIVARIATE (LEZ 3)
+
+### **OBIETTIVI**
+
+-   **DESCRIZIONE** delle **caratteristiche essenziali** di una popolazione
+
+-   Un **dato** può essere **censito** e **campionato**
+
+## INFERENZIALE
+
+-   Viene usata sui dati **campionatori**
+
+-   Viene usata per determinare la fiducia e la affidabilità dei dati riscontrati
+
+-   I dati rilevati sono soggetti a **incertezza** dovuta dalla casualità di estrazione dei campioni
