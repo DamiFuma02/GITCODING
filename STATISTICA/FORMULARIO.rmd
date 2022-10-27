@@ -260,7 +260,7 @@ $$
 E(Y^2) + (E(Y)^2) - 2E(Y)E(Y) = E(Y^2)-(E(Y)^2)
 $$
 
-##### INVARIANZA PER TRASLAZIONI
+### INVARIANZA PER TRASLAZIONI
 
 $$
 V(Y+b)=V(Y) ; b \in R
@@ -268,7 +268,7 @@ $$
 
 $V(Y+b) = E[(Y+b-E(Y+b))^2] = E[(Y +b-E(Y)-b)^2] =E[(Y-E(Y))^2]=V(Y)$
 
-##### OMOGENEITÀ DI SECONDO GRADO
+### OMOGENEITÀ DI SECONDO GRADO
 
 $$
 V(a*Y) = a^2V(Y), a \in R
@@ -371,7 +371,7 @@ $$
 ### DIPENDENZA
 
 $$
-\chi^2 \in ]0;min(m-1,k-1)]
+\chi^2 \in ]0;n*min(m-1,k-1)]
 $$
 
 # DIPENDENZA MEDIA {#dipmed}
@@ -470,7 +470,7 @@ $$
 
 -   $\rho^S_{XY} = 0$ non vi è alcuna associazione
 
-#REGRESSIONE LINEARE
+# REGRESSIONE LINEARE
 
 $$
 y_i = b*x_i + a + e_i, i \in [1,n]
@@ -485,6 +485,18 @@ $$
 $$
 a = E(Y) - b*E(X)
 $$
+
+$$
+\rho_{XY}= \frac{Cov(X,Y)} {\sigma_X*\sigma_Y}
+$$
+
+-   $-1 \le \rho_{XY} \le 1$
+
+-   $\rho_{XY} < 0$ relazione DECRESCENTE
+
+-   $\rho_{XY} > 0$ relazione CRESCENTEE
+
+-   $\rho_{XY} = 0$ ASSENZA RELAZIONE LINEARE
 
 ## RESIDUI STIMATI
 
@@ -505,7 +517,7 @@ R^2 = \frac{V(Y^s)}{V(Y)} = \frac{\sum_i (y^s_i - E(Y^s))^2 / n}{\sum_i (y_i - E
 $$
 
 $$
-R^2 = \frac{V(e^s)}{V(Y)} = 1 - \frac{\sum_i (e^s_i - E(e^s))^2 / n}{\sum_i (y_i - E(Y))^2 / n}
+R^2 = 1-\frac{V(e^s)}{V(Y)} = 1 - \frac{\sum_i (e^s_i - E(e^s))^2 / n}{\sum_i (y_i - E(Y))^2 / n}
 $$
 
 $$

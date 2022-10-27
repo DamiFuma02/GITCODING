@@ -359,3 +359,513 @@ $$
 ```{r}
 (VarianzaClassi= calcolaVarianza(Yc,FreqTable$fi,MediaClassi))
 ```
+
+# A.24)
+
+![](images/paste-CBD00A0D.png)
+
+> Y = TABACCO
+>
+> X = ALCOLICI
+>
+> Y = f(X)
+>
+> f: funzione di regressione lineare, della forma $Y = \beta *X+ \alpha$
+
+```{r}
+(Tabella = data.frame(
+  Regione = 1:10,
+  Alcol = c(6.47,6.13,6.19,4.89,5.63,4.52,5.89,4.79,5.27,6.08),
+  Tabacco = c(4.03,3.76,3.77,3.34,3.47,2.92,3.2,2.71,3.53,4.51)
+))
+
+X = Tabella$Alcol
+Y = Tabella$Tabacco
+```
+
+$$
+V(Y) = E[ (Y-E(Y))^2] = E(Y^2) - (E(Y))^2
+$$
+
+```{r}
+(X_Varianza= mean(X**2) - mean(X)**2)
+```
+
+$$
+CovXY =  E(XY)-E(X)E(Y)
+$$
+
+```{r}
+(CovarianzaXY = mean(X*Y) - mean(X)*mean(Y))
+```
+
+$$
+\beta  = \frac{Cov(X,Y)}{V(X)} = \rho_{XY}*\frac{\sigma_Y}{\sigma_X}
+$$
+
+```{r}
+(beta = CovarianzaXY / X_Varianza)
+```
+
+$$
+\alpha = E(Y) - beta*E(X)
+$$
+
+```{r}
+
+(alfa = mean(Y) - beta*mean(X))
+
+
+```
+
+## VALORI STIMATI DAL MODELLO
+
+$$
+y^s_i = \beta*x_i + \alpha
+$$
+
+```{r}
+# Ys = Ystimata
+(Ystimata = beta*X + alfa)
+```
+
+## RESIDUI STIMATI
+
+$$
+e_i = y_i - y^s_i
+$$
+
+```{r}
+# E  = ErroriStimati
+(ErroriStimati = Y - Ystimata)
+```
+
+$$
+V(Y) = V(Ys) + V(E)
+$$
+
+```{r}
+(Ys_Varianza = mean(Ystimata**2) - mean(Ystimata)**2)          
+(Es_Varianza = mean(ErroriStimati**2) - mean(ErroriStimati)**2)         
+
+
+(Y_Varianza = mean(Y**2) - (mean(Y))**2)
+# ==
+Ys_Varianza + Es_Varianza
+
+
+
+```
+
+## COEFFICIENTE DI DETERMINAZIONE
+
+$$
+R^2 = \frac{V(Ys)}{V(Y)} = 1- \frac{V(E)}{V(Y)}
+$$
+
+```{r}
+(RQuadro = Ys_Varianza / Y_Varianza)
+(RQuadro = 1-(Es_Varianza / Y_Varianza))
+
+```
+
+## VERIFICA IPOTESI
+
+$$
+R^2 = \rho^2_{XY}
+$$
+
+$$
+\rho_{XY} = \beta*\frac{\sigma_X}{\sigma_Y} = \frac{Cov(X,Y)* \sigma_X } {V(X)\sigma_Y}
+$$
+
+$$
+\sigma_X = \sqrt(V(X)
+$$
+
+```{r}
+(sigmaX = X_Varianza**0.5)
+(sigmaY = Y_Varianza**0.5)
+
+(rho = beta*sigmaX/sigmaY)
+
+(rho = (CovarianzaXY*sigmaX)/(X_Varianza*sigmaY))
+
+
+(rho**2)
+(RQuadro)
+
+```
+
+## GRAFICO
+
+```{r}
+ggplot(Tabella,aes(x=X,y=Y)) +geom_point() + geom_abline(aes(intercept=alfa,slope=beta)) + geom_segment(aes(yend = Ystimata,xend=X)) 
+
+
+```
+
+# A.27)
+
+![](images/paste-427D8B37.png)
+
+```{r}
+Tabella = data.frame(
+  X = c(1.44,4.36,5.47,3.39,3.92,2.12,0.92,5.63,5.76,2.72,2.71,3.62,4.05,1.63,0.24),
+  Y = c(10,798,816,42,155,51,3,832,1275,18,46,81,186,10,2)
+)
+
+X = Tabella$X
+Y = Tabella$Y
+
+```
+
+## RETTA DI REGRESSIONE
+
+$$
+Y = \beta*X + \alpha + e
+$$
+
+$$
+\beta = \frac{Cov(X,Y) }{V(X)} = \rho_{XY}*\frac{\sigma_Y}{\sigma_X}
+$$
+
+$$
+\alpha = E(Y) - b*E(X)
+$$
+
+$$
+Cov(X,Y) = E[ (X-E(X)] * E[ (Y-E(Y)] = E(XY) - E(X)E(Y)
+$$
+
+```{r}
+(CovarianzaXY = mean(X*Y) - mean(X)*mean(Y))
+```
+
+```{r}
+(X_Varianza = mean((X-mean(X))**2))
+(Y_Varianza = mean((Y-mean(Y))**2))
+# Disuguaglianza di Cauchy-Schwarz
+-1*(X_Varianza*Y_Varianza) <= CovarianzaXY && CovarianzaXY<= (X_Varianza*Y_Varianza)
+
+```
+
+$$
+\beta = \frac{Cov(X,Y) }{V(X)} = \rho_{XY}*\frac{\sigma_Y}{\sigma_X}
+$$
+
+```{r}
+(beta= CovarianzaXY / X_Varianza)
+(alfa = mean(Y) - beta*mean(X))
+```
+
+$$
+Ys = \alpha + \beta*X
+$$
+
+```{r}
+(Ystimata = alfa + beta*X)
+(Ys_Varianza = mean((Ystimata-mean(Ystimata))**2))
+```
+
+$$
+Es = Y - Ys
+$$
+
+```{r}
+(ErroriStimati = Y - Ystimata)
+(Es_Varianza = mean((ErroriStimati - mean(ErroriStimati))**2))
+```
+
+## COEFFICIENTE DI DETERMINAZIONE
+
+$$
+V(Y) = V(Ys) + V(Es)
+$$
+
+```{r}
+Ys_Varianza + Es_Varianza == Y_Varianza
+```
+
+$$
+R^2 = \frac{V(Ys)}{V(Y)} = 1- \frac{V(Es)}{V(Y)} 
+$$
+
+```{r}
+(Rquadro = Ys_Varianza / Y_Varianza)
+(Rquadro = 1 - (Es_Varianza / Y_Varianza))
+
+
+
+```
+
+$$
+\rho_{XY} = \frac{Cov(X,Y)}{V(X)*V(Y)}
+$$
+
+```{r}
+(rhoXY = CovarianzaXY / (X_Varianza*Y_Varianza))
+Rquadro
+
+rhoXY**2
+```
+
+$$
+R^2 = \rho_{XY}
+$$
+
+> Non è verificata in quanto $\rho_{XY}=0$ indica assenza di legame lineare tra le due grandezze
+
+## GRAFICO
+
+```{r}
+ggplot(Tabella,aes(x=X,y=Y)) + geom_point() + geom_abline(aes(intercept=alfa,slope=beta)) + geom_segment(aes(yend=Ystimata,xend=X))
+
+ggsave("LinearPlot.png")
+```
+
+# ALTERNATIVA LOGARITMICA
+
+```{r}
+
+Tabella2 = Tabella %>% mutate(Y = log(Y))
+
+
+Y = Tabella2$Y
+X = Tabella2$X
+```
+
+## RETTA DI REGRESSIONE
+
+$$
+Y = \beta*X + \alpha + e
+$$
+
+$$
+\beta = \frac{Cov(X,Y) }{V(X)} = \rho_{XY}*\frac{\sigma_Y}{\sigma_X}
+$$
+
+$$
+\alpha = E(Y) - b*E(X)
+$$
+
+$$
+Cov(X,Y) = E[ (X-E(X)] * E[ (Y-E(Y)] = E(XY) - E(X)E(Y)
+$$
+
+```{r}
+(CovarianzaXY = mean(X*Y) - mean(X)*mean(Y))
+```
+
+```{r}
+(X_Varianza = mean((X-mean(X))**2))
+(Y_Varianza = mean((Y-mean(Y))**2))
+# Disuguaglianza di Cauchy-Schwarz
+-1*(X_Varianza*Y_Varianza) <= CovarianzaXY && CovarianzaXY<= (X_Varianza*Y_Varianza)
+
+```
+
+$$
+\beta = \frac{Cov(X,Y) }{V(X)} = \rho_{XY}*\frac{\sigma_Y}{\sigma_X}
+$$
+
+```{r}
+(beta= CovarianzaXY / X_Varianza)
+(alfa = mean(Y) - beta*mean(X))
+```
+
+$$
+Ys = \alpha + \beta*X
+$$
+
+```{r}
+(Ystimata = alfa + beta*X)
+(Ys_Varianza = mean((Ystimata-mean(Ystimata))**2))
+```
+
+$$
+Es = Y - Ys
+$$
+
+```{r}
+(ErroriStimati = Y - Ystimata)
+(Es_Varianza = mean((ErroriStimati - mean(ErroriStimati))**2))
+```
+
+## COEFFICIENTE DI DETERMINAZIONE
+
+$$
+V(Y) = V(Ys) + V(Es)
+$$
+
+```{r}
+Ys_Varianza + Es_Varianza == Y_Varianza
+```
+
+$$
+R^2 = \frac{V(Ys)}{V(Y)} = 1- \frac{V(Es)}{V(Y)} 
+$$
+
+```{r}
+(Rquadro = Ys_Varianza / Y_Varianza)
+(Rquadro = 1 - (Es_Varianza / Y_Varianza))
+
+
+
+```
+
+$$
+\rho_{XY} = \frac{Cov(X,Y)}{V(X)*V(Y)}
+$$
+
+```{r}
+(rhoXY = CovarianzaXY / (X_Varianza*Y_Varianza))
+Rquadro
+
+rhoXY**2
+```
+
+$$
+R^2 = \rho_{XY}
+$$
+
+## GRAFICO
+
+```{r}
+ggplot(Tabella2,aes(x=X,y=Y)) + geom_point() + geom_abline(aes(intercept=alfa,slope=beta)) + geom_segment(aes(yend=Ystimata,xend=X))
+ggsave("LogPlot.png")
+```
+
+## CONFRONTO GRAFICI
+
+### LINEARE
+
+![](LinearPlot.png)
+
+### LOGARITMICO
+
+![](LogPlot.png)
+
+# A.26)
+
+![](images/paste-643368B5.png)
+
+```{r}
+(Tabella = data.frame(
+  X = c(2,2,2,2,4,4,5,5,5,6,6,6,6,6),
+  Y = c(0.457,0.712,1.429,0.363,2.5,1.58,4.217,2.521,3.022,3.235,3.666,2.739,3.644,3.93)
+))
+X = Tabella$X
+Y = Tabella$Y
+```
+
+## RETTA DI REGRESSIONE
+
+$$
+Y = \beta*X + \alpha + e
+$$
+
+$$
+\beta = \frac{Cov(X,Y) }{V(X)} = \rho_{XY}*\frac{\sigma_Y}{\sigma_X}
+$$
+
+$$
+\alpha = E(Y) - b*E(X)
+$$
+
+$$
+Cov(X,Y) = E[ (X-E(X)] * E[ (Y-E(Y)] = E(XY) - E(X)E(Y)
+$$
+
+```{r}
+(CovarianzaXY = mean(X*Y) - mean(X)*mean(Y))
+```
+
+```{r}
+(X_Varianza = mean((X-mean(X))**2))
+(Y_Varianza = mean((Y-mean(Y))**2))
+# Disuguaglianza di Cauchy-Schwarz
+-1*(X_Varianza*Y_Varianza) <= CovarianzaXY && CovarianzaXY<= (X_Varianza*Y_Varianza)
+
+```
+
+$$
+\beta = \frac{Cov(X,Y) }{V(X)} = \rho_{XY}*\frac{\sigma_Y}{\sigma_X}
+$$
+
+```{r}
+(beta= CovarianzaXY / X_Varianza)
+(alfa = mean(Y) - beta*mean(X))
+```
+
+$$
+Ys = \alpha + \beta*X
+$$
+
+```{r}
+(Ystimata = alfa + beta*X)
+(Ys_Varianza = mean((Ystimata-mean(Ystimata))**2))
+```
+
+$$
+Es = Y - Ys
+$$
+
+```{r}
+(ErroriStimati = Y - Ystimata)
+(Es_Varianza = mean((ErroriStimati - mean(ErroriStimati))**2))
+```
+
+## COEFFICIENTE DI DETERMINAZIONE
+
+$$
+V(Y) = V(Ys) + V(Es)
+$$
+
+```{r}
+Ys_Varianza + Es_Varianza == Y_Varianza
+```
+
+$$
+R^2 = \frac{V(Ys)}{V(Y)} = 1- \frac{V(Es)}{V(Y)} 
+$$
+
+```{r}
+(Rquadro = Ys_Varianza / Y_Varianza)
+(Rquadro = 1 - (Es_Varianza / Y_Varianza))
+
+
+
+```
+
+$$
+\rho_{XY} = \frac{Cov(X,Y)}{V(X)*V(Y)}
+$$
+
+```{r}
+(rhoXY = CovarianzaXY / (X_Varianza*Y_Varianza))
+Rquadro
+
+rhoXY**2
+```
+
+$$
+R^2 = \rho_{XY}
+$$
+
+## GRAFICO
+
+```{r}
+
+ggplot(Tabella,aes(x=X,y=Y)) + geom_point() + geom_abline(aes(intercept=alfa,slope=beta)) + geom_segment(aes(yend=Ystimata,xend=X))
+
+
+```
+
+# A.18)
+
+![](images/paste-BF8E8B80.png)
+
+```{r}
+
+```

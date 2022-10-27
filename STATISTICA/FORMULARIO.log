@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.10.21)  25 OCT 2022 15:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.10.21)  27 OCT 2022 20:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -504,10 +504,10 @@ Package pdftex.def Info: images/paste-3F294E92.png  used on input line 467.
 (pdftex.def)             Requested size: 469.76869pt x 214.92249pt.
 [5] [6 <./images/paste-3F294E92.png>] [7] [8] [9] (./FORMULARIO.aux) ) 
 Here is how much of TeX's memory you used:
- 13352 strings out of 480247
- 210113 string characters out of 5896150
- 537906 words of memory out of 5000000
- 30925 multiletter control sequences out of 15000+600000
+ 13358 strings out of 480247
+ 210182 string characters out of 5896150
+ 537949 words of memory out of 5000000
+ 30929 multiletter control sequences out of 15000+600000
  517619 words of font info for 99 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  74i,6n,77p,1007b,453s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -524,10 +524,10 @@ r10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fon
 ts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmr5.pfb><
 /usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/p
 ublic/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb>
-Output written on FORMULARIO.pdf (9 pages, 242850 bytes).
+Output written on FORMULARIO.pdf (9 pages, 243422 bytes).
 PDF statistics:
- 340 PDF objects out of 1000 (max. 8388607)
- 296 compressed objects within 3 object streams
- 98 named destinations out of 1000 (max. 500000)
- 28950 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 352 PDF objects out of 1000 (max. 8388607)
+ 307 compressed objects within 4 object streams
+ 100 named destinations out of 1000 (max. 500000)
+ 28974 words of extra memory for PDF output out of 29859 (max. 10000000)
 
