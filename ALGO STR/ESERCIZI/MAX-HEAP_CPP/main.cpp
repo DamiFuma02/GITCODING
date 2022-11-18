@@ -5,64 +5,144 @@ using namespace std;
 
 
 
+int parentID(int index) {
+    return (index-1)/2;
+}
 
-void heapify(int arr[], int N, int i)
-{
+int leftID(int index) {
+    return (2*index)+1;
+}
 
-    // Initialize largest as root
-    int largest = i;
+int rightID(int index) {
+    return (2*index)+2;
+}
 
-    // left = 2*i + 1
-    int l = 2 * i + 1;
+bool isLeaf(int index) const {
+    return (index > (heapSize/2) && index <=heapSize);
+}
 
-    // right = 2*i + 2
-    int r = 2 * i + 2;
-
-    // If left child is larger than root
-    if (l < N && arr[l] > arr[largest])
-        largest = l;
-
-    // If right child is larger than largest
-    // so far
-    if (r < N && arr[r] > arr[largest])
-        largest = r;
-
-    // If largest is not root
-    if (largest != i) {
-        swap(arr[i], arr[largest]);
-
-        // Recursively heapify the affected
-        // sub-tree
-        heapify(arr, N, largest);
-    }
+void swap(int x, int y) {
+    int tmp = heap[x];
+    heap[x]=heap[y];
+    heap[y]=tmp;
 }
 
 
-
-
-
-
-// Main function to do heap sort
-void heapSort(int arr[], int N)
-{
-
-    // Build heap (rearrange array)
-    for (int i = N / 2 - 1; i >= 0; i--)
-        heapify(arr, N, i);
-
-    // One by one extract an element
-    // from heap
-    for (int i = N - 1; i > 0; i--) {
-
-        // Move current root to end
-        swap(arr[0], arr[i]);
-
-        // call max heapify on the reduced heap
-        heapify(arr, i, 0);
+void print() {
+    for(int i=0;i<heapSize/2;i++){
+        printf("PARENT-NODE: %d\n",heap[i]);
+        if (leftID(i)<heapSize){
+            printf("LEFT-CHILD-NODE: %d\n",heap[leftID(i)]);
+        }
+        if (rightID(i)<heapSize){
+            printf("RIGHT-CHILD-NODE: %d\n",heap[rightID(i)]);
+        }
+        cout<<endl;
     }
 }
 
+void buildHeap(int *arr, int arrLength) {
 
+    // costruisce gli heap iterativamente dal basso verso l'alto
+    // l'indice parte deal parentID dell'ultimo elemento in quanto
+    // l'ultima riga non ha figli e quindi non ha senso chiamare la funzione heapifyDown
+    for (int i= parentID(arrLength-1);i>0;i--){
+        heapifyDownRec(arr,i);
+    }
+}
+
+int getMaxKey() {
+
+
+    try{
+        if (heapSize == 0){
+            throw out_of_range("HEAP TROPPO PICCOLO");
+        }
+        int tmp = heap[0];
+        heap[0] = heap[heapSize-1];
+        heapSize--;
+        heapifyDownRec(0);
+        return tmp;
+
+
+
+    }catch (const out_of_range &oor){
+        cout<<endl<<oor.what();
+    }
+
+
+
+
+    /*// ROOT è la MAGGIORE
+    int returnKey = heap[0];
+    // scambia l'ultimo elemento con il primo
+    heap[0] = heap[heapSize-1];
+    // viene controllata la validità dello heap in quanto ora la root contiene una key bassa
+    heapifyRec(0);
+    heapSize--;
+    return returnKey;*/
+}
+
+void heapifyDownRec(int* heap,int subtree_root_index) {
+
+    int largest_value = subtree_root_index;
+
+    int left = leftID(subtree_root_index);
+
+    int right = rightID(subtree_root_index);
+
+
+    if (left < heapSize && heap[left] > heap[largest_value]){
+
+        largest_value = left;
+
+    }
+
+
+    if (right < heapSize && heap[right] > heap[largest_value]){
+
+        largest_value = right;
+
+    }
+
+
+    if (largest_value != subtree_root_index )
+
+    {
+
+        swap(subtree_root_index, largest_value);
+
+
+        heapifyDownRec ( largest_value);
+
+    }
+
+
+}
+
+void heapifyUp(int index) {
+    while(index>0 && heap[index]>heap[parentID(index)]){
+        swap(index, parentID(index));
+        index= parentID(index);
+    }
+}
+
+void heapSort(int *arr, int arrLgt) {
+    // costruisce la HEAP
+    buildHeap(arr,arrLgt);
+    // preleva iterativamente il primo elemento della heap, essenso il più grande
+    // e lo scambia con quello in ultima posizione
+    // il nuovo elemento in prima posizione possiede un errore di validità
+    // di chiavi perciò è necessario chiamare heapifyDown
+    for(int i=arrLgt-1;i>0;i--){
+        swap(i,0);
+        // decrementare la lunghezza in quanto l'ultimo elemento
+        // non ci interessa più nei confronti
+        heapSize--;
+        // risolve il problema della root
+        heapifyDownRec(0);
+    }
+}
 
 
 
@@ -76,14 +156,14 @@ void heapSort(int arr[], int N)
 
 int main() {
 
-    MaxHeap* heapArr = new MaxHeap(20);
+    //MaxHeap* heapArr = new MaxHeap(2000);
     int l = 1000;
     int array[l];
     for (int i=0;i<l;i++){
         array[i] = rand()%1000;
     }
-    heapArr->arrToHeap(array,l);
 
+    heapArr->heapSort(array,l);
 
     cout<<heapArr->getMaxKey()<<endl;
     //heapArr->print();

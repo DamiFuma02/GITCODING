@@ -1,0 +1,3 @@
+/home/damiano/GITCODING/ALGO STR/LABORATORIO/6_RicercaBinaria/cmake-build-debug/CMakeFiles/6_RicercaBinaria.dir
+/home/damiano/GITCODING/ALGO STR/LABORATORIO/6_RicercaBinaria/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/damiano/GITCODING/ALGO STR/LABORATORIO/6_RicercaBinaria/cmake-build-debug/CMakeFiles/rebuild_cache.dir

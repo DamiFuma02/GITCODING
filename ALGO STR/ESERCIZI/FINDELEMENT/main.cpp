@@ -55,6 +55,56 @@ void findElement(int A[], int N, int X)
 
 }
 
+
+int ricerca_lenta(int* a,int n, int chiave){
+    for (int i=0;i<n;i++){
+        if (a[i] == chiave){
+            return i;
+        }
+    }
+    // mai trovato l'elemento
+    return -1;
+}
+
+
+int ricerca_dicotomicaITER(int* a, int n, int chiave){
+    int start = 0;
+    int end = n-1;
+    while(start <= end){
+        int middle = (start+end)/2;
+        if (a[middle] == chiave){
+            return middle;
+        } else if (a[middle]<chiave){
+            start = middle+1;
+        } else {
+            end=middle-1;
+        }
+    }
+    return -1;
+}
+
+int ricerca_dicotomicaREC(int* a, int n, int chiave,int start, int end){
+    if (start <= end){
+        int middle = (start+end)/2;
+        if (a[middle] == chiave){
+            return middle;
+        } else if (a[middle]<chiave){
+            ricerca_dicotomicaREC(a,n,chiave,middle+1,end);
+        } else {
+            ricerca_dicotomicaREC(a,n,chiave,start,middle-1);
+        }
+    }
+    return -1;
+}
+
+
+
+
+
+
+
+
+
 // Driver Code
 int main()
 {
@@ -74,6 +124,18 @@ int main()
     clock_t end = clock();
     double time_spent = (double)(end - start) / (CLOCKS_PER_SEC) ;
     printf("FIND ELEMENT IN ARRAY WITH AT MOST (N-1)/2 COMPARISONS \nTIME SPENT %f seconds\n",time_spent);
+
+    start = clock();
+   int index =  ricerca_lenta(array,n,X);
+    printf("array[%d] = %d",index,array[index]);
+    end = clock();
+    time_spent = (double)(end - start) / (CLOCKS_PER_SEC) ;
+
+    start = clock();
+     index =  ricerca_dicotomicaITER(array,n,X);
+    printf("array[%d] = %d",index,array[index]);
+    end = clock();
+    time_spent = (double)(end - start) / (CLOCKS_PER_SEC) ;
 
     return 0;
 }

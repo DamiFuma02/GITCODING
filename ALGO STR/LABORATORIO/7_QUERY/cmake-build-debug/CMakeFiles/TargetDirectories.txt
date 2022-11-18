@@ -1,0 +1,3 @@
+/home/damiano/GITCODING/ALGO STR/LABORATORIO/7_QUERY/cmake-build-debug/CMakeFiles/7_QUERY.dir
+/home/damiano/GITCODING/ALGO STR/LABORATORIO/7_QUERY/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/damiano/GITCODING/ALGO STR/LABORATORIO/7_QUERY/cmake-build-debug/CMakeFiles/rebuild_cache.dir

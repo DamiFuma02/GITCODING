@@ -7,8 +7,8 @@
 
 using namespace std;
 
-MaxHeap::MaxHeap(int l) {
-    this->maxLength=l;
+MaxHeap::MaxHeap(int maxLgt) {
+    this->maxLength=maxLgt;
     heapSize=0;
 }
 
@@ -34,20 +34,6 @@ void MaxHeap::swap(int x, int y) {
     heap[y]=tmp;
 }
 
-void MaxHeap::insert(int key) {
-    // la key viene inserita come ultimo elemento
-    if (heapSize<maxLength){
-        heap[heapSize] = key;
-        int index = heapSize;
-        while(index>0 && heap[index]>heap[parentID(index)]){
-            swap(index, parentID(index));
-            index= parentID(index);
-        }
-        heapSize++;
-    } else {
-        return;
-    }
-}
 
 void MaxHeap::print() {
     for(int i=0;i<heapSize/2;i++){
@@ -62,9 +48,13 @@ void MaxHeap::print() {
     }
 }
 
-void MaxHeap::arrToHeap(int arr[],int arrLength) {
-    for (int i=0;i<arrLength;i++){
-        insert(arr[i]);
+void MaxHeap::buildHeap(int *arr, int arrLength) {
+
+    // costruisce gli heap iterativamente dal basso verso l'alto
+    // l'indice parte deal parentID dell'ultimo elemento in quanto
+    // l'ultima riga non ha figli e quindi non ha senso chiamare la funzione heapifyDown
+    for (int i= parentID(arrLength-1);i>0;i--){
+        heapifyDownRec(i);
     }
 }
 
@@ -78,7 +68,7 @@ int MaxHeap::getMaxKey() {
         int tmp = heap[0];
         heap[0] = heap[heapSize-1];
         heapSize--;
-        heapifyRec(0);
+        heapifyDownRec(0);
         return tmp;
 
 
@@ -100,105 +90,68 @@ int MaxHeap::getMaxKey() {
     return returnKey;*/
 }
 
-void MaxHeap::heapifyRec(int index) {
-    int leftChild = leftID(index);
-    int rightChild = rightID(index);
+void MaxHeap::heapifyDownRec(int subtree_root_index) {
 
-    int largest = index; //il più grande è nella ROOT index
+    int largest_value = subtree_root_index;
 
-    if (leftChild< heapSize && heap[leftChild]>heap[index]){
-        largest = leftChild;
-    }
+    int left = leftID(subtree_root_index);
 
-    if (rightChild< heapSize && heap[rightChild]>heap[largest]){
-        largest = rightChild;
-    }
+    int right = rightID(subtree_root_index);
 
-    if (largest != index){
-        swap(index,largest);
-        heapifyRec(largest);
+
+    if (left < heapSize && heap[left] > heap[largest_value]){
+
+        largest_value = left;
+
     }
 
 
+    if (right < heapSize && heap[right] > heap[largest_value]){
+
+        largest_value = right;
+
+    }
+
+
+    if (largest_value != subtree_root_index )
+
+    {
+
+        swap(subtree_root_index, largest_value);
+
+
+        heapifyDownRec ( largest_value);
+
+    }
 
 
 }
 
-void MaxHeap::heapSort(int *arr, int N) {
-    // Build heap (rearrange array)
-    for (int i = N / 2 - 1; i >= 0; i--)
-        heapifyRec(arr, N, i);
+void MaxHeap::heapifyUp(int index) {
+    while(index>0 && heap[index]>heap[parentID(index)]){
+        swap(index, parentID(index));
+        index= parentID(index);
+    }
+}
 
-    // One by one extract an element
-    // from heap
-    for (int i = N - 1; i > 0; i--) {
-
-        // Move current root to end
-        swap(arr[0], arr[i]);
-
-        // call max heapify on the reduced heap
-        heapify(arr, i, 0);
+void MaxHeap::heapSort(int *arr, int arrLgt) {
+    // costruisce la HEAP
+    buildHeap(arr,arrLgt);
+    // preleva iterativamente il primo elemento della heap, essenso il più grande
+    // e lo scambia con quello in ultima posizione
+    // il nuovo elemento in prima posizione possiede un errore di validità
+    // di chiavi perciò è necessario chiamare heapifyDown
+    for(int i=arrLgt-1;i>0;i--){
+        swap(i,0);
+        // decrementare la lunghezza in quanto l'ultimo elemento
+        // non ci interessa più nei confronti
+        heapSize--;
+        // risolve il problema della root
+        heapifyDownRec(0);
     }
 }
 
 
 
-
-// To heapify a subtree rooted with node i
-// which is an index in arr[].
-// n is size of heap
-/*
-void heapify(int arr[], int N, int i)
-{
-
-    // Initialize largest as root
-    int largest = i;
-
-    // left = 2*i + 1
-    int l = 2 * i + 1;
-
-    // right = 2*i + 2
-    int r = 2 * i + 2;
-
-    // If left child is larger than root
-    if (l < N && arr[l] > arr[largest])
-        largest = l;
-
-    // If right child is larger than largest
-    // so far
-    if (r < N && arr[r] > arr[largest])
-        largest = r;
-
-    // If largest is not root
-    if (largest != i) {
-        swap(arr[i], arr[largest]);
-
-        // Recursively heapify the affected
-        // sub-tree
-        heapify(arr, N, largest);
-    }
-}
-*/
-
-
-// Main function to do heap sort
-void heapSort(int arr[], int N)
-{
-
-    // Build heap (rearrange array)
-    for (int i = N / 2 - 1; i >= 0; i--)
-        heapify(arr, N, i);
-
-    // One by one extract an element
-    // from heap
-    for (int i = N - 1; i > 0; i--) {
-
-        // Move current root to end
-        swap(arr[0], arr[i]);
-
-        // call max heapify on the reduced heap
-        heapify(arr, i, 0);
-    }
-}
 
 

@@ -1,8 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include "mergeArr.h"
 #include "merge.h"
-//#include "mergeArr.h"
+
+
+
+
+
+
+
+
 
 
 

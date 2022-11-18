@@ -5,6 +5,9 @@
 #ifndef MAX_HEAP_CPP_MAXHEAP_H
 #define MAX_HEAP_CPP_MAXHEAP_H
 #define MAX 10000
+#include <vector>
+
+using namespace std;
 
 class MaxHeap {
 private:
@@ -12,7 +15,7 @@ private:
     int heapSize;
     int maxLength;
     void swap(int x, int y);
-    void heapifyRec(int index);
+    void heapifyDownRec(int index);
 
 public:
     MaxHeap(int);
@@ -22,11 +25,12 @@ public:
     bool isLeaf(int) const;
     void insert(int);
     void print();
-    void arrToHeap(int [],int);
+    void buildHeap(int [],int);
     int getMaxKey();
     void heapSort(int[],int);
 
 
+    void heapifyUp(int index);
 };
 
 
