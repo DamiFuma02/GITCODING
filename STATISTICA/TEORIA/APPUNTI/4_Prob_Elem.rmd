@@ -206,7 +206,7 @@ $$
 
 > Quando A si realizza, l'unica parte di B che può ancora realizzarsi è quella in comune con A
 
-## COMPOSTA
+## COMPOSTA {#composta}
 
 $$
 P(B \cap A) = P(B |A)*P(A), P(A)>0

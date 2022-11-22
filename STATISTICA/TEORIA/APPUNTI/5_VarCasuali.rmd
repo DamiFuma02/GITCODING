@@ -56,7 +56,9 @@ $$
 
 -   $F_X$ è tale che $\lim_{x \to \infty}F_X(x) = 1$
 
-# VARIABILI DISCRETE
+# DISCRETE
+
+-   [**BERNOULLIANA**]
 
 > Una variabilie casuale X si dice **discreta** se esiste un insieme di numeri finito {$x_i$} $i \in I$
 
@@ -68,15 +70,21 @@ $$
 \sum_{i \in I}pi = 1
 $$
 
-## FUNZIONE PROBABILITÀ
+## FUNZIONE
 
-> La corrispondenza tra i valori di $X \in S_X = [x_i], i \in I$ e la loro probabilità è dettata dalla funzione di probabilità
+### PROBABILITÀ
+
+> La corrispondenza tra i valori di $X \in S_X = \{x_i\}, i \in I$ e la loro probabilità è dettata dalla funzione di probabilità
 
 $$
 f_X(x) =   {P(X=x_i)=pi \leftarrow x=x_i} \\ {0\leftarrow x\ne x_i}
 $$
 
-## DIPENDENZE FUNZIONI
+$$
+f_X(x) =  \begin{cases}  P(X=x_i)=pi ,  & \mbox{if }  x \in S_X\\ 0  \end{cases} 
+$$
+
+### RIPARTIZIONE
 
 $$
 F_X(x) = P(X \le x) = \sum_{i:x_i \le x}pi
@@ -88,19 +96,57 @@ $$
 p_i = f_X(x_i) = F(x_i) - F(x_{i-1})
 $$
 
-# VARIABILI CONTINUE
+![](images/paste-25AEA26F.png)
 
-> A differenza di una variabile discreta, quella continua possiede infiniti valori del supporto che essa può assumere
->
-> La sua funzione di ripartizione è descritta dalla **funzione di densità**
+> L'immagine rappresenta la variabile casuale X che conta il numero di esiti testa in 3 lanci di una moneta regolare
 
-## FUNZIONE DI DENSITÀ {#contdens}
+-   $S_X = \{0,1,2,3\}$: sono i possibili valori che ammette X, la variabile conteggio
+
+#### PROBABILITÀ ASSOCIATE
+
+-   $P(X \ge 1)$: esca almeno 1 volta testa su 3 lanci
+
+    -   **evento complementare:** esce 0 volte testa
+
+    -   $P(X \ge 1) = 1 - P(X=0) = 1 - \frac{1}{8} = \frac{7}{8}$
+
+-   $P(X < 2)$: escono meno di due valori testa, quindi solo $\{0,1\}$
+
+    -   $\sum_{x_i<2}P(X=x_i) = F_X(1) = 1/2$
+
+# CONTINUE
+
+> A differenza di una variabile discreta, quella continua possiede infiniti valori del supporto
+
+## FUNZIONI
+
+### DENSITÀ {#contdens}
 
 $$
 F_X(x) = \int_{-\infty}^{x}f_X(t)dt, \forall x \in R
 $$
 
-## FUNZIONE DI DENSITÀ PROBABILITÀ {#densprob}
+![](images/paste-25119C30.png)
+
+> Rapprenta la funzione di ripartizione delle variabili continue in quanto
+
+$$
+F_x(x_i)=P(X \le x_i)
+$$
+
+-   Il punto individuato dal grafico è circa (1;0.6)
+
+    -   $F_X(1)=0,6 = P(X \le 1)$
+
+#### PROBABILITÀ ASSOCIATE
+
+-   $P(X > a) = 1 - P(X \le a) = 1-F_X(a), \forall a \in R$
+
+-   $P(a < X \le b) = P(X \le b) - P(X \le a) = F_X(b)-F_X(a)$
+
+    -   $\int_{a}^{b}f_X(x)dx$
+
+### DENSITÀ PROBABILITÀ {#densprob}
 
 $$
 f_X(x) \ge 0, \forall x \in R
@@ -110,13 +156,17 @@ $$
 \int_{-\infty}^{\infty}f_X(x)dx = 1
 $$
 
--   Questa formula indica che la somma di tutte le probabilità associate a ogni valore della variabile casuale X da come somma 1, verificando gli assiomi di Kolmogorov
+-   Questa formula indica che **la somma di tutte le probabilità** associate a ogni valore della variabile casuale X da come somma 1, verificando gli **assiomi di Kolmogorov**
 
 $$
 f_X(x) = \frac{d}{dx}F_X(x) = F'_X(x)
 $$
 
 -   La funzione di densità probabilità si traduce in termini matematici come la derivata prima della funzione di densitò
+
+![](images/paste-F035CCF1.png)
+
+> A differenza del grafico precedente l'ordinata è rappresentata dalla singola probabilità
 
 ## PROPRIETÀ
 
@@ -350,9 +400,8 @@ $$
 
 -   $\gamma > 0$: **ASIMMETRIA POSITIVA**
 
-```{=html}
 <!-- -->
-```
+
 -   $\gamma < 0$: **ASIMMETRIA NEGATIVA**
 
 ## CURTOSI
@@ -425,7 +474,7 @@ $$
 \forall x_i \in S_x, P(X=X_i)= \sum_{j \in J}P(X=x_i,Y=y_i) = \sum_{j \in J}p_{i,j} = p_{i+} 
 $$
 
-## TABELLA CONTINGENZA
+### TABELLA CONTINGENZA
 
 > Come nel caso della statistica descrittiva è possibile rappresentare una coppia di variabili attraverso la seguente tabella
 
@@ -489,6 +538,22 @@ $$
 V(X|Y=y_j)=\sum_{x_i}(x_i - E(X|Y=y_j) )^2*f_{X|Y=y_j}(x_i)
 $$
 
+#### PROPRIETÀ
+
+-   **COMBINAZIONE LINEARE**
+
+$$
+V(aX+bY)=a^2V(X)+b^2V(Y) + 2abCov(X,Y)
+$$
+
+-   **CASI PARTICOLARI**
+
+$$
+V(X+Y) = V(X)+V(Y)+2Cov(X,Y) \\  V(X-Y)=V(X)+V(Y)-2Cov(X,Y)
+$$
+
+-   Nel caso in cui X e Y siano incorrelate $\rho_{XY}=0$ si ha che $Cov(X,Y)=0$
+
 ### INDIPENDENZA
 
 > Nel caso in cui X e Y siano **indipendenti** allora la media e la varianza condizionata coincidono con quelli reali della singola variabile
@@ -535,6 +600,8 @@ $$
 
 -   $\rho_{X,Y} < 0$ : **DECRESCENTE**
 
+### 
+
 # TOPOLOGIA DI VARIABILE
 
 ## BERNOULLIANA
@@ -575,6 +642,18 @@ $$
 
 ![](images/paste-B3BFA071.png)
 
+### MEDIA
+
+> Essendo **discreta** si usa la seguente formula
+
+$$
+E(X) = \sum_{x \in S_X}x*f_X(x)dx = \sum_{x \in S_X}x*P(X=x)
+$$
+
+> $S_X=\{x_1,x_2\}$
+>
+> $E(X) = x_1*f_X(x_1)+x_2*f_X(x_2) = x_1*p_1+x_2*(1-p_1)$
+
 ## ESPONENZIALE
 
 $$
@@ -599,8 +678,109 @@ $$
 F_X(x) =   \begin{cases}  1-e^{-\lambda x} =\int_{-\infty}^{x} f_X(x)dx = \int_{0}^{x} f_X(x)dx ,  & \mbox{if } x \in S_X \\ 0  \end{cases}  
 $$
 
+![](images/paste-59ACBCB7.png)
+
 #### PROBABILITÀ
 
 -   $P(X>x_i) = 1-F_X(x_i)$
 
 -   $P(x_1 \le X \le x_j)= F_X(x_j) - F_X(x_1)$
+
+### MEDIA
+
+$$
+E(X) = \int_{-\infty}^{+\infty}x*f_X(x)dx
+$$
+
+$$
+E(X) = \int_{-\infty}^{+\infty}x* \lambda e^{-\lambda x }dx , t=\lambda x \\ \frac{1}{\lambda}\int_{0}^{+\infty}x* \lambda te^{-t}dt = \frac{1}{\lambda}
+$$
+
+### VARIANZA
+
+$$
+V(X) = E(X^2) - (E(X))^2 = E(X^2) - \frac{1}{\lambda^2}  \\
+E(X^2) = \int_{0}^{+\infty}\lambda x^2*  e^{-\lambda x }dx = \frac{2}{\lambda}\int_{0}^{+\infty}\lambda x *  e^{-\lambda x }dx = \frac{2}{\lambda^2}
+$$
+
+$$
+V(X) = \frac{2}{\lambda^2} - \frac{1}{\lambda^2} = \frac{1}{\lambda^2}
+$$
+
+### MEDIANA
+
+$$
+F_X(x_{0.5})=0.5
+$$
+
+> Per ottenere il valore della mediana è sufficiente risolvere la seguente equazione
+
+$$
+1-e^{-\lambda x_{0.5}} = 0.5 \\ x_{0.5}= \lambda^{-1}*ln2 
+$$
+
+### QUANTILI
+
+$$
+F_X(x_{\alpha})=\alpha
+$$
+
+$$
+1-e^{-\lambda x_{\alpha}} = \alpha \\ x_{\alpha} = \frac{ln(1-\alpha)}{-\lambda}
+$$
+
+## UNIFORME
+
+> Una variabile casuale si dice uniforme in $\{0,1\}$ se il suo supporto è limitato in quell'intervallo
+
+$$
+X \sim U(0,1) \\ S_X= \{0 \le x_i \le 1\}
+$$
+
+### DENSITÀ
+
+$$
+f_X(x) =   \begin{cases}  1  ,  & \mbox{if } x \in S_X \\ 0  \end{cases} 
+$$
+
+![](images/paste-AD43EACB.png)
+
+### RIPARTIZIONE
+
+$$
+F_X(x) =   \begin{cases} 0  ,  & \mbox{if } x <0 \\ x  ,  & \mbox{if } x \in S_X \\ 1 ,  & \mbox{if } x \ge 1 \end{cases} 
+$$
+
+![](images/paste-13821399.png)
+
+### PROBABILITÀ
+
+> Dati due intervalli disgiunti $[a,b]$ $[c,d]$ con $a < b$ e $c < d$ e di uguale ampiezza $h = b-a = d-c$
+
+$$
+P(a \le X \le b)=P(c \le X \le d) = F_X(d)-F_X(c)=d-c=h
+$$
+
+> Perciò la probabilità che il valore sia all'interno di un dato intervallo equivale alla dimensione stessa dell'intervallo
+
+### APPLICAZIONI
+
+> È utile per rappresentare eventi aleatori di estrazione di numeri all'interno di un certo intervallo.
+>
+> Ogni numero è equiprobabile agli altri
+
+### MEDIA
+
+$$
+E(X) = \int_{0}^{1}x*f_X(x)dx = \int_{0}^{1}x*1dx \\ x=F'(x) , F(x)= x^2/2 \\ E(X) = F(1)-F(0)=1/2
+$$
+
+### VARIANZA
+
+$$
+V(X) = E(X^2)-(E(X))^2
+$$
+
+$$
+V(X) = E(X^2)-(1/2)^2 = E(X^2) - \frac{1}{4}
+$$

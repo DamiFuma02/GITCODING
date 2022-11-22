@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.10.21)  19 NOV 2022 14:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.10.21)  21 NOV 2022 19:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**5_VarCasuali.tex
-(./5_VarCasuali.tex
+**7_StatCamp.tex
+(./7_StatCamp.tex
 LaTeX2e <2021-11-15> patch level 1
 L3 programming layer <2022-01-21> (/usr/share/texlive/texmf-dist/tex/latex/base
 /article.cls
@@ -333,8 +333,8 @@ Package: xurl 2022/01/09 v 0.10 modify URL breaks
 File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count288
 \l__pdf_internal_box=\box53
-) (./5_VarCasuali.aux)
-\openout1 = `5_VarCasuali.aux'.
+) (./7_StatCamp.aux)
+\openout1 = `7_StatCamp.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 69.
 LaTeX Font Info:    ... okay on input line 69.
@@ -480,107 +480,56 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 75.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 75.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 75.
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
-25.
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 8
+5.
 (/usr/share/texmf/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [1
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 114.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 114.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 114.
+[1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-<images/paste-25AEA26F.png, id=28, 708.39656pt x 304.13625pt>
-File: images/paste-25AEA26F.png Graphic file (type png)
-<use images/paste-25AEA26F.png>
-Package pdftex.def Info: images/paste-25AEA26F.png  used on input line 199.
-(pdftex.def)             Requested size: 469.75906pt x 201.68188pt.
-[2 <./images/paste-25AEA26F.png>]
-<images/paste-25119C30.png, id=45, 306.39468pt x 258.9675pt>
-File: images/paste-25119C30.png Graphic file (type png)
-<use images/paste-25119C30.png>
-Package pdftex.def Info: images/paste-25119C30.png  used on input line 254.
-(pdftex.def)             Requested size: 306.41263pt x 258.98264pt.
-[3 <./images/paste-25119C30.png>]
-<images/paste-F035CCF1.png, id=60, 316.18124pt x 249.18094pt>
-File: images/paste-F035CCF1.png Graphic file (type png)
-<use images/paste-F035CCF1.png>
-Package pdftex.def Info: images/paste-F035CCF1.png  used on input line 321.
-(pdftex.def)             Requested size: 316.19011pt x 249.18791pt.
-[4 <./images/paste-F035CCF1.png>] [5] [6] [7]
 
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 720.
+LaTeX Warning: Command \textellipsis invalid in math mode on input line 156.
 
-[8]
-<images/paste-73C20613.png, id=152, 520.19344pt x 260.47313pt>
-File: images/paste-73C20613.png Graphic file (type png)
-<use images/paste-73C20613.png>
-Package pdftex.def Info: images/paste-73C20613.png  used on input line 805.
-(pdftex.def)             Requested size: 469.75726pt x 235.21854pt.
-[9 <./images/paste-73C20613.png>] [10] [11]
-<images/paste-39FA9075.png, id=201, 322.20375pt x 305.64188pt>
-File: images/paste-39FA9075.png Graphic file (type png)
-<use images/paste-39FA9075.png>
-Package pdftex.def Info: images/paste-39FA9075.png  used on input line 1015.
-(pdftex.def)             Requested size: 322.2177pt x 305.65509pt.
-<images/paste-B3BFA071.png, id=202, 311.66437pt x 303.38344pt>
-File: images/paste-B3BFA071.png Graphic file (type png)
-<use images/paste-B3BFA071.png>
-Package pdftex.def Info: images/paste-B3BFA071.png  used on input line 1025.
-(pdftex.def)             Requested size: 311.66835pt x 303.38731pt.
-[12 <./images/paste-39FA9075.png>]
-<images/paste-215C567F.png, id=211, 319.94531pt x 301.8778pt>
-File: images/paste-215C567F.png Graphic file (type png)
-<use images/paste-215C567F.png>
-Package pdftex.def Info: images/paste-215C567F.png  used on input line 1062.
-(pdftex.def)             Requested size: 319.94452pt x 301.87706pt.
-[13 <./images/paste-B3BFA071.png>]
-<images/paste-59ACBCB7.png, id=224, 309.40594pt x 300.3722pt>
-File: images/paste-59ACBCB7.png Graphic file (type png)
-<use images/paste-59ACBCB7.png>
-Package pdftex.def Info: images/paste-59ACBCB7.png  used on input line 1071.
-(pdftex.def)             Requested size: 309.4335pt x 300.39894pt.
-[14 <./images/paste-215C567F.png>] [15 <./images/paste-59ACBCB7.png>]
-<images/paste-AD43EACB.png, id=246, 313.17pt x 296.60812pt>
-File: images/paste-AD43EACB.png Graphic file (type png)
-<use images/paste-AD43EACB.png>
-Package pdftex.def Info: images/paste-AD43EACB.png  used on input line 1152.
-(pdftex.def)             Requested size: 313.17877pt x 296.61644pt.
-<images/paste-13821399.png, id=247, 315.42844pt x 290.58563pt>
-File: images/paste-13821399.png Graphic file (type png)
-<use images/paste-13821399.png>
-Package pdftex.def Info: images/paste-13821399.png  used on input line 1161.
-(pdftex.def)             Requested size: 315.4469pt x 290.60265pt.
-[16 <./images/paste-AD43EACB.png>] [17 <./images/paste-13821399.png>] (./5_VarC
-asuali.aux) ) 
+
+LaTeX Warning: Command \textellipsis invalid in math mode on input line 209.
+
+
+LaTeX Warning: Command \textellipsis invalid in math mode on input line 246.
+
+[2]
+
+LaTeX Warning: Command \textellipsis invalid in math mode on input line 310.
+
+[3] [4] (./7_StatCamp.aux) ) 
 Here is how much of TeX's memory you used:
- 13585 strings out of 480247
- 213644 string characters out of 5896150
- 539054 words of memory out of 5000000
- 31051 multiletter control sequences out of 15000+600000
- 518471 words of font info for 109 fonts, out of 8000000 for 9000
+ 13298 strings out of 480247
+ 209357 string characters out of 5896150
+ 537480 words of memory out of 5000000
+ 30901 multiletter control sequences out of 15000+600000
+ 517796 words of font info for 101 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 74i,8n,77p,1009b,448s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/f
-onts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.
-enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/share/texmf/fonts/enc
-/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}</usr/sh
-are/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public
-/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/t
-exmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/l
-mmi5.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fo
-nts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb
-></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type
-1/public/lm/lmr5.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/sha
-re/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/
-lm/lmsy5.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb>
-Output written on 5_VarCasuali.pdf (17 pages, 371572 bytes).
+ 74i,5n,77p,1007b,438s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/
+dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/t
+exmf/fonts/enc/dvips/lm/lm-ts1.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx
+10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/s
+hare/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/
+lm/lmsy10.pfb>
+Output written on 7_StatCamp.pdf (4 pages, 176141 bytes).
 PDF statistics:
- 603 PDF objects out of 1000 (max. 8388607)
- 528 compressed objects within 6 object streams
- 176 named destinations out of 1000 (max. 500000)
- 29307 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 253 PDF objects out of 1000 (max. 8388607)
+ 224 compressed objects within 3 object streams
+ 67 named destinations out of 1000 (max. 500000)
+ 28921 words of extra memory for PDF output out of 29859 (max. 10000000)
 
