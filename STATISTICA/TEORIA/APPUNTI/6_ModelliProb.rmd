@@ -479,7 +479,7 @@ $$
 ### RIPARTIZIONE
 
 $$
-F_X(x;\lambda) = \begin{cases}  1 e^{-\lambda x} ,  & \mbox{if } x>0 \\ 0 & \mbox{if } x\le0\end{cases} 
+F_X(x;\lambda) = \begin{cases}  1- e^{-\lambda x} ,  & \mbox{if } x>0 \\ 0 & \mbox{if } x\le0\end{cases} 
 $$
 
 ### MEDIA
@@ -703,7 +703,7 @@ $$
 
 > Essendo una variabile continua il suo supporto è
 
-### $$
+$$
 S_X=[0,+\infty)
 $$MEDIA
 
@@ -765,7 +765,7 @@ $$
 
 ### VARIANZA
 
-### $$
+$$
 V(Y) = \frac{n}{n-2}, n > 2
 $$DENSITÀ
 

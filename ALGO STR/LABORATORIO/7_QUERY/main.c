@@ -70,12 +70,49 @@ int main( )
     return 0;
 }
 
+
+
+/*
+PROGETTARE UN ALBERO BINARIO IN CUI LE FOGLIE SONO I VALORI DELL'ARRAY 
+E I NODI SONO IL VALORE MASSIMO TRA I DUE FIGLI
+ACCESSO AL MASSIMO THETA(1)
+*/
+
+typedef struct BinTree
+{
+    int key;
+    struct BinTree* leftChild;
+    struct BinTree* rigthChild;
+} BinTree; 
+
+
+void makeTree(int* arr, int arrSize){
+
+}
+
+
+
 void querySum(int *inputArray, int inputSize, int *indexArray, int indexSize) {
     // T(n)
     // n = inputSize
     // m = indexSize
 
-    printf("QUERYSUM\n");
+    
+    // siccome il primo elemento di B vale 0 allora B deve contenere un elemento in più
+    // per coprire tutte le somme cumulate fino all'ultimo elemento di inputArray
+    int* B[inputSize+1];   
+    B[0] = 0;
+    for (int i = 0; i < inputSize; i++)
+    {   
+        // frequenze cumulate
+        // B[i] = sum(A[1,i])
+        B[i+1] = B[i] + inputArray[i];
+    }
+    
+
+
+
+    printf("\nQUERYSUM\n");
     for (int i=0;i<indexSize;i+=2){   // c*(m/2)
         int startIndex = indexArray[i];   // c
         int endIndex = indexArray[i+1];   // c
@@ -83,8 +120,27 @@ void querySum(int *inputArray, int inputSize, int *indexArray, int indexSize) {
         for (int j= startIndex;j<=endIndex;j++){   //c*
             currSum+=inputArray[j];
         }
-        printf("Somma tra %d e %d = %d\n",startIndex,endIndex,currSum);
+        printf("Somma tra indice %d e %d = %d\n",startIndex,endIndex,currSum);
     }
+}
+
+typedef struct intPair{
+    int i,j;
+}intPair;
+
+intPair cerca_somma_intervallo(int*v, int n, intPair s){
+    int w[n+1];
+    w[0] = 0;
+    for(int i=1;i<=n;i++){
+        w[i] = w[i-1]+v[i-1];
+    }
+    return cerca_differenza(w,n+1,s);
+
+    
+}
+
+intPair cerca_differenza(int* v, int n, intPair d){
+
 }
 
 

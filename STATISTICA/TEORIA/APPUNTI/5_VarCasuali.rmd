@@ -120,7 +120,7 @@ $$
 
 ## FUNZIONI
 
-### DENSITÀ {#contdens}
+### RIPARTIZIONE {#contdens}
 
 $$
 F_X(x) = \int_{-\infty}^{x}f_X(t)dt, \forall x \in R
@@ -483,6 +483,62 @@ p_{i,j}=P(X=x_i,Y=y_j)
 $$
 
 ![](images/paste-73C20613.png)
+
+### ESEMPIO
+
+```{r}
+banca <- rbind(cbind(rep("cattivo",60),rep("si",60)),
+cbind(rep("buono",520),rep("si",520)),
+cbind(rep("cattivo",21),rep("no",21)),
+cbind(rep("buono",609),rep("no",609)))
+banca <- as.data.frame(banca)
+colnames(banca) = c("tipo","cc")
+head(banca)
+# ordina la colonna tipo con prima "cattivo" e poi "buono"
+banca$tipo<-ordered(banca$tipo, levels=c("cattivo","buono"))
+# imposta i dati di cc come factor
+banca$cc<-factor(banca$cc, levels=c("si","no"))
+str(banca)
+
+# TABELLA DI CONTINGENZA
+(tab = table(banca$cc, banca$tipo))
+
+tab/sum(tab)
+```
+
+> Si vuole valutare l'indipendenza di cc e tipo
+
+```{r}
+# distribuzione marginale di cc
+margin.table(tab,1)
+# relativa
+margin.table(tab,1)/sum(margin.table(tab,1))
+
+
+# distribuzione marginale di tipo
+margin.table(tab,2)
+# relativa
+margin.table(tab,2)/sum(margin.table(tab,2))
+
+# distribuzione condizionata di "tipo|cc=si"
+# (frequenza relativa condizionata)
+tab[1,]/sum(tab[1,])
+
+# distribuzione condizionata di "tipo|cc=no"
+# (frequenza relativa condizionata)
+# in alternativa, prop.table(tab,1)
+tab[2,]/sum(tab[2,])
+
+# distribuzione marginale di "cc"
+ccmarg<-margin.table(tab,1)/sum(margin.table(tab,1))
+
+# distribuzione marginale di "tipo"
+tipomarg<-margin.table(tab,2)/sum(margin.table(tab,2))
+
+# probabilita' congiunta di "cc" e "tipo" in caso di indipendenza
+prob_ind <- ccmarg%*%t(tipomarg)
+
+```
 
 ## INDIPENDENZA
 

@@ -32,6 +32,33 @@ $$
 
 La lunghezza dell'insieme delle parti è per definizione 2\^n, con n = lunghezza dell'insieme
 
+## ESEMPIO
+
+> Lancio di un dado regolare a 6 facce
+
+```{r}
+(Omega = 1:6)
+set.seed(11)
+sample(Omega,1)
+sample(Omega,2)
+# senza reinserimento dei vaori di Omega
+sample(Omega,6) 
+# con reinserimento dei valori di Omega
+sample(Omega,6,replace = TRUE)
+```
+
+> Lancio di un dado fino a trovare 6
+
+```{r}
+set.seed(11)
+(lancio=sample(Omega,1))
+while(lancio != 6){
+  lancio=sample(Omega,1)
+  print(lancio)
+}
+print(paste("lancio finale:",lancio))
+```
+
 # INSIEMISTICA
 
 Dati due eventi $A,B \subseteq \Omega$

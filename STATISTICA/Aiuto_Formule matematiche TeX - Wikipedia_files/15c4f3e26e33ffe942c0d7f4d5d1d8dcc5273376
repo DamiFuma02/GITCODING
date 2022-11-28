@@ -1,0 +1,23 @@
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="17.69ex" height="2.509ex" style="vertical-align: -0.671ex;" viewBox="0 -791.3 7616.4 1080.4" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg" aria-labelledby="MathJax-SVG-1-Title">
+<title id="MathJax-SVG-1-Title">{\displaystyle \rightharpoonup \;\rightharpoondown \;\leftharpoonup \;\leftharpoondown \;\upharpoonleft \;\upharpoonright \;\downharpoonleft \;\downharpoonright }</title>
+<defs aria-hidden="true">
+<path stroke-width="1" id="E1-MJMAIN-21C0" d="M691 500Q691 511 711 511Q720 511 723 510T730 504T735 490T746 464T768 425Q796 378 835 339T897 285T933 263Q941 258 942 256T944 245T937 230H70Q56 237 56 250T70 270H852Q802 308 762 364T707 455T691 500Z"></path>
+<path stroke-width="1" id="E1-MJMAIN-21C1" d="M56 237T56 250T70 270H937Q944 263 944 256Q944 251 944 250T943 246T940 242T933 238Q794 153 734 7Q729 -7 726 -9T711 -11Q695 -11 693 -5Q690 -1 696 16Q721 84 763 139T852 230H70Q56 237 56 250Z"></path>
+<path stroke-width="1" id="E1-MJMAIN-21BC" d="M62 230Q56 236 55 244Q55 252 57 255T69 265Q114 292 151 326T208 391T243 448T265 491T273 509Q276 511 288 511Q304 511 306 505Q309 501 303 484Q293 456 279 430T251 383T223 344T196 313T173 291T156 276L148 270H929Q944 261 944 250T929 230H62Z"></path>
+<path stroke-width="1" id="E1-MJMAIN-21BD" d="M55 256Q56 264 62 270H929Q944 261 944 250T929 230H148Q149 229 165 215T196 185T231 145T270 87T303 16Q309 -1 306 -5Q304 -11 288 -11Q279 -11 276 -10T269 -4T264 10T253 36T231 75Q172 173 69 235Q59 242 57 245T55 256Z"></path>
+<path stroke-width="1" id="E1-MJAMS-21BF" d="M41 551Q76 559 123 592T201 682L208 694H228V258Q228 -178 226 -182Q221 -194 208 -194T190 -182Q188 -178 188 205V587L179 578Q151 552 117 534T65 511T42 505Q41 505 41 528V551Z"></path>
+<path stroke-width="1" id="E1-MJAMS-21BE" d="M188 258V694H208L215 682Q246 628 293 594T375 551V528Q375 505 374 505Q369 505 351 510T299 534T237 578L228 587V205Q228 -178 226 -182Q221 -194 208 -194T190 -182Q188 -178 188 258Z"></path>
+<path stroke-width="1" id="E1-MJAMS-21C3" d="M188 295V573Q188 657 189 672T200 692Q206 694 208 694Q221 694 226 683Q228 679 228 242V-194H208L201 -182Q170 -128 123 -94T41 -51V-28Q41 -5 42 -5Q47 -5 65 -10T117 -34T179 -78L188 -87V295Z"></path>
+<path stroke-width="1" id="E1-MJAMS-21C2" d="M190 682Q195 694 208 694T226 683Q228 679 228 296V-87L237 -78Q265 -52 299 -34T351 -11T374 -5Q375 -5 375 -28V-51Q340 -60 293 -92T215 -182L208 -194H188V242Q188 678 190 682Z"></path>
+</defs>
+<g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)" aria-hidden="true">
+ <use xlink:href="#E1-MJMAIN-21C0" x="0" y="0"></use>
+ <use xlink:href="#E1-MJMAIN-21C1" x="1278" y="0"></use>
+ <use xlink:href="#E1-MJMAIN-21BC" x="2556" y="0"></use>
+ <use xlink:href="#E1-MJMAIN-21BD" x="3834" y="0"></use>
+ <use xlink:href="#E1-MJAMS-21BF" x="5113" y="0"></use>
+ <use xlink:href="#E1-MJAMS-21BE" x="5808" y="0"></use>
+ <use xlink:href="#E1-MJAMS-21C3" x="6503" y="0"></use>
+ <use xlink:href="#E1-MJAMS-21C2" x="7198" y="0"></use>
+</g>
+</svg>
